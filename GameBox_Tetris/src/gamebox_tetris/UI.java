@@ -18,8 +18,8 @@ public class UI
     {
         
         
-        String name ="file:resources/c.png" ;  
-        tetris_back_img = new Image(name,1400,800,false,false) ;
+        
+        tetris_back_img = new Image("resources/tetris_back.png" ,1400,800,false,false) ;
         tetris_back_iv  = new ImageView(tetris_back_img);
         root_tetris.getChildren().addAll (tetris_back_iv );
         
