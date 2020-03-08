@@ -5,13 +5,11 @@
  */
 package creatmap;
 
-import java.awt.Dimension;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javax.swing.JFrame;
 
 public class Creatmap extends Application {
 
