@@ -8,24 +8,31 @@ package creatmap;
 import java.awt.Dimension;
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javax.swing.JFrame;
 
 public class Creatmap extends Application {
-     
+
     @Override
     public void start(Stage primaryStage) throws IOException {
+        map map_op = map.fromfile("map.txt");
+        map_op.split_image_sheet();
+        StackPane root = new StackPane();
+
+        root.getChildren().add(map_op.canvas);
+
+        Scene scene = new Scene(root, 800, 700);
+
+        primaryStage.setTitle("test map");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public static void main(String[] args) throws IOException {
-              map map_op = map.fromfile("map.txt");
-        JFrame frame = new JFrame("test map");
-        frame.setSize(new Dimension(800, 600));
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setContentPane(map_op);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        }
-    
+    public static void main(String[] args) {
+        launch(args);
+
+    }
+
 }
