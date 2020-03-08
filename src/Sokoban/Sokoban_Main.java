@@ -43,5 +43,14 @@ public class Sokoban_Main
         Sokoban_Stage.setScene(sokoban_scene);
         Sokoban_Stage.show();
     }
+     
+    /*
+    ** Empty private Constructor for Singleton pattern 
+    */
+     
+     private Sokoban_Main()
+     {
+     
+     }
 
 }

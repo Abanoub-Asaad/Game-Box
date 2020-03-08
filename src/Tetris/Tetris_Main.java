@@ -50,9 +50,9 @@ public class Tetris_Main
     }
     
     /*
-    ** Empty Constructor 
+    ** Empty private Constructor for singleton pattern
     */
-    public Tetris_Main()
+    private Tetris_Main()
     {
     
     }
