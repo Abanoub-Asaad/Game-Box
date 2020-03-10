@@ -1,120 +1,113 @@
 package Sokoban;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class map
-{
+public class Map {
 
-    private int[][] map; 
-    private Image image;
-    public static final int icone_width = 63;
-    public static final int icone_height = 63;
-    public GraphicsContext gc;
-    Canvas canvas = new Canvas(650, 600);
+    private Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
+    private Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
+    private Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
+    private Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
+    private Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
+    private ImageView tmp_imageView = new ImageView();
 
-    public map(int width, int height)
-    {
-        map = new int[height][width];
-    }
+    /*
+     * posX & posY for Locating The level textures 
+     */
+    private int posX = 50, posY = 50;
 
-    public void split_image_sheet() 
-    {
-        gc = canvas.getGraphicsContext2D();
+    private String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\maps.txt";
+    private FileReader file_reader;
+    private BufferedReader buffered_reader;
 
-        for (int i = 0; i < map.length; i++)
-        {
-            for (int j = 0; j < map[i].length; j++)
-            {
-                int index = map[i][j];
-                int yoffset = 0;
-                while (index > (image.getWidth() / icone_width - 1))
-                {
-                    yoffset++;
-                    index = index - (321 / icone_width);
-                }
-
-                gc.drawImage(image, index * icone_width, yoffset * icone_height, icone_width, icone_height, j * icone_width, i * icone_height,
-                        icone_width, icone_height);
-            }
-        }
+    Map() {
 
     }
 
-    public static map fromfile(String filename) throws IOException
-    {
 
-        map map_op = null;
+    /*
+     * This method Read the Map file text 
+     * and Put images insted of characters which in the file
+     */
+    public void readMapFile(Group group) throws FileNotFoundException, IOException {
 
-        ArrayList<ArrayList<Integer>> data = new ArrayList<>();
+        file_reader = new FileReader(fileName);
+        buffered_reader = new BufferedReader(file_reader);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filename)))
-        {
+        /*
+         * CurrentLine attribute for accessing Each line in the file 
+         * Level attribute for accessing Level Number 
+         */
+        String currentLine, Level;
 
-            String curentline, level;
-            level = br.readLine();
-            while ((curentline = br.readLine()) != null) 
-            {
-                if (curentline.isEmpty()) 
-                {
-                    continue;
-                }
+        Level = buffered_reader.readLine();
 
-                ArrayList<Integer> row = new ArrayList<>();
-                char[] values = curentline.toCharArray();
-                for (int i = 0; i < values.length; i++)
-                {
-                    switch (values[i])
-                    {
-                        case '#':
-                            row.add(1);
-                            break;
-                        case '@':
-                            row.add(2);
-                            break;
-                        case ' ':
-                        case '!':
-                            row.add(13);
-                            break;
-                        case '.':
-                            row.add(4);
-                            break;
-
-                    }
-                }
-
-                data.add(row);
+        while ((currentLine = buffered_reader.readLine()) != null) {
+            if (currentLine.isEmpty()) {
+                break;
             }
-        }
-        catch (IOException ex)
-        {
-            Logger.getLogger(map.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int width = data.get(0).size();
 
-        int height = data.size();
+            /*
+             ** Converting each line in the level(that in file) to array of chars
+             */
+            char[] values = currentLine.toCharArray();
 
-        map_op = new map(width, height);
+            /*
+             ** Converting characters to its shapes (images)
+             */
+            for (int i = 0; i < values.length; i++) {
+                switch (values[i]) {
+                    case '#':
+                        setPosition(group, wall, posX, posY);
+                        break;
 
-        for (int i = 0; i < height; i++)
-        {
-            for (int j = 0; j < width; j++) 
-            {
-                map_op.map[i][j] = data.get(i).get(j);
+                    case '@':
+                        setPosition(group, player, posX, posY);
+                        break;
+
+                    case '!':
+                        break;
+
+                    case ' ':
+                        setPosition(group, ground, posX, posY);
+                        break;
+
+                    case '.':
+                        setPosition(group, target, posX, posY);
+                        break;
+
+                    case '$':
+                        setPosition(group, box, posX, posY);
+                }
+                posX += 50;
             }
-        }
-        
-        map_op.image = new Image(new FileInputStream("sheet.jpg"));
-        
-        return map_op;
 
+            posY += 50;
+            posX = 50;
+        }
+
+    }
+
+    /*
+     * Locate the Image's position and put its imageView in the layout "group"
+     */
+    public void setPosition(Group group, Image img, int x, int y) {
+
+        tmp_imageView = new ImageView();
+
+        tmp_imageView.setImage(img);
+        tmp_imageView.setX(x);
+        tmp_imageView.setY(y);
+
+        group.getChildren().add(tmp_imageView);
+
+        //System.out.println(group.getChildren().size());
+        //System.out.println((int)tmp_imageView.getX()+"  "+(int)tmp_imageView.getY());
     }
 }

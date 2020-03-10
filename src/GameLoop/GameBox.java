@@ -1,7 +1,7 @@
 
 package GameLoop;
 
-import Welcome.Games ;
+import Welcome.Games;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -12,7 +12,8 @@ public class GameBox extends Application
     @Override
     public void start(Stage Root_Stage) 
     {
-         Games games_obj = new Games (Root_Stage) ;
+        
+        Games games_obj = new Games (Root_Stage) ;
          
     }
 

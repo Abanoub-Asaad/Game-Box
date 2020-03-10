@@ -45,6 +45,7 @@ public class Games
       private void createBackground()
     {
         Image Imageback = new Image("Resources/gamesPage/Moon.png", 1370, 780, true, false);
+        
         ImageView ImagbackIV = new ImageView(Imageback);
        gamesGroup.getChildren().add(ImagbackIV);
     }
