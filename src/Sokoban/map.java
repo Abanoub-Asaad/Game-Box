@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,11 +16,13 @@ public class Map {
     private Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     private Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     private Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
-
+    protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true); 
+    
     private static ImageView tmp_imageView = new ImageView();
 
     protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>() ;
-
+    protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>() ;
+    
     /*
      * posX & posY for Locating The level textures 
      */
@@ -92,7 +93,7 @@ public class Map {
                     case '.':
                         setPosition(target, posX, posY);
                         break;
-
+                        
                     case '$':
                         setPosition(box, posX, posY);
                 }
@@ -123,6 +124,12 @@ public class Map {
         }
         else if(img == wall ){
             Walls_Imageviews_Array.add(tmp_imageView) ;
+        }
+        else if(img == box){
+            Box.Boxes_Imageviews_Array.add(tmp_imageView );
+        }
+        else if(img == target){
+            StorageLocation_Imageviews_Array.add(tmp_imageView);
         }
     }
 

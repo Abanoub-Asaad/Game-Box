@@ -44,7 +44,7 @@ public class Games
       
       private void createBackground()
     {
-        Image Imageback = new Image("Resources/gamesPage/Moon.png", 1370, 780, true, false);
+        Image Imageback = new Image("Resources/gamesPage/d.jpg", 1370, 780, true, false);
         
         ImageView ImagbackIV = new ImageView(Imageback);
        gamesGroup.getChildren().add(ImagbackIV);
@@ -141,7 +141,7 @@ public class Games
         arkanoidFade.play();
     }
   private void AnimationOfPage(Text text)
- {
+ { 
        FadeTransition textFade = new FadeTransition(Duration.millis(5000));
         textFade.setNode(text);
         textFade.setFromValue(0);

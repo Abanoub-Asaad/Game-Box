@@ -17,7 +17,7 @@ public class Player
     /*
      * isWall is used to determinnig if the wanted position have a wall or not 
     */
-    private static boolean isWall = false ;
+    protected static boolean isWall = false ;
     
     /*
      * MoveThePlayer method is used for Accessing player's desired location 
@@ -33,19 +33,31 @@ public class Player
             {
                 
                 isWall = false ;
+                Box.isBox = false ;
                 
-                if (e.getCode() == KeyCode.LEFT) 
-                    checkWalls(-50, 0);
+                if (e.getCode() == KeyCode.LEFT) {
+                    checkWallsForPlayer(-1, 0);
+                    Box.checkBoxes(-1,0);          
+                }
+                    
+                if (e.getCode() == KeyCode.RIGHT) {
+                    checkWallsForPlayer(1, 0);
+                    Box.checkBoxes(1,0);
+                }
+                    
                 
-                if (e.getCode() == KeyCode.RIGHT) 
-                    checkWalls(50, 0);
+                if (e.getCode() == KeyCode.UP) {
+                    checkWallsForPlayer(0, -1);
+                    Box.checkBoxes(0,-1);
+                }
+                    
                 
-                if (e.getCode() == KeyCode.UP) 
-                    checkWalls(0, -50);
-                
-                if (e.getCode() == KeyCode.DOWN) 
-                    checkWalls(0, 50);
-                
+                if (e.getCode() == KeyCode.DOWN) {
+                    checkWallsForPlayer(0, 1);
+                    Box.checkBoxes(0 , 1);
+                }
+                    
+                System.out.println(player_imageView.getX()+" "+player_imageView.getY());
 
             }
         });
@@ -55,17 +67,17 @@ public class Player
     /*
      * This Method is used to check if the desired position have a wall so the player can't go
      * or not , so he can move 
-     * Parameters : x_value & y_value are the the values that the player will move and it also show the direction
+     * Parameters : direction_on_x & direction_on_y are represent directions that the player will move 
      * the for loop , loops on all walls' imageviews location
     */
-    private void checkWalls(int x_value, int y_value)
+    private void checkWallsForPlayer(int direction_on_x, int direction_on_y)
     {
         
         for (int i = 0; i < Map.Walls_Imageviews_Array.size(); i++)
         {
             
-            if (player_imageView.getX() + x_value == Map.Walls_Imageviews_Array.get(i).getX()
-                    && player_imageView.getY() + y_value == Map.Walls_Imageviews_Array.get(i).getY()) 
+            if (player_imageView.getX() + direction_on_x*50 == Map.Walls_Imageviews_Array.get(i).getX()
+                    && player_imageView.getY() + direction_on_y*50 == Map.Walls_Imageviews_Array.get(i).getY()) 
             {
                 
                 isWall = true;
@@ -75,15 +87,16 @@ public class Player
         
         if (!isWall)
         {
-            setPlayerPosition(x_value, y_value);
+            setPlayerPosition(direction_on_x*50 , direction_on_y*50);
         }
     
     }
 
-        private void setPlayerPosition(int x, int y)
+    
+        static void setPlayerPosition(int x, int y)
     {
-        player_imageView.setX(player_imageView.getX() + x);
-        player_imageView.setY(player_imageView.getY() + y);
+        player_imageView.setX(player_imageView.getX() +x);
+        player_imageView.setY(player_imageView.getY() +y);
     }
     
 }
