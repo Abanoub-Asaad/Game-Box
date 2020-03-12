@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,19 +17,27 @@ public class Map {
     private Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     private Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     private Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
-    private ImageView tmp_imageView = new ImageView();
+
+    private static ImageView tmp_imageView = new ImageView();
+
+    protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>() ;
 
     /*
      * posX & posY for Locating The level textures 
      */
-    private int posX = 50, posY = 50;
+    protected int posX = 50, posY = 50;
 
     private String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\maps.txt";
     private FileReader file_reader;
     private BufferedReader buffered_reader;
 
-    Map() {
-
+    /*
+     * Parameterized Constructor to set the background 
+     */
+    Map(Group g) {
+        Image SokobanImgback = new Image("Resources/Sokoban/l1.jpg", 1400, 800, true, false);
+        ImageView Soko_ImagbackIV = new ImageView(SokobanImgback);
+        g.getChildren().addAll(Soko_ImagbackIV);
     }
 
 
@@ -48,7 +58,8 @@ public class Map {
 
         Level = buffered_reader.readLine();
 
-        while ((currentLine = buffered_reader.readLine()) != null) {
+        while ((currentLine = buffered_reader.readLine()) != null && !currentLine.equals("BREAK")) {
+
             if (currentLine.isEmpty()) {
                 break;
             }
@@ -64,26 +75,26 @@ public class Map {
             for (int i = 0; i < values.length; i++) {
                 switch (values[i]) {
                     case '#':
-                        setPosition(group, wall, posX, posY);
+                        setPosition(wall, posX, posY);
                         break;
 
                     case '@':
-                        setPosition(group, player, posX, posY);
+                        setPosition(player, posX, posY);
                         break;
 
                     case '!':
                         break;
 
                     case ' ':
-                        setPosition(group, ground, posX, posY);
+                        //setPosition(group, ground, posX, posY);
                         break;
 
                     case '.':
-                        setPosition(group, target, posX, posY);
+                        setPosition(target, posX, posY);
                         break;
 
                     case '$':
-                        setPosition(group, box, posX, posY);
+                        setPosition(box, posX, posY);
                 }
                 posX += 50;
             }
@@ -97,7 +108,7 @@ public class Map {
     /*
      * Locate the Image's position and put its imageView in the layout "group"
      */
-    public void setPosition(Group group, Image img, int x, int y) {
+    public void setPosition(Image img, int x, int y) {
 
         tmp_imageView = new ImageView();
 
@@ -105,9 +116,14 @@ public class Map {
         tmp_imageView.setX(x);
         tmp_imageView.setY(y);
 
-        group.getChildren().add(tmp_imageView);
+        Sokoban_Main.root.getChildren().add(tmp_imageView);
 
-        //System.out.println(group.getChildren().size());
-        //System.out.println((int)tmp_imageView.getX()+"  "+(int)tmp_imageView.getY());
+        if (img == player) {
+            Player.player_imageView = tmp_imageView;
+        }
+        else if(img == wall ){
+            Walls_Imageviews_Array.add(tmp_imageView) ;
+        }
     }
+
 }
