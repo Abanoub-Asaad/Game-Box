@@ -14,9 +14,9 @@
         <group>
             <file>file:/C:/Game-Box/src/Sokoban/Player.java</file>
             <file>file:/C:/Game-Box/src/Sokoban/Box.java</file>
-            <file>file:/C:/Game-Box/src/Sokoban/Sokoban_Main.java</file>
             <file>file:/C:/Game-Box/src/Sokoban/Map.java</file>
             <file>file:/C:/Game-Box/src/GameLoop/GameBox.java</file>
+            <file>file:/C:/Game-Box/src/Sokoban/Piece.java</file>
             <file>file:/C:/Game-Box/src/Welcome/Games.java</file>
         </group>
     </open-files>

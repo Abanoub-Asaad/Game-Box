@@ -35,8 +35,7 @@ public class Sokoban_Main {
 
         Scene sokoban_scene = new Scene(root, 1370, 750);
 
-        Player player_obj = new Player();
-        player_obj.MoveThePlayer(sokoban_scene);
+        Piece.checkKeyboard(sokoban_scene);
 
         Sokoban_Stage.setTitle("SOKOBAN");
         Sokoban_Stage.setScene(sokoban_scene);

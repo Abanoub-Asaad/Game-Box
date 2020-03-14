@@ -1,102 +1,64 @@
 package Sokoban;
 
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
-public class Player
+public class Player extends Piece
 {
-    /*
-     * player_imageView to access the location of the player 
-     * It's accessed from function "setPosition" in class "Map"
-    */
-    protected static ImageView player_imageView = new ImageView();
+    protected static ImageView player_imageView = new ImageView(); 
     
-    /*
-     * isWall is used to determinnig if the wanted position have a wall or not 
-    */
-    protected static boolean isWall = false ;
-    
-    /*
-     * MoveThePlayer method is used for Accessing player's desired location 
-    */
-    public void MoveThePlayer(Scene Sokoban_Scene)
+    protected static void checkForThePlayer (int dir_x , int dir_y)
     {
-        
-        
-        Sokoban_Scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
+        if(!checkBox(dir_x , dir_y) && !checkWall(dir_x , dir_y) )
         {
-            @Override
-            public void handle(KeyEvent e)
-            {
-                
-                isWall = false ;
-                Box.isBox = false ;
-                
-                if (e.getCode() == KeyCode.LEFT) {
-                    checkWallsForPlayer(-1, 0);
-                    Box.checkBoxes(-1,0);          
-                }
-                    
-                if (e.getCode() == KeyCode.RIGHT) {
-                    checkWallsForPlayer(1, 0);
-                    Box.checkBoxes(1,0);
-                }
-                    
-                
-                if (e.getCode() == KeyCode.UP) {
-                    checkWallsForPlayer(0, -1);
-                    Box.checkBoxes(0,-1);
-                }
-                    
-                
-                if (e.getCode() == KeyCode.DOWN) {
-                    checkWallsForPlayer(0, 1);
-                    Box.checkBoxes(0 , 1);
-                }
-                    
-                System.out.println(player_imageView.getX()+" "+player_imageView.getY());
-
-            }
-        });
-
+            moveThePlayer(dir_x , dir_y);
+        }
     }
-
+    
     /*
-     * This Method is used to check if the desired position have a wall so the player can't go
-     * or not , so he can move 
-     * Parameters : direction_on_x & direction_on_y are represent directions that the player will move 
-     * the for loop , loops on all walls' imageviews location
+     *  This Method is used to check if the desired position have a box or not
     */
-    private void checkWallsForPlayer(int direction_on_x, int direction_on_y)
+    private static boolean checkBox(int dir_x , int dir_y ) 
     {
-        
-        for (int i = 0; i < Map.Walls_Imageviews_Array.size(); i++)
+        for(ImageView box_iv : Map.Boxes_Imageviews_Array)
         {
             
-            if (player_imageView.getX() + direction_on_x*50 == Map.Walls_Imageviews_Array.get(i).getX()
-                    && player_imageView.getY() + direction_on_y*50 == Map.Walls_Imageviews_Array.get(i).getY()) 
+            if(Player.player_imageView.getX()+dir_x*50 == box_iv.getX() &&
+               Player.player_imageView.getY()+dir_y*50 == box_iv.getY())
             {
-                
-                isWall = true;
-                break;
+                return true ;
             }
+ 
         }
-        
-        if (!isWall)
-        {
-            setPlayerPosition(direction_on_x*50 , direction_on_y*50);
-        }
-    
+        return  false ;
     }
-
     
-        static void setPlayerPosition(int x, int y)
+    /*
+     *  This Method is used to check if the desired position have a wall or not
+    */
+    private static boolean checkWall(int dir_x , int dir_y )
     {
-        player_imageView.setX(player_imageView.getX() +x);
-        player_imageView.setY(player_imageView.getY() +y);
+        for(ImageView wall_iv : Map.Walls_Imageviews_Array)
+        {
+
+            if( player_imageView.getX()+dir_x*50==wall_iv.getX() &&
+                player_imageView.getY()+dir_y*50==wall_iv.getY()  )
+            {
+                return true ;
+            }
+
+        }
+        return  false ;
     }
     
+    /*
+      * moveThePlayer method is used to moving the player to the desired Location
+     */
+     private static void moveThePlayer(int dir_x , int dir_y)
+     { 
+             int x = (int)player_imageView.getX()+dir_x*50 ;
+             int y = (int)player_imageView.getY()+dir_y*50 ;
+             
+             player_imageView.setX(x);
+             player_imageView.setY(y);  
+     }
 }

@@ -1,85 +1,114 @@
 package Sokoban;
 
-import static Sokoban.Player.player_imageView;
-import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 
-public class Box {
+public class Box extends Piece{
 
-    private static int index = 0;
     protected static boolean isBox = false ;
-    private static ImageView Box_imageView ;
-            
+    private static boolean anotherBoxNextToTheCurrBox = false ;
+    private static boolean isWallNextToTheBox = false ;
+    private static int directionOnX ,  directionOnY;
+    
     /*
-     * Array of boxes' imageviews 
+    ** cur_Box_Index , to get the index of the box that the player wants to move 
+    */  
+    private static int cur_Box_Index = 0 ;
+    
+    /*
+    ** Check if There's a box in the desired Location 
     */
-    protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>() ;
-    
-    protected static void checkBoxes(int x_direction , int y_direction)
+    protected static void checkBox(int x , int y)
     {
+        cur_Box_Index = 0 ;
+        directionOnX = x ; directionOnY = y ;
+        isBox = false ;
         
-        
-        for (int i = 0; i < Boxes_Imageviews_Array.size(); i++)
+        for(ImageView box_iv : Map.Boxes_Imageviews_Array)
         {
             
-            if (player_imageView.getX()== Boxes_Imageviews_Array.get(i).getX()
-                    && player_imageView.getY() == Boxes_Imageviews_Array.get(i).getY()) 
+            if(Player.player_imageView.getX()+directionOnX*50 == box_iv.getX() &&
+               Player.player_imageView.getY()+directionOnY*50 == box_iv.getY())
             {
-                
-                isBox = true;
-                index = i ;
+                isBox = true ;
                 break;
             }
+            
+            cur_Box_Index++;
+            
         }
         
-        checkWallsForBox(x_direction , y_direction );
-        
-        if (isBox && !Player.isWall)
-        { 
-            setBoxPosition(x_direction, y_direction);
-            isBox = false ;
-        }
+        checkForBox();
     }
+            
     
     
-    
-   
-    
-    private static void checkWallsForBox(int direction_on_x, int direction_on_y)
-    {
-        
-        for (int i = 0; i < Map.Walls_Imageviews_Array.size(); i++)
+     //============================= 
+     private static void checkForBox()
+     {
+         if(isBox == true){
+             
+             checkIf_Thereis_A_boxNextToTheCurrBox() ;
+             checkIf_Thereis_A_WallNextToTheCurrBox() ;
+             moveTheBox() ;
+         }
+             
+     }
+
+     /*
+      * to check if there are two boxes next to each other
+     */
+     private static void  checkIf_Thereis_A_boxNextToTheCurrBox()
+     {
+         anotherBoxNextToTheCurrBox = false ;
+         
+         for(ImageView box_iv : Map.Boxes_Imageviews_Array)
         {
             
-            if (Boxes_Imageviews_Array.get(index).getX() + direction_on_x*50 == Map.Walls_Imageviews_Array.get(i).getX()
-                    && Boxes_Imageviews_Array.get(index).getY() + direction_on_y*50 == Map.Walls_Imageviews_Array.get(i).getY()) 
+            if( Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50==box_iv.getX() &&
+                Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50==box_iv.getY()  )
             {
-                
-                Player.isWall = true;
+                anotherBoxNextToTheCurrBox = true ;
                 break;
             }
+            
         }
-       
-    }
-    
-     private static void setBoxPosition(int x_direction, int y_direction)
-    { 
-        
-        Boxes_Imageviews_Array.get(index).setX(Boxes_Imageviews_Array.get(index).getX() + x_direction*50);
-        Boxes_Imageviews_Array.get(index).setY(Boxes_Imageviews_Array.get(index).getY() + y_direction*50);
-        
-    }
+     }
      
-//    protected static void checkBoxInTarget()
-//    {
-//        for(int i=0 ; i<Boxes_Imageviews_Array.size() ; i++)
-//        {
-//            if(Boxes_Imageviews_Array.get(i).getX()== Map.StorageLocation_Imageviews_Array.get(i).getX()
-//                    && Boxes_Imageviews_Array.get(i).getY()== Map.StorageLocation_Imageviews_Array.get(i).getY())
-//            {
-//                 Map.StorageLocation_Imageviews_Array.get(i).setImage(Map.boxOnTarget);
-//                 
-//            }
-//        }
-//    }
+     /*
+      * This method is used to determine if there's a wall next to the current box
+     */
+     private static void  checkIf_Thereis_A_WallNextToTheCurrBox()
+     {
+         isWallNextToTheBox = false ;
+         
+         if(anotherBoxNextToTheCurrBox==false)
+         {
+               for(ImageView wall_iv : Map.Walls_Imageviews_Array)
+               {
+
+                   if( Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50==wall_iv.getX() &&
+                       Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50==wall_iv.getY()  )
+                   {
+                       isWallNextToTheBox = true ;
+                       break;
+                   }
+
+               }
+         }
+     } 
+     
+     /*
+      * moveTheBox method is used to moving the box to the desired Location
+     */
+     private static void moveTheBox()
+     {
+         if( isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox)
+         { 
+             int x = (int)Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50 ;
+             int y = (int)Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50 ;
+             
+             Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
+             Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
+         }
+     }
 }

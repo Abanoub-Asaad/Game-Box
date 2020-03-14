@@ -13,15 +13,18 @@ public class Map {
 
     private Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
     private Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
-    private Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
-    private Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     private Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
+    
+    protected static  Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
+    protected static Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true); 
     
     private static ImageView tmp_imageView = new ImageView();
-
+    
+    
     protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>() ;
     protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>() ;
+    protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>() ;
     
     /*
      * posX & posY for Locating The level textures 
@@ -126,7 +129,7 @@ public class Map {
             Walls_Imageviews_Array.add(tmp_imageView) ;
         }
         else if(img == box){
-            Box.Boxes_Imageviews_Array.add(tmp_imageView );
+            Boxes_Imageviews_Array.add(tmp_imageView );
         }
         else if(img == target){
             StorageLocation_Imageviews_Array.add(tmp_imageView);
