@@ -13,7 +13,11 @@ public class Map {
 
     private Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
     private Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
-    private Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
+    
+    protected static Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
+    protected static Image playerU = new Image("Resources/Sokoban/player_02.png", 50, 50, true, true);
+    protected static Image playerL = new Image("Resources/Sokoban/player_15.png", 50, 50, true, true);
+    protected static Image playerR = new Image("Resources/Sokoban/player_13.png", 50, 50, true, true);
     
     protected static  Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     protected static Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
@@ -32,6 +36,7 @@ public class Map {
     protected int posX = 50, posY = 50;
 
     private String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\maps.txt";
+   // private String fileName  = "src/Resources/Sokoban/maps.txt" ;
     private FileReader file_reader;
     private BufferedReader buffered_reader;
 
