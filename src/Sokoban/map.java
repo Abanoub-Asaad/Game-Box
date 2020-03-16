@@ -19,7 +19,7 @@ public class Map {
     protected static Image playerL = new Image("Resources/Sokoban/player_15.png", 50, 50, true, true);
     protected static Image playerR = new Image("Resources/Sokoban/player_13.png", 50, 50, true, true);
     
-    protected static  Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
+    protected static Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     protected static Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true); 
     
@@ -29,7 +29,7 @@ public class Map {
     protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>() ;
     protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>() ;
     protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>() ;
-    
+    protected static ArrayList<ImageView> BoxeOnTarget_Imageviews_Array = new ArrayList<>() ;
     /*
      * posX & posY for Locating The level textures 
      */
@@ -95,7 +95,7 @@ public class Map {
                         break;
 
                     case ' ':
-                        //setPosition(group, ground, posX, posY);
+                       // setPosition( ground, posX, posY);
                         break;
 
                     case '.':
@@ -103,6 +103,11 @@ public class Map {
                         break;
                         
                     case '$':
+                        setPosition(box, posX, posY);
+                        break;
+                        
+                    case '&':
+                        setPosition(target, posX, posY);
                         setPosition(box, posX, posY);
                 }
                 posX += 50;
@@ -139,6 +144,13 @@ public class Map {
         else if(img == target){
             StorageLocation_Imageviews_Array.add(tmp_imageView);
         }
+//        else if(img == boxOnTarget){
+//           
+//            Boxes_Imageviews_Array.add(tmp_imageView);
+//            StorageLocation_Imageviews_Array.add(tmp_imageView);
+//            
+            
+        //}  
     }
 
 }

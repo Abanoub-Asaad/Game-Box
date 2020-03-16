@@ -58,7 +58,7 @@ public class Piece {
     /*
      * Check if the storage Location is filled , to change its shape using imageview.setImage(imageName)
     */
-    private static void checkIfStorageLogationsAreFilled()
+    protected static void checkIfStorageLogationsAreFilled()
     {
         for(int i=0 ; i<Map.Boxes_Imageviews_Array.size()  ; i++)
         {
@@ -68,9 +68,11 @@ public class Piece {
                 && Map.Boxes_Imageviews_Array.get(i).getY()==Map.StorageLocation_Imageviews_Array.get(j).getY())
                 { 
                     Map.Boxes_Imageviews_Array.get(i).setImage(Map.boxOnTarget);
+                    break;
                 }
                 else 
                 {
+                    Map.Boxes_Imageviews_Array.get(i).setImage(Map.box);
                     /*
                      * Here we should handle if the box in the storage location then we move it to an empty location 
                      * so its shape should return to its originl shape
