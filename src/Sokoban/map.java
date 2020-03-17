@@ -54,7 +54,7 @@ public class Map {
      * This method Read the Map file text 
      * and Put images insted of characters which in the file
      */
-    public void readMapFile(Group group) throws FileNotFoundException, IOException {
+    public void readMapFile() throws FileNotFoundException, IOException {
 
         file_reader = new FileReader(fileName);
         buffered_reader = new BufferedReader(file_reader);
@@ -107,8 +107,9 @@ public class Map {
                         break;
                         
                     case '&':
-                        setPosition(target, posX, posY);
                         setPosition(box, posX, posY);
+                        setPosition(target, posX, posY);
+                        
                 }
                 posX += 50;
             }
@@ -144,13 +145,8 @@ public class Map {
         else if(img == target){
             StorageLocation_Imageviews_Array.add(tmp_imageView);
         }
-//        else if(img == boxOnTarget){
-//           
-//            Boxes_Imageviews_Array.add(tmp_imageView);
-//            StorageLocation_Imageviews_Array.add(tmp_imageView);
-//            
-            
-        //}  
+
+        
     }
 
 }

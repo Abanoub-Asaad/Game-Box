@@ -31,7 +31,7 @@ public class Sokoban_Main {
     public void Sokoban_Main(Stage Sokoban_Stage) throws IOException {
 
         Map mp_obj = new Map(root);
-        mp_obj.readMapFile(root);
+        mp_obj.readMapFile();
 
         Scene sokoban_scene = new Scene(root, 1370, 750);
 
