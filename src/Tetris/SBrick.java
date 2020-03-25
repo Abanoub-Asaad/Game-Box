@@ -26,7 +26,7 @@ public class SBrick {
             rect[i].setFill(Color.CRIMSON);
             root.getChildren().addAll(rect[i]);
         }
-        shapeObj.tranformation(rect, 550, 550,500,500);
+      //  shapeObj.tranformation(rect, 550, 550,500,500);
 
     }
 

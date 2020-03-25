@@ -24,7 +24,7 @@ public class DrawNormalShape {
       rectangles[i].setFill(Color.RED);
             group.getChildren().add(rectangles[i]);
         }
-         shapeObj.tranformation(rectangles, 690,690,690,690); 
+        // shapeObj.tranformation(rectangles, 690,690,690,690); 
          
       
      

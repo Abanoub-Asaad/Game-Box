@@ -26,7 +26,7 @@ public class DrawSquareShape
             rectangles[i].setFill(Color.FUCHSIA);
             group.getChildren().add(rectangles[i]);
         }
-        shapeObj.tranformation(rectangles, 550, 550, 500, 500);
+       // shapeObj.tranformation(rectangles, 550, 550, 500, 500);
 
     }
     public void turn90(Rectangle[] rectangles, float x, float y, Group group ) {

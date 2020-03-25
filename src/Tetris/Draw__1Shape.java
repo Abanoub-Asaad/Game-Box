@@ -26,7 +26,7 @@ public class Draw__1Shape {
             rectangles[i].setFill(Color.YELLOW);
             group.getChildren().add(rectangles[i]);
         }
-        shapeObj.tranformation(rectangles, 500, 500, 500, 550);
+      //  shapeObj.tranformation(rectangles, 500, 500, 500, 550);
     }
 
     public void turn90(Rectangle[] rectangles, float x, float y, Group group) {

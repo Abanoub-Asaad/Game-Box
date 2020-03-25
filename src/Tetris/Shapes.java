@@ -58,7 +58,7 @@ public class Shapes {
 
     public int RandomNum() {
         int Num;
-        Num = (int) ((Math.random() * ((7 - 1) + 1)) + 1);
+        Num = (int) ((Math.random() * ((7 - 2) + 1)) + 2);
         System.out.println("Num   " + Num);
         return Num;
     }

@@ -26,7 +26,7 @@ public class Draw_L_Shape
             rectangles[i].setFill(Color.AQUAMARINE);
             group.getChildren().add(rectangles[i]);
         }
-           shapeObj.tranformation(rectangles, 550, 500, 500, 500); 
+         //  shapeObj.tranformation(rectangles, 550, 500, 500, 500); 
 
     }
 

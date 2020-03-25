@@ -24,7 +24,7 @@ public class ZBrick  {
             rect[i].setFill(Color.DEEPPINK);
             root.getChildren().addAll(rect[i]);
         }
-        shapeObj.tranformation(rect, 550,500,550,500); 
+       // shapeObj.tranformation(rect, 550,500,550,500); 
     }
     public void turn90(Rectangle[] rect, float x, float y, Group root) {
         rect[0] = new Rectangle(x, y, width-1, height);

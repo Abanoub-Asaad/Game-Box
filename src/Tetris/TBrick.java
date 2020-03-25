@@ -28,7 +28,7 @@ public class TBrick  {
             rect[i].setFill(Color.GREENYELLOW);
             root.getChildren().addAll(rect[i]);
         }
-        shapeObj.tranformation(rect, 550,550,550,500); 
+      //  shapeObj.tranformation(rect, 550,550,550,500); 
     }
 
     public void turn90(Rectangle[] rect, float x, float y, Group root) {
