@@ -10,8 +10,8 @@ public class DrawNormalShape {
     float width, height;
     Shapes shapeObj ;
     public DrawNormalShape() {
-        width = 50f;
-         height = 50f;
+       width = 50f;
+       height = 50f;
        shapeObj= new Shapes();
     }
 
@@ -24,7 +24,7 @@ public class DrawNormalShape {
       rectangles[i].setFill(Color.RED);
             group.getChildren().add(rectangles[i]);
         }
-         shapeObj.tranformation(rectangles, 500,500,500,500); 
+         shapeObj.tranformation(rectangles, 690,690,690,690); 
          
       
      

@@ -42,9 +42,11 @@ public class Tetris_Main
     */
     public void Tetris_Main (Stage Games_Stage)
     {
-        tetris_back_img = new Image("Resources/Tetris/tetris_back.png" ,1400,800,false,false) ;
+        tetris_back_img = new Image("Resources/Tetris/tt.png" ,1400,800,false,false) ;
         tetris_back_iv  = new ImageView(tetris_back_img);
         root_tetris.getChildren().addAll (tetris_back_iv );
+        
+        tetris_scene = new Scene(root_tetris, 1370 , 750); 
          //----------------------------------
         board.draw_back_ground();
        root_tetris.getChildren().add(board.grid);
@@ -52,9 +54,10 @@ public class Tetris_Main
         Rectangle[] rectangles = new Rectangle[4];
         Shapes shapesObj = new Shapes() ;
         shapesObj.chooseShape(rectangles,root_tetris);
-        //shapesObj.checkPressLeftOrRight( rectangles , tetris_scene);
+        shapesObj.checkPressLeftOrRight( rectangles , tetris_scene);
+        board.Abnb(tetris_scene);
         //-----------------------------------------------
-        tetris_scene = new Scene(root_tetris, 1370 , 750); 
+        
         Tetris_Stage = Games_Stage;
         Tetris_Stage.setScene(tetris_scene);
        

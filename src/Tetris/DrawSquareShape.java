@@ -16,18 +16,18 @@ public class DrawSquareShape
         shapeObj = new Shapes();
     }
  
-    public void Basic(Rectangle[] rectangles, float x, float y, Group group ) {
-         rectangles[0] = new Rectangle(x, y, width, height);
-          rectangles[1] = new Rectangle(x+width+1, y, width, height);
-          rectangles[2] = new Rectangle(x, y+=height+1, width, height);
-          rectangles[3] = new Rectangle(x+width+1, y, width, height);
-           for (int i = 0; i < 4; i++) {
-                rectangles[i].setFill(Color.FUCHSIA);
+    public void Basic(Rectangle[] rectangles, float x, float y, Group group) {
+        rectangles[0] = new Rectangle(x, y, width, height);
+        rectangles[1] = new Rectangle(x + width + 1, y, width, height);
+        rectangles[2] = new Rectangle(x, y += height + 1, width, height);
+        rectangles[3] = new Rectangle(x + width + 1, y, width, height);
+        
+        for (int i = 0; i < 4; i++) {
+            rectangles[i].setFill(Color.FUCHSIA);
             group.getChildren().add(rectangles[i]);
         }
-         shapeObj.tranformation(rectangles, 550, 550, 500, 500);
-         
-         
+        shapeObj.tranformation(rectangles, 550, 550, 500, 500);
+
     }
     public void turn90(Rectangle[] rectangles, float x, float y, Group group ) {
         Basic(rectangles, x, y, group);
