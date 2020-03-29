@@ -3,16 +3,9 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Draw_L_Shape 
+public class Draw_L_Shape extends Shapes
 {
-   float width, height;
-    Shapes shapeObj ;
-
-    public Draw_L_Shape() {
-                width = 50f;
-         height = 50f;
-          shapeObj= new Shapes();
-    }
+   
 
     public void Basic(Rectangle[] rectangles, float x, float y, Group group) {
         rectangles[0] = new Rectangle(x, y, width, height);

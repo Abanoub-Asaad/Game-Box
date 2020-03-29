@@ -5,17 +5,9 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Draw__1Shape {
+public class Draw__1Shape extends Shapes{
 
-    float width, height;
-    Shapes shapeObj;
-
-    public Draw__1Shape() {
-        width = 50f;
-        height = 50f;
-        shapeObj = new Shapes();
-    }
-
+    
     public void Basic(Rectangle[] rectangles, float x, float y, Group group) {
         rectangles[0] = new Rectangle(x, y, width, height);
         for (int i = 1; i < 3; i++) {

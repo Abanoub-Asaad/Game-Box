@@ -5,16 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class DrawSquareShape 
+public class DrawSquareShape extends Shapes
 { 
-   float width, height;
-    Shapes shapeObj ;
-
-    public DrawSquareShape() {
-        width = 50f;
-        height = 50f;
-        shapeObj = new Shapes();
-    }
+   
  
     public void Basic(Rectangle[] rectangles, float x, float y, Group group) {
         rectangles[0] = new Rectangle(x, y, width, height);

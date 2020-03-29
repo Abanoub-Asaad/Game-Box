@@ -9,15 +9,9 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class TBrick  {
-   float width, height;
-    Shapes shapeObj ;
-
-    public TBrick() {
-                width = 50f;
-         height = 50f;
-          shapeObj= new Shapes();
-    }
+public class TBrick extends Shapes {
+  
+    
    
     public void Basic(Rectangle[] rect, double x, float y, Group root) {
         rect[0] = new Rectangle(x, y, width-1, height);

@@ -5,16 +5,8 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class ZBrick  {
-   float width, height;
-    Shapes shapeObj ;
+public class ZBrick  extends Shapes{
 
-    public ZBrick() {
-        width = 50f;
-         height = 50f;
-          shapeObj= new Shapes();
-    }
-     
     public void  Basic(Rectangle [] rect, float x, float y,Group  root) {
         rect[0] = new Rectangle(x, y, width-1, height);
         rect[1] = new Rectangle(x + width, y + height, width-1, height);

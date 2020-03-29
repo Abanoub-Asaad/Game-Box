@@ -6,17 +6,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
-public class SBrick {
+public class SBrick extends Shapes{
 
-   float width, height;
-    Shapes shapeObj ;
-
-    public SBrick() {
-                width = 50f;
-         height = 50f;
-          shapeObj= new Shapes();
-    }
-
+   
     public void Basic(Rectangle[] rect, float x, float y, Group root) {
         rect[0] = new Rectangle(x, y, width-1, height);
         rect[1] = new Rectangle(x + width , y, width-1, height);

@@ -14,7 +14,7 @@ public class Shapes {
     private float y = 5f;
     private boolean IsTurn = false;
     
-   
+    protected float width=50f , height=50f;
     //------------------------------------------------
 
 
