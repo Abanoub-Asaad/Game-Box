@@ -25,7 +25,7 @@ public class TBrick  {
         rect[2] = new Rectangle(x - width, y, width-1, height);
         rect[3] = new Rectangle(x, y + height, width-1, height-1);
         for (int i = 0; i < 4; i++) {
-            rect[i].setFill(Color.GREENYELLOW);
+            rect[i].setFill(Color.WHITE);
             root.getChildren().addAll(rect[i]);
         }
       //  shapeObj.tranformation(rect, 550,550,550,500); 
@@ -40,7 +40,7 @@ public class TBrick  {
             rect[i].setFill(Color.GREENYELLOW);
             root.getChildren().addAll(rect[i]);
         }
-           shapeObj.tranformation(rect, 550,550,500,600); 
+         //  shapeObj.tranformation(rect, 550,550,500,600); 
     }
 
     public void turn180(Rectangle[] rect, float x, float y, Group root) {
@@ -52,7 +52,7 @@ public class TBrick  {
             rect[i].setFill(Color.GREENYELLOW);
             root.getChildren().addAll(rect[i]);
         }
-           shapeObj.tranformation(rect, 500,500,550,500); 
+       //    shapeObj.tranformation(rect, 500,500,550,500); 
     }
 
     public void turn270(Rectangle[] rect, float x, float y, Group root) {

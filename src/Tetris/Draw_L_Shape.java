@@ -23,7 +23,7 @@ public class Draw_L_Shape
         }
 
         for (int i = 0; i < 4; i++) {
-            rectangles[i].setFill(Color.AQUAMARINE);
+            rectangles[i].setFill(Color.YELLOW);
             group.getChildren().add(rectangles[i]);
         }
          //  shapeObj.tranformation(rectangles, 550, 500, 500, 500); 
@@ -45,7 +45,7 @@ public class Draw_L_Shape
               rectangles[i].setFill(Color.AQUAMARINE);
             group.getChildren().add(rectangles[i]);
         }
-       shapeObj. tranformation(rectangles, 600, 550, 500, 500); 
+       //shapeObj. tranformation(rectangles, 600, 550, 500, 500); 
 
     }
    
@@ -62,7 +62,7 @@ public class Draw_L_Shape
               rectangles[i].setFill(Color.AQUAMARINE);
             group.getChildren().add(rectangles[i]);
         }
-         shapeObj.tranformation(rectangles, 550, 550, 550, 500); 
+       //  shapeObj.tranformation(rectangles, 550, 550, 550, 500); 
 
     }
   
@@ -80,7 +80,7 @@ public class Draw_L_Shape
               rectangles[i].setFill(Color.AQUAMARINE);
             group.getChildren().add(rectangles[i]);
         }
-        shapeObj. tranformation(rectangles, 550, 550, 500, 450); 
+       // shapeObj. tranformation(rectangles, 550, 550, 500, 450); 
 
     }
    

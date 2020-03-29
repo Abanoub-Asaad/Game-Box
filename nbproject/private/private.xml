@@ -12,17 +12,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Game-Box/src/Tetris/Draw__1Shape.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/Shapes.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/DrawSquareShape.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/SBrick.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/DrawNormalShape.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/Tetris_Main.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/board.java</file>
-            <file>file:/C:/Game-Box/src/GameLoop/GameBox.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/TBrick.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/Draw_L_Shape.java</file>
-            <file>file:/C:/Game-Box/src/Tetris/ZBrick.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/TBrick.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/SBrick.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/Draw__1Shape.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/Tetris_Main.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/DrawNormalShape.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/ZBrick.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/DrawSquareShape.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/Draw_L_Shape.java</file>
+            <file>file:/G:/Game-Box/src/GameLoop/GameBox.java</file>
+            <file>file:/G:/Game-Box/src/Tetris/Controller.java</file>
         </group>
     </open-files>
 </project-private>

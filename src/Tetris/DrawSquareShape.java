@@ -23,7 +23,7 @@ public class DrawSquareShape
         rectangles[3] = new Rectangle(x + width + 1, y, width, height);
         
         for (int i = 0; i < 4; i++) {
-            rectangles[i].setFill(Color.FUCHSIA);
+            rectangles[i].setFill(Color.SKYBLUE);
             group.getChildren().add(rectangles[i]);
         }
        // shapeObj.tranformation(rectangles, 550, 550, 500, 500);

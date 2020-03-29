@@ -21,7 +21,7 @@ public class ZBrick  {
         rect[2] = new Rectangle(x - width, y, width-1, height);
         rect[3] = new Rectangle(x, y + height, width-1, height);
         for (int i = 0; i < 4; i++) {
-            rect[i].setFill(Color.DEEPPINK);
+            rect[i].setFill(Color.GREEN);
             root.getChildren().addAll(rect[i]);
         }
        // shapeObj.tranformation(rect, 550,500,550,500); 
@@ -35,7 +35,7 @@ public class ZBrick  {
             rect[i].setFill(Color.DEEPPINK);
             root.getChildren().addAll(rect[i]);
         }
-        shapeObj.tranformation(rect, 500, 500, 550, 450);
+
     }
          public void turn180(Rectangle[] rect, float x, float y, Group root) {
           Basic(rect, width, width, root);

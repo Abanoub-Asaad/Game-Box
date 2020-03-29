@@ -44,7 +44,7 @@ public class DrawNormalShape {
         {  rectangles[i].setFill(Color.RED);
             group.getChildren().add(rectangles[i]);
         }
-          shapeObj.tranformation(rectangles, 550,500,450,400); 
+        //  shapeObj.tranformation(rectangles, 550,500,450,400); 
           
        
     }

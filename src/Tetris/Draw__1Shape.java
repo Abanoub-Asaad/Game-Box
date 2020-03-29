@@ -23,7 +23,7 @@ public class Draw__1Shape {
         }
         rectangles[3] = new Rectangle(x, y -= height+1 , width, height);
         for (int i = 0; i < 4; i++) {
-            rectangles[i].setFill(Color.YELLOW);
+            rectangles[i].setFill(Color.PURPLE);
             group.getChildren().add(rectangles[i]);
         }
       //  shapeObj.tranformation(rectangles, 500, 500, 500, 550);
@@ -40,7 +40,7 @@ public class Draw__1Shape {
             rectangles[i].setFill(Color.YELLOW);
             group.getChildren().add(rectangles[i]);
         }
-        shapeObj.tranformation(rectangles, 600, 550, 500, 500);
+       // shapeObj.tranformation(rectangles, 600, 550, 500, 500);
     }
 
     public void turn180(Rectangle[] rectangles, float x, float y, Group group) {
@@ -55,7 +55,7 @@ public class Draw__1Shape {
             rectangles[i].setFill(Color.YELLOW);
             group.getChildren().add(rectangles[i]);
         }
-        shapeObj.tranformation(rectangles, 500, 550, 550, 550);
+       // shapeObj.tranformation(rectangles, 500, 550, 550, 550);
     }
 
     public void turn270(Rectangle[] rectangles, float x, float y, Group group) {
@@ -70,7 +70,7 @@ public class Draw__1Shape {
             rectangles[i].setFill(Color.YELLOW);
             group.getChildren().add(rectangles[i]);
         }
-        shapeObj.tranformation(rectangles, 550, 550, 500, 450);
+        //shapeObj.tranformation(rectangles, 550, 550, 500, 450);
     }
 
     public void turn360(Rectangle[] rectangles, float x, float y, Group group) {

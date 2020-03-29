@@ -23,7 +23,7 @@ public class SBrick {
         rect[2] = new Rectangle(x, y + height , width-1, height);
         rect[3] = new Rectangle(x - width , y + height, width-1, height);
         for (int i = 0; i < 4; i++) {
-            rect[i].setFill(Color.CRIMSON);
+            rect[i].setFill(Color.BLUE);
             root.getChildren().addAll(rect[i]);
         }
       //  shapeObj.tranformation(rect, 550, 550,500,500);
@@ -39,7 +39,7 @@ public class SBrick {
             rect[i].setFill(Color.CRIMSON);
             root.getChildren().addAll(rect[i]);
         }
-        shapeObj.tranformation(rect, 500, 500, 550, 450);
+       // shapeObj.tranformation(rect, 500, 500, 550, 450);
     }
       public void turn180(Rectangle[] rect, float x, float y, Group root) {
           Basic(rect, width, width, root);

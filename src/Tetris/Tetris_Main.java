@@ -1,6 +1,7 @@
 
 package Tetris;
 
+import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -13,26 +14,25 @@ import javafx.stage.Stage;
 public class Tetris_Main
 { 
     public Stage Tetris_Stage ;
-    private Group root_tetris = new Group() ;
-    public static Scene tetris_scene ;
-    
+    protected static Group root_tetris = new Group() ;
+    protected static Scene tetris_scene ;
+    public static int[][] MESH = new int[Board.XMAX / Board.Size][Board.YMAX / Board.Size];
     //=========================================================
     /*
     ** For Singleton Pattern 
     */
-    private static Tetris_Main tetrisInstance ; 
-    public static Tetris_Main getInstanceFromTetris()
-    {
-        if (tetrisInstance == null)
-        {
-            tetrisInstance = new Tetris_Main(); 
+    private static Tetris_Main tetrisInstance;
+
+    public static Tetris_Main getInstanceFromTetris() {
+        if (tetrisInstance == null) {
+            tetrisInstance = new Tetris_Main();
         }
-        
+
         return tetrisInstance;
     }
-    private Tetris_Main()
-    {
-    
+
+    private Tetris_Main() {
+
     }
     //======================================================
    
@@ -42,50 +42,34 @@ public class Tetris_Main
     */
     public void Tetris_Main (Stage Games_Stage)
     {
-        
-        
+
         tetris_scene = new Scene(root_tetris, 1370, 750);
-        board.draw_back_ground();
-        root_tetris.getChildren().addAll(board.tetris_back_iv, board.grid);
+        //Board.draw_back_ground();
+        root_tetris.getChildren().addAll(Board.tetris_back_iv,Board.drawLine());//, board.grid);
         
         //---------------------------------------
         Rectangle[] rectangles = new Rectangle[4];
         Shapes shapesObj = new Shapes() ;
         shapesObj.chooseShape(rectangles,root_tetris);
-        shapesObj.checkPressLeftOrRight( rectangles , tetris_scene);
-        board.Abnb(tetris_scene);
-        
+        Controller.checkPressLeftOrRight( rectangles , tetris_scene);
+        Controller controller_obj = new Controller();
+        Tetris_Stage = Games_Stage;
+        Tetris_Stage.setScene(tetris_scene);
         //---------------------------------------------------
-        //---------------------------------------------------
-        
+    
         Timer fall = new Timer();
         TimerTask task = new TimerTask() {
             public void run() {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         
-                        
-                        rectangles[0].setY(rectangles[0].getY() + 5);
-                        rectangles[1].setY(rectangles[1].getY() + 5);
-                        rectangles[2].setY(rectangles[2].getY() + 5);
-                        rectangles[3].setY(rectangles[3].getY() + 5);
-                        
-                        if(rectangles[0].getY() + 50>700 &&rectangles[1].getY() + 50>700&&
-                                rectangles[2].getY() + 50>700&&rectangles[3].getY() + 50>700 ){
-                            Shapes shapesObj = new Shapes() ;
-                            shapesObj.chooseShape(rectangles,root_tetris);
-                        }
+                       Controller.MoveDown(rectangles);
                     }
                 });
             }
         };
-        fall.schedule(task, 0, 20);
+        fall.schedule(task, 0, 300);
         
-        //---------------------------------------------------
-        //-----------------------------------------------
-        
-        Tetris_Stage = Games_Stage;
-        Tetris_Stage.setScene(tetris_scene);
        
     }
     
