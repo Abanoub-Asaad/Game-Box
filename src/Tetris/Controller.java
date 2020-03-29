@@ -125,13 +125,14 @@ public class Controller {
         SceneTetris.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
-                if (e.getCode() == KeyCode.LEFT) {
+                 if (e.getCode() == KeyCode.LEFT) 
                     MoveLeft(rectangles);
-                }
-                if (e.getCode() == KeyCode.RIGHT) {
+                
+                else if (e.getCode() == KeyCode.RIGHT) 
                     MoveRight(rectangles);
-                }
-
+                
+                else if(e.getCode() == KeyCode.DOWN)
+                    MoveDown(rectangles);
             }
         });
 
