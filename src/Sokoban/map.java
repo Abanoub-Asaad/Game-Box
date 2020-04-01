@@ -5,84 +5,111 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import javafx.scene.Group;
+import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Map {
+public class map {
 
-    private Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
-    private Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
-    
+    private static  Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
+    private static Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
+
     protected static Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
     protected static Image playerU = new Image("Resources/Sokoban/player_02.png", 50, 50, true, true);
     protected static Image playerL = new Image("Resources/Sokoban/player_15.png", 50, 50, true, true);
     protected static Image playerR = new Image("Resources/Sokoban/player_13.png", 50, 50, true, true);
-    
+
     protected static Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     protected static Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
-    protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true); 
-    
+    protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true);
+
     private static ImageView tmp_imageView = new ImageView();
-    
-    
-    protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>() ;
-    protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>() ;
-    protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>() ;
-    protected static ArrayList<ImageView> BoxeOnTarget_Imageviews_Array = new ArrayList<>() ;
+
+    protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>();
+    protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>();
+    protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>();
     /*
      * posX & posY for Locating The level textures 
      */
-    protected int posX = 50, posY = 50;
+    protected static int posX, posY;
 
-    private String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\maps.txt";
-   // private String fileName  = "src/Resources/Sokoban/maps.txt" ;
-    private FileReader file_reader;
-    private BufferedReader buffered_reader;
+    private static String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\maps.txt";
+    // private String fileName  = "src/Resources/Sokoban/maps.txt" ;
+    private static FileReader file_reader;
+    private static BufferedReader buffered_reader;
+    public static Image SokobanImgback = new Image("Resources/Sokoban/l1.jpg", 1400, 800, true, false);
+    public static ImageView Soko_ImagbackIV = new ImageView(SokobanImgback);
 
+    public static HashMap<Integer, ArrayList<String>> read_map = new HashMap<>();
+    private static FileReader file_reader2;
+    private static BufferedReader buffered_reader2;
+    public static int level = 0;
     /*
      * Parameterized Constructor to set the background 
      */
-    Map(Group g) {
-        Image SokobanImgback = new Image("Resources/Sokoban/l1.jpg", 1400, 800, true, false);
-        ImageView Soko_ImagbackIV = new ImageView(SokobanImgback);
-        g.getChildren().addAll(Soko_ImagbackIV);
+
+    map() throws FileNotFoundException {
+        file_reader = new FileReader(fileName);
+        buffered_reader = new BufferedReader(file_reader);
     }
 
+    public static void initialize() {
+
+        posX = 50;
+        posY = 50;
+
+        Sokoban_Main.root.getChildren().clear();
+        Boxes_Imageviews_Array.clear();
+        StorageLocation_Imageviews_Array.clear();
+        Walls_Imageviews_Array.clear();
+        time.moves = 0;
+        time.seconds = 0;
+
+        Sokoban_Main.root.getChildren().addAll(Soko_ImagbackIV, time.layout);
+
+    }
 
     /*
      * This method Read the Map file text 
      * and Put images insted of characters which in the file
      */
-    public void readMapFile() throws FileNotFoundException, IOException {
+    public static void make_hashmap() throws FileNotFoundException, IOException 
+    {
+        file_reader2 = new FileReader(fileName);
+        buffered_reader2 = new BufferedReader(file_reader2);
 
-        file_reader = new FileReader(fileName);
-        buffered_reader = new BufferedReader(file_reader);
+        String currentLine;
 
-        /*
-         * CurrentLine attribute for accessing Each line in the file 
-         * Level attribute for accessing Level Number 
-         */
-        String currentLine, Level;
-
-        Level = buffered_reader.readLine();
-
-        while ((currentLine = buffered_reader.readLine()) != null && !currentLine.equals("BREAK")) {
-
+        while ((currentLine = buffered_reader2.readLine()) != null) {
+            ArrayList<String> rows = new ArrayList<>();
+             
             if (currentLine.isEmpty()) {
                 break;
             }
 
-            /*
-             ** Converting each line in the level(that in file) to array of chars
-             */
-            char[] values = currentLine.toCharArray();
+            int level = Integer.parseInt(currentLine);
 
-            /*
-             ** Converting characters to its shapes (images)
-             */
-            for (int i = 0; i < values.length; i++) {
-                switch (values[i]) {
+            while (!currentLine.equals("BREAK")) {
+                currentLine = buffered_reader2.readLine();
+
+                rows.add(currentLine);
+            }
+            read_map.put(level, rows);
+
+        }
+        startlevel();
+    }
+
+    public static void startlevel() {
+        level++;
+        initialize();
+        ArrayList<String> levelmap = read_map.get(level);
+
+        for (int i = 0; i < levelmap.size(); i++) {
+            char[] values = levelmap.get(i).toCharArray();
+
+            for (int j = 0; j < values.length; j++) {
+                switch (values[j]) {
                     case '#':
                         setPosition(wall, posX, posY);
                         break;
@@ -95,35 +122,28 @@ public class Map {
                         break;
 
                     case ' ':
-                       // setPosition( ground, posX, posY);
+                        //setPosition(group, ground, posX, posY);
                         break;
 
                     case '.':
                         setPosition(target, posX, posY);
                         break;
-                        
+
                     case '$':
                         setPosition(box, posX, posY);
-                        break;
-                        
-                    case '&':
-                        setPosition(box, posX, posY);
-                        setPosition(target, posX, posY);
-                        
                 }
                 posX += 50;
             }
-
             posY += 50;
             posX = 50;
         }
 
     }
-
     /*
      * Locate the Image's position and put its imageView in the layout "group"
      */
-    public void setPosition(Image img, int x, int y) {
+
+    public static void setPosition(Image img, int x, int y) {
 
         tmp_imageView = new ImageView();
 
@@ -135,18 +155,12 @@ public class Map {
 
         if (img == player) {
             Player.player_imageView = tmp_imageView;
-        }
-        else if(img == wall ){
-            Walls_Imageviews_Array.add(tmp_imageView) ;
-        }
-        else if(img == box){
-            Boxes_Imageviews_Array.add(tmp_imageView );
-        }
-        else if(img == target){
+        } else if (img == wall) {
+            Walls_Imageviews_Array.add(tmp_imageView);
+        } else if (img == box) {
+            Boxes_Imageviews_Array.add(tmp_imageView);
+        } else if (img == target) {
             StorageLocation_Imageviews_Array.add(tmp_imageView);
         }
-
-        
     }
-
 }

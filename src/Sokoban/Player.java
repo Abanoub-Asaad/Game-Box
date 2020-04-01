@@ -11,6 +11,8 @@ public class Player extends Piece
         if(!checkBox(dir_x , dir_y) && !checkWall(dir_x , dir_y) )
         {
             moveThePlayer(dir_x , dir_y);
+            ++time.moves;
+            time.show_moves_number(time.moves);
         }
     }
     
@@ -19,7 +21,7 @@ public class Player extends Piece
     */
     private static boolean checkBox(int dir_x , int dir_y ) 
     {
-        for(ImageView box_iv : Map.Boxes_Imageviews_Array)
+        for(ImageView box_iv : map.Boxes_Imageviews_Array)
         {
             
             if(Player.player_imageView.getX()+dir_x*50 == box_iv.getX() &&
@@ -37,7 +39,7 @@ public class Player extends Piece
     */
     private static boolean checkWall(int dir_x , int dir_y )
     {
-        for(ImageView wall_iv : Map.Walls_Imageviews_Array)
+        for(ImageView wall_iv : map.Walls_Imageviews_Array)
         {
 
             if( player_imageView.getX()+dir_x*50==wall_iv.getX() &&
