@@ -1,5 +1,5 @@
 
-package TicTacToe;
+package tictactoe;
 
 
 public class AI extends XO_Controller{

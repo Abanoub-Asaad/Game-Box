@@ -1,5 +1,5 @@
 
-package TicTacToe;
+package tictactoe;
 
 import java.util.Random;
 
