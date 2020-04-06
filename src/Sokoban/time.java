@@ -31,30 +31,38 @@ public class time {
     public static Text time_text = new Text();
     public static Text move_text = new Text();
     public static HBox layout = new HBox();
-    public static Text time_text_newscene = new Text();
-    public static Text mov_text_newscene = new Text();
+ //   public static Text time_text_newscene = new Text();
+ //   public static Text mov_text_newscene = new Text();
+    public static Timeline timer = new Timeline();
     public static Alert alert = new Alert(AlertType.NONE);
     public static Optional<ButtonType> option ;
 
     public static void setlayout() {
 
-        time.layout.setLayoutX(950);
+        time.layout.setLayoutX(900);
         time.layout.setLayoutY(50);
     }
 
     public static void SetinformationBox() {
+        
         alert.setAlertType(AlertType.INFORMATION);
         alert.setTitle(""); ///put any title 
         alert.setHeaderText("your progress at level " + map.level);
         alert.setContentText("you finished that level in " + time_text.getText()
                 + "  and you make " + move_text.getText() + " move in that level ");
-       
+        
+        timer.stop();
+     
         option = alert.showAndWait();
         
             if (time.option.get() == ButtonType.OK) 
             {
-            startlevel();
-        }
+                startlevel();  
+             time.time_text.setText("time :" +"00:00" + " ");
+             time.show_moves_number(0);
+             timer.play();
+           
+            }
             else if (time.option.get() == ButtonType.CANCEL) 
             {
                 //return to the main or board scene             
@@ -72,11 +80,11 @@ public class time {
 
     public static void dotime() {
 
-        make_text_field(time.time_text);
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        if (time != null) {
-            time.stop();
+      
+    
+        timer.setCycleCount(Timeline.INDEFINITE);
+        if (timer != null) {
+            timer.stop();
         }
 
         KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
@@ -89,8 +97,8 @@ public class time {
                 time_text.setText("time :" + s + " ");
             }
         });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
+        timer.getKeyFrames().add(frame);
+        timer.playFromStart();
     }
 
     public static void show_moves_number(Integer x) {

@@ -6,7 +6,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class ZBrick  extends Shapes{
-
+  
+    
+     
     public void  Basic(Rectangle [] rect, float x, float y,Group  root) {
         rect[0] = new Rectangle(x, y, width-1, height);
         rect[1] = new Rectangle(x + width, y + height, width-1, height);

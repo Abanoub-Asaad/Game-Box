@@ -17,6 +17,7 @@ public class Tetris_Main
     protected static Group root_tetris = new Group() ;
     protected static Scene tetris_scene ;
     public static int[][] MESH = new int[Board.XMAX / Board.Size][Board.YMAX / Board.Size];
+    public static int linesNo = 0;
     //=========================================================
     /*
     ** For Singleton Pattern 

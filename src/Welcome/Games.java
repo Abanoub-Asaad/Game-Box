@@ -3,6 +3,7 @@ package Welcome;
 
 import Sokoban.Sokoban_Main;
 import Tetris.Tetris_Main;
+import TicTacToe.XO_Main;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,9 +90,18 @@ public class Games
         ArkanoidBtn.setGraphic(arkanoidImageIV);
         gamesGroup.getChildren().add(ArkanoidBtn);
         
+        Button TicTacToeBtn = new Button();
+        TicTacToeBtn.setLayoutX(600);
+        TicTacToeBtn.setLayoutY(470);
+        Image xoImage = new Image("Resources/gamesPage/xo.png", 200, 200, true, false);
+        ImageView xoImageIV = new ImageView(xoImage);
+        TicTacToeBtn.setGraphic(xoImageIV);
+        gamesGroup.getChildren().add(TicTacToeBtn);
+//        TicTacToeBtn.setOnMousePressed(event ->  { XO_Main.getInstanceFromXO().XO_Main(MainStage); } ); 
+//        gamesGroup.getChildren().add(TicTacToeBtn);
         
-        AnimationOfPage(SokobanBtn, TetrisBtn, ArkanoidBtn);
-        buttonsShadow(SokobanBtn, TetrisBtn, ArkanoidBtn);
+        AnimationOfPage(SokobanBtn, TetrisBtn, ArkanoidBtn , TicTacToeBtn);
+        buttonsShadow(SokobanBtn, TetrisBtn, ArkanoidBtn , TicTacToeBtn);
         
     }
   
@@ -119,7 +129,7 @@ public class Games
      choose.setEffect(shadow);
  }
     
-    private void AnimationOfPage(Button soko, Button tetris, Button arkanoid) 
+    private void AnimationOfPage(Button soko, Button tetris, Button arkanoid , Button XO ) 
     {
         FadeTransition sokoFade = new FadeTransition(Duration.millis(5000));
         sokoFade.setNode(soko);
@@ -139,6 +149,12 @@ public class Games
         arkanoidFade.setToValue(1);
         arkanoidFade.setCycleCount(1);
         arkanoidFade.play();
+        FadeTransition xoFade = new FadeTransition(Duration.millis(5000));
+        xoFade.setNode(XO);
+        xoFade.setFromValue(0);
+        xoFade.setToValue(1);
+        xoFade.setCycleCount(1);
+        xoFade.play();
     }
   private void AnimationOfPage(Text text)
  { 
@@ -150,7 +166,7 @@ public class Games
         textFade.play();
      
  }
-    private void buttonsShadow(Button soko, Button tetris, Button arkanoid) 
+    private void buttonsShadow(Button soko, Button tetris, Button arkanoid , Button xo) 
     {
         DropShadow sokoShadow = new DropShadow();
         sokoShadow.setBlurType(BlurType.THREE_PASS_BOX);
@@ -177,6 +193,14 @@ public class Games
             arkanoid.setEffect(arkanoidShadow);
         });
 
+        DropShadow xoShadow = new DropShadow();
+        xoShadow.setBlurType(BlurType.THREE_PASS_BOX);
+        xoShadow.setHeight(10);
+        xoShadow.setWidth(10);
+        xoShadow.setSpread(12);
+        xo.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
+            xo.setEffect(arkanoidShadow);
+        });
     }
  
 }

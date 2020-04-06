@@ -25,7 +25,7 @@ public class Controller {
     private static int MOVE = Board.MoveValue ;
     private static int XMAX = Board.XMAX;
     private static int YMAX = Board.YMAX;
-    private static int SIZE = Board.Size ; //size of the one rectangle
+    protected static int SIZE = Board.Size ; //size of the one rectangle
     private static int MESH[][] = Tetris_Main.MESH;
     
     protected static void MoveRight(Rectangle[] rectangles) 
@@ -71,7 +71,7 @@ public class Controller {
 			MESH[(int) rectangles[1].getX() / SIZE][(int) rectangles[1].getY() / SIZE] = 1;
 			MESH[(int) rectangles[2].getX() / SIZE][(int) rectangles[2].getY() / SIZE] = 1;
 			MESH[(int) rectangles[3].getX() / SIZE][(int) rectangles[3].getY() / SIZE] = 1;
-			
+			clear.remove(Tetris_Main.root_tetris);
                  
 			Shapes shapesObj = new Shapes() ;
                         shapesObj.chooseShape(rectangles,Tetris_Main.root_tetris);

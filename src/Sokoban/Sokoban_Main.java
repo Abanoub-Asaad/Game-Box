@@ -29,10 +29,16 @@ public class Sokoban_Main {
     //===============================================================
 
     public void Sokoban_Main(Stage Sokoban_Stage) throws IOException {
+        
+             
+         time.make_text_field(time.time_text);
+         time.time_text.setText("time :" +"00:00" + " ");
+         time.make_text_field(time.move_text);
          
          time.setlayout();
+        
          time.dotime();
-         time. make_text_field(time.move_text);
+        
          time.show_moves_number(0);
          
         map.make_hashmap();
