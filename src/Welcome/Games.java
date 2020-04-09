@@ -1,6 +1,7 @@
 
 package Welcome;
 
+import Arkanoid.Arkanoid_main;
 import Sokoban.Sokoban_Main;
 import Tetris.Tetris_Main;
 import java.io.IOException;
@@ -87,6 +88,12 @@ public class Games
         Image arkanoidImage = new Image("Resources/gamesPage/arkanoid.jpg", 200, 200, true, false);
         ImageView arkanoidImageIV = new ImageView(arkanoidImage);
         ArkanoidBtn.setGraphic(arkanoidImageIV);
+          ArkanoidBtn.setOnMousePressed(event ->  { try {
+            Arkanoid_main.getInstanceFromArkanoid().Arkanoid_Main(MainStage);
+            } catch (IOException ex) {
+                Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
         gamesGroup.getChildren().add(ArkanoidBtn);
         
         Button TicTacToeBtn = new Button();
