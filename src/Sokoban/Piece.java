@@ -25,27 +25,29 @@ public class Piece {
 
                 if (e.getCode() == KeyCode.LEFT) {
                     Box.checkBox(-1, 0);
-                    Player.checkForThePlayer(-1, 0); 
+                    Player.checkForThePlayer(-1, 0,"LEFT"); 
                     Player.player_imageView.setImage(map.playerL);
                 } 
 
                 if (e.getCode() == KeyCode.RIGHT) {
                     Box.checkBox(1, 0);
-                    Player.checkForThePlayer(1, 0);
+                    Player.checkForThePlayer(1, 0,"RIGHT");
                     Player.player_imageView.setImage(map.playerR);
                 }
 
                 if (e.getCode() == KeyCode.UP) {
                     Box.checkBox(0, -1);
-                    Player.checkForThePlayer(0, -1);
+                    Player.checkForThePlayer(0, -1,"UP");
                     Player.player_imageView.setImage(map.playerU);
-                }
+                } 
 
                 if (e.getCode() == KeyCode.DOWN) {
                     Box.checkBox(0, 1);
-                    Player.checkForThePlayer(0, 1);
+                    Player.checkForThePlayer(0, 1,"DOWN");
                     Player.player_imageView.setImage(map.player);
                 }
+                
+                
                 try {
                     checkIfStorageLogationsAreFilled();
                 } catch (IOException ex) {

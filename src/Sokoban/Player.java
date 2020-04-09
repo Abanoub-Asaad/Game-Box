@@ -4,14 +4,15 @@ import javafx.scene.image.ImageView;
 
 public class Player extends Piece {
 
+    protected static String keyPressed ;//To check when the player touches the pipe from the right of the pipe to move 
     protected static ImageView player_imageView = new ImageView();
 
-        protected static void checkForThePlayer(int dir_x, int dir_y) {
+        protected static void checkForThePlayer(int dir_x, int dir_y, String s) {
         if (!checkBox(dir_x, dir_y) && !checkWall(dir_x, dir_y)) {
-            moveThePlayer(dir_x, dir_y);
-            ++time.moves;
+            moveThePlayer(dir_x, dir_y);           
             time.show_moves_number(time.moves);
         }
+         keyPressed=s;
     }
 
     
@@ -62,16 +63,18 @@ public class Player extends Piece {
                 {
                     player_imageView.setX(desiredPos_X);
                     player_imageView.setY(desiredPos_Y);
+                    ++time.moves;
                 }
             }
             else if(Pipe.checkPipe(dir_x, dir_y)==2)
             {
                 int desiredPos_X = (int)map.Pipes_Imageviews_Array.get(0).getX()+50;
                 int desiredPos_Y = (int)map.Pipes_Imageviews_Array.get(0).getY();
-                if( !Pipe.checkIfThereIsABoxNextToThePipe(desiredPos_X,desiredPos_Y ))
+                if( !Pipe.checkIfThereIsABoxNextToThePipe(desiredPos_X,desiredPos_Y ) )
                 {
                     player_imageView.setX(desiredPos_X);
                     player_imageView.setY(desiredPos_Y);
+                    ++time.moves;
                 }
             }
             
@@ -79,6 +82,7 @@ public class Player extends Piece {
             {
                 player_imageView.setX(x);
                 player_imageView.setY(y);
+                ++time.moves;
             }
         } 
         

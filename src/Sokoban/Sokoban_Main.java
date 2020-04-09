@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 public class Sokoban_Main {
 
+    static Scene sokoban_scene;
     static Group root = new Group();
 
     //================================================================
@@ -37,7 +38,7 @@ public class Sokoban_Main {
         time.dotime();
         time.show_moves_number(0);
 
-        Scene sokoban_scene = new Scene(root, 1370, 750);
+        sokoban_scene = new Scene(root, 1370, 750);
 
         map.make_hashmap();
         Piece.checkKeyboard(sokoban_scene);

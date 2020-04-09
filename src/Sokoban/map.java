@@ -6,11 +6,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class map {
 
+    private static boolean next=false;
+    
     private static  Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
     private static Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
 
@@ -102,8 +107,8 @@ public class map {
             }
             read_map.put(level, rows);
 
-        }
-        startlevel();
+        } 
+       startlevel();
     }
 
     public static void startlevel() {
@@ -114,6 +119,7 @@ public class map {
         for (int i = 0; i < levelmap.size(); i++) {
             char[] values = levelmap.get(i).toCharArray();
 
+            
             for (int j = 0; j < values.length; j++) {
                 switch (values[j]) {
                     case '#':
@@ -135,29 +141,25 @@ public class map {
                         setPosition(target, posX, posY);
                         break;
                              
-                    case 'D':
-                        setPosition(pipeD, posX, posY);
-                        break;
-                        
-                    case 'L':
-                        setPosition(pipeL, posX, posY);
-                        break;
                         
                     case 'F':
                         setPosition(pipeR, posX, posY);
                         break;
-                        
-                    case 'U':
-                        setPosition(pipeU, posX, posY);
-                        break;
-                        
+                             
                     case '$':
                         setPosition(box, posX, posY);
                 }
                 posX += 50;
+                
+              
+                       
             }
             posY += 50;
             posX = 50;
+            
+            
+        
+            
         }
 
     }
