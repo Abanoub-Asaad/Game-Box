@@ -21,8 +21,8 @@ public class Box extends Piece{
     {
         cur_Box_Index = 0 ;
         directionOnX = x ; directionOnY = y ;
-        isBox = false ;
-        
+        isBox = false ;  
+         
         for(ImageView box_iv : map.Boxes_Imageviews_Array)
         {
             

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Sokoban;
 
 import static Sokoban.map.startlevel;
@@ -20,10 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-/**
- *
- * @author Eng.Waleed
- */
+
 public class time {
 
     public static Integer moves = 0;
@@ -31,8 +24,6 @@ public class time {
     public static Text time_text = new Text();
     public static Text move_text = new Text();
     public static HBox layout = new HBox();
- //   public static Text time_text_newscene = new Text();
- //   public static Text mov_text_newscene = new Text();
     public static Timeline timer = new Timeline();
     public static Alert alert = new Alert(AlertType.NONE);
     public static Optional<ButtonType> option ;

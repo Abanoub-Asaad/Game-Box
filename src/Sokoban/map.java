@@ -18,16 +18,21 @@ public class map {
     protected static Image playerU = new Image("Resources/Sokoban/player_02.png", 50, 50, true, true);
     protected static Image playerL = new Image("Resources/Sokoban/player_15.png", 50, 50, true, true);
     protected static Image playerR = new Image("Resources/Sokoban/player_13.png", 50, 50, true, true);
-
     protected static Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     protected static Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true);
-
+    protected static Image pipeD = new Image("Resources/Sokoban/pipeD.png", 50, 50, true, true);
+    protected static Image pipeL = new Image("Resources/Sokoban/pipeL.png", 50, 50, true, true);
+    protected static Image pipeR = new Image("Resources/Sokoban/pipeR.png", 50, 50, true, true);
+    protected static Image pipeU = new Image("Resources/Sokoban/pipeU.png", 50, 50, true, true);
+    
     private static ImageView tmp_imageView = new ImageView();
 
     protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>();
+    protected static ArrayList<ImageView> Pipes_Imageviews_Array = new ArrayList<>();
+    
     /*
      * posX & posY for Locating The level textures 
      */
@@ -62,6 +67,7 @@ public class map {
         Boxes_Imageviews_Array.clear();
         StorageLocation_Imageviews_Array.clear();
         Walls_Imageviews_Array.clear();
+        Pipes_Imageviews_Array.clear();
         time.moves = 0;
         time.seconds = 0;
 
@@ -128,7 +134,23 @@ public class map {
                     case '.':
                         setPosition(target, posX, posY);
                         break;
-
+                             
+                    case 'D':
+                        setPosition(pipeD, posX, posY);
+                        break;
+                        
+                    case 'L':
+                        setPosition(pipeL, posX, posY);
+                        break;
+                        
+                    case 'F':
+                        setPosition(pipeR, posX, posY);
+                        break;
+                        
+                    case 'U':
+                        setPosition(pipeU, posX, posY);
+                        break;
+                        
                     case '$':
                         setPosition(box, posX, posY);
                 }
@@ -161,6 +183,8 @@ public class map {
             Boxes_Imageviews_Array.add(tmp_imageView);
         } else if (img == target) {
             StorageLocation_Imageviews_Array.add(tmp_imageView);
+        } else if(img == pipeR){
+            Pipes_Imageviews_Array.add(tmp_imageView);
         }
     }
 }

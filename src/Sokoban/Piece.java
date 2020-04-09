@@ -3,7 +3,7 @@ package Sokoban;
 import static Sokoban.map.*;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.Logger; 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -25,9 +25,9 @@ public class Piece {
 
                 if (e.getCode() == KeyCode.LEFT) {
                     Box.checkBox(-1, 0);
-                    Player.checkForThePlayer(-1, 0);
+                    Player.checkForThePlayer(-1, 0); 
                     Player.player_imageView.setImage(map.playerL);
-                }
+                } 
 
                 if (e.getCode() == KeyCode.RIGHT) {
                     Box.checkBox(1, 0);
