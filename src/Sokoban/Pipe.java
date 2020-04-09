@@ -24,7 +24,8 @@ public class Pipe {
     }
     
      /*
-     *  This Method is used to check if the desired position have a pipe or not
+     *  This Method is used to check if the desired position when the player get off the pipe 
+     *  have a pipe or not
      */
       protected static boolean checkIfThereIsABoxNextToThePipe(int desiredX , int desiredY) {
 
@@ -35,5 +36,20 @@ public class Pipe {
             }
         }    
         return false;
-    }
+    } 
+      
+      
+      protected static boolean isPipe(int x , int y){
+          for (ImageView box_iv : map.Boxes_Imageviews_Array){
+              
+               for (ImageView pipe_iv : map.Pipes_Imageviews_Array) {
+                   
+                   if(pipe_iv.getX() == x && pipe_iv.getY() == y){
+                       return true;
+                   }
+               }          
+          }
+           return false;
+      }
+      
 }

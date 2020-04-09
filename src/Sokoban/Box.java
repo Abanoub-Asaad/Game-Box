@@ -97,18 +97,24 @@ public class Box extends Piece{
          }
      } 
      
+     
+     
      /*
       * moveTheBox method is used to moving the box to the desired Location
      */
      private static void moveTheBox()
      {
-         if( isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox)
+         if( isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox )
          { 
              int x = (int)map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50 ;
              int y = (int)map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50 ;
              
-             map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
-             map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
+             if(!Pipe.isPipe(x,y)){
+                 map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
+                 map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
+             }
+             
+             
          }
      }
 }
