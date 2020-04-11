@@ -24,7 +24,7 @@ public class score {
     
       public static Text score_text = new Text();
       public   static float  score =0f;
-      public static  File file = new File("C:\\Users\\Eng.Waleed\\Desktop\\Game-Box-master (1)\\Game-Box-master\\src\\Resources\\Sokoban\\sokoban_player.txt");
+      public static  File file = new File("C:\\Game-Box\\src\\Resources\\Sokoban\\sokoban_player.txt");
   
    public static  FileWriter filewriter ;
    public static  BufferedWriter bufferwriter ;

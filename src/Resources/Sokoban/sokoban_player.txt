@@ -1,2 +1,5 @@
 noura:166.0
 noura:200.0
+nou:166.0
+Abanoub:125.0
+nour:188.0

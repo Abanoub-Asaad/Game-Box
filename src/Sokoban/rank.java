@@ -26,7 +26,7 @@ import javafx.scene.text.Text;
  */
 public class rank {
     
-public static  File file = new File("C:\\Users\\Eng.Waleed\\Desktop\\Game-Box-master (1)\\Game-Box-master\\src\\Resources\\Sokoban\\sokoban_player.txt");
+public static  File file = new File("C:\\Game-Box\\src\\Resources\\Sokoban\\sokoban_player.txt");
   int x=350;
   int y=250;
    Map<String, Float> mapFromFile;
