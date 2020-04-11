@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 8, 2020, 9:32:35 PM
+    Author     : Eng.Waleed
+*/
+
+  #fancytext {
+    
+    -fx-fill: #663333;
+     -fx-font: italic bold 30px/50px Georgia, serif;
+  
+   
+}
+
+#btn{
+  
+   -fx-background-color: 
+      
+       linear-gradient(to right, #c62828,#dd2c00,#e64a19,#ff7043);
+   // -fx-pref-height: 10px;
+    -fx-pref-width: 200px;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: oldlace;
+    -fx-font-weight: bold;
+    -fx-font-size: 30 px;
+    -fx-padding: 10 20 10 20;
+   
+}
+
+  Text  {
+      
+    -fx-font:  italic bold  70px/100px Georgia, serif;
+    -fx-fill: linear-gradient(to right, #3e2723,#4e342e,#5d4037,#6d4c41,#795548,#8d6e63,#a1887f);
+
+   // -fx-stroke:brown;
+  //  -fx-stroke-width: 1;
+    
+}
+#text {
+    -fx-font: italic bold  40px/60px Georgia, serif ;
+    -fx-fill:   #3e2723;
+    -fx-font-weight: bold;
+    //-fx-stroke: black;
+  
+   //-fx-stroke-width: 1;
+   
+}
+#for3 {
+   -fx-font:  40px  Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+    -fx-fill: darkblue;
+    
+    -fx-stroke: lightskyblue;
+  
+   -fx-stroke-width: 1;
+   
+}
+#start {
+   -fx-background-color: 
+      
+       linear-gradient(to right, #212121,#424242,#616161,#757575,#bdbdbd);
+    -fx-pref-height: 15px;
+    -fx-pref-width: 400px;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: oldlace;
+    -fx-font-weight: bold;
+    -fx-font-size: 30 px;
+    -fx-padding: 10 20 10 20;
+}
+
+#label {
+   
+  
+    -fx-pref-width: 400px;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+   
+  //  -fx-font-weight: bold;
+    -fx-font-size: 30 px;
+    -fx-padding: 10 20 10 20;
+}
+#pane{
+-fx-background-image: url("start.jpg");
+-fx-background-repeat: repeat;
+-fx-background-size: 685 375;
+//-fx-background-position: center center;
+//-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}

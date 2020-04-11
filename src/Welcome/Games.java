@@ -3,6 +3,8 @@ package Welcome;
 
 import Arkanoid.Arkanoid_main;
 import Sokoban.Sokoban_Main;
+import Sokoban.finish_level;
+import Sokoban.start_level;
 import Tetris.Tetris_Main;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -27,12 +29,14 @@ import javafx.util.Duration;
 
 public class Games 
 {
+     start_level n = new start_level() ;
     private Group gamesGroup= new Group();
     private final HBox gamesHBox= new HBox();
     private Scene gamesScene = new Scene(gamesGroup, 1400, 780);
 
     public Games(Stage gamesStage) 
     {  
+         finish_level.style();
         gamesStage.setMaximized(true);
         gamesStage.setResizable(false);
         gamesStage.setScene(gamesScene);
@@ -62,7 +66,8 @@ public class Games
         SokobanBtn.setOnMousePressed(event ->  {
             try
             {
-              Sokoban_Main.getInstanceFromSokoban().Sokoban_Main(MainStage);
+           //   Sokoban_Main.getInstanceFromSokoban().Sokoban_Main(MainStage);
+                 MainStage.setScene(n.store_name(MainStage));
             } 
             catch (IOException ex)
             {
