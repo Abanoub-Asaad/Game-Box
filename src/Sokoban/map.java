@@ -76,8 +76,7 @@ public class map {
         time.moves = 0;
         time.seconds = 0;
 
-        Sokoban_Main.root.getChildren().add(Soko_ImagbackIV);
-        Sokoban_Main.root.getChildren().add(time.layout);
+        Sokoban_Main.root.getChildren().addAll(Soko_ImagbackIV, time.layout);
 
     }
 

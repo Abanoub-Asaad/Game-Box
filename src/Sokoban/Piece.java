@@ -1,6 +1,5 @@
 package Sokoban;
 
-import GameLoop.GameBox;
 import static Sokoban.map.*;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -12,9 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class Piece {
-    
-   // to get   sort fn
- static  rank r=new rank();
+
     static int countboxesatstorage;
     /*
      ** checkKeyboard method is used for Accessing player's desired location 
@@ -90,11 +87,9 @@ public class Piece {
         
         if (countboxesatstorage == map.Boxes_Imageviews_Array.size()) 
         {
-             score.calculate_score();
-    
-         GameBox.Root.setScene( finish_level.finish_scene(null));
-          r.sort();
-         
+            time.SetinformationBox();
+            
+            
         }
         
     }
