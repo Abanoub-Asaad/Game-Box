@@ -2,7 +2,12 @@
 package Welcome;
 
 import Arkanoid.Arkanoid_main;
+import GameLoop.GameBox;
 import Sokoban.Sokoban_Main;
+import Sokoban.finish_level;
+import Sokoban.rank;
+import static Sokoban.start_level.scene_StoreName;
+import Sokoban.welcome_scene;
 import Tetris.Tetris_Main;
 import TicTacToe.XO_Main;
 import java.io.IOException;
@@ -34,6 +39,7 @@ public class Games
 
     public Games(Stage gamesStage) 
     {  
+           finish_level.style();
         gamesStage.setMaximized(true);
         gamesStage.setResizable(false);
         gamesStage.setScene(gamesScene);
@@ -61,14 +67,16 @@ public class Games
         ImageView sokobanImageIV =new ImageView(sokobanImage);
         SokobanBtn.setGraphic(sokobanImageIV);
         SokobanBtn.setOnMousePressed(event ->  {
-            try
-            {
-              Sokoban_Main.getInstanceFromSokoban().Sokoban_Main(MainStage);
-            } 
-            catch (IOException ex)
-            {
+            rank.intial();
+            try {
+                Sokoban_Main.getInstanceFromSokoban().Sokoban_Main(GameBox.Root);
+            } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
-            }} ); 
+            }
+            scene_StoreName.setRoot(welcome_scene.make_welcome_scene());
+            MainStage.setScene(scene_StoreName);
+            
+        } ); 
         gamesGroup.getChildren().add(SokobanBtn);
         
         

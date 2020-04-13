@@ -30,21 +30,20 @@ public class Sokoban_Main {
     //===============================================================
 
     public void Sokoban_Main(Stage Sokoban_Stage) throws IOException {
-
-        time.make_text_field(time.time_text);
-        time.time_text.setText("time :" + "00:00" + " ");
-        time.make_text_field(time.move_text);
-        time.setlayout();
-        time.dotime();
-        time.show_moves_number(0);
-
+        
+        
+ 
+        time.time_score_move();
+         
         sokoban_scene = new Scene(root, 1370, 750);
-
+        
+  sokoban_scene.getStylesheets().add( Sokoban_Main.class.getResource("css1.css").toExternalForm());
+       
         map.make_hashmap();
         Piece.checkKeyboard(sokoban_scene);
 
         Sokoban_Stage.setTitle("SOKOBAN");
-        Sokoban_Stage.setScene(sokoban_scene);
+     //   Sokoban_Stage.setScene(sokoban_scene);
         Sokoban_Stage.show();
     }
 
