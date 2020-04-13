@@ -1,12 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Apr 8, 2020, 9:32:35 PM
-    Author     : Eng.Waleed
-*/
 
   #fancytext {
     // for the score and move and time of specific player
@@ -92,38 +83,10 @@ and open the template in the editor.
     // for start_level pane
 -fx-background-image: url("../Resources/Sokoban/forstart.jpg");
 -fx-background-repeat: repeat;
--fx-background-size: 685 375;
+-fx-background-size: 670 375;
 //-fx-background-position: center center;
-//-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);All Files	C:\Game-Box\src\Resources\Sokoban\forstart.jpg
+//-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);All Files	
 }
-#welcome {
-    
-    // for start button in welcome scene
-   -fx-background-color: 
-      
-       linear-gradient(to right,#2e7d32,#388e3c,#43a047,#66bb6a);
-    -fx-pref-height: 25px;
-    -fx-pref-width: 400px;
-    -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: oldlace;
-    -fx-font-weight: bold;
-    -fx-font-size: 30 px;
-    -fx-padding: 10 20 10 20;
-}
-#pan2{
-  // for welcome pane  
-    -fx-background-image: url("../Resources/Sokoban/back.png");
-    
-    -fx-background-size: 500 750;
-    
-}
- #title {
-      // for welcome text
-    -fx-font:  italic bold  150px/300px Georgia, serif;
-    -fx-fill: linear-gradient(to right, #1b5e20,#2e7d32,#388e3c,#43a047,#4caf50,#66bb6a,#81c784);
 
-   // -fx-stroke:brown;
-  //  -fx-stroke-width: 1;
-    
-}
+
+ 

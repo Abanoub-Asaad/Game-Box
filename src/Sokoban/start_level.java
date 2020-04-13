@@ -37,27 +37,26 @@ import javafx.stage.Stage;
  * @author Eng.Waleed
  */
 public class start_level {
-  public static   int i=0; 
+
  public GameBox get_root= new GameBox();   
  public    Sokoban_Main s;
  public  static   Pane  pane_storeName = new Pane();
  public   static   Line sep ;
  
     public  static   Scene scene_StoreName= new Scene(pane_storeName,1370,750) ;
-  static  TextField textField ;
+    static  TextField textField ;
     
     public  static     Button btn_start ;
  
     static   File file = new File("C:\\Game-Box\\src\\Resources\\Sokoban\\sokoban_player.txt");
   
-  static  FileWriter filewriter ;
-  static BufferedWriter bufferwriter ;
+    static  FileWriter filewriter ;
+    static BufferedWriter bufferwriter ;
      
    public static  String PlayerName_string;
     
-   // private String nameofplayer ="";
     
-     public static   Pane  store_name () throws IOException{
+     public static   Scene  store_name () throws IOException{
          
        scene_StoreName.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
          
@@ -84,9 +83,8 @@ public class start_level {
         pane_storeName.getChildren().addAll(textField,btn_start);
         
         //============================= 
-        WriteNameInFile(GameBox.Root);
        
-           return pane_storeName ;
+           return scene_StoreName ;
      }
        
           public static void addTextLimiter(final TextField tf, final int maxLength)
@@ -105,70 +103,23 @@ public class start_level {
     }
           
           
-            public  static  void WriteNameInFile( Stage stage) throws IOException
-     {
-       // filewriter = new FileWriter(file, true);
-       // bufferwriter = new BufferedWriter(filewriter);
-        
-         
+            public  static  void GetName( Stage stage) throws IOException
+                    
+          {
+       
           btn_start.setOnAction(e -> 
           {
               
            PlayerName_string=textField.getText();
-           //try
-           //{
-               /*
-                PlayerName_string = textField.getText() ;
                 
-                if( PlayerName_string.length()>0 && !PlayerName_string.contains(" ") ) //Validation
-                {
-                    
-                    
-                    bufferwriter.write( PlayerName_string+":"+i+":");
-                    bufferwriter.close();
-                    filewriter.close();
-                    
-         */
-                    if(i==0){
-                        
-                    
               GameBox.Root.setScene(Sokoban_Main.sokoban_scene);
-              score.score=0;
-              time.seconds=0;
-              time.time_text.setText("time :" +"00:00" + " ");
-              time.show_moves_number(0);
-              time.timer.play();
               
-              i++;
-              
-                }
-             else{
-                        
-              GameBox.Root.setScene(Sokoban_Main.sokoban_scene);        
-              map.startlevel();
-              score.score=0;
-              time.time_text.setText("time :" +"00:00" + " ");
-              time.show_moves_number(0);
-              time.timer.play();
-       
-                    i++;
-                }
-         // }
-         //   } 
-            
-          // catch (IOException ex) 
-          //  {
-            //    System.out.println("NOT Success");  
-           // }
            
         });
          
      }
      
-     
-                  
-     
-     
+  
      
      public String getPlayerName()
      {

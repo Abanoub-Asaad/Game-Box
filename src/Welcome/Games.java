@@ -6,8 +6,8 @@ import GameLoop.GameBox;
 import Sokoban.Sokoban_Main;
 import Sokoban.finish_level;
 import Sokoban.rank;
+import Sokoban.start_level;
 import static Sokoban.start_level.scene_StoreName;
-import Sokoban.welcome_scene;
 import Tetris.Tetris_Main;
 import TicTacToe.XO_Main;
 import java.io.IOException;
@@ -69,12 +69,15 @@ public class Games
         SokobanBtn.setOnMousePressed(event ->  {
             rank.intial();
             try {
+                rank.intial();
                 Sokoban_Main.getInstanceFromSokoban().Sokoban_Main(GameBox.Root);
+                
+                  MainStage.setScene(start_level.store_name());
             } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
             }
-            scene_StoreName.setRoot(welcome_scene.make_welcome_scene());
-            MainStage.setScene(scene_StoreName);
+           
+          
             
         } ); 
         gamesGroup.getChildren().add(SokobanBtn);
@@ -182,7 +185,9 @@ public class Games
      
  }
     private void buttonsShadow(Button soko, Button tetris, Button arkanoid , Button xo) 
+            
     {
+        
         DropShadow sokoShadow = new DropShadow();
         sokoShadow.setBlurType(BlurType.THREE_PASS_BOX);
         sokoShadow.setHeight(10);

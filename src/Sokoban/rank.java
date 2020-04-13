@@ -31,7 +31,8 @@ import javafx.scene.text.Text;
 public class rank {
     
   public static  File file = new File("C:\\Game-Box\\src\\Resources\\Sokoban\\sokoban_player.txt");
-  
+  public static int max=4;
+  // it refers to the max number of players that can be stored in hashmap and displayed 
   static Integer l ;// refer to level number in file 
   //----------------------------------------------//
  public static   FlowPane inside = new FlowPane(Orientation.HORIZONTAL, 250, 20);
@@ -42,19 +43,62 @@ public class rank {
  static  Map<String, Float> mapFromFile;
  static  Map<String, Float> show;
  //---------------------------------------------------//
+ 
+ 
  //inner maps for each level
-   static  Map<String, Float> map1=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map2=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map3=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map4=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map5=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map6=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map7=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map8=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map9=new LinkedHashMap<String, Float>();
-   static  Map<String, Float> map10=new LinkedHashMap<String, Float>();
+   static  LinkedHashMap<String, Float> map1=new LinkedHashMap<String, Float>(){
+        @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map2=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map3=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map4=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map5=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map6=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map7=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map8=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map9=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
+   static  LinkedHashMap<String, Float> map10=new LinkedHashMap<String, Float>(){  @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > max;
+        }
+   };
    
-   //------------------------------------------------------------//
+   //------------------------------------------------------------------//
    
    
    
@@ -62,7 +106,7 @@ static   Text player_name;
 static   Text player_score;
    
   public static  Map<Integer, LinkedHashMap<String, Float>>  intial(){
-      
+    
       outer.put(1, (LinkedHashMap<String, Float>) map1);
       outer.put(2, (LinkedHashMap<String, Float>) map2);
       outer.put(3, (LinkedHashMap<String, Float>) map3);
@@ -136,7 +180,7 @@ static   Text player_score;
           
   return  mapFromFile.entrySet()
                 .stream()
-                .sorted((Map.Entry.<String, Float>comparingByValue().reversed()))
+                .sorted((Map.Entry.<String, Float>comparingByValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
          
     }

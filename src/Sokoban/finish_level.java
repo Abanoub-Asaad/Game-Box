@@ -12,7 +12,6 @@ import static Sokoban.time.move_text;
 import static Sokoban.time.option;
 import static Sokoban.time.time_text;
 import static Sokoban.time.timer;
-import static Sokoban.welcome_scene.n;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +34,7 @@ import javafx.stage.Stage;
  */
 public class finish_level {
     
+   public static   int i=1;  
    public static  Pane pane_finish= new Pane() ; 
    public static  Pane pane= new Pane() ;
    
@@ -51,10 +51,10 @@ public class finish_level {
       
     public static void   style (){
         
-       scene_finish= new Scene(pane_finish,1350,750); 
+       scene_finish= new Scene(pane_finish,1375,750); 
        
         scene_finish.getStylesheets().add(finish_level.class.getResource("css1.css").toExternalForm());
-        Image img=new Image("Resources/Sokoban/back.png",1370,750,false,true);
+        Image img=new Image("Resources/Sokoban/back.png",1375,750,false,true);
         ImageView iv = new ImageView(img);
         pane_finish.getChildren().add(iv);
       
@@ -92,13 +92,17 @@ public class finish_level {
            
           next_level.setOnAction(e-> {
             
-            try {
-            start_level.scene_StoreName.setRoot(start_level.store_name());
-            GameBox.Root.setScene(start_level.scene_StoreName);
-            } catch (IOException ex) {
-                Logger.getLogger(finish_level.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
+              i++;
+              score.score=0;
+              time.seconds=0;
+              time.time_text.setText("time :" +"00:00" + " ");
+              time.show_moves_number(0);
+              time.timer.play();
+              map.startlevel();
+              GameBox.Root.setScene(Sokoban_Main.sokoban_scene);
+                
+        
              });
        
           cancel.setOnAction(e->{
@@ -114,7 +118,6 @@ public class finish_level {
       
     }
     
-     
-     
+  
     
 }

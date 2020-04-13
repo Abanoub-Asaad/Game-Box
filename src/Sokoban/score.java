@@ -56,9 +56,8 @@ public class score {
                 if( start_level.PlayerName_string.length()>0 && !start_level.PlayerName_string.contains(" ") ) //Validation
                 {
                     
-                    
-                    bufferwriter.write( start_level.PlayerName_string+":"+start_level.i+":"+score);
-                     bufferwriter.newLine();
+                    bufferwriter.write( start_level.PlayerName_string+":"+finish_level.i+":"+score);
+                    bufferwriter.newLine();
                     bufferwriter.close();
                     filewriter.close();
                     
