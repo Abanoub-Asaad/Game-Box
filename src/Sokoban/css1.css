@@ -81,9 +81,9 @@
 }
 #pane{
     // for start_level pane
--fx-background-image: url("../Resources/Sokoban/forstart.jpg");
--fx-background-repeat: repeat;
--fx-background-size: 670 375;
+-fx-background-image: url("../Resources/Sokoban/name_back.jpg");
+-fx-background-repeat: no-repeat;
+-fx-background-size: 1500 800;
 //-fx-background-position: center center;
 //-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);All Files	
 }

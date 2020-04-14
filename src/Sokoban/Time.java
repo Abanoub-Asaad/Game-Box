@@ -1,6 +1,5 @@
 package Sokoban;
 
-import static Sokoban.map.startlevel;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.animation.KeyFrame;
@@ -10,17 +9,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-/**
- *
- * @author Eng.Waleed
- */
+
 public class time {
 
     public static Integer moves = 0;
@@ -71,7 +64,7 @@ public class time {
               
         
                 String s = String.format("%02d:%02d", seconds / 60, seconds % 60);
-                time_text.setText("time :" + s + " ");
+                time_text.setText("Time :" + s + " ");
             }
         });
         timer.getKeyFrames().add(frame);
@@ -79,7 +72,7 @@ public class time {
     }
 
     public static void show_moves_number(Integer x) {
-        time.move_text.setText("moves :  " + x.toString());
+        time.move_text.setText("Moves :  " + x.toString());
     }
     
     
@@ -95,13 +88,12 @@ public class time {
         
       time_text.setText("time :" +"00:00" + " ");
           dotime();
-      
-      //   make_text_field(time.move_text);
+     
          show_moves_number(0);
          
-        // make_text_field(score.score_text);
+
       
-         score.score_text.setText("score  :"+"0");
+         score.score_text.setText("Score  :"+"0");
         
          time.layout.getChildren().addAll(time.time_text,time.move_text);
          setlayout();

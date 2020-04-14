@@ -30,20 +30,17 @@ public class Sokoban_Main {
     //===============================================================
 
     public void openSokobanMain(Stage Sokoban_Stage) throws IOException {
-        
-        
- 
+
         time.time_score_move();
-         
+
         sokoban_scene = new Scene(root, 1370, 750);
+
+        sokoban_scene.getStylesheets().add(Sokoban_Main.class.getResource("css1.css").toExternalForm());
         
-  sokoban_scene.getStylesheets().add( Sokoban_Main.class.getResource("css1.css").toExternalForm());
-       
         map.make_hashmap();
         Piece.checkKeyboard(sokoban_scene);
 
         Sokoban_Stage.setTitle("SOKOBAN");
-     //   Sokoban_Stage.setScene(sokoban_scene);
         Sokoban_Stage.show();
     }
 

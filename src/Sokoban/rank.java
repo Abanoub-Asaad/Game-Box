@@ -10,18 +10,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import javafx.geometry.Orientation;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 /**
@@ -106,7 +99,7 @@ static   Text player_name;
 static   Text player_score;
    
   public static  Map<Integer, LinkedHashMap<String, Float>>  intial(){
-    
+     
       outer.put(1, (LinkedHashMap<String, Float>) map1);
       outer.put(2, (LinkedHashMap<String, Float>) map2);
       outer.put(3, (LinkedHashMap<String, Float>) map3);
