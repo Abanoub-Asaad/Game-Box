@@ -12,8 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Game-Box/src/Sokoban/start_level.java</file>
-            <file>file:/F:/Game-Box/src/GameLoop/GameBox.java</file>
+            <file>file:/F:/Game-Box/src/Arkanoid/map.java</file>
+            <file>file:/F:/Game-Box/src/Arkanoid/Arkanoid_main.java</file>
+            <file>file:/F:/Game-Box/src/TicTacToe/XO_Main.java</file>
+            <file>file:/F:/Game-Box/src/GameLoop/Games.java</file>
+            <file>file:/F:/Game-Box/src/Tetris/Tetris_Main.java</file>
             <file>file:/F:/Game-Box/src/Sokoban/Sokoban_Main.java</file>
         </group>
     </open-files>

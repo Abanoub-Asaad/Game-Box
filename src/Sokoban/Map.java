@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class Map {
+public class map {
 
     private static boolean next=false;
     
@@ -58,7 +58,7 @@ public class Map {
      * Parameterized Constructor to set the background 
      */
 
-    Map() throws FileNotFoundException {
+    map() throws FileNotFoundException {
         file_reader = new FileReader(fileName);
         buffered_reader = new BufferedReader(file_reader);
     }
@@ -73,11 +73,11 @@ public class Map {
         StorageLocation_Imageviews_Array.clear();
         Walls_Imageviews_Array.clear();
         Pipes_Imageviews_Array.clear();
-        Time.moves = 0;
-        Time.seconds = 0;
+        time.moves = 0;
+        time.seconds = 0;
 
         Sokoban_Main.root.getChildren().add(Soko_ImagbackIV);
-        Sokoban_Main.root.getChildren().add(Time.layout);
+        Sokoban_Main.root.getChildren().add(time.layout);
 
     }
 

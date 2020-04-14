@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Arkanoid;
 
 import java.io.BufferedReader;
@@ -10,7 +14,10 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
+/**
+ *
+ * @author egypt
+ */
 public class map {
 
     protected static Image brick1 = new Image("Resources/Arkanoid/normal brick1.png", 130, 386, true, true);
