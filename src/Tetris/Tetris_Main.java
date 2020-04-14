@@ -41,7 +41,7 @@ public class Tetris_Main
     /*
     ** Method for Sor Opening Tetris Game
     */
-    public void Tetris_Main (Stage Games_Stage)
+    public void openTetrisMain (Stage Games_Stage)
     {
 
         tetris_scene = new Scene(root_tetris, 1370, 750);

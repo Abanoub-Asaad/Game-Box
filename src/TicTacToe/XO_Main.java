@@ -32,7 +32,7 @@ public class XO_Main {
         return XOInstance;
     }
 
-    public  void XO_Main(Stage Games_Stage) {
+    public  void openTicTacToeMain(Stage Games_Stage) {
         XOScene = new Scene(XOGroup , 1370, 750);
         System.out.println("1\t|\t2\t|\t3\t\n" + "4\t|\t5\t|\t6\t\n" + "7\t|\t8\t|\t9\t\n");
         obj_Core.InitializeGameBoard(GameBoard ,XOGroup,XOScene, XO); 

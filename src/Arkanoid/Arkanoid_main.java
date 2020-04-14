@@ -36,7 +36,7 @@ public class Arkanoid_main {
     }
     //===============================================================
 static Scene Arkanoid_scene ;
-    public void Arkanoid_Main(Stage Arkanoid_main) throws IOException {
+    public void openArkanoidMain(Stage Arkanoid_main) throws IOException {
         
              
         Arkanoid_scene = new Scene(root, 1370, 750);
