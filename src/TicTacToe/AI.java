@@ -2,8 +2,6 @@
 package TicTacToe;
 
 import static TicTacToe.XO_Controller.availableMoves;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 
 
 public class AI extends XO_Controller{

@@ -1,6 +1,6 @@
 package TicTacToe;
 
-import static TicTacToe.XO_Main.XOGroup;
+import static TicTacToe.XO_Main.XO_group;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.FadeTransition;
@@ -20,35 +20,34 @@ import javafx.util.Duration;
 public class XO_Controller {
 
     /**
-     * iStart is the x dimension of the first square
-     * jStart is the y dimension of the first square
-     * iIncrement is the increment value that on x axis
+     * iStart is the x dimension of the first square jStart is the y dimension
+     * of the first square iIncrement is the increment value that on x axis
      * jIncrement is the increment value that on y axis
-    */
-    private static int[] iStart =     {0, 1, 2, 0, 0, 0, 0, 0};
-    private static int[] jStart =     {0, 0, 0, 0, 1, 2, 0, 2};
+     */
+    private static int[] iStart = {0, 1, 2, 0, 0, 0, 0, 0};
+    private static int[] jStart = {0, 0, 0, 0, 1, 2, 0, 2};
     private static int[] iIncrement = {0, 0, 0, 1, 1, 1, 1, 1};
     private static int[] jIncrement = {1, 1, 1, 0, 0, 0, 1, -1};
-    
-    static boolean IsPlayerPlay  = false;   
-    Core coreObj ;
-     private static String winner = " ";
-      static Text win = new Text();
 
-    
+    static boolean IsPlayerPlay = false;
+    Core coreObj;
+    private static String winner = " ";
+    static Text win = new Text();
+
     /**
-     * If The Turn to the Player
+     * Design for "Your Turn" text
+     *
+     * @param group
      */
-    protected  static  void  SetYourTurn(Group group)
-    { 
-          Text YourTurn = new Text();
+    protected static void SetYourTurn(Group group) {
+        Text YourTurn = new Text();
         YourTurn.setText(" Your Turn ");
         YourTurn.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
         YourTurn.setFill(Color.GOLD);
-        YourTurn.setX(800);
+        YourTurn.setX(750);
         YourTurn.setY(350);
         group.getChildren().add(YourTurn);
-        
+
         FadeTransition textFade = new FadeTransition(Duration.seconds(3));
         textFade.setNode(YourTurn);
         textFade.setFromValue(1);
@@ -56,99 +55,92 @@ public class XO_Controller {
         textFade.setCycleCount(1);
         textFade.play();
     }
-      protected  static  void  SetPlayerSympol(Group group , Text playerText ,String playerChar, double x , double y )
-      { 
-          Bloom bloom = new Bloom();
-          playerText = new Text();
-          
-          playerText .setText(playerChar);
-          playerText.setX(x);
-          playerText.setY(y);
-          playerText.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
-          playerText.setFill(Color.BLUE);
-          playerText.setEffect(bloom);
-          
-          group.getChildren().add(playerText);
-      }
-  
-    protected static void HandleClickOnRectangles(Rectangle[][] rectangles, String[][] sym, Text playerText, String playerChar,int DEPTH, Scene XOScene, Group group) {
 
-            XOScene.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    if (!checkIfGameIsFinishedOrNot(sym) && winner.equals(" ")) {
-                         winner = XO_Controller.getWinnerIfThere(sym);
-                    Label:  for (int i = 0; i < 3; i++) {
+    protected static void SetPlayerSympol(Group group, Text playerText, String playerChar, double x, double y) {
+        Bloom bloom = new Bloom();
+        playerText = new Text();
+
+        playerText.setText(playerChar);
+        playerText.setX(x);
+        playerText.setY(y);
+        playerText.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
+        playerText.setFill(Color.BLUE);
+        playerText.setEffect(bloom);
+
+        group.getChildren().add(playerText);
+    }
+
+    protected static void HandleClickOnRectangles(Rectangle[][] rectangles, String[][] sym, Text playerText, String playerChar, int DEPTH, Scene XOScene, Group group) {
+
+        XOScene.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                if (!checkIfGameIsFinishedOrNot(sym) && winner.equals(" ")) {
+                    winner = XO_Controller.getWinnerIfThere(sym);
+                    Label:
+                    for (int i = 0; i < 3; i++) {
                         for (int j = 0; j < 3; j++) {
                             if (rectangles[i][j].getBoundsInParent().intersects(e.getX(), e.getY(), 0, 0)) {
                                 if (sym[i][j].equals(" ")) {
                                     SetPlayerSympol(group, playerText, playerChar, rectangles[i][j].getX() + 50, rectangles[i][j].getY() + 100);
                                     sym[i][j] = playerChar;
                                     System.out.println(" player = " + i + j);
-                                    IsPlayerPlay = true ;
-                              
+                                    IsPlayerPlay = true;
+
                                     if (IsPlayerPlay) {
                                         if (winner.equals(" ") && !checkIfGameIsFinishedOrNot(sym)) {
-                                            Core.computerTurn(rectangles, sym, DEPTH, XOGroup);
+                                            Core.computerTurn(rectangles, sym, DEPTH, XO_group);
                                             SetYourTurn(group);
-                                          
+
+                                        } else {
+                                            break Label;
                                         }
-                                  else {
-                                        break Label;
-                                    }
                                     }
                                 }
                             }
                         }
-                 
+
                     }
-              
-              Core.playerTurn = !Core.playerTurn;
-              winner = XO_Controller.getWinnerIfThere(sym);
+
+                    Core.playerTurn = !Core.playerTurn;
+                    winner = XO_Controller.getWinnerIfThere(sym);
+                } else {
+                    if (winner.equals(" ") && checkIfGameIsFinishedOrNot(sym)) {
+                        win.setText(" Draw ");
+                        win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
+                        win.setFill(Color.GOLD);
+                        win.setX(800);
+                        win.setY(500);
+                        group.getChildren().add(win);
+                    } else {
+                        if (winner.equals("X")) {
+                            win.setText(" X Wins ");
+                            win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
+                            win.setFill(Color.GOLD);
+                            win.setX(800);
+                            win.setY(500);
+                            group.getChildren().add(win);
+                        } else {
+                            win.setText(" O Wins ");
+                            win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
+                            win.setFill(Color.GOLD);
+                            win.setX(800);
+                            win.setY(500);
+                            group.getChildren().add(win);
+                        }
+                    }
                 }
-                     else
-            {
-                if (winner.equals(" ") && checkIfGameIsFinishedOrNot(sym)) {
-                    win.setText(" Draw ");
-                    win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
-                    win.setFill(Color.GOLD);
-                    win.setX(800);
-                    win.setY(500);
-                    group.getChildren().add(win);
-        } else {
-           if(winner.equals("X"))
-           { win.setText(" X Wins ");
-                    win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
-                    win.setFill(Color.GOLD);
-                    win.setX(800);
-                    win.setY(500);
-                    group.getChildren().add(win);
-           }
-                    else
-           {
-                win.setText(" O Wins ");
-                win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
-                win.setFill(Color.GOLD);
-                win.setX(800);
-                win.setY(500);
-                group.getChildren().add(win);
-           }
-        }   
             }
-            }
-            });
-           
-                    
-    }
-    
-
-    protected static void playerTurn(Rectangle[][] board, Text playerText,String[][]symbol , String playerChar,int DEPTH , Scene scene ,Group group ) {
-         SetYourTurn(group);
-        HandleClickOnRectangles(board  , symbol , playerText , playerChar,DEPTH , scene, group );
+        });
 
     }
 
-    
+    protected static void playerTurn(Rectangle[][] board, Text playerText, String[][] symbol, String playerChar, int DEPTH, Scene scene, Group group) {
+        SetYourTurn(group);
+        HandleClickOnRectangles(board, symbol, playerText, playerChar, DEPTH, scene, group);
+
+    }
+
     /**
      * Here we represent the matrix of the Game as numbers from 0 to 8 (i * 3) +
      * j --> to calculate the number of the square that is available from his
@@ -170,7 +162,6 @@ public class XO_Controller {
         return availableSquares;
     }
 
-   
     /**
      * Here we evaluate the number the possible opportunities for winning if in
      * a specific line , there are 2 squares with X and an empty square --> +10
@@ -237,11 +228,9 @@ public class XO_Controller {
         return value;
     }
 
-    
     /**
-     * To check if there's A Winner or not 
-     * Either the player or the AI
-    */
+     * To check if there's A Winner or not Either the player or the AI
+     */
     protected static String getWinnerIfThere(String[][] sym) {
         for (int line = 0; line < iStart.length; line++) {
             boolean xWin = true;
@@ -255,7 +244,7 @@ public class XO_Controller {
             do {
                 String currentSquare = sym[i][j];
 
-                if (!currentSquare.equals("X") ) {
+                if (!currentSquare.equals("X")) {
                     xWin = false;
                 }
                 if (!currentSquare.equals("O")) {
@@ -282,7 +271,7 @@ public class XO_Controller {
 
     /*
      * To Check if The Board's complete and The Game is finished
-    */
+     */
     protected static boolean checkIfGameIsFinishedOrNot(String[][] board) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
