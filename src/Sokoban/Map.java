@@ -9,7 +9,7 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class map {
+public class Map {
 
     private static boolean next=false;
     
@@ -55,7 +55,7 @@ public class map {
      * Parameterized Constructor to set the background 
      */
 
-    map() throws FileNotFoundException {
+    Map() throws FileNotFoundException {
         file_reader = new FileReader(fileName);
         buffered_reader = new BufferedReader(file_reader);
     }
@@ -70,11 +70,11 @@ public class map {
         StorageLocation_Imageviews_Array.clear();
         Walls_Imageviews_Array.clear();
         Pipes_Imageviews_Array.clear();
-        time.moves = 0;
-        time.seconds = 0;
+        Time.moves = 0;
+        Time.seconds = 0;
 
         Sokoban_Main.root.getChildren().add(Soko_ImagbackIV);
-        Sokoban_Main.root.getChildren().add(time.layout);
+        Sokoban_Main.root.getChildren().add(Time.layout);
 
     }
 

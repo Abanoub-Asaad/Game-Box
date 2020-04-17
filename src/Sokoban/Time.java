@@ -14,7 +14,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 
-public class time {
+public class Time {
 
     public static Integer moves = 0;
     public static Integer seconds = 0;
@@ -29,8 +29,8 @@ public class time {
 
     public static void setlayout() {
 
-        time.layout.setLayoutX(900);
-        time.layout.setLayoutY(50);
+        Time.layout.setLayoutX(900);
+        Time.layout.setLayoutY(50);
     }
 
    
@@ -72,7 +72,7 @@ public class time {
     }
 
     public static void show_moves_number(Integer x) {
-        time.move_text.setText("Moves :  " + x.toString());
+        Time.move_text.setText("Moves :  " + x.toString());
     }
     
     
@@ -95,7 +95,7 @@ public class time {
       
          score.score_text.setText("Score  :"+"0");
         
-         time.layout.getChildren().addAll(time.time_text,time.move_text);
+         Time.layout.getChildren().addAll(Time.time_text,Time.move_text);
          setlayout();
          
      

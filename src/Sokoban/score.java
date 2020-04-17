@@ -19,7 +19,7 @@ public class score {
       
      public static void calculate_score() throws IOException {
       
-     score = 100*(float ) time.moves / time.seconds ;
+     score = 100*(float ) Time.moves / Time.seconds ;
      score = (int )score;
         
      score_text.setText("Score:  "+ score);

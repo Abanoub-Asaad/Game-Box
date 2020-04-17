@@ -23,7 +23,7 @@ public class Box extends Piece{
         directionOnX = x ; directionOnY = y ;
         isBox = false ;  
          
-        for(ImageView box_iv : map.Boxes_Imageviews_Array)
+        for(ImageView box_iv : Map.Boxes_Imageviews_Array)
         {
             
             if(Player.player_imageView.getX()+directionOnX*50 == box_iv.getX() &&
@@ -61,11 +61,11 @@ public class Box extends Piece{
      {
          anotherBoxNextToTheCurrBox = false ;
          
-         for(ImageView box_iv : map.Boxes_Imageviews_Array)
+         for(ImageView box_iv : Map.Boxes_Imageviews_Array)
         {
             
-            if( map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50==box_iv.getX() &&
-                map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50==box_iv.getY()  )
+            if( Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50==box_iv.getX() &&
+                Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50==box_iv.getY()  )
             {
                 anotherBoxNextToTheCurrBox = true ;
                 break;
@@ -83,11 +83,11 @@ public class Box extends Piece{
          
          if(anotherBoxNextToTheCurrBox==false)
          {
-               for(ImageView wall_iv : map.Walls_Imageviews_Array)
+               for(ImageView wall_iv : Map.Walls_Imageviews_Array)
                {
 
-                   if( map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50==wall_iv.getX() &&
-                       map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50==wall_iv.getY()  )
+                   if( Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50==wall_iv.getX() &&
+                       Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50==wall_iv.getY()  )
                    {
                        isWallNextToTheBox = true ;
                        break;
@@ -106,12 +106,12 @@ public class Box extends Piece{
      {
          if( isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox )
          { 
-             int x = (int)map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50 ;
-             int y = (int)map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50 ;
+             int x = (int)Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50 ;
+             int y = (int)Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50 ;
              
              if(!Pipe.isPipe(x,y)){
-                 map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
-                 map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
+                 Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
+                 Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
              }
              
              

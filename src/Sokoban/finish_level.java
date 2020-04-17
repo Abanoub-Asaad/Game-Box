@@ -1,37 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Sokoban;
 
 import GameLoop.GameBox_Core;
-import static Sokoban.map.startlevel;
-import static Sokoban.time.alert;
-import static Sokoban.time.move_text;
-import static Sokoban.time.option;
-import static Sokoban.time.time_text;
-import static Sokoban.time.timer;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import static Sokoban.Time.move_text;
+import static Sokoban.Time.time_text;
+import static Sokoban.Time.timer;
+
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Eng.Waleed
- */
+
 public class finish_level {
     
    public static   int i=1;  
@@ -95,11 +78,11 @@ public class finish_level {
             
               i++;
               score.score=0;
-              time.seconds=0;
-              time.time_text.setText("time :" +"00:00" + " ");
-              time.show_moves_number(0);
-              time.timer.play();
-              map.startlevel();
+              Time.seconds=0;
+              Time.time_text.setText("time :" +"00:00" + " ");
+              Time.show_moves_number(0);
+              Time.timer.play();
+              Map.startlevel();
               GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
                 
         

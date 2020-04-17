@@ -12,7 +12,7 @@ public class Pipe {
      */
       protected static int checkPipe(int dir_x, int dir_y) {
           int i = 1 ;
-        for (ImageView pipe_iv : map.Pipes_Imageviews_Array) {
+        for (ImageView pipe_iv : Map.Pipes_Imageviews_Array) {
 
             if (player_imageView.getX() + dir_x * 50 == pipe_iv.getX()
                     && player_imageView.getY() + dir_y * 50 == pipe_iv.getY()) {
@@ -29,7 +29,7 @@ public class Pipe {
      */
       protected static boolean checkIfThereIsABoxNextToThePipe(int desiredX , int desiredY) {
 
-        for (ImageView box_iv : map.Boxes_Imageviews_Array) {
+        for (ImageView box_iv : Map.Boxes_Imageviews_Array) {
 
             if (desiredX == box_iv.getX() && desiredY== box_iv.getY()) {
                 return true;
@@ -40,9 +40,9 @@ public class Pipe {
       
       
       protected static boolean isPipe(int x , int y){
-          for (ImageView box_iv : map.Boxes_Imageviews_Array){
+          for (ImageView box_iv : Map.Boxes_Imageviews_Array){
               
-               for (ImageView pipe_iv : map.Pipes_Imageviews_Array) {
+               for (ImageView pipe_iv : Map.Pipes_Imageviews_Array) {
                    
                    if(pipe_iv.getX() == x && pipe_iv.getY() == y){
                        return true;
