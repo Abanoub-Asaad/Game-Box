@@ -92,8 +92,8 @@ public class Piece {
         {
              Time.timer.stop();
              score.calculate_score();
-             rank.show();
-         GameBox_Core.Root.setScene( finish_level.finish_scene(null));
+             rank.Display_Rank();
+         GameBox_Core.Root.setScene( finish_level.finish_scene());
           
          
         }

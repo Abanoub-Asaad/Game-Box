@@ -2,35 +2,51 @@
 package Sokoban;
 
 import GameLoop.GameBox_Core;
+import static Sokoban.Map.startlevel;
 import static Sokoban.Time.move_text;
+import static Sokoban.Time.option;
 import static Sokoban.Time.time_text;
 import static Sokoban.Time.timer;
-
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-
+/**
+ *
+ * @author Eng.Waleed
+ */
 public class finish_level {
     
-   public static   int i=1;  
-   public static  Pane pane_finish= new Pane() ; 
-   public static  Pane pane= new Pane() ;
+   public  static   int nLevel_in_score_file =1;  
+   static  Pane pane_finish= new Pane() ; 
+   static  Pane pane= new Pane() ;
    
-   public  static   Scene scene_finish= new Scene(pane,1350,750); 
-   public  static   GameBox_Core get_root= new GameBox_Core();  
-   public static  Text text_of_score= new Text(190,175,"0");
-   public static  Text text_of_time = new Text(590,175,"00:00");
-   public static  Text text_of_move = new Text(950,175,"0");
-   public static  Text text_of_title= new Text(450,100, " you win ! ");
-   public static   Button next_level  = new Button("continue"); 
-   public static    Button cancel  = new Button("cancel");
+   protected  static   Scene scene_finish= new Scene(pane,1350,750); 
+     static   GameBox_Core get_root = new GameBox_Core(); 
+   //---------------------------------------------//
+   // Texts refer to (score & time & nMoves ) for specific player which is displayed at the end of each level
+   // to show the player his numbers in this level 
+   static  Text text_of_score= new Text(190,175,"0");
+   static  Text text_of_time = new Text(590,175,"00:00");
+   static  Text text_of_move = new Text(950,175,"0");
+   
+   //---------------------------------------//
+   final  static  Text text_of_title = new Text(450,100, " you win ! ");
+   static   Button next_level  = new Button("continue"); 
+   static   Button cancel  = new Button("cancel");
 
-      public static start_level s= new start_level();
       
     public static void   style (){
         
@@ -47,10 +63,10 @@ public class finish_level {
         next_level.setId("btn");
         cancel.setId("btn");
         pane_finish.getChildren().addAll(text_of_title);
-        rank.inside.setLayoutX(350);
-        rank.inside.setLayoutY(250);
-        rank.inside.setPrefSize(600, 500);
-        finish_level.pane_finish.getChildren().addAll(rank.inside );
+        rank.show_score_pane.setLayoutX(350);
+        rank.show_score_pane.setLayoutY(250);
+        rank.show_score_pane.setPrefSize(600, 500);
+        finish_level.pane_finish.getChildren().addAll(rank.show_score_pane );
         next_level.setLayoutX(250);
         next_level.setLayoutY(675);
         
@@ -64,11 +80,11 @@ public class finish_level {
          
       }
     
-      public static   Scene finish_scene(Stage stage)  {
+      public static   Scene finish_scene()  {
        
         text_of_score.setText(score.score_text.getText());
-        text_of_time.setText(time_text.getText());
-        text_of_move.setText(move_text.getText());
+        text_of_time.setText(Time.time_text.getText());
+        text_of_move.setText(Time.move_text.getText());
         
          
            timer.stop();
@@ -76,7 +92,7 @@ public class finish_level {
           next_level.setOnAction(e-> {
             
             
-              i++;
+              nLevel_in_score_file++;
               score.score=0;
               Time.seconds=0;
               Time.time_text.setText("time :" +"00:00" + " ");
@@ -104,3 +120,4 @@ public class finish_level {
   
     
 }
+
