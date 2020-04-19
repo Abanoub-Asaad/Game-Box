@@ -13,6 +13,7 @@ public class Map {
 
     private static boolean next=false;
     
+    private static Pressure_Pad pad_gate_obg = new Pressure_Pad();
     private static  Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
     private static Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
 
@@ -27,13 +28,17 @@ public class Map {
     protected static Image pipeL = new Image("Resources/Sokoban/pipeL.png", 50, 50, true, true);
     protected static Image pipeR = new Image("Resources/Sokoban/pipeR.png", 50, 50, true, true);
     protected static Image pipeU = new Image("Resources/Sokoban/pipeU.png", 50, 50, true, true);
+    protected static Image pressure_pad = new Image("Resources/Sokoban/pressure_pad.png", 50, 50, true, true);
+    protected static Image gate = new Image("Resources/Sokoban/gate.bmp", 50, 50, true, true);
     
     private static ImageView tmp_imageView = new ImageView();
-
+    protected static ImageView pad_iv = new ImageView();
+    
     protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Pipes_Imageviews_Array = new ArrayList<>();
+    protected static ArrayList<ImageView> Gates_Imageviews_Array = new ArrayList<>();
     
     /*
      * posX & posY for Locating The level textures 
@@ -143,7 +148,15 @@ public class Map {
                     case 'F':
                         setPosition(pipeR, posX, posY);
                         break;
-                             
+                        
+                    case '*':
+                        setPosition(gate, posX, posY);
+                        break;
+                        
+                    case '&':
+                        setPosition(pressure_pad, posX, posY);
+                        break;                        
+                        
                     case '$':
                         setPosition(box, posX, posY);
                 }
@@ -185,6 +198,13 @@ public class Map {
             StorageLocation_Imageviews_Array.add(tmp_imageView);
         } else if(img == pipeR){
             Pipes_Imageviews_Array.add(tmp_imageView);
+        }else if(img == pressure_pad){
+            Pressure_Pad.pressure_pad_posX = x;
+            Pressure_Pad.pressure_pad_posY = y;
+            pad_iv = tmp_imageView;
+        }else if(img == gate){
+            Gates_Imageviews_Array.add(tmp_imageView);
         }
     }
 }
+

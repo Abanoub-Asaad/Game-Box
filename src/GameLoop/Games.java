@@ -3,11 +3,12 @@ package GameLoop;
 
 import Arkanoid.Arkanoid_main;
 import GameLoop.GameBox_Core;
+import Sokoban.Menu;
 import Sokoban.Sokoban_Main;
 import Sokoban.finish_level;
 import Sokoban.rank;
 import Sokoban.start_level;
-import static Sokoban.start_level.scene_StoreName;
+
 import Tetris.Tetris_Main;
 import TicTacToe.XO_Main;
 import java.io.IOException;
@@ -67,12 +68,12 @@ public class Games
         ImageView sokobanImageIV =new ImageView(sokobanImage);
         SokobanBtn.setGraphic(sokobanImageIV);
         SokobanBtn.setOnMousePressed(event ->  {
-            rank.intial();
+           
             try {
-                rank.intial();
+               
                 Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
                 
-                  MainStage.setScene(start_level.store_name());
+                  MainStage.setScene(Menu.MenuStyle());
             } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
             }

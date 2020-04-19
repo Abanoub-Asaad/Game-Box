@@ -23,122 +23,54 @@ import javafx.scene.text.Text;
  */
 public class rank {
     
-  public static  File file = new File("C:\\Game-Box\\src\\Resources\\Sokoban\\sokoban_player.txt");
-  public static int max=4;
-  // it refers to the max number of players that can be stored in hashmap and displayed 
-  static Integer l ;// refer to level number in file 
+  static int max_nPlayers=4;
+  // it refers to the max number of players that can be stored in hashmap and displayed in Score board 
+  static Integer level_number ;// refer to level number in file 
   //----------------------------------------------//
- public static   FlowPane inside = new FlowPane(Orientation.HORIZONTAL, 250, 20);
+ public   static   FlowPane show_score_pane = new FlowPane(Orientation.HORIZONTAL, 250, 20);
+  // creating a small pane inside the finish scene to display the rank between players 
   //---------------------------------------------//
  
- final  static Map<Integer, LinkedHashMap<String, Float>> outer= new LinkedHashMap<Integer, LinkedHashMap<String, Float>>() {};
+ static Map<Integer, LinkedHashMap<String, Float>> For_Whole_Levels= new LinkedHashMap<Integer, LinkedHashMap<String, Float>>() {};
  
  static  Map<String, Float> mapFromFile;
- static  Map<String, Float> show;
+ static  Map<String, Float> Get_Sorted_Map;
  //---------------------------------------------------//
  
- 
- //inner maps for each level
-   static  LinkedHashMap<String, Float> map1=new LinkedHashMap<String, Float>(){
+
+static   Text player_name_in_board;
+static   Text player_score_in_board;
+  
+    public  static   Map<String, Float> ReadFromFile() throws FileNotFoundException, IOException  {
+        // creating LinkedHashMap for each level
+     LinkedHashMap<String, Float> For_One_Level_Map =new LinkedHashMap<String, Float>(){
         @Override
         protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
+            return size() > max_nPlayers;
         }
    };
-   static  LinkedHashMap<String, Float> map2=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map3=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map4=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map5=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map6=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map7=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map8=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map9=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   static  LinkedHashMap<String, Float> map10=new LinkedHashMap<String, Float>(){  @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
-            return size() > max;
-        }
-   };
-   
-   //------------------------------------------------------------------//
-   
-   
-   
-static   Text player_name;
-static   Text player_score;
-   
-  public static  Map<Integer, LinkedHashMap<String, Float>>  intial(){
      
-      outer.put(1, (LinkedHashMap<String, Float>) map1);
-      outer.put(2, (LinkedHashMap<String, Float>) map2);
-      outer.put(3, (LinkedHashMap<String, Float>) map3);
-      outer.put(4, (LinkedHashMap<String, Float>) map4);
-      outer.put(5, (LinkedHashMap<String, Float>) map5);
-      outer.put(6, (LinkedHashMap<String, Float>) map6);
-      outer.put(7, (LinkedHashMap<String, Float>) map7);
-      outer.put(8, (LinkedHashMap<String, Float>) map8);
-      outer.put(9, (LinkedHashMap<String, Float>) map9);
-      outer.put(10, (LinkedHashMap<String, Float>) map10);
-      
-      return outer;
-  }
-   
-    public  static   Map<String, Float> Read() throws FileNotFoundException, IOException  {
-        
+         
           String name = null;
        
           Float value ;
           BufferedReader br=null ;
           
 		try  {
-                     br = new BufferedReader(new FileReader(file));
+                     br = new BufferedReader(new FileReader(score.file));
 			String line;
                         
 			while ((line = br.readLine()) != null) {
                        
 				  String [] parts = line.split(":");
-                                  l=Integer.valueOf(parts[1].trim());
-                                  
-                                  if(!parts[0].trim().equals("")&&!parts[2].trim().equals("")){
-                                     
+                                  level_number=Integer.valueOf(parts[1].trim());
+                                  For_Whole_Levels.put(level_number, For_One_Level_Map);
+                                 
                                           name = parts[0].trim();
                                       value = Float.valueOf(parts[2].trim());
                                   
-                                      outer.get(l).put(name, value);
+                                      For_Whole_Levels.get(level_number).put(name, value);
                                    
-                                     }   
-                                    
                                      }
                           
                         }  
@@ -161,15 +93,15 @@ static   Text player_score;
             }
         }        
         
-        return outer.get(l);
+        return For_Whole_Levels.get(level_number);
         
     }
     
    
-    public  static   Map <String,Float>  sort() throws FileNotFoundException,IOException{
+    public  static   Map <String,Float>  sort_mapForEachLevel() throws FileNotFoundException,IOException{
         
         
-         mapFromFile = Read();
+         mapFromFile = ReadFromFile();
           
   return  mapFromFile.entrySet()
                 .stream()
@@ -179,41 +111,41 @@ static   Text player_score;
     }
     
     
-    public  static  void  show() throws IOException{
+    public  static  void  Display_Rank() throws IOException{
         
         
        //  int x=350;
         // int y=250;
          
-         inside.getChildren().clear();
+       show_score_pane.getChildren().clear();
        
-       show=sort();
+       Get_Sorted_Map=sort_mapForEachLevel();
         
-       show.entrySet().stream().map((lhmap) -> {
-           player_name= new Text();
+       Get_Sorted_Map.entrySet().stream().map((lhmap) -> {
+           player_name_in_board= new Text();
           return lhmap;
       }).map((lhmap) -> {
-          player_score= new Text();
+          player_score_in_board= new Text();
           return lhmap;
       }).map((lhmap) -> {
           //    player_name.setX(x);
           //  player_name.setY(y);
           // player_score.setX(x+400);
           // player_score.setY(y);
-          player_name.setId("text");
+          player_name_in_board.setId("text");
           return lhmap;
       }).map((lhmap) -> {
-          player_score.setId("text");
+          player_score_in_board.setId("text");
           return lhmap;
       }).map((lhmap) -> {
-          player_name.setText(lhmap.getKey());
+          player_name_in_board.setText(lhmap.getKey());
           return lhmap;
       }).map((lhmap) -> {
-          player_score.setText(lhmap.getValue().toString());
+          player_score_in_board.setText(lhmap.getValue().toString());
           return lhmap;
       }).map((lhmap) -> {
           //  y=y+70;
-          inside.getChildren().addAll(player_name,player_score);
+          show_score_pane.getChildren().addAll(player_name_in_board,player_score_in_board);
           return lhmap;
       }).forEach((lhmap) -> {
           // print it in console to check if it store data correctly or not 

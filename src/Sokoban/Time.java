@@ -21,8 +21,6 @@ public class Time {
     public static Text time_text;
     public static Text move_text ;
     public static VBox layout = new VBox();
- //   public static Text time_text_newscene = new Text();
- //   public static Text mov_text_newscene = new Text();
     public static Timeline timer = new Timeline();
     public static Alert alert = new Alert(AlertType.NONE);
     public static Optional<ButtonType> option ;

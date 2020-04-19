@@ -141,13 +141,13 @@ public class XO_Controller {
 
     }
 
-   /**
-    * Here we represent the matrix of the Game as numbers from 0 to 8 (i * 3) +
-    * j means to calculate the number of the square that is available from his
-    * indices that in row i and column j
-    * @param sym
-    * @return 
-    */
+    /**
+     * Here we represent the matrix of the Game as numbers from 0 to 8 (i * 3) +
+     * j --> to calculate the number of the square that is available from his
+     * indices that in row i and column j
+     *
+     * @param board the current state of the board.
+     */
     protected static List<Integer> availableMoves(String[][] sym) {
         List<Integer> availableSquares = new ArrayList<>();
 
@@ -164,13 +164,13 @@ public class XO_Controller {
 
     /**
      * Here we evaluate the number the possible opportunities for winning if in
-     * a specific line , there are 2 squares with X and an empty square  +10
-     * if in a specific line , there is a square with X and 2 empty squares 
+     * a specific line , there are 2 squares with X and an empty square --> +10
+     * if in a specific line , there is a square with X and 2 empty squares -->
      * +1
      *
      * if in a specific line , there are 2 squares with O and an empty square
-     *  -10 if in a specific line , there is a square with O and 2 empty
-     * squares  -1
+     * --> -10 if in a specific line , there is a square with O and 2 empty
+     * squares --> -1
      */
     protected static int evaluate(String[][] sym, String player) {
         int value = 0;
@@ -269,11 +269,8 @@ public class XO_Controller {
     }
 
 
-    /**
-     * check if the game is over or not 
-     * by checking the array of strings which implements the current game board
-     * @param board
-     * @return
+    /*
+     * To Check if The Board's complete and The Game is finished
      */
     protected static boolean checkIfGameIsFinishedOrNot(String[][] board) {
         for (int i = 0; i < 3; i++) {

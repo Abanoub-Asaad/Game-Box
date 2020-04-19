@@ -17,51 +17,51 @@ import javafx.stage.Stage;
 
 public class start_level {
 
-    public GameBox_Core get_root = new GameBox_Core();
-    public Sokoban_Main s;
-    public static Pane pane_storeName = new Pane();
-    public static Line sep;
+    static GameBox_Core get_root = new GameBox_Core();
+  
+    static Pane pane_storeName = new Pane();
+    static Line sep;
+ 
+    static Scene scene_StoreName = new Scene(pane_storeName, 1370, 750);
+    static TextField Enter_Name_Text;
 
-    public static Scene scene_StoreName = new Scene(pane_storeName, 1370, 750);
-    static TextField textField;
+    static Button btn_play;
 
-    public static Button btn_start;
-
-    static File file = new File("C:\\Game-Box\\src\\Resources\\Sokoban\\sokoban_player.txt");
 
     static FileWriter filewriter;
     static BufferedWriter bufferwriter;
 
-    public static String PlayerName_string;
+    static String PlayerName_string;
 
     public static Scene store_name() throws IOException {
 
         scene_StoreName.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
 
-        textField = new TextField();
-        btn_start = new Button();
+        Enter_Name_Text = new TextField();
+        btn_play = new Button();
 
         pane_storeName.setId("pane");
-        textField.setTranslateX(450);
-        textField.setTranslateY(350);
-        textField.setId("label");
-        textField.setPromptText("Enter your name");
-        textField.setFocusTraversable(false);
-        addTextLimiter(textField, 14);
+        Enter_Name_Text.setTranslateX(450);
+        Enter_Name_Text.setTranslateY(350);
+        Enter_Name_Text.setId("label");
+        Enter_Name_Text.setPromptText("Enter your name");
+        Enter_Name_Text.setFocusTraversable(false);
+        addTextLimiter(Enter_Name_Text, 14);
 
-        btn_start.setTranslateX(450);
-        btn_start.setTranslateY(430);
-        btn_start.setId("start");
-        btn_start.setText("play");
+        btn_play.setTranslateX(450);
+        btn_play.setTranslateY(430);
+        btn_play.setId("start");
+        btn_play.setText("play");
 
         sep = new Line(300, 300, 1000, 0);
 
         sep.setStroke(Color.LIMEGREEN);
 
-        pane_storeName.getChildren().addAll(textField, btn_start);
+        pane_storeName.getChildren().addAll(Enter_Name_Text, btn_play);
 
-        GetName(null);
-        //============================= 
+        GetName();
+        
+        //=============================// 
 
         return scene_StoreName;
     }
@@ -78,11 +78,11 @@ public class start_level {
         });
     }
 
-    public static void GetName(Stage stage) throws IOException {
+    public static void GetName() throws IOException {
         
-        btn_start.setOnAction(e -> {
+        btn_play.setOnAction(e -> {
 
-            PlayerName_string = textField.getText();
+            PlayerName_string = Enter_Name_Text.getText();
 
             Time.seconds = 0;
             GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
@@ -91,7 +91,4 @@ public class start_level {
 
     }
 
-    public String getPlayerName() {
-        return PlayerName_string;
-    }
 }

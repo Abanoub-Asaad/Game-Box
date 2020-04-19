@@ -13,8 +13,10 @@ import javafx.scene.input.KeyEvent;
 
 public class Piece {
     
-   // to get   sort fn
- static  rank r=new rank();
+    private static Pressure_Pad pad_obj = new Pressure_Pad();
+   
+    // to get   sort fn
+    static rank r = new rank();
     static int countboxesatstorage;
     /*
      ** checkKeyboard method is used for Accessing player's desired location 
@@ -29,24 +31,28 @@ public class Piece {
                 if (e.getCode() == KeyCode.LEFT) {
                     Box.checkBox(-1, 0);
                     Player.checkForThePlayer(-1, 0,"LEFT"); 
+                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.playerL);
                 } 
 
                 if (e.getCode() == KeyCode.RIGHT) {
                     Box.checkBox(1, 0);
                     Player.checkForThePlayer(1, 0,"RIGHT");
+                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.playerR);
                 }
 
                 if (e.getCode() == KeyCode.UP) {
                     Box.checkBox(0, -1);
                     Player.checkForThePlayer(0, -1,"UP");
+                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.playerU);
                 } 
 
                 if (e.getCode() == KeyCode.DOWN) {
                     Box.checkBox(0, 1);
                     Player.checkForThePlayer(0, 1,"DOWN");
+                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.player);
                 }
                 
@@ -92,8 +98,8 @@ public class Piece {
         {
              Time.timer.stop();
              score.calculate_score();
-             rank.show();
-         GameBox_Core.Root.setScene( finish_level.finish_scene(null));
+             rank.Display_Rank();
+         GameBox_Core.Root.setScene( finish_level.finish_scene());
           
          
         }

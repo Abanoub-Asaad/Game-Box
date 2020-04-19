@@ -1,6 +1,7 @@
 
 package Sokoban;
 
+import Sokoban.Map;
 import static Sokoban.Player.player_imageView;
 import javafx.scene.image.ImageView;
 
