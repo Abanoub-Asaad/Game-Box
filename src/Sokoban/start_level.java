@@ -51,7 +51,7 @@ public class start_level {
         btn_play.setTranslateX(450);
         btn_play.setTranslateY(430);
         btn_play.setId("start");
-        btn_play.setText("play");
+        btn_play.setText("Play");
 
         sep = new Line(300, 300, 1000, 0);
 
