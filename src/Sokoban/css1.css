@@ -81,7 +81,7 @@
 }
 #pane{
     // for start_level pane
--fx-background-image: url("../Resources/Sokoban/name_back.jpg");
+-fx-background-image: url("../Resources/Sokoban/c.jpg");
 -fx-background-repeat: no-repeat;
 -fx-background-size: 1500 800;
 //-fx-background-position: center center;
@@ -112,7 +112,7 @@
 
 #menupane{
     // menu pane 
--fx-background-image: url("../Resources/Sokoban/unnamed.jpg");
+-fx-background-image: url("../Resources/Sokoban/c.jpg");
 -fx-background-repeat: no-repeat;
 -fx-background-size: 1500 800;
 //-fx-background-position: center center;

@@ -49,7 +49,7 @@ public class Map {
     // private String fileName  = "src/Resources/Sokoban/maps.txt" ;
     private static FileReader file_reader;
     private static BufferedReader buffered_reader;
-    public static Image SokobanImgback = new Image("Resources/Sokoban/l1.jpg", 1400, 800, true, false);
+    public static Image SokobanImgback = new Image("Resources/Sokoban/backa.jpg", 1800, 800, true, false);
     public static ImageView Soko_ImagbackIV = new ImageView(SokobanImgback);
 
     public static HashMap<Integer, ArrayList<String>> read_map = new HashMap<>();

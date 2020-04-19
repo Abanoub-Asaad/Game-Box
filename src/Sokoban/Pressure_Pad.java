@@ -13,6 +13,10 @@ public class Pressure_Pad {
     protected static int pressure_pad_posX;
     protected static int pressure_pad_posY;
 
+    
+    /**
+     * Main method for The pad
+     */
     protected void check_pad_isPressed() {
 
          BoxOnPad = checkBoxOnPad();
@@ -41,6 +45,10 @@ public class Pressure_Pad {
         }
     }
 
+    /**
+     * Method to open the gates, by making their images equal null
+     * when there's something pressed on the pad, so the gates will be opened
+     */
     private static void openGates() {
         for (ImageView gate_iv : Map.Gates_Imageviews_Array) {
             gate_iv.setImage(null);
@@ -48,12 +56,23 @@ public class Pressure_Pad {
         }
     }
 
+    
+    /**
+     * Method to open the gates, by puting their images to their specific places
+     * when the gates are open so surely there is a thing pressed on the pad
+     * but when this thing moves, the gates will be closed
+     */
     private static void closeGates() {
         for (ImageView gate_iv : Map.Gates_Imageviews_Array) {
             gate_iv.setImage(Map.gate);
         }
     }
 
+    
+    /**
+     *  check if there's a box pressed on the pad
+     * @return 
+     */
     private static boolean checkBoxOnPad() {
         for (ImageView box_iv : Map.Boxes_Imageviews_Array) {
 
@@ -64,8 +83,12 @@ public class Pressure_Pad {
         return false;
     }
 
+    /**
+     * check if the player pressed on the pad
+     * @return 
+     */
     private static boolean checkPlayerOnPad() {
-        System.out.println(Player.player_imageView.getX() + "  " + Player.player_imageView.getY());
+       
         if (Player.player_imageView.getX() == pressure_pad_posX && Player.player_imageView.getY() == pressure_pad_posY) {
             return true;
         }

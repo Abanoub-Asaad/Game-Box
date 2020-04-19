@@ -2,7 +2,6 @@ package Sokoban;
 
 import GameLoop.GameBox_Core;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import javafx.beans.value.ChangeListener;
@@ -13,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
 
 public class start_level {
 

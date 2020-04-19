@@ -93,17 +93,19 @@ public class Box extends Piece {
      */
     private static void moveTheBox() {
 
-        if (isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox ) {
+        if (isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox) {
 
             int x = (int) Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX() + directionOnX * 50;
             int y = (int) Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY() + directionOnY * 50;
 
             if (Pressure_Pad.levelHasvePad) {
                 if (!gate_obj.checkBox_Gate(directionOnX, directionOnY)) {
+
                     Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
                     Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
                 } else {
-                    if (Pressure_Pad.BoxOnPad) {
+                    if (Pressure_Pad.BoxOnPad || (!Pressure_Pad.BoxOnPad && gate_obj.checkBox_Gate(directionOnX, directionOnY))) {
+                        System.out.println("fuck");
                         Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
                         Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
                     }

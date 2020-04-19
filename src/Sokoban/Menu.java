@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Sokoban;
 
 import GameLoop.GameBox_Core;
@@ -14,13 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-/**
- *
- * @author Eng.Waleed
- */
+
 public class Menu {
-     // static Image back = new Image("Resources/Sokoban/neon.jpg",1375,750,false,true); 
-    //  static ImageView   back_view = new ImageView(back);
+
       static Pane menu_pane = new Pane();
       static VBox text_pane = new VBox(22);
       static   Button start_game  = new Button(" START ");

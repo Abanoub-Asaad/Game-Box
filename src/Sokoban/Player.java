@@ -80,18 +80,18 @@ public class Player extends Piece {
                  
                 
                 if (!gate_obj.checkPlayer_Gate(dir_x, dir_y)) {
-                    System.out.println("player doesn't move on place have a gate");
+                   // System.out.println("player doesn't move on place have a gate");
                     player_imageView.setX(x);
                     player_imageView.setY(y);
                     ++Time.moves;
                 } else {
                     if ((Pressure_Pad.BoxOnPad )) {
-                        System.out.println("player want to move through a gate, and the gates're open");
+                        //System.out.println("player want to move through a gate, and the gates're open");
                       
                         player_imageView.setX(x);
                         player_imageView.setY(y);
                         ++Time.moves;
-                    }else  System.out.println("player want to move through a gate, and the gates're closed");
+                    }//else//  System.out.println("player want to move through a gate, and the gates're closed");
 
                 }
             } else {
