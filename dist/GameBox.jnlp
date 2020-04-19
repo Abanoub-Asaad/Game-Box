@@ -8,11 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-    <jar href="GameBox.jar" size="78750220" download="eager" />
-=======
-    <jar href="GameBox.jar" size="78743829" download="eager" />
->>>>>>> e1f02d4254228342aaac68f436f20f2770440e4f
+    <jar href="GameBox.jar" size="78751676" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="GameBox" >
     <param name="requiredFXVersion" value="8.0+"/>

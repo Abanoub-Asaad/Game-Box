@@ -31,29 +31,29 @@ public class Piece {
                 if (e.getCode() == KeyCode.LEFT) {
                     Box.checkBox(-1, 0);
                     Player.checkForThePlayer(-1, 0,"LEFT"); 
-                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.playerL);
+                    pad_obj.check_pad_isPressed();
                 } 
 
                 if (e.getCode() == KeyCode.RIGHT) {
                     Box.checkBox(1, 0);
                     Player.checkForThePlayer(1, 0,"RIGHT");
-                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.playerR);
+                    pad_obj.check_pad_isPressed();
                 }
 
                 if (e.getCode() == KeyCode.UP) {
                     Box.checkBox(0, -1);
                     Player.checkForThePlayer(0, -1,"UP");
-                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.playerU);
+                    pad_obj.check_pad_isPressed();
                 } 
 
                 if (e.getCode() == KeyCode.DOWN) {
                     Box.checkBox(0, 1);
                     Player.checkForThePlayer(0, 1,"DOWN");
-                    pad_obj.check_pad_isPressed();
                     Player.player_imageView.setImage(Map.player);
+                    pad_obj.check_pad_isPressed();
                 }
                 
                 

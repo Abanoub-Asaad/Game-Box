@@ -5,6 +5,9 @@ import javafx.scene.image.ImageView;
 
 public class Pressure_Pad {
 
+    protected static boolean levelHasvePad=false;
+    protected static boolean BoxOnPad ;
+    protected boolean PlayerOnPad;
     private static Image boxOnPad = new Image("Resources/Sokoban/crate_39.png", 50, 50, true, true);
     private static ImageView boxOnPad_iv = new ImageView();
     protected static int pressure_pad_posX;
@@ -12,10 +15,17 @@ public class Pressure_Pad {
 
     protected void check_pad_isPressed() {
 
-        boolean BoxOnPad = checkBoxOnPad();
-        boolean PlayerOnPad = checkPlayerOnPad();
+         BoxOnPad = checkBoxOnPad();
+         PlayerOnPad = checkPlayerOnPad();
 
+        if(BoxOnPad){
+            System.out.println("Box On Pad");
+        }else if(PlayerOnPad){
+            System.out.println("Player On Pad");
+        }
+        
         if (BoxOnPad) {
+           Sokoban_Main.root.getChildren().remove(boxOnPad_iv);
            boxOnPad_iv.setImage(boxOnPad);
            boxOnPad_iv.setX(pressure_pad_posX);
            boxOnPad_iv.setY(pressure_pad_posY);
@@ -34,6 +44,7 @@ public class Pressure_Pad {
     private static void openGates() {
         for (ImageView gate_iv : Map.Gates_Imageviews_Array) {
             gate_iv.setImage(null);
+            // Sokoban_Main.root.getChildren().remove(gate_iv);
         }
     }
 

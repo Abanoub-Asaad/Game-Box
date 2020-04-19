@@ -202,6 +202,7 @@ public class Map {
             Pressure_Pad.pressure_pad_posX = x;
             Pressure_Pad.pressure_pad_posY = y;
             pad_iv = tmp_imageView;
+            Pressure_Pad.levelHasvePad=true;
         }else if(img == gate){
             Gates_Imageviews_Array.add(tmp_imageView);
         }

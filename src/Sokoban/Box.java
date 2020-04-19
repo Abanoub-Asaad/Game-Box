@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class Box extends Piece{
 
+    private static Pressure_Pad pad_obj = new Pressure_Pad();
     protected static boolean isBox = false ;
     private static boolean anotherBoxNextToTheCurrBox = false ;
     private static boolean isWallNextToTheBox = false ;
@@ -104,8 +105,11 @@ public class Box extends Piece{
      */
      private static void moveTheBox()
      {
-         if( isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox )
+         
+         if( isBox && !anotherBoxNextToTheCurrBox && !isWallNextToTheBox /*&& (pad_obj.BoxOnPad || pad_obj.PlayerOnPad ) */)
          { 
+             
+             
              int x = (int)Map.Boxes_Imageviews_Array.get(cur_Box_Index).getX()+directionOnX*50 ;
              int y = (int)Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY()+directionOnY*50 ;
              
