@@ -1,91 +1,89 @@
 package Tetris;
 
+import java.util.HashMap;
 import javafx.scene.shape.Rectangle;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 
 public class Shapes {
 
     //---------------------------------------------
-    private float x = 400f;
-    private float y = 5f;
-    private boolean IsTurn = false;
-    
-    protected float width=50f , height=50f;
+    float x = 400f;
+    float y = 5f;
+    final float width=50f , height=50f;
+    private HashMap<String , Boolean> buttonPressed = new HashMap<String , Boolean>();
+    static int  NumOfTurn ;
+    static int NumOfThisShape , NumOfNextShape;
+    private final float X_ofNextShape=1120 , Y_ofNextShape = 150;
     //------------------------------------------------
 
-
-    public int RandomNum() {
-        int Num;
-        Num = (int) ((Math.random() * ((7 - 1) + 1)) + 1);
-        System.out.println("Num   " + Num);
-        return Num;
+    // choose first shape that will fall at the first of the game
+    protected void Set_FirstShape_In_TheGame(Rectangle[] rectangles, Group group) {
+        //----------------------------------
+        NumOfThisShape = (int) ((Math.random() * ((7 - 1) + 1)) + 1);
+        SetShapes(rectangles, x, y, group, NumOfThisShape);
     }
 
-    public void chooseShape(Rectangle[] rectangles, Group group) {
-        //----------------------------------
-        DrawNormalShape normalObj = new DrawNormalShape();
-        DrawSquareShape squareObj = new DrawSquareShape();
-        Draw_L_Shape LObj = new Draw_L_Shape();
-        Draw__1Shape __1Obj = new Draw__1Shape();
-        SBrick sBrickObj = new SBrick();
-        TBrick tBrickObj = new TBrick();
-        ZBrick zBrickObj = new ZBrick();
-        //-----------------------------------
+    // generate random number to set next shape randomly
+    private int GenerateNumOfNextShape() {
+        NumOfNextShape = (int) ((Math.random() * ((7 - 1) + 1)) + 1);
+        System.out.println("Num   " + NumOfNextShape);
+        return NumOfNextShape;
+    }
 
-        switch (RandomNum()) {
+    protected void SetNextShapeInSquare(Rectangle[] rectangles, Group group) {
+        SetShapes(rectangles, X_ofNextShape, Y_ofNextShape, group, GenerateNumOfNextShape());
+    }
+
+    protected void RemoveNextShape(Rectangle[] rectangles, Group group) {
+        for (int i = 0; i < 4; i++) {
+            group.getChildren().remove(rectangles[i]);
+        }
+    }
+
+    protected void SetShapes(Rectangle[] rectangles, float X, float Y, Group group, int number) {
+        Shape1 normalObj = new Shape1();
+        Shape2 squareObj = new Shape2();
+        Shape3 LObj = new Shape3();
+        Shape4 __1Obj = new Shape4();
+        Shape5 sBrickObj = new Shape5();
+        Shape6 tBrickObj = new Shape6();
+        Shape7 zBrickObj = new Shape7();
+
+        switch (number) {
 
             case 1:
-                normalObj.Basic(rectangles, x, y, group);
+                normalObj.Basic(rectangles, X, Y, group);
                 break;
 
             case 2:
-                squareObj.Basic(rectangles, x, y, group);
+                squareObj.Basic(rectangles, X, Y, group);
                 break;
 
             case 3:
-                LObj.Basic(rectangles, x, y, group);
+                LObj.Basic(rectangles, X, Y, group);
                 break;
 
             case 4:
-                __1Obj.Basic(rectangles, x, y, group);
+                __1Obj.Basic(rectangles, X, Y, group);
                 break;
 
             case 5:
-                sBrickObj.Basic(rectangles, x, y, group);
+                sBrickObj.Basic(rectangles, X, Y, group);
                 break;
 
             case 6:
-                tBrickObj.Basic(rectangles, x, y, group);
+                tBrickObj.Basic(rectangles, X, Y, group);
                 break;
 
             case 7:
-                zBrickObj.Basic(rectangles, x, y, group);
+                zBrickObj.Basic(rectangles, X, Y, group);
                 break;
         }
-    }
-    
-    
-
-	
-
-        
-    
-
-    public boolean checkTurn(Rectangle[] rectangles, Scene SceneTetris) {
-
-        SceneTetris.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent e) {
-                if (e.getCode() == KeyCode.UP) {
-                    IsTurn = true;
-                }
-            }
-        });
-        return IsTurn;
     }
 
 }

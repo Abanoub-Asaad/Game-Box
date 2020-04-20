@@ -90,7 +90,7 @@ public class Games
         Image tetrisImage = new Image("Resources/gamesPage/tetris.png", 300, 300, true, false);
         ImageView tetrisImageIV = new ImageView(tetrisImage);
         TetrisBtn.setGraphic(tetrisImageIV);
-        TetrisBtn.setOnMousePressed(event ->  { Tetris_Main.getInstanceFromTetris().openTetrisMain(MainStage); } ); 
+        TetrisBtn.setOnMousePressed(event ->  { Tetris_Main.getInstanceFromTetris().Tetris_Main(MainStage); } ); 
         gamesGroup.getChildren().add(TetrisBtn);
         
         

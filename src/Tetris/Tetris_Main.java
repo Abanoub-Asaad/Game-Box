@@ -18,6 +18,7 @@ public class Tetris_Main
     protected static Scene tetris_scene ;
     public static int[][] MESH = new int[Board.XMAX / Board.Size][Board.YMAX / Board.Size];
     public static int linesNo = 0;
+    static Rectangle[] Next = new Rectangle[4];
     //=========================================================
     /*
     ** For Singleton Pattern 
@@ -41,7 +42,7 @@ public class Tetris_Main
     /*
     ** Method for Sor Opening Tetris Game
     */
-    public void openTetrisMain (Stage Games_Stage)
+    public void Tetris_Main (Stage Games_Stage)
     {
 
         tetris_scene = new Scene(root_tetris, 1370, 750);
@@ -50,9 +51,11 @@ public class Tetris_Main
         
         //---------------------------------------
         Rectangle[] rectangles = new Rectangle[4];
+ 
         Shapes shapesObj = new Shapes() ;
-        shapesObj.chooseShape(rectangles,root_tetris);
-        Controller.checkPressLeftOrRight( rectangles , tetris_scene);
+        shapesObj.Set_FirstShape_In_TheGame(rectangles,root_tetris);
+        shapesObj.SetNextShapeInSquare(Next, root_tetris);
+        Controller.Press_LEFT_RIGHT_UP_DOWN( rectangles ,tetris_scene);
         Controller controller_obj = new Controller();
         Tetris_Stage = Games_Stage;
         Tetris_Stage.setScene(tetris_scene);
@@ -63,8 +66,11 @@ public class Tetris_Main
             public void run() {
                 Platform.runLater(new Runnable() {
                     public void run() {
-                        
-                       Controller.MoveDown(rectangles);
+                        if (controller_obj.CheckGameOver(rectangles)) {
+                            fall.cancel();
+                        }
+                        else
+                        Controller.MoveDown(rectangles);
                     }
                 });
             }
