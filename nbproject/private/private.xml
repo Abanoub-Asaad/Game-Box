@@ -13,13 +13,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Game-Box/src/GameLoop/Games.java</file>
-            <file>file:/F:/Game-Box/src/Tetris/Shapes.java</file>
-            <file>file:/F:/Game-Box/src/Tetris/Tetris_Main.java</file>
             <file>file:/F:/Game-Box/src/GameLoop/GameBox_Core.java</file>
-            <file>file:/F:/Game-Box/src/Resources/Sokoban/floor.bmp</file>
             <file>file:/F:/Game-Box/src/Sokoban/Map.java</file>
-            <file>file:/F:/Game-Box/src/Sokoban/Box.java</file>
-            <file>file:/F:/Game-Box/src/Resources/Sokoban/wall.bmp</file>
+            <file>file:/F:/Game-Box/src/Sokoban/Menu.java</file>
+            <file>file:/F:/Game-Box/src/Sokoban/Select_Level/Page2.java</file>
+            <file>file:/F:/Game-Box/src/Sokoban/Select_Level/Page1.java</file>
         </group>
     </open-files>
 </project-private>

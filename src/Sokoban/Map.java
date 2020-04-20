@@ -110,7 +110,7 @@ public class Map {
                 currentLine = buffered_reader2.readLine();
 
                 rows.add(currentLine);
-            }
+            } 
             read_map.put(level, rows);
 
         } 

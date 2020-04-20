@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  */
 public class finish_level {
     
-   public  static   int nLevel_in_score_file =1;  
+   public  static   int nLevel_in_score_file = 1;  
    static  Pane pane_finish= new Pane() ; 
    static  Pane pane= new Pane() ;
    

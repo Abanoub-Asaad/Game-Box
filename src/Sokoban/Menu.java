@@ -1,4 +1,3 @@
-
 package Sokoban;
 
 import GameLoop.GameBox_Core;
@@ -10,95 +9,113 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import Sokoban.Select_Level.*;
+import static Sokoban.score.bufferwriter;
+import static Sokoban.score.bufferwriter_ulockedLvls;
+import static Sokoban.score.file_unlockedLvls;
+import static Sokoban.score.filewriter_ulockedLvls;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Menu {
 
     private static Pane menu_pane = new Pane();
     private static VBox text_pane = new VBox(22);
-    
+
     private static Button new_game_btn = new Button(" NEW GAME ");
-    private static Button continue_btn = new Button (" CONTINUE ");
-     private static Button setting_btn = new Button(" SETTING ");
+    private static Button continue_btn = new Button(" CONTINUE ");
+    private static Button setting_btn = new Button(" SETTING ");
     private static Button exit_btn = new Button(" EXIT ");
-   
-    
+
     public static Scene menu_scene = new Scene(menu_pane, 1375, 750);
 
     public static Pane getMenu_pane() {
         return menu_pane;
     }
-      
-      public static Scene MenuStyle(){
-         
+
+    public static Scene MenuStyle() {
+
         menu_scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
-        
+
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
         exit_btn.setId("menubutton");
         setting_btn.setId("menubutton");
-        
-        
+
         menu_pane.setId("menupane");
         new_game_btn.setLayoutX(100);
-        new_game_btn.setLayoutY(100);  
-    
+        new_game_btn.setLayoutY(100);
+
         text_pane.setLayoutX(540);
-        text_pane.setLayoutY(180); 
+        text_pane.setLayoutY(180);
         text_pane.setPrefSize(280, 400);
-        text_pane.getChildren().addAll(new_game_btn,continue_btn,setting_btn,exit_btn);
-        
+        text_pane.getChildren().addAll(new_game_btn, continue_btn, setting_btn, exit_btn);
+
         new_game_btn.setOnAction(e -> {
 
-              try {
+            try {
                 GameBox_Core.Root.setScene(start_level.store_name());
-           } catch (IOException ex) {
+                deleteContentOfSelectLevelFileAndIntializeToOne() ;
+            } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-            
+
         });
 
         continue_btn.setLayoutX(100);
         continue_btn.setLayoutY(150);
-          
+
         continue_btn.setOnAction(e -> {
 
-              Page1 page1_obj = new Page1();
-              
+            Page1 page1_obj = new Page1();
+
             try {
                 page1_obj.IntializePage1(GameBox_Core.Root);
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
-       
-            
+
         });
-        
+
         setting_btn.setLayoutX(100);
         setting_btn.setLayoutY(200);
-        
-        
+
         setting_btn.setOnAction(e -> {
 
-
-            
         });
-        
+
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(250);
         exit_btn.setOnAction(e -> {
 
-          GameBox_Core.Root.close();
-            
+            GameBox_Core.Root.close();
+
         });
-      
+
         menu_pane.getChildren().addAll(text_pane);
-          
-            return menu_scene; 
-      }
+
+        return menu_scene;
+    }
 
     public static Scene getMenu_scene() {
         return menu_scene;
     }
-      
+
+    /**
+     * delete every thing in the file of levels that  used in select level
+     * then make the file start from level one
+     * @throws IOException 
+     */
+    private static void deleteContentOfSelectLevelFileAndIntializeToOne() throws IOException {
+        PrintWriter writer = new PrintWriter(file_unlockedLvls);
+        writer.print("");
+        writer.close();
+        FileWriter filewriter_ = new FileWriter(file_unlockedLvls, true);
+        BufferedWriter bufferwriter_ = new BufferedWriter(filewriter_);
+        bufferwriter_.write("1");
+        bufferwriter_.newLine();
+        bufferwriter_.close();
+        filewriter_.close();
+    }
+
 }

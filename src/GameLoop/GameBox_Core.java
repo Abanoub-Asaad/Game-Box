@@ -11,7 +11,7 @@ public class GameBox_Core extends Application {
     @Override
     public void start(Stage Root_Stage) {
 
-      //  Root_Stage = new Stage();
+
         Root = Root_Stage;
         
         Games games_obj = new Games(Root_Stage);
