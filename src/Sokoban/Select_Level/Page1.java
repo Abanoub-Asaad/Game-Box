@@ -20,28 +20,27 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
 public class Page1 {
 
     private Text selectLevel_txt = new Text("Select Level");
-    private Group root = new Group();
-    private Scene SelectLevel_scene = new Scene(root, 1800, 750);
+    public Group root = new Group();
+    public Scene SelectLevel_scene = new Scene(root, 1800, 750);
     private boolean locked = true;
     private Image Imageback;
     private ImageView ImagbackIV;
     private int x, y;
     private static Page1 Page1;
     String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\Select Level\\unlockedLVL.txt"; //"C:\\SelectLevel\\src\\Resource\\unlockedLVL.txt";
-    
+
     private FileReader file_reader;
     private BufferedReader buffered_reader;
     Image lvlImage;
     ImageView lvlImage_IV;
 
     /**
-     * Method to get an object from the class
-     * it's a singleton pattern
-     * @return 
+     * Method to get an object from the class it's a singleton pattern
+     *
+     * @return
      */
     public static Page1 getInstance2() {
         if (Page1 == null) {
@@ -51,35 +50,33 @@ public class Page1 {
     }
 
     public Page1() {
-
+    
     }
 
     /**
-     * Default main constructor 
+     * Main method in "select level"
+     *
      * @param stage
-     * @throws IOException 
+     * @throws IOException
      */
-    public Page1(Stage stage) throws IOException {
+    public void IntializePage1(Stage stage) throws IOException  {
 
         x = 200;
         y = 200;
-       
+
         CreateBackground();
         SelectLvlTxt();
         createImage();
         MovePage(stage);
 
-        stage.setMaximized(true);
-        stage.setResizable(false);
         stage.setScene(SelectLevel_scene);
-        stage.show();
     }
 
     /**
      * Create background for the scene of select a specific level
      */
     public void CreateBackground() {
-        Imageback = new Image("Select Level//ww.jpg", 1370, 780, true, false);
+        Imageback = new Image("Resources/Sokoban/Select Level/ww.jpg", 1370, 780, true, false);
         ImagbackIV = new ImageView(Imageback);
         root.getChildren().add(ImagbackIV);
     }
@@ -105,10 +102,11 @@ public class Page1 {
         root.getChildren().add(selectLevel_txt);
     }
 
-    
     /**
-     * Method for making a specific image for each level that appears in Select Level scene
-     * @throws IOException 
+     * Method for making a specific image for each level that appears in Select
+     * Level scene
+     *
+     * @throws IOException
      */
     public void createImage() throws IOException {
         SetImage(0, x, y);
@@ -149,7 +147,7 @@ public class Page1 {
                 y += 100;
                 x = 200;
             }
-            
+
             SetImage(j, x, y);
             lvlImage_IV.setLayoutX(x);
             lvlImage_IV.setLayoutY(y);
@@ -171,8 +169,10 @@ public class Page1 {
     }
 
     /**
-     * Method for transition between the 2 pages which contain the levels, each page have 50 levels
-     * @param stage 
+     * Method for transition between the 2 pages which contain the levels, each
+     * page have 50 levels
+     *
+     * @param stage
      */
     public void MovePage(Stage stage) {
 
@@ -207,9 +207,10 @@ public class Page1 {
         page2.setCenterY(710);
         root.getChildren().addAll(page1, page2);
     }
-   
+
     /**
      * Method to set the level image number lvlN in specific position
+     *
      * @param lvlN
      * @param X
      * @param Y
@@ -218,7 +219,7 @@ public class Page1 {
      */
     protected void SetImage(int lvlN, int X, int Y) throws FileNotFoundException, IOException {
         locked = true;
-        lvlImage = new Image("Resource/lock.png", 70, 70, true, true);
+        lvlImage = new Image("Resources/Sokoban/Select Level/lock.png", 70, 70, true, true);
         lvlImage_IV = new ImageView(lvlImage);
 
         file_reader = new FileReader(fileName);
@@ -227,24 +228,24 @@ public class Page1 {
         String currentLine;
 
         while ((currentLine = buffered_reader.readLine()) != null) {
-            if (lvlN+1 == Integer.parseInt(currentLine) ) {
+            if (lvlN + 1 == Integer.parseInt(currentLine)) {
                 locked = false;
                 if (lvlN % 8 == 0) {
-                    lvlImage = new Image("Resources/Select Level/0.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/0.png", 70, 70, true, true);
                 } else if (lvlN % 2 == 0) {
-                    lvlImage = new Image("Resources/Select Level/1.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/1.png", 70, 70, true, true);
                 } else if (lvlN % 3 == 0) {
-                    lvlImage = new Image("Resources/Select Level/2.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/2.png", 70, 70, true, true);
                 } else if (lvlN % 4 == 0) {
-                    lvlImage = new Image("Resources/Select Level/3.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/3.png", 70, 70, true, true);
                 } else if (lvlN % 5 == 0) {
-                    lvlImage = new Image("Resources/Select Level/4.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/4.png", 70, 70, true, true);
                 } else if (lvlN % 6 == 0) {
-                    lvlImage = new Image("Resources/Select Level/5.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/5.png", 70, 70, true, true);
                 } else if (lvlN % 7 == 0) {
-                    lvlImage = new Image("Resources/Select Level/6.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/6.png", 70, 70, true, true);
                 } else {
-                    lvlImage = new Image("Resources/Select Level/7.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/7.png", 70, 70, true, true);
                 }
                 lvlImage_IV.setImage(lvlImage);
 

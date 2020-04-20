@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
+import Sokoban.Select_Level.*;
 
 public class Menu {
 
@@ -63,7 +63,14 @@ public class Menu {
           
         continue_btn.setOnAction(e -> {
 
-            
+              Page1 page1_obj = new Page1();
+              
+            try {
+                page1_obj.IntializePage1(GameBox_Core.Root);
+            } catch (IOException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
             
         });
         
@@ -73,7 +80,7 @@ public class Menu {
         
         setting_btn.setOnAction(e -> {
 
-   
+
             
         });
         

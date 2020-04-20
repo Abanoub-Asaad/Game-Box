@@ -33,11 +33,13 @@ import javafx.util.Duration;
 
 public class Games {
 
+    
     private Group gamesGroup = new Group();
     private final HBox gamesHBox = new HBox();
     private Scene gamesScene = new Scene(gamesGroup, 1400, 780);
 
     public Games(Stage gamesStage) {
+        
         finish_level.style();
         gamesStage.setMaximized(true);
         gamesStage.setResizable(false);
@@ -47,6 +49,7 @@ public class Games {
         createButtons(gamesStage);
         textChooseYourGame();
         gamesStage.show();
+        
     }
 
     private void createBackground() {

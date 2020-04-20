@@ -56,7 +56,7 @@ public class Page2 {
         Scene scene = new Scene(root, 1800, 750);
         stage.setMaximized(true);
         stage.setResizable(false);
-        Image Imageback = new Image("Resource/ww.jpg", 1370, 780, true, false);
+        Image Imageback = new Image("Resources/Sokoban/Select Level/ww.jpg", 1370, 780, true, false);
         ImageView ImagbackIV = new ImageView(Imageback);
         root.getChildren().add(ImagbackIV);
 
@@ -134,7 +134,7 @@ public class Page2 {
 
     public void SetImage(int lvlN) throws FileNotFoundException, IOException {
         locked = true;
-        lvlImage = new Image("Resource/lock.png", 70, 70, true, true);
+        lvlImage = new Image("Resources/Sokoban/Select Level/lock.png", 70, 70, true, true);
         IV = new ImageView(lvlImage);
 
         file_reader = new FileReader(fileName);
@@ -146,23 +146,24 @@ public class Page2 {
             if (lvlN + 1 == Integer.parseInt(currentLine)) {
                 locked = false;
                 if (lvlN % 8 == 0) {
-                    lvlImage = new Image("Resources/Select Level/0.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/0.png", 70, 70, true, true);
                 } else if (lvlN % 2 == 0) {
-                    lvlImage = new Image("Resources/Select Level/1.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/1.png", 70, 70, true, true);
                 } else if (lvlN % 3 == 0) {
-                    lvlImage = new Image("Resources/Select Level/2.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/2.png", 70, 70, true, true);
                 } else if (lvlN % 4 == 0) {
-                    lvlImage = new Image("Resources/Select Level/3.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/3.png", 70, 70, true, true);
                 } else if (lvlN % 5 == 0) {
-                    lvlImage = new Image("Resources/Select Level/4.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/4.png", 70, 70, true, true);
                 } else if (lvlN % 6 == 0) {
-                    lvlImage = new Image("Resources/Select Level/5.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/5.png", 70, 70, true, true);
                 } else if (lvlN % 7 == 0) {
-                    lvlImage = new Image("Resources/Select Level/6.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/6.png", 70, 70, true, true);
                 } else {
-                    lvlImage = new Image("Resources/Select Level/7.png", 70, 70, true, true);
+                    lvlImage = new Image("Resources/Sokoban/Select Level/7.png", 70, 70, true, true);
                 }
                 IV.setImage(lvlImage);
+
                 break;
             }
 
