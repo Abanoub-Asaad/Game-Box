@@ -75,6 +75,9 @@ public class Map {
         StorageLocation_Imageviews_Array.clear();
         Walls_Imageviews_Array.clear();
         Pipes_Imageviews_Array.clear();
+        Gates_Imageviews_Array.clear();
+        pad_iv=null;
+        
         Time.moves = 0;
         Time.seconds = 0;
 

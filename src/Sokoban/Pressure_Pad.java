@@ -6,10 +6,10 @@ import javafx.scene.image.ImageView;
 public class Pressure_Pad {
 
     protected static boolean levelHasvePad=false;
-    protected static boolean BoxOnPad ;
+    protected static boolean BoxOnPad  ;
     protected boolean PlayerOnPad;
     private static Image boxOnPad = new Image("Resources/Sokoban/crate_39.png", 50, 50, true, true);
-    private static ImageView boxOnPad_iv = new ImageView();
+    protected static ImageView boxOnPad_iv = new ImageView();
     protected static int pressure_pad_posX;
     protected static int pressure_pad_posY;
 
@@ -36,6 +36,7 @@ public class Pressure_Pad {
            Sokoban_Main.root.getChildren().add(boxOnPad_iv);
         }else{
              Sokoban_Main.root.getChildren().remove(boxOnPad_iv);
+             BoxOnPad = false;
         }
 
         if (BoxOnPad || PlayerOnPad) {

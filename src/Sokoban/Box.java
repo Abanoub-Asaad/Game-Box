@@ -1,6 +1,5 @@
 package Sokoban;
 
-import static Sokoban.Player.player_imageView;
 import javafx.scene.image.ImageView;
 
 public class Box extends Piece {
@@ -99,18 +98,21 @@ public class Box extends Piece {
             int y = (int) Map.Boxes_Imageviews_Array.get(cur_Box_Index).getY() + directionOnY * 50;
 
             if (Pressure_Pad.levelHasvePad) {
-                if (!gate_obj.checkBox_Gate(directionOnX, directionOnY)) {
+                if (!gate_obj.checkBox_Gate(directionOnX, directionOnY, cur_Box_Index)) {
 
                     Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
                     Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
                 } else {
-                    if (Pressure_Pad.BoxOnPad || (!Pressure_Pad.BoxOnPad && gate_obj.checkBox_Gate(directionOnX, directionOnY))) {
-                        System.out.println("fuck");
+                    if (Pressure_Pad.BoxOnPad || (!Pressure_Pad.BoxOnPad && !gate_obj.checkBox_Gate(directionOnX, directionOnY, cur_Box_Index))) {
+                        System.out.println("hello");
                         Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
                         Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
+                    } else {
+                        System.out.println("Thank you");
                     }
                 }
             } else if (!Pipe.isPipe(x, y)) {
+                System.out.println("merci");
                 Map.Boxes_Imageviews_Array.get(cur_Box_Index).setX(x);
                 Map.Boxes_Imageviews_Array.get(cur_Box_Index).setY(y);
             }
