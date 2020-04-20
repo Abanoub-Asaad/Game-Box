@@ -15,7 +15,7 @@ public class Map {
     
     private static Pressure_Pad pad_gate_obg = new Pressure_Pad();
     private static  Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
-    private static Image wall = new Image("Resources/Sokoban/wall.png", 50, 50, true, true);
+    private static Image wall = new Image("Resources/Sokoban/wall.bmp", 50, 50, true, true);
 
     protected static Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
     protected static Image playerU = new Image("Resources/Sokoban/player_02.png", 50, 50, true, true);
