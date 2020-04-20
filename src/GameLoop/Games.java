@@ -1,4 +1,3 @@
-
 package GameLoop;
 
 import Arkanoid.Arkanoid_main;
@@ -32,15 +31,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Games 
-{
-    private Group gamesGroup= new Group();
-    private final HBox gamesHBox= new HBox();
+public class Games {
+
+    private Group gamesGroup = new Group();
+    private final HBox gamesHBox = new HBox();
     private Scene gamesScene = new Scene(gamesGroup, 1400, 780);
 
-    public Games(Stage gamesStage) 
-    {  
-           finish_level.style();
+    public Games(Stage gamesStage) {
+        finish_level.style();
         gamesStage.setMaximized(true);
         gamesStage.setResizable(false);
         gamesStage.setScene(gamesScene);
@@ -50,106 +48,102 @@ public class Games
         textChooseYourGame();
         gamesStage.show();
     }
-      
-      private void createBackground()
-    {
+
+    private void createBackground() {
         Image Imageback = new Image("Resources/gamesPage/wp.jpg", 1370, 780, true, false);
-        
+
         ImageView ImagbackIV = new ImageView(Imageback);
-       gamesGroup.getChildren().add(ImagbackIV);
+        gamesGroup.getChildren().add(ImagbackIV);
     }
-    
-     private void createButtons(Stage MainStage)
-    {
+
+    private void createButtons(Stage MainStage) {
         Button SokobanBtn = new Button();
         SokobanBtn.setLayoutX(300);
         SokobanBtn.setLayoutY(250);
-        Image sokobanImage =new Image("Resources/gamesPage/socopan.png",200,300,true, false);
-        ImageView sokobanImageIV =new ImageView(sokobanImage);
+        Image sokobanImage = new Image("Resources/gamesPage/socopan.png", 200, 300, true, false);
+        ImageView sokobanImageIV = new ImageView(sokobanImage);
         SokobanBtn.setGraphic(sokobanImageIV);
-        SokobanBtn.setOnMousePressed(event ->  {
-           
+        SokobanBtn.setOnMousePressed(event -> {
+
             try {
-               
+
                 Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
-                
-                  MainStage.setScene(Menu.MenuStyle());
+
+                MainStage.setScene(Menu.MenuStyle());
             } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-          
-            
-        } ); 
+
+        });
         gamesGroup.getChildren().add(SokobanBtn);
-        
-        
+
         Button TetrisBtn = new Button();
         TetrisBtn.setLayoutX(550);
         TetrisBtn.setLayoutY(250);
         Image tetrisImage = new Image("Resources/gamesPage/tetris.png", 300, 300, true, false);
         ImageView tetrisImageIV = new ImageView(tetrisImage);
         TetrisBtn.setGraphic(tetrisImageIV);
-        TetrisBtn.setOnMousePressed(event ->  { Tetris_Main.getInstanceFromTetris().Tetris_Main(MainStage); } ); 
+        TetrisBtn.setOnMousePressed(event -> {
+            Tetris_Main.getInstanceFromTetris().Tetris_Main(MainStage);
+        });
         gamesGroup.getChildren().add(TetrisBtn);
-        
-        
-        
+
         Button ArkanoidBtn = new Button();
         ArkanoidBtn.setLayoutX(900);
         ArkanoidBtn.setLayoutY(250);
         Image arkanoidImage = new Image("Resources/gamesPage/arkanoid.jpg", 200, 200, true, false);
         ImageView arkanoidImageIV = new ImageView(arkanoidImage);
         ArkanoidBtn.setGraphic(arkanoidImageIV);
-          ArkanoidBtn.setOnMousePressed(event ->  { try {
-            Arkanoid_main.getInstanceFromArkanoid().openArkanoidMain(MainStage);
+        ArkanoidBtn.setOnMousePressed(event -> {
+            try {
+                Arkanoid_main.getInstanceFromArkanoid().openArkanoidMain(MainStage);
             } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
             }
-});
+        });
         gamesGroup.getChildren().add(ArkanoidBtn);
-        
+
         Button TicTacToeBtn = new Button();
         TicTacToeBtn.setLayoutX(600);
         TicTacToeBtn.setLayoutY(470);
         Image xoImage = new Image("Resources/gamesPage/xo.png", 200, 200, true, false);
         ImageView xoImageIV = new ImageView(xoImage);
         TicTacToeBtn.setGraphic(xoImageIV);
-        
-        TicTacToeBtn.setOnMousePressed(event ->  { XO_Main.getInstanceFromXO().openTicTacToeMain(MainStage); } ); 
-        gamesGroup.getChildren().add(TicTacToeBtn);
-        
-        AnimationOfPage(SokobanBtn, TetrisBtn, ArkanoidBtn , TicTacToeBtn);
-        buttonsShadow(SokobanBtn, TetrisBtn, ArkanoidBtn , TicTacToeBtn);
-        
-    }
-  
- private void textChooseYourGame()
- {
-     Text choose = new Text();
-     choose.setText("Choose Your Game...");
-     choose.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
-     choose.setFill(Color.GOLD);
-     choose.setX(170);
-     choose.setY(200);
-     gamesGroup.getChildren().add(choose);
 
-     AnimationOfPage(choose);
-     
-     DropShadow shadow = new DropShadow();
-     shadow.setBlurType(BlurType.GAUSSIAN);
-     shadow.setColor(Color.ROSYBROWN);
-     shadow.setHeight(5);
-     shadow.setWidth(5);
-     shadow.setRadius(5);
-     shadow.setOffsetX(3);
-     shadow.setOffsetY(2);
-     shadow.setSpread(12);
-     choose.setEffect(shadow);
- }
-    
-    private void AnimationOfPage(Button soko, Button tetris, Button arkanoid , Button XO ) 
-    {
+        TicTacToeBtn.setOnMousePressed(event -> {
+            XO_Main.getInstanceFromXO().openTicTacToeMain(MainStage);
+        });
+        gamesGroup.getChildren().add(TicTacToeBtn);
+
+        AnimationOfPage(SokobanBtn, TetrisBtn, ArkanoidBtn, TicTacToeBtn);
+        buttonsShadow(SokobanBtn, TetrisBtn, ArkanoidBtn, TicTacToeBtn);
+
+    }
+
+    private void textChooseYourGame() {
+        Text choose = new Text();
+        choose.setText("Choose Your Game...");
+        choose.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
+        choose.setFill(Color.GOLD);
+        choose.setX(170);
+        choose.setY(200);
+        gamesGroup.getChildren().add(choose);
+
+        AnimationOfPage(choose);
+
+        DropShadow shadow = new DropShadow();
+        shadow.setBlurType(BlurType.GAUSSIAN);
+        shadow.setColor(Color.ROSYBROWN);
+        shadow.setHeight(5);
+        shadow.setWidth(5);
+        shadow.setRadius(5);
+        shadow.setOffsetX(3);
+        shadow.setOffsetY(2);
+        shadow.setSpread(12);
+        choose.setEffect(shadow);
+    }
+
+    private void AnimationOfPage(Button soko, Button tetris, Button arkanoid, Button XO) {
         FadeTransition sokoFade = new FadeTransition(Duration.millis(5000));
         sokoFade.setNode(soko);
         sokoFade.setFromValue(0);
@@ -175,20 +169,19 @@ public class Games
         xoFade.setCycleCount(1);
         xoFade.play();
     }
-  private void AnimationOfPage(Text text)
- { 
-       FadeTransition textFade = new FadeTransition(Duration.millis(5000));
+
+    private void AnimationOfPage(Text text) {
+        FadeTransition textFade = new FadeTransition(Duration.millis(5000));
         textFade.setNode(text);
         textFade.setFromValue(0);
         textFade.setToValue(1);
         textFade.setCycleCount(1);
         textFade.play();
-     
- }
-    private void buttonsShadow(Button soko, Button tetris, Button arkanoid , Button xo) 
-            
-    {
-        
+
+    }
+
+    private void buttonsShadow(Button soko, Button tetris, Button arkanoid, Button xo) {
+
         DropShadow sokoShadow = new DropShadow();
         sokoShadow.setBlurType(BlurType.THREE_PASS_BOX);
         sokoShadow.setHeight(10);
@@ -223,5 +216,5 @@ public class Games
             xo.setEffect(arkanoidShadow);
         });
     }
- 
+
 }

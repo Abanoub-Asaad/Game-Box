@@ -76,7 +76,7 @@ public class Map {
         Walls_Imageviews_Array.clear();
         Pipes_Imageviews_Array.clear();
         Gates_Imageviews_Array.clear();
-        pad_iv=null;
+        Sokoban_Main.root.getChildren().remove(pad_iv);
         
         Time.moves = 0;
         Time.seconds = 0;
