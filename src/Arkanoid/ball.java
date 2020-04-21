@@ -12,34 +12,41 @@ import javafx.scene.image.ImageView;
  *
  * @author egypt
  */
-public class ball {
+public class Ball {
 
-    Image ballImage = new Image("Resources/Arkanoid/ball.png", 30, 30, false, false);
-    ImageView ball_iv = new ImageView(ballImage);
+    private Image ballImage = new Image("Resources/Arkanoid/ball.png", 30, 30, false, false);
+    private ImageView ball_iv = new ImageView(ballImage);
 
-    double Height = 48;
-    double Width = 50;
-    double stepX = 1;
-    double stepY = -1;
-    double speed = 5;
-    
-  public double getX()
-    {
-        return ball_iv.getX() ;
+    private double Height = 48;
+    private double Width = 50;
+    private double stepX = 1;
+    private double stepY = -1;
+    private double speed = 5;
+
+    public double getX() {
+        return ball_iv.getX();
     }
-    public void setX(double x)
-    {
+
+    public ImageView getBall_iv() {
+        return ball_iv;
+    }
+
+    public void setBall_iv(ImageView ball_iv) {
+        this.ball_iv = ball_iv;
+    }
+
+    public void setX(double x) {
         ball_iv.setX(x);
     }
-    public double getY() 
-    {
+
+    public double getY() {
         return ball_iv.getY();
     }
 
-    public void setY(double y)
-    {
+    public void setY(double y) {
         ball_iv.setY(y);
     }
+
     public double getHeight() {
         return Height;
     }

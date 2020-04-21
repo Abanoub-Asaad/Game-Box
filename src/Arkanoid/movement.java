@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
+import javafx.animation.ParallelTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,42 +23,63 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
  * @author egypt
  */
-public class movement {
+public class Movement {
 
-    public static paddle paddle_obj = new paddle();
-    public static ball ball_obj = new ball();
-    public static boolean goLeft = false;
-    public static boolean goRight = false;
-    public static boolean BallDoesnotMove = false;
+    private static Paddle paddle_obj = new Paddle();
+    private static Ball ball_obj = new Ball();
+    private PlayerNameFile player_obj = new PlayerNameFile();
+    private Icons icon;
+    private Arkanoid_Map map;
+    private Score score;
+    private Powerups powerup = new Powerups();
+    public int lives = 5;
+    private static boolean goLeft = false;
+    private static boolean goRight = false;
+    private static boolean BallDoesnotMove = false;
     private static boolean clickOnlyOnce = false, Play_Animation = false;
     static Text pressToStart = new Text();
+    private Stage arkanoid_stage;
 
-    public static void start() throws IOException {
+    public Movement(Stage Arkanoid_stage) throws IOException {
+        map = new Arkanoid_Map();
+        this.arkanoid_stage = Arkanoid_stage;
+        start();
+    }
+
+    private void start() throws IOException {
+        ArkanoidMain.root.getChildren().clear();
+
+        dragUsingKeyboard(ArkanoidMain.Arkanoid_scene);
+
+        map.startlevel();
+        icon = new Icons();
+        score = new Score();
         goLeft = false;
         goRight = false;
         BallDoesnotMove = false;
         clickOnlyOnce = false;
         Play_Animation = false;
-        Arkanoid_main.root.getChildren().clear();
-        map.startlevel();
-        dragUsingKeyboard(Arkanoid_main.Arkanoid_scene);
-        PressEnterToStart();
-        paddle_obj.setX((Arkanoid_main.Arkanoid_scene.getWidth() / 2) - paddle_obj.getWidth());
-        paddle_obj.setY((Arkanoid_main.Arkanoid_scene.getHeight() - paddle_obj.getWidth()));
 
+        PressEnterToStart();
+        paddle_obj.setX((ArkanoidMain.Arkanoid_scene.getWidth() / 2) - paddle_obj.getWidth());
+        paddle_obj.setY((ArkanoidMain.Arkanoid_scene.getHeight() - paddle_obj.getWidth()));
         ball_obj.setX(paddle_obj.getX() + (paddle_obj.getWidth() / 2) - (ball_obj.getWidth() / 2) + 50);
         ball_obj.setY(paddle_obj.getY() - ball_obj.getHeight() - 1);
+        BaseClass.ShowPlayerNameOnScreen(player_obj.getPlayerName());
+        BaseClass.check_Escape(ArkanoidMain.Arkanoid_scene, arkanoid_stage, Menu.sceneButtons);
+        icon.DrawHeart();
+        ArkanoidMain.root.getChildren().addAll(ball_obj.getBall_iv(), paddle_obj.getPaddle_iv());
 
-        Arkanoid_main.root.getChildren().addAll(ball_obj.ball_iv, paddle_obj.paddle_iv);
-        StartMovement(Arkanoid_main.Arkanoid_scene);
+        StartMovement(ArkanoidMain.Arkanoid_scene);
     }
 
-    public static void StartMovement(Scene scene_1) {
+    private void StartMovement(Scene scene_1) {
 
         scene_1.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
@@ -65,7 +87,7 @@ public class movement {
                 if (e.getCode() == KeyCode.ENTER && clickOnlyOnce == false) {
                     GameMovement(true);
                     clickOnlyOnce = true;
-                    Arkanoid_main.root.getChildren().remove(pressToStart);
+                    ArkanoidMain.root.getChildren().remove(pressToStart);
                 }
 
             }
@@ -73,20 +95,25 @@ public class movement {
 
     }
 
-    public static void GameMovement(boolean play_Animation) {
-
+    private void GameMovement(boolean play_Animation) {
         AnimationTimer at;
         at = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 if (goLeft && paddle_obj.getX() > 0 && !BallDoesnotMove) {
-                    paddle_obj.setX(paddle_obj.getX() - paddle_obj.speed);
+                    paddle_obj.setX(paddle_obj.getX() - paddle_obj.getSpeed());
                 }
-                if (goRight && paddle_obj.getX() < Arkanoid_main.Arkanoid_scene.getWidth() - paddle_obj.getWidth() * 2
+                if (goRight && paddle_obj.getX() < ArkanoidMain.Arkanoid_scene.getWidth() - paddle_obj.getWidth() * 2
                         && !BallDoesnotMove) {
-                    paddle_obj.setX(paddle_obj.getX() + paddle_obj.speed);
+                    paddle_obj.setX(paddle_obj.getX() + paddle_obj.getSpeed());
                 }
-
+                powerup.checkexpand(paddle_obj);
+                powerup.checkshrink(paddle_obj);
+                powerup.checkempty(paddle_obj);
+                powerup.checkFast(paddle_obj, ball_obj);
+                powerup.checkSlow(paddle_obj, ball_obj);
+                powerup.checkExtra100(paddle_obj, score);
+                powerup.checkExtra50(paddle_obj, score);
                 checkBorders();
                 checkBlocks();
                 checkPaddle();
@@ -106,7 +133,7 @@ public class movement {
         }
     }
 
-    public static void checkBlocks() {
+    private void checkBlocks() {
         for (ImageView b : map.bricks_arraylist) {
             boolean ball_down_block = ball_obj.getX() <= b.getX() + 150 && ball_obj.getX() >= b.getX() - ball_obj.getWidth() && ball_obj.getY() <= b.getY() + 50 + 3 && ball_obj.getY() >= b.getY() + 50 - 3;
             boolean ball_above_block = ball_obj.getX() <= b.getX() + 150 && ball_obj.getX() >= b.getX() - ball_obj.getWidth() && ball_obj.getY() <= b.getY() - ball_obj.getHeight() + 3 && ball_obj.getY() >= b.getY() - ball_obj.getHeight() - 3;
@@ -115,66 +142,84 @@ public class movement {
 
             //==========================
             if (ball_down_block) {
-
                 if (!b.isDisabled()) {
-                    System.out.print("block number " + map.bricks_arraylist.indexOf(b) + "\n");
-                    b.setImage(null);
-                    b.setDisable(true);
-                    Arkanoid_main.root.getChildren().remove(b);
-                    ball_obj.setStepY(1);
-
-                    if (checkWin()) {
-                        if (!BallDoesnotMove) {
-                            finish(true);
-                            BallDoesnotMove = true;
+                    if (!checkdouble(b)) {
+                        icon.check_number(b);
+                        b.setImage(null);
+                        b.setDisable(true);
+                        ArkanoidMain.root.getChildren().remove(b);
+                        if (checkWin()) {
+                            if (!BallDoesnotMove) {
+                                finish(true);
+                                BallDoesnotMove = true;
+                            }
                         }
                     }
+                    Sound.playsound(); //Sounds
+                    ball_obj.setStepY(1);
+                    score.SetScore(1);
                 }
 
             } else if (ball_above_block) {
 
                 if (!b.isDisable()) {
-                    b.setImage(null);
-                    b.setDisable(true);
-                    Arkanoid_main.root.getChildren().remove(b);
-                    ball_obj.setStepY(-1);
-
-                    if (checkWin()) {
-                        if (!BallDoesnotMove) {
-                            finish(true);
-                            BallDoesnotMove = true;
-
+                    if (!checkdouble(b)) {
+                        icon.check_number(b);
+                        b.setImage(null);
+                        b.setDisable(true);
+                        ArkanoidMain.root.getChildren().remove(b);
+                        if (checkWin()) {
+                            if (!BallDoesnotMove) {
+                                finish(true);
+                                BallDoesnotMove = true;
+                            }
                         }
                     }
+                    Sound.playsound(); //Sounds
+                    ball_obj.setStepY(-1);
+                    score.SetScore(1);
+
                 }
 
             } else if (ball_left_block) {
                 if (!b.isDisable()) {
-                    b.setImage(null);
-                    b.setDisable(true);
-                    Arkanoid_main.root.getChildren().remove(b);
-                    ball_obj.setStepX(-1);
-                    if (checkWin()) {
-                        if (!BallDoesnotMove) {
-                            finish(true);
-                            BallDoesnotMove = true;
+                    if (!checkdouble(b)) {
+                        icon.check_number(b);
+                        b.setImage(null);
+                        b.setDisable(true);
+                        ArkanoidMain.root.getChildren().remove(b);
+                        if (checkWin()) {
+                            if (!BallDoesnotMove) {
+                                finish(true);
+                                BallDoesnotMove = true;
+                            }
                         }
                     }
+                    Sound.playsound(); //Sounds
+                    ball_obj.setStepX(-1);
+                    score.SetScore(1);
+
                 }
 
             } else if (blockRight) {
 
                 if (!b.isDisable()) {
-                    b.setImage(null);
-                    b.setDisable(true);
-                    Arkanoid_main.root.getChildren().remove(b);
-                    ball_obj.setStepX(1);
-                    if (checkWin()) {
-                        if (!BallDoesnotMove) {
-                            finish(true);
-                            BallDoesnotMove = true;
+                    if (!checkdouble(b)) {
+                        icon.check_number(b);
+                        b.setImage(null);
+                        b.setDisable(true);
+                        ArkanoidMain.root.getChildren().remove(b);
+                        if (checkWin()) {
+                            if (!BallDoesnotMove) {
+                                finish(true);
+                                BallDoesnotMove = true;
+                            }
                         }
                     }
+                    Sound.playsound(); //Sounds
+                    ball_obj.setStepX(1);
+                    score.SetScore(1);
+
                 }
 
             }
@@ -183,22 +228,46 @@ public class movement {
 
     }
 
-    public static boolean checkWin() {
+    private boolean checkdouble(ImageView brick) {
+        switch (brick.getId()) {
+            case "21":
+                brick.setImage(map.getBroken_double_brick1());
+                brick.setId("1");
+                return true;
+            case "22":
+                brick.setImage(map.getBroken_double_brick2());
+                brick.setId("1");
+                return true;
+            case "23":
+                brick.setImage(map.getBroken_double_brick3());
+                brick.setId("1");
+                return true;
+            case "24":
+                brick.setImage(map.getBroken_double_brick4());
+                brick.setId("1");
+                return true;
+        }
+        return false;
+    }
+
+    private boolean checkWin() {
         for (ImageView b : map.bricks_arraylist) {
             if (!b.isDisable()) {
                 return false;
             }
         }
+        Sound.mediaPlayer_background.pause();
+        Sound.mediaPlayer_win.play();
         return true;
 
     }
 
-    public static void checkBorders() {
+    private void checkBorders() {
 
-        boolean atRightBorder = ball_obj.getX() >= (Arkanoid_main.Arkanoid_scene.getWidth() - ball_obj.getWidth());
+        boolean atRightBorder = ball_obj.getX() >= (ArkanoidMain.Arkanoid_scene.getWidth() - ball_obj.getWidth());
         boolean atLeftBorder = ball_obj.getX() <= 0;
         boolean atTopBorder = ball_obj.getY() <= (ball_obj.getWidth()) / 2;
-        boolean atBottomBorder = ball_obj.getY() >= (Arkanoid_main.Arkanoid_scene.getHeight() - ball_obj.getWidth());
+        boolean atBottomBorder = ball_obj.getY() >= (ArkanoidMain.Arkanoid_scene.getHeight() - ball_obj.getWidth());
 
         //Here we change the Direction of the Ball 
         if (atRightBorder) {
@@ -220,34 +289,26 @@ public class movement {
                 BallDoesnotMove = true;
                 goRight = false;
                 goLeft = false;
+                Sound.mediaPlayer_ball_out.play();
+                Sound.mediaPlayer_background.pause();
 
             }
         }
 
     }
 
-    private static void finish(boolean win) {
+    private void finish(boolean win) {
+
         Stage finishStage = new Stage();
         BorderPane root = new BorderPane();
         Scene scene_finish = new Scene(root, 400, 100);
+
         HBox Label = new HBox(15);
         Label.setAlignment(Pos.BOTTOM_CENTER);
         HBox bBox = new HBox(20);
+
         String labels;
         Button nextlevel = new Button("next level");
-        nextlevel.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    start();
-                    finishStage.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        }
-        );
 
         if (win) {
             labels = "You Win";
@@ -255,7 +316,41 @@ public class movement {
 
         } else {
             labels = "Game Over";
+            try {
+                score.WriteScoreInFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Movement.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Sound.mediaPlayer_ball_out.play();
         }
+
+        nextlevel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    start();
+                    finishStage.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Movement.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }
+        );
+        Button close = new Button("Close");
+        close.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    score.WriteScoreInFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(Movement.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Platform.exit();
+
+            }
+        }
+        );
 
         Label label = new Label(labels);
         final double MAX_FONT_SIZE = 30.0; // define max font size you need
@@ -268,27 +363,22 @@ public class movement {
             restartText = "Next Level";
         }
 
-        Button close = new Button("Close");
-        close.setOnAction(new EventHandler<ActionEvent>() {
+        arkanoid_stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
-            public void handle(ActionEvent e) {
-                Platform.exit();
-
+            public void handle(WindowEvent we) {
+                System.out.println("Stage is closing");
             }
-        }
-        );
+        });
 
         bBox.getChildren().addAll(close);
         root.setBottom(bBox);
         finishStage.setScene(scene_finish);
         finishStage.show();
+
     }
 
-    ;
-    
-   
-        private static void dragUsingKeyboard(Scene scene1) {
-        Arkanoid_main.Arkanoid_scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+    private void dragUsingKeyboard(Scene scene1) {
+        ArkanoidMain.Arkanoid_scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
                 if (e.getCode() == KeyCode.LEFT) {
@@ -299,7 +389,7 @@ public class movement {
                 }
             }
         });
-        Arkanoid_main.Arkanoid_scene.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+        ArkanoidMain.Arkanoid_scene.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
                 if (e.getCode() == KeyCode.LEFT) {
@@ -314,7 +404,7 @@ public class movement {
 
     }
 
-    public static void checkPaddle() {
+    private void checkPaddle() {
 
         boolean atLeftBorder = ball_obj.getX() >= (paddle_obj.getX() - ball_obj.getWidth());
         boolean atRightBorder = ball_obj.getX() <= (paddle_obj.getX() + paddle_obj.getWidth() + ball_obj.getWidth() - 10);
@@ -345,13 +435,12 @@ public class movement {
         }
     }
 
-    public static void PressEnterToStart()
-    {
-        pressToStart.setX(Arkanoid_main.Arkanoid_scene.getWidth() / 2 - 250);
-        pressToStart.setY(Arkanoid_main.Arkanoid_scene.getHeight() / 2 + 150);
+    private void PressEnterToStart() {
+        pressToStart.setX(ArkanoidMain.Arkanoid_scene.getWidth() / 2 - 250);
+        pressToStart.setY(ArkanoidMain.Arkanoid_scene.getHeight() / 2 + 150);
         pressToStart.setFont(Font.font("Abyssinica SIL", FontWeight.BOLD, FontPosture.REGULAR, 50));
         pressToStart.setFill(Color.DEEPSKYBLUE);// setting colour of the text to blue   
         pressToStart.setText("Press \" Enter \" to Start");
-        Arkanoid_main.root.getChildren().add(pressToStart);
+        ArkanoidMain.root.getChildren().add(pressToStart);
     }
 }

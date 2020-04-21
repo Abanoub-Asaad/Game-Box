@@ -24,7 +24,7 @@ public class Page1 {
 
     private Text selectLevel_txt = new Text("Select Level");
     public Group root = new Group();
-    public Scene SelectLevel_scene = new Scene(root, 1800, 750);
+    protected static Scene scene_page1 ;//= new Scene(root, 1800, 750);
     private boolean locked = true;
     private Image Imageback;
     private ImageView ImagbackIV;
@@ -60,7 +60,7 @@ public class Page1 {
      * @throws IOException
      */
     public void IntializePage1(Stage stage) throws IOException  {
-
+         scene_page1 = new Scene(root, 1800, 750);
         x = 200;
         y = 200;
 
@@ -69,7 +69,7 @@ public class Page1 {
         createImage();
         MovePage(stage);
 
-        stage.setScene(SelectLevel_scene);
+        stage.setScene(scene_page1);
     }
 
     /**
@@ -176,36 +176,45 @@ public class Page1 {
      */
     public void MovePage(Stage stage) {
 
-        Circle page1, page2;
-        page1 = new Circle();
-        page2 = new Circle();
-        page1.setRadius(10);
-        page1.setFill(Color.WHITE);
+        Circle page1_circle, page2_circle;
+        page1_circle = new Circle();
+        page2_circle = new Circle();
+        page1_circle.setRadius(10);
+        page1_circle.setFill(Color.WHITE);
 
-        page1.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
-        page1.setCenterX(690);
-        page1.setCenterY(710);
+        page1_circle.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
+        page1_circle.setCenterX(690);
+        page1_circle.setCenterY(710);
 
-        page2.setRadius(10);
-        page2.setFill(Color.GREY);
-        page2.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
-        page2.setOnMouseEntered(event -> {
-            page2.setFill(Color.WHITE);
+          
+        page2_circle.setCenterX(660);
+        page2_circle.setCenterY(710);
+        
+        page2_circle.setRadius(10);
+        page2_circle.setFill(Color.GREY);
+        page2_circle.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
+        
+        page2_circle.setOnMouseEntered(event -> {
+            page2_circle.setFill(Color.WHITE);
         });
-        page2.setOnMouseExited(event -> {
-            page2.setFill(Color.GREY);
+        
+        
+        page2_circle.setOnMouseExited(event -> {
+            page2_circle.setFill(Color.GREY);
         });
 
-        page2.setOnMouseClicked(event -> {
+        page2_circle.setOnMouseClicked(event -> {
             try {
                 Page2.getInstance().page2_Main(stage);
             } catch (IOException ex) {
                 Logger.getLogger(Page1.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        page2.setCenterX(660);
-        page2.setCenterY(710);
-        root.getChildren().addAll(page1, page2);
+        
+        
+ 
+      
+        root.getChildren().addAll(page1_circle, page2_circle);
     }
 
     /**

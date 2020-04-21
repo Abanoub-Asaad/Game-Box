@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 public class Page2 {
 
+    protected static Scene scene_page2;
     static Group root = new Group();
     boolean locked = false;
     private Image lvlImage;
@@ -49,7 +50,7 @@ public class Page2 {
 
         Text lvl = new Text("Select Level");
 
-        Scene scene = new Scene(root, 1800, 750);
+        scene_page2 = new Scene(root, 1800, 750);
         stage.setMaximized(true);
         stage.setResizable(false);
         Image Imageback = new Image("Resources/Sokoban/Select Level/ww.jpg", 1370, 780, true, false);
@@ -99,31 +100,40 @@ public class Page2 {
         Fade.setCycleCount(1);
         Fade.play();
 
-        Circle page1, page2;
-        page1 = new Circle();
-        page2 = new Circle();
-        page2.setRadius(10);
-        page2.setFill(Color.WHITE);
+        Circle page1_circle, page2_circle;
+        page1_circle = new Circle();
+        page2_circle = new Circle();
+        page2_circle.setRadius(10);
+        page2_circle.setFill(Color.WHITE);
 
-        page2.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
-        page2.setCenterX(660);
-        page2.setCenterY(710);
+        page2_circle.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
+        page2_circle.setCenterX(660);
+        page2_circle.setCenterY(710);
 
-        page1.setRadius(10);
-        page1.setFill(Color.GREY);
-        page1.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
-        page1.setOnMouseEntered(event -> {
-            page1.setFill(Color.WHITE);
+        page1_circle.setRadius(10);
+        page1_circle.setFill(Color.GREY);
+        page1_circle.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
+        
+                  page1_circle.setOnMouseEntered(event -> {
+            page1_circle.setFill(Color.WHITE);
         });
-        page1.setOnMouseExited(event -> {
-            page1.setFill(Color.GREY);
+        
+        
+        page1_circle.setOnMouseExited(event -> {
+            page1_circle.setFill(Color.GREY);
         });
 
-        page1.setCenterX(690);
-        page1.setCenterY(710);
-        root.getChildren().addAll(page1, page2);
+        page1_circle.setOnMouseClicked(event -> {
+          
+            stage.setScene(Page1.scene_page1);
+        
+        });
 
-        stage.setScene(scene);
+        page1_circle.setCenterX(690);
+        page1_circle.setCenterY(710);
+        root.getChildren().addAll(page1_circle, page2_circle);
+
+        stage.setScene(scene_page2);
         stage.show();
 
     }

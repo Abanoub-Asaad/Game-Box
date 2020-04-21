@@ -1,12 +1,8 @@
 package GameLoop;
 
-import Arkanoid.Arkanoid_main;
-import GameLoop.GameBox_Core;
 import Sokoban.Menu;
 import Sokoban.Sokoban_Main;
 import Sokoban.finish_level;
-import Sokoban.rank;
-import Sokoban.start_level;
 
 import Tetris.Tetris_Main;
 import TicTacToe.XO_Main;
@@ -91,6 +87,7 @@ public class Games {
         });
         gamesGroup.getChildren().add(TetrisBtn);
 
+
         Button ArkanoidBtn = new Button();
         ArkanoidBtn.setLayoutX(900);
         ArkanoidBtn.setLayoutY(250);
@@ -98,13 +95,10 @@ public class Games {
         ImageView arkanoidImageIV = new ImageView(arkanoidImage);
         ArkanoidBtn.setGraphic(arkanoidImageIV);
         ArkanoidBtn.setOnMousePressed(event -> {
-            try {
-                Arkanoid_main.getInstanceFromArkanoid().openArkanoidMain(MainStage);
-            } catch (IOException ex) {
-                Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Arkanoid.Menu menu = new Arkanoid.Menu(MainStage);
         });
         gamesGroup.getChildren().add(ArkanoidBtn);
+
 
         Button TicTacToeBtn = new Button();
         TicTacToeBtn.setLayoutX(600);
