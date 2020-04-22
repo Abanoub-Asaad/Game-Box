@@ -1,10 +1,6 @@
 
-package GameLoop;
+package Arkanoid;
 
-import Arkanoid.ArkanoidMain;
-import Arkanoid.Ball;
-import Arkanoid.Paddle;
-import Arkanoid.Sound;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
