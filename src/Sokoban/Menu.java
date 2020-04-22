@@ -33,7 +33,7 @@ public class Menu {
         return menu_pane;
     }
 
-    public static Scene MenuStyle() {
+    public static Scene openMenu_sokoban() {
 
         menu_scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
 

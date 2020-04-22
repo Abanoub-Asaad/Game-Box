@@ -68,7 +68,7 @@ public class Games {
 
                 Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
 
-                MainStage.setScene(Menu.MenuStyle());
+                MainStage.setScene(Menu.openMenu_sokoban());
             } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
             }

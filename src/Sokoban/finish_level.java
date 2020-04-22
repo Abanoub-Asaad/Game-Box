@@ -98,7 +98,7 @@ public class finish_level {
               Time.time_text.setText("time :" +"00:00" + " ");
               Time.show_moves_number(0);
               Time.timer.play();
-              Map.startlevel();
+              Map.startlevel(1);
               GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
                 
         

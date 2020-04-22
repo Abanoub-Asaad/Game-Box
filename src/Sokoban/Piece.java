@@ -24,7 +24,7 @@ public class Piece {
      ** checkKeyboard method is used for Accessing player's desired location 
      */
 
-    protected static void checkKeyboard(Scene Sokoban_Scene) {
+    public static void checkKeyboard(Scene Sokoban_Scene) {
 
         Sokoban_Scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override

@@ -9,12 +9,9 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Map {
+public class Map { 
 
-    private static boolean next=false;
-    
-    private static Pressure_Pad pad_gate_obg = new Pressure_Pad();
-    private static  Image ground = new Image("Resources/Sokoban/ground.png", 50, 50, true, true);
+
     private static Image wall = new Image("Resources/Sokoban/wall.bmp", 50, 50, true, true);
 
     protected static Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
@@ -30,16 +27,16 @@ public class Map {
     protected static Image pipeU = new Image("Resources/Sokoban/pipeU.png", 50, 50, true, true);
     protected static Image pressure_pad = new Image("Resources/Sokoban/pressure_pad.png", 50, 50, true, true);
     protected static Image gate = new Image("Resources/Sokoban/gate.bmp", 50, 50, true, true);
-    
+
     private static ImageView tmp_imageView = new ImageView();
     protected static ImageView pad_iv = new ImageView();
-    
+
     protected static ArrayList<ImageView> Walls_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> StorageLocation_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Boxes_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Pipes_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Gates_Imageviews_Array = new ArrayList<>();
-    
+
     /*
      * posX & posY for Locating The level textures 
      */
@@ -55,7 +52,7 @@ public class Map {
     public static HashMap<Integer, ArrayList<String>> read_map = new HashMap<>();
     private static FileReader file_reader2;
     private static BufferedReader buffered_reader2;
-    public static int level = 0;
+    public static int level = 1;
     /*
      * Parameterized Constructor to set the background 
      */
@@ -77,7 +74,7 @@ public class Map {
         Pipes_Imageviews_Array.clear();
         Gates_Imageviews_Array.clear();
         Sokoban_Main.root.getChildren().remove(pad_iv);
-        
+
         Time.moves = 0;
         Time.seconds = 0;
 
@@ -90,8 +87,7 @@ public class Map {
      * This method Read the Map file text 
      * and Put images insted of characters which in the file
      */
-    public static void make_hashmap() throws FileNotFoundException, IOException 
-    {
+    public static void make_hashmap() throws FileNotFoundException, IOException {
         file_reader2 = new FileReader(fileName);
         buffered_reader2 = new BufferedReader(file_reader2);
 
@@ -99,7 +95,7 @@ public class Map {
 
         while ((currentLine = buffered_reader2.readLine()) != null) {
             ArrayList<String> rows = new ArrayList<>();
-             
+
             if (currentLine.isEmpty()) {
                 break;
             }
@@ -110,22 +106,21 @@ public class Map {
                 currentLine = buffered_reader2.readLine();
 
                 rows.add(currentLine);
-            } 
+            }
             read_map.put(level, rows);
 
-        } 
-       startlevel();
+        }
+        startlevel(1);
     }
 
-    public static void startlevel() {
-        level++;
+    public static void startlevel(int start_from_this_level) {
+
         initialize();
-        ArrayList<String> levelmap = read_map.get(level);
+        ArrayList<String> levelmap = read_map.get(start_from_this_level);
 
         for (int i = 0; i < levelmap.size(); i++) {
             char[] values = levelmap.get(i).toCharArray();
 
-            
             for (int j = 0; j < values.length; j++) {
                 switch (values[j]) {
                     case '#':
@@ -139,43 +134,34 @@ public class Map {
                     case '!':
                         break;
 
-                    case ' ':
-                        //setPosition(group, ground, posX, posY);
-                        break;
 
                     case '.':
                         setPosition(target, posX, posY);
                         break;
-                             
-                        
+
                     case 'F':
                         setPosition(pipeR, posX, posY);
                         break;
-                        
+
                     case '*':
                         setPosition(gate, posX, posY);
                         break;
-                        
+
                     case '&':
                         setPosition(pressure_pad, posX, posY);
-                        break;                        
-                        
+                        break;
+
                     case '$':
                         setPosition(box, posX, posY);
                 }
                 posX += 50;
-                
-              
-                       
+
             }
             posY += 50;
             posX = 50;
-            
-            
-        
-            
-        }
 
+        }
+        level++;
     }
     /*
      * Locate the Image's position and put its imageView in the layout "group"
@@ -199,16 +185,15 @@ public class Map {
             Boxes_Imageviews_Array.add(tmp_imageView);
         } else if (img == target) {
             StorageLocation_Imageviews_Array.add(tmp_imageView);
-        } else if(img == pipeR){
+        } else if (img == pipeR) {
             Pipes_Imageviews_Array.add(tmp_imageView);
-        }else if(img == pressure_pad){
+        } else if (img == pressure_pad) {
             Pressure_Pad.pressure_pad_posX = x;
             Pressure_Pad.pressure_pad_posY = y;
             pad_iv = tmp_imageView;
-            Pressure_Pad.levelHasvePad=true;
-        }else if(img == gate){
+            Pressure_Pad.levelHasvePad = true;
+        } else if (img == gate) {
             Gates_Imageviews_Array.add(tmp_imageView);
         }
     }
 }
-

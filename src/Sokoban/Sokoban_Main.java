@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class Sokoban_Main {
 
-    static Scene sokoban_scene;
+    public static Scene sokoban_scene;
     static Group root = new Group();
 
     //================================================================
