@@ -9,6 +9,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 /**
@@ -16,11 +18,21 @@ import javafx.util.Duration;
  * @author egypt
  */
 public class Powerups {
+    
+    private ImageView expand_imageView = Icons.getExpand_IV();
+    private ImageView shrink_imageView = Icons.getShrink_IV();
+    private ImageView slow_imageView = Icons.getSlow_IV();
+    private ImageView fast_imageView = Icons.getFast_IV();
+    private ImageView empty_imageView = Icons.getEmpty_IV() ;
+    private ImageView heart_imageView = Icons.getHeart_IV();
+    //private ImageView shootGun_imageView = Icons.shot_gun_img;
+    private ImageView extra50_imageView = Icons.getExtra50_IV();
+    private ImageView extra100_imageView= Icons.getExtra100_IV();
 
     public void checkexpand(Paddle paddle) {
         Timeline expand_tl = new Timeline();
         if (Icons.getExpand_IV().getBoundsInParent().intersects(paddle.getPaddle_iv().getBoundsInParent())) {
-//            Icons.setExpand_IV(null);
+            expand_imageView.setImage(null);
             Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
@@ -43,7 +55,7 @@ public class Powerups {
 
         Timeline shrink_tl = new Timeline();
         if (Icons.getShrink_IV().getBoundsInParent().intersects(paddle.getPaddle_iv().getBoundsInParent())) {
-//            Icons.setExpand_IV(null);
+           shrink_imageView.setImage(null);
             Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
@@ -66,7 +78,7 @@ public class Powerups {
 
         Timeline Fast_tl = new Timeline();
         if (Icons.getFast_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
-//            Icons.setFast_IV(null);
+            fast_imageView.setImage(null);
             Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
@@ -88,7 +100,7 @@ public class Powerups {
     public void checkExtra100(Paddle paddle_obj, Score score_obj) {
         if (Icons.getExtra100_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
             Sound.playsound_capsule();
-//            Icons.setExtra100_IV(null);
+            extra100_imageView.setImage(null);
             score_obj.SetScore(3);
 
         }
@@ -97,7 +109,7 @@ public class Powerups {
     public void checkExtra50(Paddle paddle_obj, Score score_obj) {
         if (Icons.getExtra50_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
             Sound.playsound_capsule();
-//            Icons.setExtra50_IV(null);
+            extra50_imageView.setImage(null);
             score_obj.SetScore(2);
 
         }
@@ -108,7 +120,7 @@ public class Powerups {
 
         Timeline Slow_tl = new Timeline();
         if (Icons.getSlow_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
-//            Icons.setSlow_IV(null);   
+            slow_imageView.setImage(null);   
             Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
@@ -129,7 +141,7 @@ public class Powerups {
 
     public void checkempty(Paddle paddle_obj) {
         if (Icons.getEmpty_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
-//            Icons.setEmpty_IV(null);
+            empty_imageView.setImage(null);
             Sound.playsound_capsule();
         }
 

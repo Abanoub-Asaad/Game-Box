@@ -1,5 +1,6 @@
 package Arkanoid;
 
+import GameLoop.BaseClass;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -21,10 +21,7 @@ public class Map {
     protected static Image box = new Image("Resources/Sokoban/box.png", 50, 50, true, true);
     protected static Image target = new Image("Resources/Sokoban/target.png", 50, 50, true, true);
     protected static Image boxOnTarget = new Image("Resources/Sokoban/crate_27.png", 50, 50, true, true);
-    protected static Image pipeD = new Image("Resources/Sokoban/pipeD.png", 50, 50, true, true);
-    protected static Image pipeL = new Image("Resources/Sokoban/pipeL.png", 50, 50, true, true);
     protected static Image pipeR = new Image("Resources/Sokoban/pipeR.png", 50, 50, true, true);
-    protected static Image pipeU = new Image("Resources/Sokoban/pipeU.png", 50, 50, true, true);
     protected static Image pressure_pad = new Image("Resources/Sokoban/pressure_pad.png", 50, 50, true, true);
     protected static Image gate = new Image("Resources/Sokoban/gate.bmp", 50, 50, true, true);
 

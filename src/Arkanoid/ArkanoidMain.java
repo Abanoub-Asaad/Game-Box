@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author egypt
  */
 public class ArkanoidMain {
-        static Group root = new Group();
+       public static Group root = new Group();
     static Scene Arkanoid_scene;
     //================================================================
     /*
