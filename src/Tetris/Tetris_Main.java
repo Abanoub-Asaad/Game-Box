@@ -52,9 +52,9 @@ public class Tetris_Main
         //---------------------------------------
         Rectangle[] rectangles = new Rectangle[4];
  
-        Shapes shapesObj = new Shapes() ;
-        shapesObj.Set_FirstShape_In_TheGame(rectangles,root_tetris);
-        shapesObj.SetNextShapeInSquare(Next, root_tetris);
+        Generator generator_Obj = new Generator() ;
+        generator_Obj.Set_FirstShape_In_TheGame(rectangles,root_tetris);
+        generator_Obj.SetNextShapeInSquare(Next, root_tetris);
         Controller.Press_LEFT_RIGHT_UP_DOWN( rectangles ,tetris_scene);
         Controller controller_obj = new Controller();
         Tetris_Stage = Games_Stage;

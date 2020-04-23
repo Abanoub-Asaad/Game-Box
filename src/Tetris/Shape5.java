@@ -1,15 +1,13 @@
-
 package Tetris;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
-public class Shape5 extends Shapes {
+public class Shape5 extends Shape {
 
     public void Basic(Rectangle[] rect, float x, float y, Group root) {
-         NumOfTurn =1;
+        NumOfTurn = 1;
         rect[0] = new Rectangle(x, y, width - 1, height);
         rect[1] = new Rectangle(x + width, y, width - 1, height);
         rect[2] = new Rectangle(x, y + height, width - 1, height);
@@ -23,7 +21,7 @@ public class Shape5 extends Shapes {
     }
 
     public void turn90(Rectangle[] rect, float x, float y, Group root) {
-         NumOfTurn =2;
+        NumOfTurn = 2;
         x = (float) rect[0].getX();
         y = (float) rect[0].getY();
         System.out.println(" x : " + x);
@@ -44,7 +42,7 @@ public class Shape5 extends Shapes {
     }
 
     public void turn180(Rectangle[] rect, float x, float y, Group root) {
-         NumOfTurn =3;
+        NumOfTurn = 3;
         x = (float) rect[0].getX();
         y = (float) rect[0].getY();
         System.out.println(" x : " + x);
@@ -64,7 +62,7 @@ public class Shape5 extends Shapes {
     }
 
     public void turn270(Rectangle[] rect, float x, float y, Group root) {
-         NumOfTurn =4;
+        NumOfTurn = 4;
         x = (float) rect[0].getX();
         y = (float) rect[0].getY();
         System.out.println(" x : " + x);
@@ -85,7 +83,7 @@ public class Shape5 extends Shapes {
     }
 
     public void turn360(Rectangle[] rect, float x, float y, Group root) {
-         NumOfTurn =5;
+        NumOfTurn = 5;
         x = (float) rect[0].getX();
         y = (float) rect[0].getY();
         System.out.println(" x : " + x);

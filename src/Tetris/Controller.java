@@ -1,16 +1,27 @@
 package Tetris;
 
-import static Tetris.Tetris_Main.MESH;
 import java.util.Arrays;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 
-public class Controller {
+public class Controller extends Generator {
+
+    private static ShapeFactory shapeFactory_obj = new ShapeFactory();
+    
+    private static Shape shape1_obj = shapeFactory_obj.getShape("Line_shape");
+    private static Shape shape2_obj = shapeFactory_obj.getShape("Square_shape");
+    private static Shape shape3_obj = shapeFactory_obj.getShape("L_shape");
+    private static Shape shape4_obj = shapeFactory_obj.getShape("MirroredL_shape");
+    private static Shape shape5_obj = shapeFactory_obj.getShape("S_shape");
+    private static Shape shape6_obj = shapeFactory_obj.getShape("T_shape");
+    private static Shape shape7_obj = shapeFactory_obj.getShape("Z_shape");
+
+    private static float x = 400f;
+    private static float y = 5f;
 
     public Controller() {
 
@@ -68,11 +79,11 @@ public class Controller {
             MESH[(int) rectangles[3].getX() / SIZE][(int) rectangles[3].getY() / SIZE] = 1;
             clear.remove(Tetris_Main.root_tetris);
 
-            Shapes shapesObj = new Shapes();
-            Shapes.NumOfThisShape = Shapes.NumOfNextShape;
-            shapesObj.SetShapes(rectangles, shapesObj.x, shapesObj.y, Tetris_Main.root_tetris, Shapes.NumOfNextShape);
-            shapesObj.RemoveNextShape(Tetris_Main.Next, Tetris_Main.root_tetris);
-            shapesObj.SetNextShapeInSquare(Tetris_Main.Next, Tetris_Main.root_tetris);
+            Generator generator_Obj = new Generator();
+            NumOfThisShape = NumOfNextShape;
+            generator_Obj.SetShapes(rectangles, x, y, Tetris_Main.root_tetris, generator_Obj.NumOfNextShape);
+            generator_Obj.RemoveNextShape(Tetris_Main.Next, Tetris_Main.root_tetris);
+            generator_Obj.SetNextShapeInSquare(Tetris_Main.Next, Tetris_Main.root_tetris);
             Tetris_Main.root_tetris.getChildren().addAll(rectangles[0], rectangles[1], rectangles[2], rectangles[3]);
             Press_LEFT_RIGHT_UP_DOWN(rectangles, Tetris_Main.tetris_scene);
         }
@@ -133,127 +144,115 @@ public class Controller {
     }
 
     private static void TurnShape(Rectangle[] rectangles) {
-        Shape1 shape1 = new Shape1();
-        Shape3 shape3 = new Shape3();
-        Shape4 shape4 = new Shape4();
-        Shape5 shape5 = new Shape5();
-        Shape6 shape6 = new Shape6();
-        Shape7 shape7 = new Shape7();
-        Shapes shapeObj = new Shapes();
 
-        /*
-         First seet which turn the will go to case 1 the is in basic and should go to 90 
-         and case 2 shape in 90 and should go to 180 ...etc we determine this from numOfTurn in each shape
-         then determine  which shape is access now to go to its turning shape 
-         */
-        switch (Shapes.NumOfTurn) {
+        switch (Shape.NumOfTurn) {
             case 1: // shape in basic and should go to 90
-                switch (Shapes.NumOfThisShape) {
+                switch (Generator.NumOfThisShape) {
                     case 1:
-                        shape1.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape1_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 3:
-                        shape3.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape3_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 4:
-                        shape4.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape4_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 5:
-                        shape5.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape5_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 6:
-                        shape6.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape6_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 7:
-                        shape7.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape7_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                 }
                 break;
             case 2: // shape in 90 and should go to 180
-                switch (Shapes.NumOfThisShape) {
+                switch (Generator.NumOfThisShape) {
                     case 1:
-                        shape1.turn180(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape1_obj.turn180(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 3:
-                        shape3.turn180(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape3_obj.turn180(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 4:
-                        shape4.turn180(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape4_obj.turn180(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 5:
-                        shape5.turn180(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape5_obj.turn180(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 6:
-                        shape6.turn180(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape6_obj.turn180(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 7:
-                        shape7.turn180(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape7_obj.turn180(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                 }
                 break;
             case 3: // shape in 180 and should go to 270
-                switch (Shapes.NumOfThisShape) {
+                switch (Generator.NumOfThisShape) {
                     case 1:
-                        shape1.turn270(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape1_obj.turn270(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 3:
-                        shape3.turn270(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape3_obj.turn270(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 4:
-                        shape4.turn270(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape4_obj.turn270(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 5:
-                        shape5.turn270(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape5_obj.turn270(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 6:
-                        shape6.turn270(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape6_obj.turn270(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 7:
-                        shape7.turn270(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape7_obj.turn270(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                 }
                 break;
             case 4: // shape in 270 and should go to 360(basic)
-                switch (Shapes.NumOfThisShape) {
+                switch (Generator.NumOfThisShape) {
                     case 1:
-                        shape1.turn360(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape1_obj.turn360(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 3:
-                        shape3.turn360(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape3_obj.turn360(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 4:
-                        shape4.turn360(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape4_obj.turn360(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 5:
-                        shape5.turn360(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape5_obj.turn360(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 6:
-                        shape6.turn360(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape6_obj.turn360(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 7:
-                        shape7.turn360(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape7_obj.turn360(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                 }
                 break;
             case 5: //shape in 360(basic) and should go to 90  and Again....
-                switch (Shapes.NumOfThisShape) {
+                switch (Generator.NumOfThisShape) {
                     case 1:
-                        shape1.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape1_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 3:
-                        shape3.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape3_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 4:
-                        shape4.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape4_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 5:
-                        shape5.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape5_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 6:
-                        shape6.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape6_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                     case 7:
-                        shape7.turn90(rectangles, shapeObj.x, shapeObj.y, Tetris_Main.root_tetris);
+                        shape7_obj.turn90(rectangles, x, y, Tetris_Main.root_tetris);
                         break;
                 }
                 break;
