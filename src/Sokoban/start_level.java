@@ -83,6 +83,7 @@ public class start_level {
             PlayerName_string = Enter_Name_Text.getText();
 
             Time.seconds = 0;
+            Sound.playsound(Sound.mediaPlayer_back);
             GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
             
         });

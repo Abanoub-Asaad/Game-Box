@@ -99,6 +99,7 @@ public class Piece {
             Time.timer.stop();
             score.calculate_score();
             rank.Display_Rank();
+            Sound.playsound(Sound.mediaPlayer_win);
             GameBox_Core.Root.setScene(finish_level.finish_scene());
 
         }

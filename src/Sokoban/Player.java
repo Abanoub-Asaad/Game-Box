@@ -7,7 +7,7 @@ public class Player extends Piece {
     private static Pressure_Pad pad_obj = new Pressure_Pad();
     private static Gate gate_obj = new Gate();
 
-    protected static String keyPressed;//To check when the player touches the pipe from the right of the pipe to move 
+    protected static String keyPressed; //To check when the player touches the pipe from the right of the pipe to move 
     protected static ImageView player_imageView = new ImageView();
 
     protected static void checkForThePlayer(int dir_x, int dir_y, String s) {
@@ -61,6 +61,7 @@ public class Player extends Piece {
             if (!Pipe.checkIfThereIsABoxNextToThePipe(desiredPos_X, desiredPos_Y)) {
                 player_imageView.setX(desiredPos_X);
                 player_imageView.setY(desiredPos_Y);
+                Sound.playsound(Sound.mediaPlayer_pipe);
                 ++Time.moves;
             }
         } else if (Pipe.checkPipe(dir_x, dir_y) == 2) {
@@ -69,6 +70,7 @@ public class Player extends Piece {
             if (!Pipe.checkIfThereIsABoxNextToThePipe(desiredPos_X, desiredPos_Y)) {
                 player_imageView.setX(desiredPos_X);
                 player_imageView.setY(desiredPos_Y);
+                Sound.playsound(Sound.mediaPlayer_pipe);
                 ++Time.moves;
             }
         } else {
@@ -77,26 +79,31 @@ public class Player extends Piece {
             
             if (Pressure_Pad.levelHasvePad) {
 
-                 
-                
                 if (!gate_obj.checkPlayer_Gate(dir_x, dir_y)) {
                    // System.out.println("player doesn't move on place have a gate");
                     player_imageView.setX(x);
                     player_imageView.setY(y);
+                    
                     ++Time.moves;
                 } else {
                     if ((Pressure_Pad.BoxOnPad )) {
                         //System.out.println("player want to move through a gate, and the gates're open");
-                      
+                     
                         player_imageView.setX(x);
                         player_imageView.setY(y);
                         ++Time.moves;
                     }//else//  System.out.println("player want to move through a gate, and the gates're closed");
-
+                    else{
+                           Sound.playsound(Sound.mediaPlayer_pad);
+                    }
                 }
-            } else {
+            }  
+            
+            else {
+                
                 player_imageView.setX(x);
                 player_imageView.setY(y);
+               
                 ++Time.moves;
             }
 
