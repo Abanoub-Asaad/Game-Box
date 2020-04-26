@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javafx.scene.text.Text;
 
 public class score {
@@ -27,8 +26,7 @@ public class score {
 
         score_text.setText("Score:  " + score);
 
-        WriteInFile();
-
+       // WriteInFile();
     }
 
     public static void show_score_number(Integer score) {
@@ -39,8 +37,6 @@ public class score {
 
     public static void WriteInFile() throws IOException {
 
-
-        
         filewriter = new FileWriter(file, true);
         bufferwriter = new BufferedWriter(filewriter);
 
@@ -51,7 +47,7 @@ public class score {
         {
 
             bufferwriter.write(start_level.PlayerName_string + ":" + finish_level.nLevel_in_score_file + ":" + score);
-            bufferwriter_ulockedLvls.write(finish_level.nLevel_in_score_file+"");
+            bufferwriter_ulockedLvls.write(finish_level.nLevel_in_score_file + "");
 
             bufferwriter.newLine();
             bufferwriter_ulockedLvls.newLine();

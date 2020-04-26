@@ -274,8 +274,13 @@ public class Page1 {
                 level_btn.setOnMousePressed(event -> {
                     //(lvlN + 1) 
                     GameLoop.GameBox_Core.Root.setScene(sokoban_scene);
+                    
                     Map.startlevel(lvlN+1);
-                    //Piece.checkKeyboard(sokoban_scene);
+                    try {
+                        Piece.checkIfStorageLogationsAreFilled();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Page1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
                 root.getChildren().add(level_btn);
 

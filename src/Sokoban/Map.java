@@ -34,6 +34,7 @@ public class Map {
     protected static ArrayList<ImageView> Pipes_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Gates_Imageviews_Array = new ArrayList<>();
 
+    protected static int tmp_Level ;
     /*
      * posX & posY for Locating The level textures 
      */
@@ -106,14 +107,13 @@ public class Map {
             }
             read_map.put(level, rows);
 
-        }
-        startlevel(1);
+        }   
     }
 
     public static void startlevel(int start_from_this_level) {
-
+        tmp_Level=start_from_this_level;
         initialize();
-        ArrayList<String> levelmap = read_map.get(start_from_this_level);
+        ArrayList<String> levelmap = read_map.get(tmp_Level);
 
         for (int i = 0; i < levelmap.size(); i++) {
             char[] values = levelmap.get(i).toCharArray();
@@ -158,7 +158,7 @@ public class Map {
             posX = 50;
 
         }
-        level++;
+        
     }
     /*
      * Locate the Image's position and put its imageView in the layout "group"

@@ -9,10 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import Sokoban.Select_Level.*;
-import static Sokoban.score.bufferwriter;
-import static Sokoban.score.bufferwriter_ulockedLvls;
 import static Sokoban.score.file_unlockedLvls;
-import static Sokoban.score.filewriter_ulockedLvls;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -56,6 +53,7 @@ public class Menu {
             try {
                 GameBox_Core.Root.setScene(start_level.store_name());
                 deleteContentOfSelectLevelFileAndIntializeToOne() ;
+               
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -71,6 +69,7 @@ public class Menu {
 
             try {
                 page1_obj.IntializePage1(GameBox_Core.Root);
+//                Map.tmp_Level=1;
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -107,6 +106,7 @@ public class Menu {
      * @throws IOException 
      */
     private static void deleteContentOfSelectLevelFileAndIntializeToOne() throws IOException {
+        Map.tmp_Level=1;
         PrintWriter writer = new PrintWriter(file_unlockedLvls);
         writer.print("");
         writer.close();

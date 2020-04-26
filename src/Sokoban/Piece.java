@@ -72,7 +72,7 @@ public class Piece {
     /*
      * Check if the storage Location is filled , to change its shape using imageview.setImage(imageName)
      */
-    private static void checkIfStorageLogationsAreFilled() throws IOException {
+    public static void checkIfStorageLogationsAreFilled() throws IOException {
 
         countboxesatstorage = 0;
         for (ImageView Boxes_Imageviews_Array1 : Map.Boxes_Imageviews_Array) {

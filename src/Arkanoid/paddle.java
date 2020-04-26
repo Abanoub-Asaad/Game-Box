@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
-public class Paddle {
+ public class Paddle {
 
     private Timeline timelineDragUsingMouse;
 

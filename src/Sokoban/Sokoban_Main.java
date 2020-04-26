@@ -1,5 +1,6 @@
 package Sokoban;
 
+
 import java.io.IOException;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -38,6 +39,7 @@ public class Sokoban_Main {
         sokoban_scene.getStylesheets().add(Sokoban_Main.class.getResource("css1.css").toExternalForm());
         
         Map.make_hashmap();
+        Map.startlevel(1);
         Piece.checkKeyboard(sokoban_scene);
 
         Sokoban_Stage.setTitle("SOKOBAN");

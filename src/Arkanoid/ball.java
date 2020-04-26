@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
  *
  * @author egypt
  */
-public class Ball {
+ public class Ball {
 
     private Image ballImage = new Image("Resources/Arkanoid/ball.png", 30, 30, false, false);
     private ImageView ball_iv = new ImageView(ballImage);
