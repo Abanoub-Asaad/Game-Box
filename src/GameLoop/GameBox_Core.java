@@ -1,20 +1,23 @@
 package GameLoop;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class GameBox_Core extends Application {
 
+    Image img_icon = new Image("Resources/Icons/download.jpg");
     //    to access  root to switch scenes 
     public static Stage Root;
 
     @Override
     public void start(Stage Root_Stage) {
 
-
+        
         Root = Root_Stage;
         
         Games games_obj = new Games(Root_Stage);
+        Root_Stage.getIcons().add(img_icon);
 
     }
 

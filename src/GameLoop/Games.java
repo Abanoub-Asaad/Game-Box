@@ -49,10 +49,16 @@ public class Games {
     }
 
     private void createBackground() {
-        Image Imageback = new Image("Resources/gamesPage/wp.jpg", 1370, 780, true, false);
-
+        
+        Image Imageback = new Image("Resources/gamesPage/242556.png", 1370, 780, false, false);
+        Image image = new Image("Resources/gamesPage/gamebox.png", 150, 150, true, false);
+        
+        
         ImageView ImagbackIV = new ImageView(Imageback);
-        gamesGroup.getChildren().add(ImagbackIV);
+        ImageView ImageIV = new ImageView(image);
+        ImageIV.setX(600);ImageIV.setY(25);
+        
+        gamesGroup.getChildren().addAll(ImagbackIV, ImageIV);
     }
 
     private void createButtons(Stage MainStage) {
@@ -119,11 +125,11 @@ public class Games {
 
     private void textChooseYourGame() {
         Text choose = new Text();
-        choose.setText("Choose Your Game...");
+        choose.setText("Choose Your Game ");
         choose.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
         choose.setFill(Color.GOLD);
-        choose.setX(170);
-        choose.setY(200);
+        choose.setX(280);
+        choose.setY(210);
         gamesGroup.getChildren().add(choose);
 
         AnimationOfPage(choose);

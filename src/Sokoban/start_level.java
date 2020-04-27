@@ -80,7 +80,6 @@ public class start_level {
         btn_play.setOnAction(e -> {
 
             PlayerName_string = Enter_Name_Text.getText();
-
             if (PlayerName_string.length() > 0 && !PlayerName_string.contains(" ")) {
                 Time.seconds = 0;
                 Sound.playsound(Sound.mediaPlayer_back);
