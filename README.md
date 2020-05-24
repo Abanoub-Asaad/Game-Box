@@ -1,4 +1,3 @@
-[![HitCount](http://hits.dwyl.com/Abanoub-Asaad/Game-Box.svg)](http://hits.dwyl.com/Abanoub-Asaad/Game-Box)
 # Game-Box
 
 ### SOKOBAN :
