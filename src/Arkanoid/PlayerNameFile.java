@@ -1,5 +1,6 @@
 package Arkanoid;
 
+import GameLoop.BaseClass;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -32,14 +33,14 @@ public class PlayerNameFile {
     FileWriter filewriter;
     BufferedWriter bufferwriter;
 
-    private static String PlayerName_string;
-
+    public static String PlayerName_string;
 
     // A Function To make The Scene Of Writing Player Name 
     public Scene MakeScene_PlayerName(Stage Arkanoid_main_stage) throws IOException {
+
         pane_storeName = new Pane();
         scene_StoreName = new Scene(pane_storeName, 1370, 750);
-//         BaseClsas.check_Escape(scene_StoreName, Menu.stage_menu,Menu.sceneButtons );
+
         //============Background
         Image playerName_img = new Image("Resources/Arkanoid/background3.jpg", 1400, 780, false, true);
         ImageView playerName_iv = new ImageView(playerName_img);
@@ -77,10 +78,7 @@ public class PlayerNameFile {
 
                 if (PlayerName_string.length() > 0 && !PlayerName_string.contains(" ")) //Validation
                 {
-                    bufferwriter.write(entername_TF.getText() + "\n");
-                    bufferwriter.close();
                     ArkanoidMain.getInstanceFromArkanoid().openArkanoidMain(Arkanoid_main_stage);
-
                     Sound.mediaPlayer_background.play();
                 }
             } catch (IOException ex) {
@@ -95,7 +93,7 @@ public class PlayerNameFile {
         Arkanoid_main_stage.setScene(scene_StoreName);
         Arkanoid_main_stage.setMaximized(true);
         Arkanoid_main_stage.setResizable(false);
-
+        BaseClass.check_Escape(scene_StoreName, Arkanoid_main_stage, Menu.sceneButtons);
         return scene_StoreName;
     }
 

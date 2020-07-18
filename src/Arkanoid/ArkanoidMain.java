@@ -35,7 +35,7 @@ public class ArkanoidMain {
     public void openArkanoidMain(Stage Arkanoid_main) throws IOException {
         Arkanoid_scene = new Scene(root, 1370, 750);
 
-        Movement movment = new Movement(Arkanoid_main);
+        movement movment = new movement(Arkanoid_main);
 
         Arkanoid_main.setTitle("Arkanoid");
         Arkanoid_main.setScene(Arkanoid_scene);

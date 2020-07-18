@@ -1,8 +1,8 @@
 package GameLoop;
 
 import Arkanoid.ArkanoidMain;
-import Arkanoid.Ball;
-import Arkanoid.Paddle;
+import Arkanoid.ball;
+import Arkanoid.paddle;
 import Arkanoid.Sound;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class BaseClass {
 
-    public static void checkPaddle(Ball ball_obj, Paddle paddle_obj, boolean goLeft, boolean goRight) {
+    public static void checkPaddle(ball ball_obj, paddle paddle_obj, boolean goLeft, boolean goRight) {
 
         boolean atLeftBorder = ball_obj.getX() >= (paddle_obj.getX() - ball_obj.getWidth());
         boolean atRightBorder = ball_obj.getX() <= (paddle_obj.getX() + paddle_obj.getWidth() + ball_obj.getWidth() - 10);
@@ -50,7 +50,7 @@ public class BaseClass {
         }
     }
 
-    public static void checkPause(Scene scene_1, Ball ball_obj, Paddle paddle_obj, Group group, Pane pane) {
+    public static void checkPause(Scene scene_1, ball ball_obj, paddle paddle_obj, Group group, Pane pane) {
         Text pause = new Text();
         scene_1.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override

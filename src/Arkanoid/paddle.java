@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
- public class Paddle {
+ public class paddle {
 
     private Timeline timelineDragUsingMouse;
 
@@ -118,13 +118,13 @@ import javafx.util.Duration;
     }
 
     //======================================================================== 
-    public void dragPaddleUsingMouse(Paddle paddle_obj) {
+    public void dragPaddleUsingMouse(paddle paddle_obj) {
 
         paddle_obj.getPaddle_iv().setCursor(Cursor.HAND); //Change The Cursor 
         timelineDragUsingMouse = new Timeline(new KeyFrame(Duration.millis(20),
                 new EventHandler<ActionEvent>() {
                     //velocity of ball 
-                    Ball bl = new Ball();
+                    ball bl = new ball();
                     double dx = bl.getSpeed();
                     double dy = bl.getSpeed();
 

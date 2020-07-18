@@ -24,7 +24,6 @@ public class Icons {
     private final Image fast_img = new Image("Resources/Arkanoid/icons/fast.png", 100, 20, false, false);
     private final Image empty_img = new Image("Resources/Arkanoid/icons/empty.png", 100, 20, false, false);
     private static final Image heart_img = new Image("Resources/Arkanoid/icons/life.png", 35, 35, false, false);
-    private final Image shot_gun_img = new Image("Resources/Arkanoid/icons/laser.png", 100, 20, false, false);
     private final Image extra50_img = new Image("Resources/Arkanoid/icons/extra50.png", 100, 20, false, false);
     private final Image extra100_img = new Image("Resources/Arkanoid/icons/extra100.png", 100, 20, false, false);
 
@@ -32,7 +31,6 @@ public class Icons {
     private static ImageView slow_IV = new ImageView();
     private static ImageView extra50_IV = new ImageView();
     private static ImageView extra100_IV = new ImageView();
-    private static ImageView shoot_IV = new ImageView();
     private static ImageView fast_IV = new ImageView();
     private static ImageView empty_IV = new ImageView();
     private static ImageView shrink_IV = new ImageView();
@@ -40,14 +38,12 @@ public class Icons {
 
     private final TranslateTransition expand_TR = new TranslateTransition();
     private final TranslateTransition slow_TR = new TranslateTransition();
-    private final TranslateTransition shoot_TR = new TranslateTransition();
     private final TranslateTransition fast_TR = new TranslateTransition();
     private final TranslateTransition shrink_TR = new TranslateTransition();
     private final TranslateTransition empty_TR = new TranslateTransition();
     private final TranslateTransition heart_TR = new TranslateTransition();
     private final TranslateTransition extra100_TR = new TranslateTransition();
     private final TranslateTransition extra50_TR = new TranslateTransition();
-    private final TranslateTransition translate10 = new TranslateTransition();
 
     private int[] random_numbers = new int[10];
     private double yOfCurrentIcon, xOfCurrentIcon;
@@ -55,7 +51,7 @@ public class Icons {
     public ArrayList<ImageView> heart_array = new ArrayList<>();
 
     public Icons() {
-        ArkanoidMain.root.getChildren().addAll(expand_IV, slow_IV, extra100_IV, extra50_IV, shoot_IV, fast_IV, empty_IV, shrink_IV, heart_IV);
+        ArkanoidMain.root.getChildren().addAll(expand_IV, slow_IV, extra100_IV, extra50_IV, fast_IV, empty_IV, shrink_IV, heart_IV);
         makeRandomNumbersForIcons();
     }
 
@@ -66,7 +62,7 @@ public class Icons {
                 slow_IV.setImage(slow_img);
                 slow_IV.setX(xOfCurrentIcon);
                 slow_IV.setY(yOfCurrentIcon);
-                slow_TR.setToY(650);
+                slow_TR.setToY(700);
                 slow_TR.setDuration(Duration.millis(2500));
                 slow_TR.setCycleCount(1);
                 slow_TR.setAutoReverse(false);
@@ -77,58 +73,58 @@ public class Icons {
                 expand_IV.setImage(expand_img);
                 expand_IV.setX(xOfCurrentIcon);
                 expand_IV.setY(yOfCurrentIcon);
-                expand_TR.setToY(650);
+                expand_TR.setToY(700);
                 expand_TR.setDuration(Duration.millis(2500));
                 expand_TR.setCycleCount(1);
                 expand_TR.setAutoReverse(false);
                 expand_TR.setNode(expand_IV);
                 expand_TR.play();
                 break;
-            case 3:
+            case 2:
                 heart_IV.setImage(heart_img);
                 heart_IV.setX(xOfCurrentIcon);
                 heart_IV.setY(yOfCurrentIcon);
-                heart_TR.setToY(650);
+                heart_TR.setToY(700);
                 heart_TR.setDuration(Duration.millis(2500));
                 heart_TR.setCycleCount(1);
                 heart_TR.setAutoReverse(false);
                 heart_TR.setNode(heart_IV);
                 heart_TR.play();
                 break;
-            case 4:
+            case 3:
                 extra100_IV.setImage(extra100_img);
                 extra100_IV.setX(xOfCurrentIcon);
                 extra100_IV.setY(yOfCurrentIcon);
-                extra100_TR.setToY(650);
+                extra100_TR.setToY(700);
                 extra100_TR.setDuration(Duration.millis(2500));
                 extra100_TR.setCycleCount(1);
                 extra100_TR.setAutoReverse(false);
                 extra100_TR.setNode(extra100_IV);
                 extra100_TR.play();
                 break;
-            case 5:
-                shoot_IV.setImage(shot_gun_img);
-                shoot_IV.setX(xOfCurrentIcon);
-                shoot_IV.setY(yOfCurrentIcon);
-                shoot_TR.setToY(650);
-                shoot_TR.setDuration(Duration.millis(2500));
-                shoot_TR.setCycleCount(1);
-                shoot_TR.setAutoReverse(false);
-                shoot_TR.setNode(shoot_IV);
-                shoot_TR.play();
+            case 4:
+                empty_IV.setImage(empty_img);
+                empty_IV.setX(xOfCurrentIcon);
+                empty_IV.setY(yOfCurrentIcon);
+                empty_TR.setToY(700);
+                empty_TR.setDuration(Duration.millis(2500));
+                empty_TR.setCycleCount(1);
+                empty_TR.setAutoReverse(false);
+                empty_TR.setNode(empty_IV);
+                empty_TR.play();
                 break;
-            case 6:
+            case 5:
                 shrink_IV.setImage(shrink_img);
                 shrink_IV.setX(xOfCurrentIcon);
                 shrink_IV.setY(yOfCurrentIcon);
-                shrink_TR.setToY(650);
+                shrink_TR.setToY(700);
                 shrink_TR.setDuration(Duration.millis(2500));
                 shrink_TR.setCycleCount(1);
                 shrink_TR.setAutoReverse(false);
                 shrink_TR.setNode(shrink_IV);
                 shrink_TR.play();
                 break;
-            case 7:
+            case 6:
                 extra50_IV.setImage(extra50_img);
                 extra50_IV.setX(xOfCurrentIcon);
                 extra50_IV.setY(yOfCurrentIcon);
@@ -139,27 +135,16 @@ public class Icons {
                 extra50_TR.setNode(extra50_IV);
                 extra50_TR.play();
                 break;
-            case 8:
+            case 7:
                 fast_IV.setImage(fast_img);
                 fast_IV.setX(xOfCurrentIcon);
                 fast_IV.setY(yOfCurrentIcon);
-                fast_TR.setToY(650);
+                fast_TR.setToY(700);
                 fast_TR.setDuration(Duration.millis(2500));
                 fast_TR.setCycleCount(1);
                 fast_TR.setAutoReverse(false);
                 fast_TR.setNode(fast_IV);
                 fast_TR.play();
-                break;
-            case 9:
-                empty_IV.setImage(empty_img);
-                empty_IV.setX(xOfCurrentIcon);
-                empty_IV.setY(yOfCurrentIcon);
-                empty_TR.setToY(650);
-                empty_TR.setDuration(Duration.millis(2500));
-                empty_TR.setCycleCount(1);
-                empty_TR.setAutoReverse(false);
-                empty_TR.setNode(empty_IV);
-                empty_TR.play();
                 break;
 
         }
@@ -168,7 +153,7 @@ public class Icons {
 
     public void check_number(ImageView brick) {
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 8; i++) {
             if (random_numbers[i] == Arkanoid_Map.bricks_arraylist.indexOf(brick)) {
                 num_of_icon = i;
                 xOfCurrentIcon = brick.getX();
@@ -193,6 +178,7 @@ public class Icons {
         }
 
     }
+///// fix that problem 
 
     public void DrawHeart() {
 
@@ -235,14 +221,6 @@ public class Icons {
 
     public static void setExtra100_IV(ImageView extra100_IV) {
         Icons.extra100_IV = extra100_IV;
-    }
-
-    public static ImageView getShoot_IV() {
-        return shoot_IV;
-    }
-
-    public static void setShoot_IV(ImageView shoot_IV) {
-        Icons.shoot_IV = shoot_IV;
     }
 
     public static ImageView getFast_IV() {

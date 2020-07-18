@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
-import javafx.animation.ParallelTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,10 +29,10 @@ import javafx.stage.WindowEvent;
  *
  * @author egypt
  */
-public class Movement {
+public class movement {
 
-    private static Paddle paddle_obj = new Paddle();
-    private static Ball ball_obj = new Ball();
+    private static paddle paddle_obj = new paddle();
+    private static ball ball_obj = new ball();
     private PlayerNameFile player_obj = new PlayerNameFile();
     private Icons icon;
     private Arkanoid_Map map;
@@ -43,11 +42,12 @@ public class Movement {
     private static boolean goLeft = false;
     private static boolean goRight = false;
     private static boolean BallDoesnotMove = false;
-    private static boolean clickOnlyOnce = false, Play_Animation = false;
+    private static boolean clickOnlyOnce = false;
     static Text pressToStart = new Text();
     private Stage arkanoid_stage;
+    private  AnimationTimer at;
 
-    public Movement(Stage Arkanoid_stage) throws IOException {
+    public movement(Stage Arkanoid_stage) throws IOException {
         map = new Arkanoid_Map();
         this.arkanoid_stage = Arkanoid_stage;
         start();
@@ -57,16 +57,19 @@ public class Movement {
         ArkanoidMain.root.getChildren().clear();
 
         dragUsingKeyboard(ArkanoidMain.Arkanoid_scene);
-
+        int currentscore = 0;
         map.startlevel();
         icon = new Icons();
+        if (Arkanoid_Map.level != 1) {
+            currentscore = score.current_score;
+        }
         score = new Score();
+        score.current_score = currentscore;
         goLeft = false;
         goRight = false;
         BallDoesnotMove = false;
         clickOnlyOnce = false;
-        Play_Animation = false;
-
+        GameMovement(false);
         PressEnterToStart();
         paddle_obj.setX((ArkanoidMain.Arkanoid_scene.getWidth() / 2) - paddle_obj.getWidth());
         paddle_obj.setY((ArkanoidMain.Arkanoid_scene.getHeight() - paddle_obj.getWidth()));
@@ -97,7 +100,7 @@ public class Movement {
     }
 
     private void GameMovement(boolean play_Animation) {
-        AnimationTimer at;
+        
         at = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -318,9 +321,9 @@ public class Movement {
         } else {
             labels = "Game Over";
             try {
-                score.WriteScoreInFile();
+                score.WriteScoreInFile(player_obj.getPlayerName());
             } catch (IOException ex) {
-                Logger.getLogger(Movement.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
             }
             Sound.mediaPlayer_ball_out.play();
         }
@@ -329,10 +332,11 @@ public class Movement {
             @Override
             public void handle(ActionEvent e) {
                 try {
+                    at.stop();
                     start();
                     finishStage.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(Movement.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -343,11 +347,12 @@ public class Movement {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    score.WriteScoreInFile();
+                    score.WriteScoreInFile(player_obj.getPlayerName());
                 } catch (IOException ex) {
-                    Logger.getLogger(Movement.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Platform.exit();
+                  finishStage.close();
+                arkanoid_stage.setScene(Menu.sceneButtons);
 
             }
         }

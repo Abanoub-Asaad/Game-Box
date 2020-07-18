@@ -114,7 +114,7 @@ public class Menu {
         DRAW_YOUR_LEVEL.setOnMousePressed(e -> {
             Sound.mediaPlayer_menu.stop();
             Sound.mediaPlayer_menu.play();
-//            DrawYourLevel drawLevel = new DrawYourLevel (stage_menu) ;  
+            DrawyourLevel drawLevel = new DrawyourLevel (Arkanoid_main_stage) ;  
         });
 
         EXIT.setOnMousePressed(e -> {

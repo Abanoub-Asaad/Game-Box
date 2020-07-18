@@ -58,7 +58,7 @@ public class Score {
     private Text score_infile = new Text();
     private Text lives_txt = new Text();
     private String string;
-     
+
     public Score() {
         SetScoreText();
         ArkanoidMain.root.getChildren().addAll(score_text, level_text, score, level);
@@ -110,10 +110,16 @@ public class Score {
                 current_score += 20;
                 break;
             case 2:
+                            System.out.println("current score " + current_score);
                 current_score += 70;
+                            System.out.println("after extra score 50 added " + current_score );
+
                 break;
             case 3:
+                 System.out.println("current score " + current_score);
                 current_score += 120;
+                       System.out.println("after extra score 100 added " + current_score );
+
                 break;
             case 4:
                 current_score += 220;
@@ -132,7 +138,7 @@ public class Score {
         pane_scoreBoard = new Pane();
         ScoreBorad_scene = new Scene(pane_scoreBoard);
 
-        Image ScoreBoardBack_img = new Image("Resources/Arkanoid/bscore.jpg", 1400, 780, false, true);
+        Image ScoreBoardBack_img = new Image("Resources/Arkanoid/leaderboards.jpg", 1400, 780, false, true);
         ImageView ScoreBoardBack_iv = new ImageView(ScoreBoardBack_img);
         pane_scoreBoard.getChildren().add(ScoreBoardBack_iv);
 
@@ -175,12 +181,13 @@ public class Score {
         }
     }
 
-    public void WriteScoreInFile() throws IOException {
+    public void WriteScoreInFile(String Playername) throws IOException {
         
         FileWriter filewriter = new FileWriter(PlayerNameFile.getFile(), true);
         BufferedWriter bufferwriter = new BufferedWriter(filewriter);
 
         try {
+            bufferwriter.write( Playername + "\n");
             bufferwriter.write(current_score + "\n");
             bufferwriter.close();
             System.out.println("Success");

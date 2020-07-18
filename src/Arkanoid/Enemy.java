@@ -1,5 +1,6 @@
 package Arkanoid;
 
+import GameLoop.BaseClass;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -44,8 +45,8 @@ public class Enemy {
     ImageView fire_iv1 = new ImageView(fire);
     ImageView fire_iv2 = new ImageView(fire);
     ImageView fire_iv3 = new ImageView(fire);
-    Paddle paddle_obj = new Paddle();
-    Ball ball_obj = new Ball();
+    paddle paddle_obj = new paddle();
+    ball ball_obj = new ball();
     ImageView enemy_iv = new ImageView(enemy_img1);
     Text pressToStart = new Text();
     double x = 0.0;
@@ -94,7 +95,7 @@ public class Enemy {
         Enemy_pane.getChildren().addAll(bar);
 
         //==================
-//        BaseClsas.check_Escape(Enemy_scene, Menu.stage_menu, Menu.sceneButtons);
+        BaseClass.check_Escape(Enemy_scene, stage_main, Menu.sceneButtons);
         stage_main.setTitle("Arkanoid  -  Enemy");
         stage_main.setScene(Enemy_scene);
         PressEnterToStart();
@@ -290,7 +291,7 @@ public class Enemy {
 
     }
 
-    public static void checkPaddle(Ball ball_obj, Paddle paddle_obj, boolean goLeft, boolean goRight) {
+    public static void checkPaddle(ball ball_obj, paddle paddle_obj, boolean goLeft, boolean goRight) {
 
         boolean atLeftBorder = ball_obj.getX() >= (paddle_obj.getX() - ball_obj.getWidth());
         boolean atRightBorder = ball_obj.getX() <= (paddle_obj.getX() + paddle_obj.getWidth() + ball_obj.getWidth() - 10);
