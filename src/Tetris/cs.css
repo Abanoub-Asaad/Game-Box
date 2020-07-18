@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 18, 2020, 5:23:18 PM
+    Author     : Eng.Waleed
+*/
+@import url('https://fonts.googleapis.com/css?family=Cookie:400,500,700');
+
+@font-face {
+    font-family: Delicious;
+    src: url('Delicious-Roman.otf') format("ttf");
+}
+
+#btn {
+    
+    //-fx-pref-height: 2 px;
+    -fx-pref-width: 220px;
+/* 
+ -fx-text-alignment: center;
+ */
+ 
+ -fx-text-fill: #eee;
+
+  -fx-background-color: #222 ;
+/*  -fx-height: 50px;
+  -fx-min-width: 200px;*/
+  
+ // color: #eee;
+  -fx-font-size: 30px;
+  -fx-font-family: 'Cookie' , cursive;
+}
+
+#btn:hover {
+ -fx-background-color: transparent;
+ -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
+ -fx-border-width: 0 5 0 5;
+}

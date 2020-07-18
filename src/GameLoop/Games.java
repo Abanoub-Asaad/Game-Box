@@ -5,6 +5,8 @@ import Sokoban.Sokoban_Main;
 import Sokoban.finish_level;
 
 import Tetris.Tetris_Main;
+import Tetris.Tetris_Menu;
+import TicTacToe.Tic_Menu;
 import TicTacToe.XO_Main;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,7 +31,7 @@ import javafx.util.Duration;
 
 public class Games {
 
-    
+     static Tic_Menu tic= new Tic_Menu();
     private Group gamesGroup = new Group();
     private final HBox gamesHBox = new HBox();
     private Scene gamesScene = new Scene(gamesGroup, 1400, 780);
@@ -88,8 +90,9 @@ public class Games {
         Image tetrisImage = new Image("Resources/gamesPage/tetris.png", 300, 300, true, false);
         ImageView tetrisImageIV = new ImageView(tetrisImage);
         TetrisBtn.setGraphic(tetrisImageIV);
-        TetrisBtn.setOnMousePressed(event -> {
-            Tetris_Main.getInstanceFromTetris().Tetris_Main(MainStage);
+        
+         TetrisBtn.setOnMousePressed(event -> {
+           MainStage.setScene(Tetris_Menu.start());
         });
         gamesGroup.getChildren().add(TetrisBtn);
 
@@ -114,7 +117,15 @@ public class Games {
         TicTacToeBtn.setGraphic(xoImageIV);
 
         TicTacToeBtn.setOnMousePressed(event -> {
-            XO_Main.getInstanceFromXO().openTicTacToeMain(MainStage);
+            
+           // XO_Main.getInstanceFromXO().openTicTacToeMain(GameBox_Core.Root);
+            
+            try {
+                MainStage.setScene(tic.start());
+              
+            } catch (Exception ex) {
+                Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         gamesGroup.getChildren().add(TicTacToeBtn);
 

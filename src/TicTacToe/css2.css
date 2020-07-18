@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 17, 2020, 1:13:09 AM
+    Author     : Eng.Waleed
+*/
+
+#menubutton {
+    
+   -fx-pref-height: 6 px;
+    -fx-pref-width: 420px;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+ 
+    -fx-font-size: 30 px;
+    -fx-padding: 10 20 10 20;
+   
+    -fx-text-font: italic bold  40px/20px Georgia, serif ;
+    -fx-background-color:    black;
+
+ -fx-text-alignment: center;
+ -fx-border-width: 4px; 
+
+ -fx-text-fill: #ffffff;
+ -fx-border-radius: 30;
+
+}
+
