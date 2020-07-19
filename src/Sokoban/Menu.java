@@ -5,50 +5,75 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import Sokoban.Select_Level.*;
 import static Sokoban.score.file_unlockedLvls;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import javafx.animation.Timeline;
+ import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import Sokoban_menu_particle.Menu_particle;
+import Sokoban_menu_particle.GNButton;
+import Sokoban_menu_particle.ButtonType;
 
+import Sokoban_menu_particle.Settings;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 public class Menu {
 
-    private static Pane menu_pane = new Pane();
+    public static  Pane layerPane = new Pane();
+    public static BorderPane root = new BorderPane();
+    public static  Scene scene = new Scene(root, 1370, 750);		
     private static VBox text_pane = new VBox(22);
+    
+    private static GNButton new_game_btn = new GNButton("New game");
+    private static GNButton continue_btn = new GNButton("Continue");
+    private static GNButton setting_btn = new GNButton("Setting");
+    private static GNButton exit_btn = new GNButton("Exit");
 
-    private static Button new_game_btn = new Button(" NEW GAME ");
-    private static Button continue_btn = new Button(" CONTINUE ");
-    private static Button setting_btn = new Button(" SETTING ");
-    private static Button exit_btn = new Button(" EXIT ");
+    static    Timeline timeline;
 
-    public static Scene menu_scene = new Scene(menu_pane, 1375, 750);
 
-    public static Pane getMenu_pane() {
-        return menu_pane;
-    }
+    //==============================================//
 
+  private static List<Image> imageArrayList = new ArrayList<Image>();
+   static int count = 0;
+    
+  static ImageView slideshowImageView = new ImageView();
+
+
+    //==============================================//
+  
     public static Scene openMenu_sokoban() {
 
-        menu_scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
-
+        
+        scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
         exit_btn.setId("menubutton");
         setting_btn.setId("menubutton");
-
-        menu_pane.setId("menupane");
+        
+        
+        layerPane.setId("menupane");
         new_game_btn.setLayoutX(100);
         new_game_btn.setLayoutY(100);
-
+      
         text_pane.setLayoutX(540);
         text_pane.setLayoutY(180);
         text_pane.setPrefSize(280, 400);
+        //text_pane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
+        
         text_pane.getChildren().addAll(new_game_btn, continue_btn, setting_btn, exit_btn);
 
-        new_game_btn.setOnAction(e -> {
+        new_game_btn.setButtonType(ButtonType.ALTERNATE);
+        new_game_btn.setOnMouseClicked(e -> {
 
             try {
                 GameBox_Core.Root.setScene(start_level.store_name());
@@ -63,7 +88,7 @@ public class Menu {
         continue_btn.setLayoutX(100);
         continue_btn.setLayoutY(150);
 
-        continue_btn.setOnAction(e -> {
+        continue_btn.setOnMouseClicked(e -> {
 
             Page1 page1_obj = new Page1();
 
@@ -79,26 +104,28 @@ public class Menu {
         setting_btn.setLayoutX(100);
         setting_btn.setLayoutY(200);
 
-        setting_btn.setOnAction(e -> {
+        setting_btn.setOnMouseClicked(e -> {
 
         });
 
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(250);
-        exit_btn.setOnAction(e -> {
+        exit_btn.setOnMouseClicked(e -> {
 
             GameBox_Core.Root.close();
 
         });
-
-        menu_pane.getChildren().addAll(text_pane);
-
-        return menu_scene;
+// BackgroundImage myBI= new BackgroundImage(new Image("Resources/Sokoban/black.jpg",32,32,false,true),
+//        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+//          BackgroundSize.DEFAULT);
+//       
+//   //addind buttons
+    layerPane.getChildren().add(text_pane);
+//   Menu_particle.layerPane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
+        return scene;
     }
 
-    public static Scene getMenu_scene() {
-        return menu_scene;
-    }
+   
 
     /**
      * delete every thing in the file of levels that  used in select level
@@ -117,5 +144,34 @@ public class Menu {
         bufferwriter_.close();
         filewriter_.close();
     }
+ 
+  
+    
+public static void start() {
+   
+   
 
+    Image a = new Image("Resources/Sokoban/menu1.jpg",1375,750,false,false);
+    Image b = new Image("Resources/Sokoban/menu2.jpg",1375,750,false,false);
+    Image c = new Image("Resources/Sokoban/menu3.jpg",1375,750,false,false);
+   
+     imageArrayList.add(c);
+     imageArrayList.add(b);
+     imageArrayList.add(a);
+     layerPane.getChildren().addAll(slideshowImageView);
+// then in your method
+
+   long delay = 2000; //update once per 2 seconds.
+   new Timer().schedule(new TimerTask() {
+
+    @Override
+    public void run() {
+        slideshowImageView.setImage(imageArrayList.get(count++));
+        if (count >= imageArrayList.size()) {
+            count = 0;
+        }
+    }
+}, 0, delay);
+
+}
 }

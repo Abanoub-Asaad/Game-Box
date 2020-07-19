@@ -38,14 +38,14 @@ public class start_level {
         btn_play = new Button();
 
         pane_storeName.setId("pane");
-        Enter_Name_Text.setTranslateX(450);
+        Enter_Name_Text.setTranslateX(510);
         Enter_Name_Text.setTranslateY(350);
         Enter_Name_Text.setId("label");
         Enter_Name_Text.setPromptText("Enter your name");
         Enter_Name_Text.setFocusTraversable(false);
         addTextLimiter(Enter_Name_Text, 14);
 
-        btn_play.setTranslateX(450);
+        btn_play.setTranslateX(510);
         btn_play.setTranslateY(430);
         btn_play.setId("start");
         btn_play.setText("Play");

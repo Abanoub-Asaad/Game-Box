@@ -114,7 +114,7 @@ public class player1_2 {
         if (full) {
             new Alert(Alert.AlertType.INFORMATION, " Draw!").showAndWait();
             playable = false;
-
+           sound.mediaPlayer_back.stop();
         }
     }
 
@@ -138,6 +138,7 @@ public class player1_2 {
             str = "Player 2";
         }
         new Alert(Alert.AlertType.INFORMATION, str + " Won the game!").showAndWait();
+        sound.mediaPlayer_back.stop();
     }
 
     private class Combo {

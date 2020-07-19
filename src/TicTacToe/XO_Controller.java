@@ -112,6 +112,7 @@ public class XO_Controller {
                         win.setX(800);
                         win.setY(500);
                         group.getChildren().add(win);
+                        sound.mediaPlayer_back.stop();
                     } else {
                         if (winner.equals("X")) {
                             win.setText(" X Wins ");
@@ -120,6 +121,7 @@ public class XO_Controller {
                             win.setX(800);
                             win.setY(500);
                             group.getChildren().add(win);
+                            sound.mediaPlayer_back.stop();
                         } else {
                             win.setText(" O Wins ");
                             win.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
@@ -127,6 +129,7 @@ public class XO_Controller {
                             win.setX(800);
                             win.setY(500);
                             group.getChildren().add(win);
+                            sound.mediaPlayer_back.stop();
                         }
                     }
                 }

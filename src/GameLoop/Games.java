@@ -3,6 +3,7 @@ package GameLoop;
 import Sokoban.Menu;
 import Sokoban.Sokoban_Main;
 import Sokoban.finish_level;
+import Sokoban_menu_particle.Menu_particle;
 
 import Tetris.Tetris_Main;
 import Tetris.Tetris_Menu;
@@ -32,6 +33,7 @@ import javafx.util.Duration;
 public class Games {
 
      static Tic_Menu tic= new Tic_Menu();
+     static  Menu_particle menu_particle = new Menu_particle();
     private Group gamesGroup = new Group();
     private final HBox gamesHBox = new HBox();
     private Scene gamesScene = new Scene(gamesGroup, 1400, 780);
@@ -71,11 +73,12 @@ public class Games {
         ImageView sokobanImageIV = new ImageView(sokobanImage);
         SokobanBtn.setGraphic(sokobanImageIV);
         SokobanBtn.setOnMousePressed(event -> {
-
+             menu_particle.start();
+             
             try {
-
+               
                 Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
-
+                
                 MainStage.setScene(Menu.openMenu_sokoban());
             } catch (IOException ex) {
                 Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);

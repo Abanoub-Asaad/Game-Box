@@ -55,8 +55,8 @@ public class Tic_Menu {
     static  player1_2 p= new player1_2();
     
     
-    private static Button player_vs_pc_btn = new Button(" NEW GAME ");
-    private static Button p_vs_p_btn = new Button(" P vs P ");
+    private static Button player_vs_pc_btn = new Button("Player Vs PC");
+    private static Button p_vs_p_btn = new Button("Player Vs Player");
     private static Button exit_btn = new Button(" EXIT ");
      private static Pane menu_pane = new Pane();
     private static VBox text_pane = new VBox(22);
@@ -81,16 +81,21 @@ public class Tic_Menu {
         exit_btn.setLayoutY(200);
         
         player_vs_pc_btn.setOnAction(e -> {
+            sound.mediaPlayer_back.play();
                XO_Main.getInstanceFromXO().openTicTacToeMain(GameBox_Core.Root);
+               
                 GameBox_Core.Root.setScene(XO_Main.XO_scene);
          });
         
        p_vs_p_btn.setOnAction(e -> {
+           sound.mediaPlayer_back.play();
                 GameBox_Core.Root.setScene(p.start());
+                 
          });
         
          exit_btn.setOnAction(e -> {
                   GameBox_Core.Root.close();
+                    sound.mediaPlayer_back.stop();
          });
         
           player_vs_pc_btn.setOnMouseEntered(event -> {
