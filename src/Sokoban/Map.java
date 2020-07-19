@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 
 public class Map { 
 
-
+  public static String whole_level;// for shortest path
     private static Image wall = new Image("Resources/Sokoban/wall.bmp", 50, 50, true, true);
 
     protected static Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
@@ -114,8 +114,12 @@ public class Map {
         tmp_Level=start_from_this_level;
         initialize();
         ArrayList<String> levelmap = read_map.get(tmp_Level);
-
+       ArrayList<String> temp = new ArrayList() ;// for shortest path
         for (int i = 0; i < levelmap.size(); i++) {
+                // for shortest path//
+            if(i<levelmap.size()-1)
+           temp.add(levelmap.get(i));
+            //===================//
             char[] values = levelmap.get(i).toCharArray();
 
             for (int j = 0; j < values.length; j++) {
@@ -158,7 +162,10 @@ public class Map {
             posX = 50;
 
         }
-        
+          //for shortest path//   
+        whole_level= temp.toString();
+        shortest_path.main();
+        //================//
     }
     /*
      * Locate the Image's position and put its imageView in the layout "group"

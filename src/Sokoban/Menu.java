@@ -66,7 +66,7 @@ public class Menu {
         new_game_btn.setLayoutY(100);
       
         text_pane.setLayoutX(540);
-        text_pane.setLayoutY(180);
+        text_pane.setLayoutY(200);
         text_pane.setPrefSize(280, 400);
         //text_pane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
         

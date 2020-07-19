@@ -8,6 +8,7 @@ import javafx.scene.shape.Rectangle;
 import static Tetris.Tetris_Main.MESH;
 import static Tetris.Tetris_Main.SIZE;
 import static Tetris.Tetris_Main.score;
+import javafx.util.Duration;
 
 
 public class Clear {
@@ -39,7 +40,8 @@ public class Clear {
                 }
                 score += 50;
                 Tetris_Main.linesNo++;
-
+                Tetris_sound.mediaPlayer_clear.play();
+                Tetris_sound.mediaPlayer_clear.seek(Duration.ZERO);
                 for (Node node : rects) {
                     Rectangle a = (Rectangle) node;
                     if (a.getY() == lines.get(0) * SIZE) {

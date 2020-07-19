@@ -2,6 +2,7 @@
 package Tetris;
 
 import GameLoop.GameBox_Core;
+import TicTacToe.sound;
 
 import java.io.File;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ public class Tetris_Menu {
     
    
  private static VBox text_pane = new VBox(22);
+ private static VBox hardness_pane = new VBox(22);
  static Image m=new Image("Resources/Tetris/Effect.png",470,750,false ,false) ;
  static  ImageView mv= new ImageView(m);
  static  ImageView mv2= new ImageView(m);
@@ -31,11 +33,13 @@ public class Tetris_Menu {
  static Button new_game_btn= new Button("New game ");
  static Button setting_btn= new Button("Setting");
  static Button exit_btn= new Button("Exit");
-
+ static Button easy= new Button("Easy");
+ static Button mediam = new Button("Medium");
+ static Button hard = new Button("Hard");
   public  static Scene start (){
       
-  //Font.loadFont(  getClass().getResourceAsStream("/font.ttf"), 16);
-       scene.getStylesheets().add(Tetris_Menu.class.getResource("cs.css").toExternalForm());
+ 
+        scene.getStylesheets().add(Tetris_Menu.class.getResource("cs.css").toExternalForm());
         text_pane.getChildren().addAll(new_game_btn,  setting_btn, exit_btn);
         menu.getChildren().addAll(mv,mv2,text_pane);
         mv.setLayoutX(0);
@@ -55,11 +59,44 @@ public class Tetris_Menu {
         
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(200);
+        //===============================//
+         easy.setLayoutX(100);
+         easy.setLayoutY(100);
         
+        hardness_pane.setLayoutX(580);
+        hardness_pane.setLayoutY(180);
+        hardness_pane.setPrefSize(280, 400);
+        mediam.setLayoutX(100);
+        mediam.setLayoutY(150);
+        
+        hard.setLayoutX(100);
+        hard.setLayoutY(200);
+         easy.setId("btn");
+         mediam.setId("btn");
+         hard.setId("btn");
+         hardness_pane.getChildren().addAll(easy,  mediam, hard);
+         
+         easy.setOnAction(e->{
+               Tetris_sound.back_sound();
+               Tetris_Main.getInstanceFromTetris().start_Tetris(GameBox_Core.Root,300);
+               GameBox_Core.Root.setScene(Tetris_Main.Tetris_scene);
+         });
+         mediam.setOnAction(e->{
+                Tetris_sound.back_sound();
+               Tetris_Main.getInstanceFromTetris().start_Tetris(GameBox_Core.Root,200);
+               GameBox_Core.Root.setScene(Tetris_Main.Tetris_scene);
+         });
+        hard.setOnAction(e->{
+               Tetris_sound.back_sound();
+               Tetris_Main.getInstanceFromTetris().start_Tetris(GameBox_Core.Root,150);
+               GameBox_Core.Root.setScene(Tetris_Main.Tetris_scene);
+         });
+        //===============================//
         new_game_btn.setOnAction(e->{
-           
-        Tetris_Main.getInstanceFromTetris().start_Tetris(GameBox_Core.Root);
-        GameBox_Core.Root.setScene(Tetris_Main.Tetris_scene);
+
+         menu.getChildren().remove(text_pane);
+         menu.getChildren().add(hardness_pane);
+         
         });
          exit_btn.setOnMouseClicked(e -> {
 

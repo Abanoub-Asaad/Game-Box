@@ -55,7 +55,7 @@ public class Tetris_Main {
     }
     //======================================================
     
-    public void start_Tetris(Stage games_stage) {
+    public void start_Tetris(Stage games_stage,int timelimit) {
 
         
         
@@ -110,7 +110,7 @@ public class Tetris_Main {
                 });
             }
         };
-        fall.schedule(task, 0, 300);
+        fall.schedule(task, 0, timelimit);
     }
 
     private void moveOnKeyPress(Form form) {
