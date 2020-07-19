@@ -1,60 +1,63 @@
 package Tetris;
 
-import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+import static Tetris.Tetris_Main.MESH;
+import static Tetris.Tetris_Main.MOVE;
+import static Tetris.Tetris_Main.SIZE;
+import static Tetris.Tetris_Main.XMAX;
+import static Tetris.Tetris_Main.YMAX;
 
 public abstract class Shape {
 
-    ShapeFactory shapeFactory_obj = new ShapeFactory();
-    protected final float width = 50f, height = 50f;
-    protected static int NumOfTurn;
-
-    abstract void Basic(Rectangle[] rectangles, float x, float y, Group group);
-    abstract void turn90(Rectangle[] rectangles, float x, float y, Group group);
-    abstract void turn180(Rectangle[] rectangles, float x, float y, Group group);
-    abstract void turn270(Rectangle[] rectangles, float x, float y, Group group);
-    abstract void turn360(Rectangle[] rectangles, float x, float y, Group group);
+    Rectangle []Next = new Rectangle [4];
     
-    protected void SetShapes(Rectangle[] rectangles, float X, float Y, Group group, int number) {
+    protected abstract void setShape(Rectangle a, Rectangle b, Rectangle c, Rectangle d);
+    protected abstract Rectangle[] getShape() ;
+    protected abstract  void MoveTurn(Form form, int num_turn, Rectangle a, Rectangle b, Rectangle c, Rectangle d);
+    protected abstract void Basic(Rectangle[] rectangles, Pane group);
 
-        Shape shape1_obj = shapeFactory_obj.getShape("Line_shape");
-        Shape shape2_obj = shapeFactory_obj.getShape("Square_shape");
-        Shape shape3_obj = shapeFactory_obj.getShape("L_shape");
-        Shape shape4_obj = shapeFactory_obj.getShape("MirroredL_shape");
-        Shape shape5_obj = shapeFactory_obj.getShape("S_shape");
-        Shape shape6_obj = shapeFactory_obj.getShape("T_shape");
-        Shape shape7_obj = shapeFactory_obj.getShape("Z_shape");
+    protected void MoveDown(Rectangle rect) {
+        if (rect.getY() + MOVE < YMAX) {
+            rect.setY(rect.getY() + MOVE);
+        }
 
-        switch (number) {
+    }
 
-            case 1:
-                shape1_obj.Basic(rectangles, X, Y, group);
-                break;
-
-            case 2:
-                shape2_obj.Basic(rectangles, X, Y, group);
-                break;
-
-            case 3:
-                shape3_obj.Basic(rectangles, X, Y, group);
-                break;
-
-            case 4:
-                shape4_obj.Basic(rectangles, X, Y, group);
-                break;
-
-            case 5:
-                shape5_obj.Basic(rectangles, X, Y, group);
-                break;
-
-            case 6:
-                shape6_obj.Basic(rectangles, X, Y, group);
-                break;
-
-            case 7:
-                shape7_obj.Basic(rectangles, X, Y, group);
-                break;
+    protected void MoveRight(Rectangle rect) {
+        if (rect.getX() + MOVE <= XMAX - SIZE) {
+            rect.setX(rect.getX() + MOVE);
         }
     }
 
+    protected void MoveLeft(Rectangle rect) {
+        if (rect.getX() - MOVE >= 0) {
+            rect.setX(rect.getX() - MOVE);
+        }
+    }
+
+    protected void MoveUp(Rectangle rect) {
+        if (rect.getY() - MOVE > 0) {
+            rect.setY(rect.getY() - MOVE);
+        }
+    }
+    
+    protected boolean checkRectangle(Rectangle rect, int x, int y) {
+        boolean xb = false;
+        boolean yb = false;
+        if (x >= 0) {
+            xb = rect.getX() + x * MOVE <= XMAX - SIZE;
+        }
+        if (x < 0) {
+            xb = rect.getX() + x * MOVE >= 0;
+        }
+        if (y >= 0) {
+            yb = rect.getY() - y * MOVE > 0;
+        }
+        if (y < 0) {
+            yb = rect.getY() + y * MOVE < YMAX;
+        }
+        return xb && yb && MESH[((int) rect.getX() / SIZE) + x][((int) rect.getY() / SIZE) - y] == 0;
+    }
 }

@@ -1,104 +1,102 @@
 package Tetris;
 
 import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import static Tetris.Controller.SIZE;
+import static Tetris.Controller.XMAX;
 
 public class Shape7 extends Shape {
 
-    public void Basic(Rectangle[] rect, float x, float y, Group root) {
-        NumOfTurn = 1;
-        rect[0] = new Rectangle(x, y, width - 1, height);
-        rect[1] = new Rectangle(x + width, y + height, width - 1, height);
-        rect[2] = new Rectangle(x - width, y, width - 1, height);
-        rect[3] = new Rectangle(x, y + height, width - 1, height);
+    @Override
+    protected  void Basic(Rectangle[] rectangles, Pane group) {
+     
         for (int i = 0; i < 4; i++) {
-            rect[i].setFill(Color.RED);
-            root.getChildren().addAll(rect[i]);
+            rectangles[i] = new Rectangle();
+            rectangles[i].setHeight(49);
+            rectangles[i].setWidth(49);
         }
-        // shapeObj.tranformation(rect, 550,500,550,500); 
+        
+        setShape(rectangles[0], rectangles[1], rectangles[2], rectangles[3]);
+        rectangles[0].setX(rectangles[0].getX()+640);
+        rectangles[1].setX(rectangles[1].getX()+640);
+        rectangles[2].setX(rectangles[2].getX()+640);
+        rectangles[3].setX(rectangles[3].getX()+640);
+        
+        rectangles[0].setY(rectangles[0].getY()+160);
+        rectangles[1].setY(rectangles[1].getY()+160);
+        rectangles[2].setY(rectangles[2].getY()+160);
+        rectangles[3].setY(rectangles[3].getY()+160);
+        
+        for (int i = 0; i < 4; i++) {
+            rectangles[i].setFill(Color.RED);
+            group.getChildren().add(rectangles[i]);
+        }
     }
-
-    public void turn90(Rectangle[] rect, float x, float y, Group root) {
-        NumOfTurn = 2;
-        x = (float) rect[0].getX();
-        y = (float) rect[0].getY();
-        System.out.println(" x : " + x);
-        System.out.println(" y : " + y);
-
-        rect[0].setX(x);
-        rect[0].setY(y);
-
-        rect[1].setX(x + width);
-        rect[1].setY(y);
-
-        rect[2].setX(x + width);
-        rect[2].setY(y - height);
-
-        rect[3].setX(x);
-        rect[3].setY(y + height);
-
-    }
-
-    public void turn180(Rectangle[] rect, float x, float y, Group root) {
-        NumOfTurn = 3;
-        x = (float) rect[0].getX();
-        y = (float) rect[0].getY();
-        System.out.println(" x : " + x);
-        System.out.println(" y : " + y);
-
-        rect[0].setX(x);
-        rect[0].setY(y);
-
-        rect[1].setX(x + width);
-        rect[1].setY(y + height);
-
-        rect[2].setX(x - width);
-        rect[2].setY(y);
-
-        rect[3].setX(x);
-        rect[3].setY(y + height);
+    
+    @Override
+    protected void setShape(Rectangle a, Rectangle b, Rectangle c, Rectangle d) {
+        a.setX(XMAX / 2 + SIZE);
+        b.setX(XMAX / 2);
+        c.setX(XMAX / 2 + SIZE);
+        c.setY(SIZE);
+        d.setX(XMAX / 2 + SIZE + SIZE);
+        d.setY(SIZE);
 
     }
 
-    public void turn270(Rectangle[] rect, float x, float y, Group root) {
-        NumOfTurn = 4;
-        x = (float) rect[0].getX();
-        y = (float) rect[0].getY();
-        System.out.println(" x : " + x);
-        System.out.println(" y : " + y);
+    @Override
+    protected Rectangle[] getShape() {
 
-        rect[0].setX(x);
-        rect[0].setY(y);
+        return Next;
 
-        rect[1].setX(x + width);
-        rect[1].setY(y);
-
-        rect[2].setX(x + width);
-        rect[2].setY(y - height);
-
-        rect[3].setX(x);
-        rect[3].setY(y + height);
     }
 
-    public void turn360(Rectangle[] rect, float x, float y, Group root) {
-        NumOfTurn = 5;
-        x = (float) rect[0].getX();
-        y = (float) rect[0].getY();
-        System.out.println(" x : " + x);
-        System.out.println(" y : " + y);
+    @Override
+    protected void MoveTurn(Form form, int num_turn, Rectangle a, Rectangle b, Rectangle c, Rectangle d) {
 
-        rect[0].setX(x);
-        rect[0].setY(y);
+        if (num_turn == 1 && checkRectangle(b, 1, 1) && checkRectangle(c, -1, 1) && checkRectangle(d, -2, 0)) {
+            MoveUp(form.b);
+            MoveRight(form.b);
+            MoveLeft(form.c);
+            MoveUp(form.c);
+            MoveLeft(form.d);
+            MoveLeft(form.d);
+            form.changeForm();
 
-        rect[1].setX(x + width);
-        rect[1].setY(y + height);
+        }
+        if (num_turn == 2 && checkRectangle(b, -1, -1) && checkRectangle(c, 1, -1) && checkRectangle(d, 2, 0)) {
+            MoveDown(form.b);
+            MoveLeft(form.b);
+            MoveRight(form.c);
+            MoveDown(form.c);
+            MoveRight(form.d);
+            MoveRight(form.d);
+            form.changeForm();
 
-        rect[2].setX(x - width);
-        rect[2].setY(y);
+        }
+        if (num_turn == 3 && checkRectangle(b, 1, 1) && checkRectangle(c, -1, 1) && checkRectangle(d, -2, 0)) {
+            MoveUp(form.b);
+            MoveRight(form.b);
+            MoveLeft(form.c);
+            MoveUp(form.c);
+            MoveLeft(form.d);
+            MoveLeft(form.d);
+            form.changeForm();
 
-        rect[3].setX(x);
-        rect[3].setY(y + height);
+        }
+        if (num_turn == 4 && checkRectangle(b, -1, -1) && checkRectangle(c, 1, -1) && checkRectangle(d, 2, 0)) {
+            MoveDown(form.b);
+            MoveLeft(form.b);
+            MoveRight(form.c);
+            MoveDown(form.c);
+            MoveRight(form.d);
+            MoveRight(form.d);
+            form.changeForm();
+
+        }
+
     }
 
 }

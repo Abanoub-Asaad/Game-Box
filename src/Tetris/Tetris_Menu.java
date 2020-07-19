@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Tetris;
 
 import GameLoop.GameBox_Core;
-import static Tetris.Tetris_Main.tetris_scene;
+
 import java.io.File;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,6 +21,7 @@ import javafx.scene.text.Font;
  */
 public class Tetris_Menu {
     
+   
  private static VBox text_pane = new VBox(22);
  static Image m=new Image("Resources/Tetris/Effect.png",470,750,false ,false) ;
  static  ImageView mv= new ImageView(m);
@@ -58,9 +55,11 @@ public class Tetris_Menu {
         
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(200);
+        
         new_game_btn.setOnAction(e->{
-        Tetris_Main.getInstanceFromTetris().Tetris_Main(GameBox_Core.Root);
-        GameBox_Core.Root.setScene(tetris_scene);
+           
+        Tetris_Main.getInstanceFromTetris().start_Tetris(GameBox_Core.Root);
+        GameBox_Core.Root.setScene(Tetris_Main.Tetris_scene);
         });
          exit_btn.setOnMouseClicked(e -> {
 
