@@ -16,9 +16,9 @@ import javafx.scene.image.ImageView;
 public class Buttons {
 
     static boolean check_mode43 = false;
-    private static Image next_btn_img = new Image("Resources/Sokoban/next.jpg");
-    private static Image prev_btn_img = new Image("Resources/Sokoban/prev.jpg");
-    private static Image repeat_btn_img = new Image("Resources/Sokoban/repeat.jpg");
+    private static Image next_btn_img = new Image("Resources/Sokoban/next.png");
+    private static Image prev_btn_img = new Image("Resources/Sokoban/prev.png");
+    private static Image repeat_btn_img = new Image("Resources/Sokoban/repeat.png");
     public static ImageView nextbtn_iv = new ImageView(next_btn_img), prevbtn_iv = new ImageView(prev_btn_img), repeat_IV = new ImageView(repeat_btn_img);
 
     public static void practicebuttons() {

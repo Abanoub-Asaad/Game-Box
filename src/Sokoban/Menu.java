@@ -34,11 +34,11 @@ public class Menu {
     public static Scene scene = new Scene(root, 1370, 750);
     private static VBox text_pane = new VBox(22);
 
-    private static GNButton new_game_btn = new GNButton("New game");
-    private static GNButton continue_btn = new GNButton("Continue");
+    private static GNButton new_game_btn = new GNButton("NEW GAME");
+    private static GNButton continue_btn = new GNButton("CONTINUE");
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
-    private static GNButton setting_btn = new GNButton("Setting");
-    private static GNButton exit_btn = new GNButton("Exit");
+    private static GNButton setting_btn = new GNButton("Back");
+    private static GNButton exit_btn = new GNButton("EXIT");
 
     static Timeline timeline;
 
