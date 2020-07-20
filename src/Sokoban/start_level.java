@@ -4,6 +4,8 @@ import GameLoop.GameBox_Core;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
@@ -38,14 +40,14 @@ public class start_level {
         btn_play = new Button();
 
         pane_storeName.setId("pane");
-        Enter_Name_Text.setTranslateX(510);
+        Enter_Name_Text.setTranslateX(450);
         Enter_Name_Text.setTranslateY(350);
         Enter_Name_Text.setId("label");
         Enter_Name_Text.setPromptText("Enter your name");
         Enter_Name_Text.setFocusTraversable(false);
         addTextLimiter(Enter_Name_Text, 14);
 
-        btn_play.setTranslateX(510);
+        btn_play.setTranslateX(450);
         btn_play.setTranslateY(430);
         btn_play.setId("start");
         btn_play.setText("Play");
@@ -81,13 +83,24 @@ public class start_level {
 
             PlayerName_string = Enter_Name_Text.getText();
             if (PlayerName_string.length() > 0 && !PlayerName_string.contains(" ")) {
+                if(!Sokoban_Main.check_mode43){
                 Time.seconds = 0;
+                }
                 Sound.playsound(Sound.mediaPlayer_back);
+                try {
+                    Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
+                } catch (IOException ex) {
+                    Logger.getLogger(start_level.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
             }
 
         });
 
+    }
+
+    public static String getPlayerName_string() {
+        return PlayerName_string;
     }
 
 }

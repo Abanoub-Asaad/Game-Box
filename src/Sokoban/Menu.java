@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import javafx.animation.Timeline;
- import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,59 +26,56 @@ import Sokoban_menu_particle.Settings;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
 public class Menu {
 
-    public static  Pane layerPane = new Pane();
+    public static Pane layerPane = new Pane();
     public static BorderPane root = new BorderPane();
-    public static  Scene scene = new Scene(root, 1370, 750);		
+    public static Scene scene = new Scene(root, 1370, 750);
     private static VBox text_pane = new VBox(22);
-    
+
     private static GNButton new_game_btn = new GNButton("New game");
     private static GNButton continue_btn = new GNButton("Continue");
+    private static GNButton mode43_btn = new GNButton(" PRACTICE ");
     private static GNButton setting_btn = new GNButton("Setting");
     private static GNButton exit_btn = new GNButton("Exit");
 
-    static    Timeline timeline;
-
-
-    //==============================================//
-
-  private static List<Image> imageArrayList = new ArrayList<Image>();
-   static int count = 0;
-    
-  static ImageView slideshowImageView = new ImageView();
-
+    static Timeline timeline;
 
     //==============================================//
-  
+    private static List<Image> imageArrayList = new ArrayList<Image>();
+    static int count = 0;
+
+    static ImageView slideshowImageView = new ImageView();
+
+    //==============================================//
     public static Scene openMenu_sokoban() {
 
-        
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
+        mode43_btn.setId("menubutton");
         exit_btn.setId("menubutton");
         setting_btn.setId("menubutton");
-        
-        
+
         layerPane.setId("menupane");
         new_game_btn.setLayoutX(100);
         new_game_btn.setLayoutY(100);
-      
+
         text_pane.setLayoutX(540);
         text_pane.setLayoutY(200);
         text_pane.setPrefSize(280, 400);
         //text_pane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
-        
-        text_pane.getChildren().addAll(new_game_btn, continue_btn, setting_btn, exit_btn);
+
+        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, setting_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
 
             try {
                 GameBox_Core.Root.setScene(start_level.store_name());
-                deleteContentOfSelectLevelFileAndIntializeToOne() ;
-               
+                deleteContentOfSelectLevelFileAndIntializeToOne();
+
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -98,6 +95,16 @@ public class Menu {
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        });
+        mode43_btn.setOnMouseClicked(e -> {
+            Sokoban_Main.check_mode43 = true;
+            try {
+                Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
+            } catch (IOException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
 
         });
 
@@ -120,20 +127,19 @@ public class Menu {
 //          BackgroundSize.DEFAULT);
 //       
 //   //addind buttons
-    layerPane.getChildren().add(text_pane);
+        layerPane.getChildren().add(text_pane);
 //   Menu_particle.layerPane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
         return scene;
     }
 
-   
-
     /**
-     * delete every thing in the file of levels that  used in select level
-     * then make the file start from level one
-     * @throws IOException 
+     * delete every thing in the file of levels that used in select level then
+     * make the file start from level one
+     *
+     * @throws IOException
      */
     private static void deleteContentOfSelectLevelFileAndIntializeToOne() throws IOException {
-        Map.tmp_Level=1;
+        Map.tmp_Level = 1;
         PrintWriter writer = new PrintWriter(file_unlockedLvls);
         writer.print("");
         writer.close();
@@ -144,34 +150,30 @@ public class Menu {
         bufferwriter_.close();
         filewriter_.close();
     }
- 
-  
-    
-public static void start() {
-   
-   
 
-    Image a = new Image("Resources/Sokoban/menu1.jpg",1375,750,false,false);
-    Image b = new Image("Resources/Sokoban/menu2.jpg",1375,750,false,false);
-    Image c = new Image("Resources/Sokoban/menu3.jpg",1375,750,false,false);
-   
-     imageArrayList.add(c);
-     imageArrayList.add(b);
-     imageArrayList.add(a);
-     layerPane.getChildren().addAll(slideshowImageView);
+    public static void start() {
+
+        Image a = new Image("Resources/Sokoban/menu1.jpg", 1375, 750, false, false);
+        Image b = new Image("Resources/Sokoban/menu2.jpg", 1375, 750, false, false);
+        Image c = new Image("Resources/Sokoban/menu3.jpg", 1375, 750, false, false);
+
+        imageArrayList.add(c);
+        imageArrayList.add(b);
+        imageArrayList.add(a);
+        layerPane.getChildren().addAll(slideshowImageView);
 // then in your method
 
-   long delay = 2000; //update once per 2 seconds.
-   new Timer().schedule(new TimerTask() {
+        long delay = 2000; //update once per 2 seconds.
+        new Timer().schedule(new TimerTask() {
 
-    @Override
-    public void run() {
-        slideshowImageView.setImage(imageArrayList.get(count++));
-        if (count >= imageArrayList.size()) {
-            count = 0;
-        }
+            @Override
+            public void run() {
+                slideshowImageView.setImage(imageArrayList.get(count++));
+                if (count >= imageArrayList.size()) {
+                    count = 0;
+                }
+            }
+        }, 0, delay);
+
     }
-}, 0, delay);
-
-}
 }

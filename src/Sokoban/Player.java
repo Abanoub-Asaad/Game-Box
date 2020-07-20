@@ -13,7 +13,9 @@ public class Player extends Piece {
     protected static void checkForThePlayer(int dir_x, int dir_y, String s) {
         if (!checkBox(dir_x, dir_y) && !checkWall(dir_x, dir_y)) {
             moveThePlayer(dir_x, dir_y);
-            Time.show_moves_number(Time.moves);
+            if (!Sokoban_Main.check_mode43) {
+                Time.show_moves_number(Time.moves);
+            }
         }
         keyPressed = s;
     }
@@ -62,7 +64,9 @@ public class Player extends Piece {
                 player_imageView.setX(desiredPos_X);
                 player_imageView.setY(desiredPos_Y);
                 Sound.playsound(Sound.mediaPlayer_pipe);
-                ++Time.moves;
+                if (!Sokoban_Main.check_mode43) {
+                    ++Time.moves;
+                }
             }
         } else if (Pipe.checkPipe(dir_x, dir_y) == 2) {
             int desiredPos_X = (int) Map.Pipes_Imageviews_Array.get(0).getX() + 50;
@@ -71,40 +75,42 @@ public class Player extends Piece {
                 player_imageView.setX(desiredPos_X);
                 player_imageView.setY(desiredPos_Y);
                 Sound.playsound(Sound.mediaPlayer_pipe);
-                ++Time.moves;
+                if (!Sokoban_Main.check_mode43) {
+                    ++Time.moves;
+                }
             }
         } else {
 
-             
-            
             if (Pressure_Pad.levelHasvePad) {
 
                 if (!gate_obj.checkPlayer_Gate(dir_x, dir_y)) {
-                   // System.out.println("player doesn't move on place have a gate");
+                    // System.out.println("player doesn't move on place have a gate");
                     player_imageView.setX(x);
                     player_imageView.setY(y);
-                    
-                    ++Time.moves;
+                    if (!Sokoban_Main.check_mode43) {
+                        ++Time.moves;
+                    }
                 } else {
-                    if ((Pressure_Pad.BoxOnPad )) {
+                    if ((Pressure_Pad.BoxOnPad)) {
                         //System.out.println("player want to move through a gate, and the gates're open");
-                     
+
                         player_imageView.setX(x);
                         player_imageView.setY(y);
-                        ++Time.moves;
+                        if (!Sokoban_Main.check_mode43) {
+                            ++Time.moves;
+                        }
                     }//else//  System.out.println("player want to move through a gate, and the gates're closed");
-                    else{
-                           Sound.playsound(Sound.mediaPlayer_pad);
+                    else {
+                        Sound.playsound(Sound.mediaPlayer_pad);
                     }
                 }
-            }  
-            
-            else {
-                
+            } else {
+
                 player_imageView.setX(x);
                 player_imageView.setY(y);
-               
-                ++Time.moves;
+                if (!Sokoban_Main.check_mode43) {
+                    ++Time.moves;
+                }
             }
 
         }

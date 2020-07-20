@@ -1,5 +1,6 @@
 package Sokoban.Select_Level;
 
+import GameLoop.GameBox_Core;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,7 +10,6 @@ import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,7 +25,6 @@ import static Sokoban.Sokoban_Main.sokoban_scene;
 
 public class Page1 {
 
-    
     private Text selectLevel_txt = new Text("Select Level");
     public Group root = new Group();
     protected static Scene scene_page1;//= new Scene(root, 1800, 750);
@@ -34,7 +33,7 @@ public class Page1 {
     private ImageView ImagbackIV;
     private int x, y;
     private static Page1 Page1;
-    String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\Select Level\\unlockedLVL.txt"; 
+    String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\Select Level\\unlockedLVL.txt";
 
     private FileReader file_reader;
     private BufferedReader buffered_reader;
@@ -112,62 +111,65 @@ public class Page1 {
      *
      * @throws IOException
      */
-    
-     public void createImage() throws IOException{
-     SetImage(0,x,y);
-         lvlImage_IV.setLayoutX(200);
-        x+=100;
+    public void createImage() throws IOException {
+        SetImage(0, x, y);
+        lvlImage_IV.setLayoutX(200);
+        x += 100;
         lvlImage_IV.setLayoutY(200);
         lvlImage_IV.setEffect(new DropShadow(+15d, 0d, +2d, Color.GREY));
         root.getChildren().addAll(lvlImage_IV);
-          Text t;
-         t = new Text(Integer.toString(1));
-         t.setFill(Color.WHITE);
+        Text t;
+        t = new Text(Integer.toString(1));
+        t.setFill(Color.WHITE);
         t.setFont(Font.font(30));
-        t.setX(x-75);
-        t.setY(y+45);
-       t.toFront();
-          root.getChildren().addAll(t);
-        for(int i=1; i<10; i++){
-      
-         SetImage(i,x,y);
-         lvlImage_IV.setLayoutX(x);
-     lvlImage_IV.setLayoutY(200);
-        lvlImage_IV.setEffect(new DropShadow(+15d, 0d, +2d, Color.PINK));
-            x+=100;
-        root.getChildren().addAll(lvlImage_IV);
-        if(!locked){
-          t = new Text(Integer.toString(i+1));
-          t.setFill(Color.WHITE);
-        t.setFont(Font.font(30));
-        t.setX(x-75);
-        t.setY(y+45);
-       t.toFront();
-          root.getChildren().addAll(t);}
-     }
-        
-      
-    
-        for(int j =10;j<50;j++){
-        if(j%10==0)   {y+=100; x=200;}
-         SetImage(j,x,y);
-         lvlImage_IV.setLayoutX(x);
-     lvlImage_IV.setLayoutY(y);
-        lvlImage_IV.setEffect(new DropShadow(+15d, 0d, +2d, Color.PINK));
-            x+=100;
-        root.getChildren().addAll(lvlImage_IV);
-          if(!locked){
-                            t = new Text(Integer.toString(j+1));
-          t.setFill(Color.WHITE);
-        t.setFont(Font.font(30));
-        t.setX(x-80);
-        t.setY(y+45);
-       t.toFront();
-          root.getChildren().addAll(t);}
-      
+        t.setX(x - 75);
+        t.setY(y + 45);
+        t.toFront();
+        root.getChildren().addAll(t);
+        for (int i = 1; i < 10; i++) {
+
+            SetImage(i, x, y);
+            lvlImage_IV.setLayoutX(x);
+            lvlImage_IV.setLayoutY(200);
+            lvlImage_IV.setEffect(new DropShadow(+15d, 0d, +2d, Color.PINK));
+            x += 100;
+            root.getChildren().addAll(lvlImage_IV);
+            if (!locked) {
+                t = new Text(Integer.toString(i + 1));
+                t.setFill(Color.WHITE);
+                t.setFont(Font.font(30));
+                t.setX(x - 75);
+                t.setY(y + 45);
+                t.toFront();
+                root.getChildren().addAll(t);
+            }
         }
-        
-     }
+
+        for (int j = 10; j < 50; j++) {
+            if (j % 10 == 0) {
+                y += 100;
+                x = 200;
+            }
+            SetImage(j, x, y);
+            lvlImage_IV.setLayoutX(x);
+            lvlImage_IV.setLayoutY(y);
+            lvlImage_IV.setEffect(new DropShadow(+15d, 0d, +2d, Color.PINK));
+            x += 100;
+            root.getChildren().addAll(lvlImage_IV);
+            if (!locked) {
+                t = new Text(Integer.toString(j + 1));
+                t.setFill(Color.WHITE);
+                t.setFont(Font.font(30));
+                t.setX(x - 80);
+                t.setY(y + 45);
+                t.toFront();
+                root.getChildren().addAll(t);
+            }
+
+        }
+
+    }
+
     /**
      * Method for transition between the 2 pages which contain the levels, each
      * page have 50 levels
@@ -221,15 +223,14 @@ public class Page1 {
      * @throws FileNotFoundException
      * @throws IOException
      */
- 
-     protected void SetImage(int lvlN,int X,int Y)throws FileNotFoundException, IOException{
-         locked=true;
-        lvlImage= new Image("Resources/Sokoban/Select Level/lock.png",70,70,true,true);
-        lvlImage_IV=new ImageView(lvlImage);
-     
+    protected void SetImage(int lvlN, int X, int Y) throws FileNotFoundException, IOException {
+        locked = true;
+        lvlImage = new Image("Resources/Sokoban/Select Level/lock.png", 70, 70, true, true);
+        lvlImage_IV = new ImageView(lvlImage);
+
         file_reader = new FileReader(fileName);
         buffered_reader = new BufferedReader(file_reader);
-      
+
         String currentLine;
         while ((currentLine = buffered_reader.readLine()) != null) {
             if (lvlN + 1 == Integer.parseInt(currentLine)) {
@@ -251,24 +252,28 @@ public class Page1 {
                 } else {
                     lvlImage = new Image("Resources/Sokoban/Select Level/7.png", 70, 70, true, true);
                 }
-                    lvlImage_IV.setImage(lvlImage);
-        
+                lvlImage_IV.setImage(lvlImage);
+
                 lvlImage_IV.setOnMousePressed(event -> {
                     //(lvlN + 1) 
-                    GameLoop.GameBox_Core.Root.setScene(sokoban_scene);
                     
-                    Map.startlevel(lvlN+1);
+                    try {
+                       Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Page1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    GameLoop.GameBox_Core.Root.setScene(sokoban_scene);
+                    Map.startlevel(lvlN + 1);
                     try {
                         Piece.checkIfStorageLogationsAreFilled();
                     } catch (IOException ex) {
                         Logger.getLogger(Page1.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
-               // root.getChildren().add(lvlImage_IV);
-        break;
+                // root.getChildren().add(lvlImage_IV);
+                break;
+            }
+
         }
-        
-        
-        }
-     }
+    }
 }

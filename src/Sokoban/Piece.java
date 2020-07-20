@@ -96,11 +96,17 @@ public class Piece {
     public static void checkfinishlevel() throws IOException {
 
         if (countboxesatstorage == Map.Boxes_Imageviews_Array.size()) {
+            if(!Sokoban_Main.check_mode43){
             Time.timer.stop();
             score.calculate_score();
             rank.Display_Rank();
             Sound.playsound(Sound.mediaPlayer_win);
             GameBox_Core.Root.setScene(finish_level.finish_scene());
+            }
+            else{
+            Sound.playsound(Sound.mediaPlayer_win);
+             Map.startlevel(++Map.tmp_Level);
+            }
 
         }
 

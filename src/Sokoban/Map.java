@@ -9,9 +9,8 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Map { 
+public class Map {
 
-  public static String whole_level;// for shortest path
     private static Image wall = new Image("Resources/Sokoban/wall.bmp", 50, 50, true, true);
 
     protected static Image player = new Image("Resources/Sokoban/player.png", 50, 50, true, true);
@@ -34,7 +33,7 @@ public class Map {
     protected static ArrayList<ImageView> Pipes_Imageviews_Array = new ArrayList<>();
     protected static ArrayList<ImageView> Gates_Imageviews_Array = new ArrayList<>();
 
-    protected static int tmp_Level ;
+    protected static int tmp_Level;
     /*
      * posX & posY for Locating The level textures 
      */
@@ -46,7 +45,9 @@ public class Map {
     private static BufferedReader buffered_reader;
     public static Image SokobanImgback = new Image("Resources/Sokoban/backa.jpg", 1800, 800, true, false);
     public static ImageView Soko_ImagbackIV = new ImageView(SokobanImgback);
-
+    private static Image next_btn_img = new Image("Resources/Sokoban/next.jpg");
+    private static Image prev_btn_img = new Image("Resources/Sokoban/prev.jpg");
+    private static ImageView nextbtn_iv = new ImageView(next_btn_img), prevbtn_iv = new ImageView(prev_btn_img);
     public static HashMap<Integer, ArrayList<String>> read_map = new HashMap<>();
     private static FileReader file_reader2;
     private static BufferedReader buffered_reader2;
@@ -73,17 +74,22 @@ public class Map {
         Gates_Imageviews_Array.clear();
         Sokoban_Main.root.getChildren().remove(pad_iv);
 
-        Time.moves = 0;
-        Time.seconds = 0;
-
         Sokoban_Main.root.getChildren().add(Soko_ImagbackIV);
-        Sokoban_Main.root.getChildren().add(Time.layout);
-
+        if (!Sokoban_Main.check_mode43) {
+            Time.moves = 0;
+            Time.seconds = 0;
+            Sokoban_Main.root.getChildren().add(Time.layout);
+        } else {
+            if (tmp_Level != 1) {
+                Sokoban_Main.root.getChildren().add(prevbtn_iv);
+            }
+            Sokoban_Main.root.getChildren().add(nextbtn_iv);
+        }
     }
 
     /*
      * This method Read the Map file text 
-     * and Put images insted of characters which in the file
+     * and Put images instead of characters which in the file
      */
     public static void make_hashmap() throws FileNotFoundException, IOException {
         file_reader2 = new FileReader(fileName);
@@ -107,19 +113,16 @@ public class Map {
             }
             read_map.put(level, rows);
 
-        }   
+        }
     }
 
     public static void startlevel(int start_from_this_level) {
-        tmp_Level=start_from_this_level;
+        tmp_Level = start_from_this_level;
         initialize();
+        practicebuttons();
         ArrayList<String> levelmap = read_map.get(tmp_Level);
-       ArrayList<String> temp = new ArrayList() ;// for shortest path
+
         for (int i = 0; i < levelmap.size(); i++) {
-                // for shortest path//
-            if(i<levelmap.size()-1)
-           temp.add(levelmap.get(i));
-            //===================//
             char[] values = levelmap.get(i).toCharArray();
 
             for (int j = 0; j < values.length; j++) {
@@ -134,7 +137,6 @@ public class Map {
 
                     case '!':
                         break;
-
 
                     case '.':
                         setPosition(target, posX, posY);
@@ -162,10 +164,7 @@ public class Map {
             posX = 50;
 
         }
-          //for shortest path//   
-        whole_level= temp.toString();
-        shortest_path.main();
-        //================//
+
     }
     /*
      * Locate the Image's position and put its imageView in the layout "group"
@@ -198,6 +197,29 @@ public class Map {
             Pressure_Pad.levelHasvePad = true;
         } else if (img == gate) {
             Gates_Imageviews_Array.add(tmp_imageView);
+        }
+    }
+
+    private static void practicebuttons() {
+        nextbtn_iv.setX(1000);
+        nextbtn_iv.setY(50);
+        nextbtn_iv.setFitWidth(128);
+        nextbtn_iv.setFitHeight(128);
+        prevbtn_iv.setX(850);
+        prevbtn_iv.setY(50);
+        prevbtn_iv.setFitWidth(128);
+        prevbtn_iv.setFitHeight(128);
+
+        nextbtn_iv.setOnMousePressed(event -> {
+            Map.startlevel(++tmp_Level);
+
+        });
+        if (tmp_Level != 1) {
+            prevbtn_iv.setOnMousePressed(event -> {
+                Map.startlevel(--tmp_Level);
+
+            });
+
         }
     }
 }

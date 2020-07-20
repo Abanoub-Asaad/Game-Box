@@ -20,26 +20,26 @@ public class Menu_particle  {
 
 	private static Random random = new Random();
 
-	Canvas canvas;
-	GraphicsContext graphicsContext;
+	static Canvas canvas;
+	static GraphicsContext graphicsContext;
 
 	/**
 	 * Container for canvas and other nodes like attractors and repellers
 	 */
-	  Image m = new Image("Resources/Sokoban/black.jpg");
+	  static Image m = new Image("Resources/Sokoban/back.jpg");
                 ImageView mv =new ImageView(m);
 
-	List<Particle> allParticles = new ArrayList<>();
+	static List<Particle> allParticles = new ArrayList<>();
 
-	AnimationTimer animationLoop;
+	static AnimationTimer animationLoop;
 
 	/**
 	 * Container for pre-created images which have color and size depending on
 	 * the particle's lifespan
 	 */
-	Image[] images;
+	static Image[] images;
 
-	public void start() {
+	public static void start() {
 
 		
 
@@ -69,15 +69,15 @@ public class Menu_particle  {
 
 	}
 
-	private void preCreateImages() {
-		this.images = Utils.preCreateImages();
+	private static void preCreateImages() {
+		Menu_particle.images = Utils.preCreateImages();
 	}
 
-	private void prepareObjects() {
+	private static void prepareObjects() {
 
 	}
 
-	private void startAnimation() {
+	private static void startAnimation() {
 
 		animationLoop = new AnimationTimer() {
 			
@@ -134,7 +134,7 @@ public class Menu_particle  {
 
 	}
 
-	private void removeDeadParticles() {
+	private static void removeDeadParticles() {
 
 		Iterator<Particle> iter = allParticles.iterator();
 		while (iter.hasNext()) {
@@ -150,7 +150,7 @@ public class Menu_particle  {
 
 	}
 
-	private void addParticle(double y) {
+	private static void addParticle(double y) {
 
 		// random location
 		double x = Settings.get().getCanvasWidth() / 2 + random.nextDouble() * Settings.get().getEmitterWidth() - Settings.get().getEmitterWidth() / 2;

@@ -44,7 +44,7 @@
 }
 #for3 {
     // for the vbox includes (time&move&score)texts
-    -fx-font:  40px  Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+   -fx-font:  40px  Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
     -fx-fill: darkblue;
     
     -fx-stroke: lightskyblue;
@@ -81,7 +81,7 @@
 }
 #pane{
     // for start_level pane
--fx-background-image: url("../Resources/Sokoban/black.jpg");
+-fx-background-image: url("../Resources/Sokoban/as.jpg");
 -fx-background-repeat: no-repeat;
 -fx-background-size: 1500 800;
 //-fx-background-position: center center;
@@ -89,34 +89,35 @@
 }
 #menubutton {
     
-    -fx-pref-height: 50 px;
-    -fx-pref-width: 200px;
-/*    -fx-background-radius: 30;
+   -fx-pref-height: 10 px;
+    -fx-pref-width: 300px;
+    -fx-background-radius: 30;
     -fx-background-insets: 0,1,2,3,0;
- */
-    //-fx-font-size: 30 px;
-/*    -fx-padding: 10 20 10 20;
-   */
-    -fx-font: italic bold  30px/40px Georgia, serif ;
-   
  
+    -fx-font-size: 30 px;
+    -fx-padding: 10 20 10 20;
+   
+    -fx-text-font: italic bold  40px/20px Georgia, serif ;
+    -fx-background-color:    black;
+   
+// -fx-padding:15px 20px;
  -fx-text-alignment: center;
- //-fx-border-width: 2px; 
- -fx-border-color:#6d4c41;
- -fx-text-fill: #6d4c41;
- //-fx-border-radius: 30;
+ -fx-border-width: 4px; 
+ -fx-border-color:   linear-gradient(to right, #3b064d,#8105d8,#ed0cef,#fe59d7);
+ -fx-text-fill: #ffffff;
+ -fx-border-radius: 30;
  //-fx-padding:1em 2em 0.9em 2em;
-  
-  -fx-border-width: 3 0 3 0;
-   -fx-stroke-width: 1;
+ 
 }
 
 #menupane{
     // menu pane 
-//-fx-background-image: url("../Resources/Sokoban/black.jpg");
+-fx-background-image: url("../Resources/Sokoban/as.jpg");
 -fx-background-repeat: no-repeat;
--fx-background-size: 1370 750;
+-fx-background-size: 1500 800;
 //-fx-background-position: center center;
 //-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);	
 }
 
+
+ 
