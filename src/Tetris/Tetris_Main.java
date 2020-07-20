@@ -145,7 +145,7 @@ public class Tetris_Main {
             MESH[(int) form.b.getX() / SIZE][(int) form.b.getY() / SIZE] = 1;
             MESH[(int) form.c.getX() / SIZE][(int) form.c.getY() / SIZE] = 1;
             MESH[(int) form.d.getX() / SIZE][(int) form.d.getY() / SIZE] = 1;
-            Clear.RemoveRows(tetris_pane);
+            clear.RemoveRows(tetris_pane);
 
             Form a = nextObj;
             nextObj = controller_obj.makeRect();

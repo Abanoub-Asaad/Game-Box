@@ -11,7 +11,7 @@ import static Tetris.Tetris_Main.score;
 import javafx.util.Duration;
 
 
-public class Clear {
+public class clear {
  
     protected static void RemoveRows(Pane pane) {
         ArrayList<Node> rects = new ArrayList<Node>();
@@ -55,7 +55,7 @@ public class Clear {
                 for (Node node : newrects) {
                     Rectangle a = (Rectangle) node;
                     if (a.getY() < lines.get(0) * SIZE) {
-//                        MESH[(int) a.getX() / SIZE][(int) a.getY() / SIZE] = 0;
+                    MESH[(int) a.getX() / SIZE][(int) a.getY() / SIZE] = 0;
                         a.setY(a.getY() + SIZE);
                     }
                 }

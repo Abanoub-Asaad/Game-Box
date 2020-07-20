@@ -13,7 +13,7 @@ public class Player extends Piece {
     protected static void checkForThePlayer(int dir_x, int dir_y, String s) {
         if (!checkBox(dir_x, dir_y) && !checkWall(dir_x, dir_y)) {
             moveThePlayer(dir_x, dir_y);
-            if (!Sokoban_Main.check_mode43) {
+            if (!Buttons.check_mode43) {
                 Time.show_moves_number(Time.moves);
             }
         }
@@ -64,7 +64,7 @@ public class Player extends Piece {
                 player_imageView.setX(desiredPos_X);
                 player_imageView.setY(desiredPos_Y);
                 Sound.playsound(Sound.mediaPlayer_pipe);
-                if (!Sokoban_Main.check_mode43) {
+                if (!Buttons.check_mode43) {
                     ++Time.moves;
                 }
             }
@@ -75,7 +75,7 @@ public class Player extends Piece {
                 player_imageView.setX(desiredPos_X);
                 player_imageView.setY(desiredPos_Y);
                 Sound.playsound(Sound.mediaPlayer_pipe);
-                if (!Sokoban_Main.check_mode43) {
+                if (!Buttons.check_mode43) {
                     ++Time.moves;
                 }
             }
@@ -87,7 +87,7 @@ public class Player extends Piece {
                     // System.out.println("player doesn't move on place have a gate");
                     player_imageView.setX(x);
                     player_imageView.setY(y);
-                    if (!Sokoban_Main.check_mode43) {
+                    if (!Buttons.check_mode43) {
                         ++Time.moves;
                     }
                 } else {
@@ -96,7 +96,7 @@ public class Player extends Piece {
 
                         player_imageView.setX(x);
                         player_imageView.setY(y);
-                        if (!Sokoban_Main.check_mode43) {
+                        if (!Buttons.check_mode43) {
                             ++Time.moves;
                         }
                     }//else//  System.out.println("player want to move through a gate, and the gates're closed");
@@ -108,7 +108,7 @@ public class Player extends Piece {
 
                 player_imageView.setX(x);
                 player_imageView.setY(y);
-                if (!Sokoban_Main.check_mode43) {
+                if (!Buttons.check_mode43) {
                     ++Time.moves;
                 }
             }

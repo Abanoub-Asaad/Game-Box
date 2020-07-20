@@ -98,7 +98,7 @@ public class Menu {
 
         });
         mode43_btn.setOnMouseClicked(e -> {
-            Sokoban_Main.check_mode43 = true;
+            Buttons.check_mode43 = true;
             try {
                 Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
             } catch (IOException ex) {

@@ -83,7 +83,7 @@ public class start_level {
 
             PlayerName_string = Enter_Name_Text.getText();
             if (PlayerName_string.length() > 0 && !PlayerName_string.contains(" ")) {
-                if(!Sokoban_Main.check_mode43){
+                if(!Buttons.check_mode43){
                 Time.seconds = 0;
                 }
                 Sound.playsound(Sound.mediaPlayer_back);

@@ -43,11 +43,8 @@ public class Map {
     // private String fileName  = "src/Resources/Sokoban/maps.txt" ;
     private static FileReader file_reader;
     private static BufferedReader buffered_reader;
-    public static Image SokobanImgback = new Image("Resources/Sokoban/backa.jpg", 1800, 800, true, false);
+    public static Image SokobanImgback = new Image("Resources/Sokoban/forgame.jpg", 1800, 800, true, false);
     public static ImageView Soko_ImagbackIV = new ImageView(SokobanImgback);
-    private static Image next_btn_img = new Image("Resources/Sokoban/next.jpg");
-    private static Image prev_btn_img = new Image("Resources/Sokoban/prev.jpg");
-    private static ImageView nextbtn_iv = new ImageView(next_btn_img), prevbtn_iv = new ImageView(prev_btn_img);
     public static HashMap<Integer, ArrayList<String>> read_map = new HashMap<>();
     private static FileReader file_reader2;
     private static BufferedReader buffered_reader2;
@@ -73,17 +70,19 @@ public class Map {
         Pipes_Imageviews_Array.clear();
         Gates_Imageviews_Array.clear();
         Sokoban_Main.root.getChildren().remove(pad_iv);
-
+        Soko_ImagbackIV.setFitHeight(768);
+        Soko_ImagbackIV.setFitWidth(7366);
         Sokoban_Main.root.getChildren().add(Soko_ImagbackIV);
-        if (!Sokoban_Main.check_mode43) {
+        Sokoban_Main.root.getChildren().add(Buttons.repeat_IV);
+        if (!Buttons.check_mode43) {
             Time.moves = 0;
             Time.seconds = 0;
             Sokoban_Main.root.getChildren().add(Time.layout);
         } else {
             if (tmp_Level != 1) {
-                Sokoban_Main.root.getChildren().add(prevbtn_iv);
+                Sokoban_Main.root.getChildren().add(Buttons.prevbtn_iv);
             }
-            Sokoban_Main.root.getChildren().add(nextbtn_iv);
+            Sokoban_Main.root.getChildren().add(Buttons.nextbtn_iv);
         }
     }
 
@@ -119,7 +118,8 @@ public class Map {
     public static void startlevel(int start_from_this_level) {
         tmp_Level = start_from_this_level;
         initialize();
-        practicebuttons();
+        Buttons.drawrepeatbutton();
+        Buttons.practicebuttons();
         ArrayList<String> levelmap = read_map.get(tmp_Level);
 
         for (int i = 0; i < levelmap.size(); i++) {
@@ -200,26 +200,4 @@ public class Map {
         }
     }
 
-    private static void practicebuttons() {
-        nextbtn_iv.setX(1000);
-        nextbtn_iv.setY(50);
-        nextbtn_iv.setFitWidth(128);
-        nextbtn_iv.setFitHeight(128);
-        prevbtn_iv.setX(850);
-        prevbtn_iv.setY(50);
-        prevbtn_iv.setFitWidth(128);
-        prevbtn_iv.setFitHeight(128);
-
-        nextbtn_iv.setOnMousePressed(event -> {
-            Map.startlevel(++tmp_Level);
-
-        });
-        if (tmp_Level != 1) {
-            prevbtn_iv.setOnMousePressed(event -> {
-                Map.startlevel(--tmp_Level);
-
-            });
-
-        }
-    }
 }

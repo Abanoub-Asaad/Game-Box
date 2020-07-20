@@ -11,7 +11,7 @@ public class Sokoban_Main {
 
     public static Scene sokoban_scene;
     static Group root = new Group();
-    static boolean check_mode43 = false;
+
     //================================================================
     /*
      ** For Singleton Pattern 
@@ -33,7 +33,7 @@ public class Sokoban_Main {
     //===============================================================
 
     public void openSokobanMain(Stage Sokoban_Stage) throws IOException {
-        if (!check_mode43) {
+        if (!Buttons.check_mode43) {
             Time.time_score_move();
         }
 
