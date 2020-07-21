@@ -33,7 +33,7 @@ public class Page1 {
     private ImageView ImagbackIV;
     private int x, y;
     private static Page1 Page1;
-    String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\Select Level\\unlockedLVL.txt";
+    String fileName ="C:\\Game-Box\\src\\Resources\\Sokoban\\continue_player.txt";
 
     private FileReader file_reader;
     private BufferedReader buffered_reader;
@@ -230,7 +230,7 @@ public class Page1 {
 
         file_reader = new FileReader(fileName);
         buffered_reader = new BufferedReader(file_reader);
-
+  start_level.PlayerName_string = buffered_reader.readLine();
         String currentLine;
         while ((currentLine = buffered_reader.readLine()) != null) {
             if (lvlN + 1 == Integer.parseInt(currentLine)) {

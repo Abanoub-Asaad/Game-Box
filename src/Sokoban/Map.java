@@ -75,15 +75,22 @@ public class Map {
         Sokoban_Main.root.getChildren().add(Soko_ImagbackIV);
         Sokoban_Main.root.getChildren().add(Buttons.repeat_IV);
         if (!Buttons.check_mode43) {
+            Sokoban_Main.root.getChildren().add(Buttons.playername_txt);
             Time.moves = 0;
             Time.seconds = 0;
             Sokoban_Main.root.getChildren().add(Time.layout);
+            if (!Buttons.checknewgame) {
+                if (tmp_Level != 1) {
+                    Sokoban_Main.root.getChildren().add(Buttons.prevbtn_iv);
+                }
+            }
         } else {
             if (tmp_Level != 1) {
                 Sokoban_Main.root.getChildren().add(Buttons.prevbtn_iv);
             }
             Sokoban_Main.root.getChildren().add(Buttons.nextbtn_iv);
         }
+        Sokoban_Main.root.getChildren().add(Buttons.level_txt);
     }
 
     /*
@@ -120,6 +127,7 @@ public class Map {
         initialize();
         Buttons.drawrepeatbutton();
         Buttons.practicebuttons();
+Buttons.setnameandlevel();
         ArrayList<String> levelmap = read_map.get(tmp_Level);
 
         for (int i = 0; i < levelmap.size(); i++) {

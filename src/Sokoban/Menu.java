@@ -34,7 +34,7 @@ public class Menu {
     public static BorderPane root = new BorderPane();
     public static Scene scene = new Scene(root, 1370, 750);
     private static VBox text_pane = new VBox(22);
-    public static int count_for_back_btn=0;
+    public static int count_for_back_btn = 0;
     private static GNButton new_game_btn = new GNButton("NEW GAME");
     private static GNButton continue_btn = new GNButton("CONTINUE");
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
@@ -50,8 +50,8 @@ public class Menu {
     static ImageView slideshowImageView = new ImageView();
 
     //==============================================//
-    public static Scene openMenu_sokoban() {
-
+    public static Scene openMenu_sokoban() throws IOException {
+        Continue_file.getthehieghtestlevel();
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
@@ -66,13 +66,14 @@ public class Menu {
         text_pane.setLayoutX(540);
         text_pane.setLayoutY(200);
         text_pane.setPrefSize(280, 400);
-        
-        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, back_btn, exit_btn);
+
+        text_pane.getChildren().addAll(new_game_btn, continue_btn, mode43_btn, back_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
 
             try {
+                Buttons.checknewgame = true;
                 GameBox_Core.Root.setScene(start_level.store_name());
                 deleteContentOfSelectLevelFileAndIntializeToOne();
 
@@ -112,7 +113,7 @@ public class Menu {
         back_btn.setLayoutY(200);
 
         back_btn.setOnMouseClicked(e -> {
-        GameBox_Core.Root.setScene(Games.gamesScene);
+            GameBox_Core.Root.setScene(Games.gamesScene);
             count_for_back_btn++;
         });
 

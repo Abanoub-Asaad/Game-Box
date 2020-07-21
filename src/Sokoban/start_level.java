@@ -30,7 +30,7 @@ public class start_level {
     static FileWriter filewriter;
     static BufferedWriter bufferwriter;
 
-    static String PlayerName_string;
+    public static String PlayerName_string;
 
     public static Scene store_name() throws IOException {
 

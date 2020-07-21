@@ -26,8 +26,8 @@ public class Time {
 
     public static void setlayout() {
 
-        Time.layout.setLayoutX(900);
-        Time.layout.setLayoutY(50);
+        Time.layout.setLayoutX(1000);
+        Time.layout.setLayoutY(90);
     }
 
     /*

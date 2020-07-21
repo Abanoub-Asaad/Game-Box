@@ -102,6 +102,7 @@ public class Piece {
             rank.Display_Rank();
             Sound.playsound(Sound.mediaPlayer_win);
             GameBox_Core.Root.setScene(finish_level.finish_scene());
+ Continue_file.writenewlevel();
             }
             else{
             Sound.playsound(Sound.mediaPlayer_win);

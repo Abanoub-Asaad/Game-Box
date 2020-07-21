@@ -165,7 +165,11 @@ public class Games {
            MainStage.setScene(Menu.scene);
              else{
          Menu_particle.start();
-         MainStage.setScene(Menu.openMenu_sokoban());
+                 try {
+                     MainStage.setScene(Menu.openMenu_sokoban());
+                 } catch (IOException ex) {
+                     Logger.getLogger(Games.class.getName()).log(Level.SEVERE, null, ex);
+                 }
              }
         });
         gamesGroup.getChildren().add(SokobanBtn);
