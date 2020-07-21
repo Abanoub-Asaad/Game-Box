@@ -11,6 +11,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -19,6 +20,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -37,7 +40,7 @@ import javafx.util.Duration;
 public class player1_2 {
  
 
-   static  Scene scene ;
+  public static  Scene scene ;
 
     private static boolean playable = true;
     private static boolean turnX = true;
@@ -46,7 +49,7 @@ public class player1_2 {
     static  Group root = new Group();
     static Bloom bloom = new Bloom();
    
-    private  Parent createContent() {
+    public  Parent createContent() {
         Image background = new Image("Resources/XO/6.jpg", 1400, 800, false, false);
         ImageView IV = new ImageView(background);
         root.getChildren().add(IV);
@@ -84,12 +87,21 @@ public class player1_2 {
         return root;
     }
 
-
+  Scene s;
     public  Scene start() {
 
        scene = new Scene(createContent(), 1370, 750);
-       return scene;
-        
+         scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+           @Override
+            public void handle(KeyEvent e) {
+                if (KeyCode.ESCAPE == e.getCode()){
+                scene = Tic_Menu.menu_scene;
+               }
+            }
+        });
+         
+     
+         return scene; 
     }
 
     private  void checkState() {

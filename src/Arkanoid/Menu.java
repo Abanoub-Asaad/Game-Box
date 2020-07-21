@@ -8,6 +8,7 @@ package Arkanoid;
 import Arkanoid.MenuDesign.MenuBox;
 import Arkanoid.MenuDesign.MenuItem;
 import Arkanoid.MenuDesign.Title;
+import GameLoop.Games;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ public class Menu {
     static Scene sceneButtons;
     private AnchorPane pane1_buttons;
 
-    private MenuItem START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY, EXIT;
+    private MenuItem START, HIGH_SCORES, BACK, DRAW_YOUR_LEVEL, ENEMY, EXIT;
 
     Setting setting_obj;
 
@@ -46,7 +47,7 @@ public class Menu {
         title.setTranslateY(200);
 
         Intialize();
-        MenuBox VBox = new MenuBox(START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY, EXIT);
+        MenuBox VBox = new MenuBox(START, HIGH_SCORES, BACK, DRAW_YOUR_LEVEL, ENEMY, EXIT);
         pane1_buttons.getChildren().addAll(title, VBox);
         VBox.setTranslateX(100);
         VBox.setTranslateY(300);
@@ -63,7 +64,7 @@ public class Menu {
     private void Intialize() {
         START = new MenuItem("START ARKANOID");
         HIGH_SCORES = new MenuItem("HIGH SCORES");
-        SETTINGS = new MenuItem("SETTINGS");
+        BACK = new MenuItem("Main Page");
         DRAW_YOUR_LEVEL = new MenuItem("DRAW YOUR LEVEL");
         ENEMY = new MenuItem("ENEMY");
         EXIT = new MenuItem("EXIT");
@@ -105,10 +106,13 @@ public class Menu {
                  Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
              }
         });
-        SETTINGS.setOnMousePressed(e -> {
+        BACK.setOnMousePressed(e -> {
             Sound.mediaPlayer_menu.stop();
             Sound.mediaPlayer_menu.play();
-            setting_obj = new Setting(Arkanoid_main_stage);
+           // setting_obj = new Setting(Arkanoid_main_stage);
+        Arkanoid_main_stage.setScene(Games.gamesScene);
+
+           
         });
 
         DRAW_YOUR_LEVEL.setOnMousePressed(e -> {

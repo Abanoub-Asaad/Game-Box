@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -57,7 +58,8 @@ public class Tetris_Main {
     
     public void start_Tetris(Stage games_stage,int timelimit) {
 
-        
+                Tetris_stage.setScene(Tetris_scene);
+
         
         tetris_pane.getChildren().add(tetris_back_iv);
         Controller.intialize_2D_array();
@@ -72,6 +74,8 @@ public class Tetris_Main {
 
         Tetris_stage = games_stage;
         Tetris_stage.setScene(Tetris_scene);
+                check_Escape(Tetris_stage);
+
         Tetris_stage.setTitle("GameBox - TETRIS");
 //        Tetris_stage.setMaximized(true);
 //        Tetris_stage.setResizable(false);
@@ -170,6 +174,14 @@ public class Tetris_Main {
                 form.d.setY(form.d.getY() + MOVE);
             }
         }
+    }
+ public static void check_Escape( Stage stage) {
+         stage.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+        if (KeyCode.ESCAPE == event.getCode()) {
+                   stage.setScene(Tetris_Menu.scene);
+
+            }
+        });
     }
 
 }

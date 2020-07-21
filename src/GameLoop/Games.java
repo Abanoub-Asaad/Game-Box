@@ -33,9 +33,9 @@ public class Games {
 
     static Tic_Menu tic = new Tic_Menu();
     // static  Menu_particle menu_particle = new Menu_particle();
-    private Group gamesGroup = new Group();
+    public static Group gamesGroup = new Group();
     private final HBox gamesHBox = new HBox();
-    private Scene gamesScene = new Scene(gamesGroup, 1400, 780);
+    public static Scene gamesScene = new Scene(gamesGroup, 1400, 780);
 
     public Games(Stage gamesStage) {
 

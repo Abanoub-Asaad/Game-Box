@@ -1,6 +1,7 @@
 package Sokoban;
 
 import GameLoop.GameBox_Core;
+import GameLoop.Games;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,7 @@ public class Menu {
     private static GNButton new_game_btn = new GNButton("NEW GAME");
     private static GNButton continue_btn = new GNButton("CONTINUE");
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
-    private static GNButton setting_btn = new GNButton("Back");
+    private static GNButton BACK_btn = new GNButton("Back");
     private static GNButton exit_btn = new GNButton("EXIT");
 
     static Timeline timeline;
@@ -49,14 +50,17 @@ public class Menu {
     static ImageView slideshowImageView = new ImageView();
 
     //==============================================//
+
     public static Scene openMenu_sokoban() {
+        
+             GameBox_Core.Root.setScene(scene);
 
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
         mode43_btn.setId("menubutton");
         exit_btn.setId("menubutton");
-        setting_btn.setId("menubutton");
+        BACK_btn.setId("menubutton");
 
         layerPane.setId("menupane");
         new_game_btn.setLayoutX(100);
@@ -67,7 +71,7 @@ public class Menu {
         text_pane.setPrefSize(280, 400);
         //text_pane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, setting_btn, exit_btn);
+        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, BACK_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
@@ -108,10 +112,11 @@ public class Menu {
 
         });
 
-        setting_btn.setLayoutX(100);
-        setting_btn.setLayoutY(200);
+        BACK_btn.setLayoutX(100);
+        BACK_btn.setLayoutY(200);
 
-        setting_btn.setOnMouseClicked(e -> {
+        BACK_btn.setOnMouseClicked(e -> {
+            GameBox_Core.Root.setScene(Games.gamesScene);
 
         });
 
@@ -129,7 +134,8 @@ public class Menu {
 //   //addind buttons
         layerPane.getChildren().add(text_pane);
 //   Menu_particle.layerPane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
-        return scene;
+   
+return scene;
     }
 
     /**

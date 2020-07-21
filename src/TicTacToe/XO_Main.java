@@ -1,6 +1,8 @@
 package TicTacToe;
 
 import javafx.scene.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -57,6 +59,9 @@ public class XO_Main {
         XO = new String[3][3];
         obj_Core = new Core();
         XO_group = new Group();
+                XO_stage = Games_Stage;
+                XO_stage.setScene(XO_scene);
+
         XO_scene = new Scene(XO_group, 1370, 750);
 
         obj_Core.InitializeGameBoard(GameBoard, XO_group, XO_scene, XO);
@@ -64,9 +69,16 @@ public class XO_Main {
         obj_Core.setInformationOfPlayers(XO_group);
         XO_Controller.playerTurn(GameBoard, Core.playerText, XO, Core.playerChar, DEPTH, XO_scene, XO_group);
 
-        XO_stage = Games_Stage;
         XO_stage.setScene(XO_scene);
+                 check_Escape( XO_stage);
+
         XO_stage.show();
     }
-
+public static void check_Escape( Stage stage) {
+         stage.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+        if (KeyCode.ESCAPE == event.getCode()) {
+          stage.setScene(Tic_Menu.menu_scene);
+            }
+        });
+    }
 }
