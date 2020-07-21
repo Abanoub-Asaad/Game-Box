@@ -50,7 +50,7 @@ public class AR_Menu {
         title.setTranslateY(200);
 
         Intialize();
-        MenuBox VBox = new MenuBox(START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY, EXIT,BACK);
+        MenuBox VBox = new MenuBox(START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY,BACK , EXIT);
         pane1_buttons.getChildren().addAll(title, VBox);
         VBox.setTranslateX(100);
         VBox.setTranslateY(300);
@@ -124,6 +124,7 @@ public class AR_Menu {
             AR_Sound.mediaPlayer_menu.stop();
             AR_Sound.mediaPlayer_menu.play();
             setting_obj = new Setting(Arkanoid_main_stage);
+            AR_Sound.mediaPlayer_Menu_Back.stop();
         });
 
         DRAW_YOUR_LEVEL.setOnMousePressed(e -> {

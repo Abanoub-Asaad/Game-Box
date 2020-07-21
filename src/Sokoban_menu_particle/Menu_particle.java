@@ -49,7 +49,7 @@ public class Menu_particle  {
 		
               
          //    Menu.layerPane.getChildren().add(mv);
-		Menu.layerPane.getChildren().addAll(canvas);
+	//	Menu.layerPane.getChildren().addAll(canvas);
 
 		canvas.widthProperty().bind(Menu.layerPane.widthProperty());
 		Menu.root.setCenter(Menu.layerPane);

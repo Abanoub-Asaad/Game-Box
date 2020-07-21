@@ -31,7 +31,7 @@ public class Tetris_Menu {
  static Pane menu=new Pane();
  public static Scene scene = new Scene(menu,1370,750);
  static Button new_game_btn= new Button("New game ");
- static Button setting_btn= new Button("Setting");
+ static Button setting_btn= new Button("Back");
  static Button exit_btn= new Button("Exit");
  static Button easy= new Button("Easy");
  static Button mediam = new Button("Medium");

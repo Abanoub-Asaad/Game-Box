@@ -26,7 +26,7 @@ public class score {
 
         score_text.setText("Score:  " + score);
 
-       // WriteInFile();
+        WriteInFile();
     }
 
     public static void show_score_number(Integer score) {

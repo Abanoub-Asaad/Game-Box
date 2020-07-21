@@ -141,7 +141,7 @@ public class Games {
 
     private void createBackground() {
 
-        Image Imageback = new Image("Resources/gamesPage/242556.png", 1370, 780, false, false);
+        Image Imageback = new Image("Resources/gamesPage/home_back.jpg", 1370, 780, false, false);
         Image image = new Image("Resources/gamesPage/gamebox.png", 150, 150, true, false);
 
         ImageView ImagbackIV = new ImageView(Imageback);

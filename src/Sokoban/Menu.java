@@ -38,7 +38,7 @@ public class Menu {
     private static GNButton new_game_btn = new GNButton("NEW GAME");
     private static GNButton continue_btn = new GNButton("CONTINUE");
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
-    private static GNButton setting_btn = new GNButton("Back");
+    private static GNButton back_btn = new GNButton("BACK");
     private static GNButton exit_btn = new GNButton("EXIT");
 
     static Timeline timeline;
@@ -57,7 +57,7 @@ public class Menu {
         continue_btn.setId("menubutton");
         mode43_btn.setId("menubutton");
         exit_btn.setId("menubutton");
-        setting_btn.setId("menubutton");
+        back_btn.setId("menubutton");
 
         layerPane.setId("menupane");
         new_game_btn.setLayoutX(100);
@@ -67,7 +67,7 @@ public class Menu {
         text_pane.setLayoutY(200);
         text_pane.setPrefSize(280, 400);
         
-        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, setting_btn, exit_btn);
+        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, back_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
@@ -108,10 +108,10 @@ public class Menu {
 
         });
 
-        setting_btn.setLayoutX(100);
-        setting_btn.setLayoutY(200);
+        back_btn.setLayoutX(100);
+        back_btn.setLayoutY(200);
 
-        setting_btn.setOnMouseClicked(e -> {
+        back_btn.setOnMouseClicked(e -> {
         GameBox_Core.Root.setScene(Games.gamesScene);
             count_for_back_btn++;
         });
