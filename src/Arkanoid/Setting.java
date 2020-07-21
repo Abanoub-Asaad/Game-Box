@@ -64,22 +64,22 @@ public class Setting {
 
         play.setOnMousePressed(e -> {
 
-            Sound.mediaPlayer_clickMouse.play();
-            Sound.mediaPlayer_background.play();
+            AR_Sound.mediaPlayer_clickMouse.play();
+            AR_Sound.mediaPlayer_background.play();
         });
 
         stop.setOnMousePressed(e -> {
-            Sound.mediaPlayer_clickMouse.play();
-            Sound.mediaPlayer_background.stop();
+            AR_Sound.mediaPlayer_clickMouse.play();
+            AR_Sound.mediaPlayer_background.stop();
         });
 
         back.setOnMousePressed(e -> {
-            Sound.mediaPlayer_clickMouse.play();
-            Arkanoid_stage.setScene(Menu.sceneButtons);
+            AR_Sound.mediaPlayer_clickMouse.play();
+            Arkanoid_stage.setScene(AR_Menu.sceneButtons);
         });
 
         brightness.setOnMousePressed(e -> {
-            Sound.mediaPlayer_clickMouse.play();
+            AR_Sound.mediaPlayer_clickMouse.play();
             ColorAdjust colorAdjust = new ColorAdjust();
             colorAdjust.setBrightness(mode1);
             ArkanoidMain.root.setEffect(colorAdjust);
@@ -87,7 +87,7 @@ public class Setting {
         });
 
         dark.setOnMousePressed(e -> {
-            Sound.mediaPlayer_clickMouse.play();
+            AR_Sound.mediaPlayer_clickMouse.play();
             ColorAdjust colorAdjust = new ColorAdjust();
             colorAdjust.setBrightness(mode2);
             ArkanoidMain.root.setEffect(colorAdjust);

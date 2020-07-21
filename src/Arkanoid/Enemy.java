@@ -95,7 +95,7 @@ public class Enemy {
         Enemy_pane.getChildren().addAll(bar);
 
         //==================
-        BaseClass.check_Escape(Enemy_scene, stage_main, Menu.sceneButtons);
+        BaseClass.check_Escape(Enemy_scene, stage_main, AR_Menu.sceneButtons);
         stage_main.setTitle("Arkanoid  -  Enemy");
         stage_main.setScene(Enemy_scene);
         PressEnterToStart();
@@ -223,7 +223,7 @@ public class Enemy {
                 && ball_obj.getX() >= enemy_x + enemy_img1.getWidth() - 3;
         if (ball_down_Enemy) {
             ball_obj.setStepY(1);
-            Sound.playsound();
+            AR_Sound.playsound();
             count--;
             bar.setProgress(count / 20);
             if (enemy_finish()) {
@@ -232,7 +232,7 @@ public class Enemy {
 
         }
         if (ball_left_Enemy) {
-            Sound.playsound();
+            AR_Sound.playsound();
 
             ball_obj.setStepX(-1);
             count--;
@@ -245,7 +245,7 @@ public class Enemy {
         }
         if (EnemyRight) {
 
-            Sound.playsound();
+            AR_Sound.playsound();
             count--;
             bar.setProgress(count / 20);
             if (enemy_finish()) {
@@ -397,8 +397,8 @@ public class Enemy {
                 finish(false);
                 BallDoesnotMove = true;
 
-                Sound.mediaPlayer_ball_out.play();
-                Sound.mediaPlayer_background.pause();
+                AR_Sound.mediaPlayer_ball_out.play();
+                AR_Sound.mediaPlayer_background.pause();
 
                 goRight = false;
                 goLeft = false;
@@ -426,10 +426,10 @@ public class Enemy {
         finish_txt.setFill(Color.CORAL);// setting colour of the text to blue   
         if (win) {
             finish_txt.setText("YOU WIN");
-            Sound.mediaPlayer_win.play();
+            AR_Sound.mediaPlayer_win.play();
         } else {
             finish_txt.setText("GAME OVER");
-            Sound.mediaPlayer_ball_out.play();
+            AR_Sound.mediaPlayer_ball_out.play();
         }
         goLeft = false;
         goRight = false;

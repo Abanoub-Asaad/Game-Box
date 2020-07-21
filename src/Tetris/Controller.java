@@ -1,7 +1,9 @@
 package Tetris;
 
+import static Tetris.Tetris_Main.Tetris_scene;
 import java.util.Arrays;
 import javafx.scene.Group;
+import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -137,17 +139,21 @@ public class Controller {
      * @param group
      */
     protected static void design_score_and_lines(Pane group) {
+        Tetris_scene.getStylesheets().add(Controller.class.getResource("cs.css").toExternalForm());
         Line sperator_line = new Line(XMAX, 0, XMAX, YMAX);
-        sperator_line.setStyle("-fx-stroke: red;");
-
-        scoretext.setFont(Font.font("Verdana", FontWeight.BOLD, 60));
-       // scoretext.setStyle("-fx-font: 45 Georgia;");
+        Reflection reflection = new Reflection();
+        reflection.setFraction(1);
+        
+      scoretext.setId("st");
+      scoretext.setEffect(reflection);
         scoretext.setStroke(Color.IVORY);
         scoretext.setY(400);
         scoretext.setX(XMAX + 50);
 
-        numOfLines.setFont(Font.font("Verdana", FontWeight.BOLD, 60));
-        numOfLines.setY(500);
+        //numOfLines.setFont(Font.font("Verdana", FontWeight.BOLD, 60));
+         numOfLines.setId("st");
+         numOfLines.setEffect(reflection);
+        numOfLines.setY(570);
         numOfLines.setX(XMAX + 50);
         numOfLines.setStroke(Color.IVORY);
         group.getChildren().addAll(scoretext, sperator_line, numOfLines);

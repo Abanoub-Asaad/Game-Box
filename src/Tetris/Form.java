@@ -55,10 +55,16 @@ public class Form {
                 break;
 
         }
+        
         this.a.setFill(color);
         this.b.setFill(color);
         this.c.setFill(color);
         this.d.setFill(color);
+          Shape.lighting.setSurfaceScale(0.8);
+            this. a.setEffect(Shape.lighting);
+            this. b.setEffect(Shape.lighting);
+            this. c.setEffect(Shape.lighting);
+            this. d.setEffect(Shape.lighting);
     }
 
     public String getName() {

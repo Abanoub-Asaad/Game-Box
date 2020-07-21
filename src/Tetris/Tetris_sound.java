@@ -18,7 +18,7 @@ import javafx.util.Duration;
 public class Tetris_sound {
             static   String sound_back = "C:\\Game-Box\\src\\Resources\\Tetris\\tetris_back.mp3";
             static   Media back_sound = new Media(new File(sound_back).toURI().toString());
-            static   MediaPlayer mediaPlayer_back = new MediaPlayer(back_sound);
+            public   static   MediaPlayer mediaPlayer_back = new MediaPlayer(back_sound);
             static   MediaView mediaview_back = new MediaView(mediaPlayer_back);
     
             static   String sound_clear = "C:\\Game-Box\\src\\Resources\\Tetris\\clear.mp3";

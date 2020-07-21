@@ -6,7 +6,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
-public class Sound {
+public class AR_Sound {
 
          //sound 
     //sound of block

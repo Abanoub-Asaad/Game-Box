@@ -31,6 +31,8 @@ public class Shape4 extends Shape {
         
         for (int i = 0; i < 4; i++) {
             rectangles[i].setFill(Color.GOLD);
+             Shape. lighting.setSurfaceScale(0.8);
+            rectangles[i].setEffect(lighting);
             group.getChildren().add(rectangles[i]);
         }
     }

@@ -1,13 +1,24 @@
 package GameLoop;
 
 import Sokoban.Menu;
-import Sokoban.Sokoban_Main;
+import Sokoban.Sound;
 import Sokoban.finish_level;
 import Sokoban_menu_particle.Menu_particle;
 
 import Tetris.Tetris_Menu;
 import TicTacToe.Tic_Menu;
+import Arkanoid.AR_Menu;
+import Arkanoid.AR_Sound;
+import Arkanoid.ArkanoidMain;
+import Arkanoid.Arkanoid_Map;
+import Sokoban.Sokoban_Main;
+import Sokoban.Time;
+import Sokoban.start_level;
+import Tetris.Tetris_Main;
+import Tetris.Tetris_sound;
 import TicTacToe.XO_Main;
+import TicTacToe.player1_2;
+import TicTacToe.sound;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +30,8 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -33,13 +46,87 @@ public class Games {
 
     static Tic_Menu tic = new Tic_Menu();
     // static  Menu_particle menu_particle = new Menu_particle();
-    public static Group gamesGroup = new Group();
+    private static Group gamesGroup = new Group();
     private final HBox gamesHBox = new HBox();
     public static Scene gamesScene = new Scene(gamesGroup, 1400, 780);
-        private boolean c=false;
-
+    //============= Counters for esc
+    static int soko_esc=0;
+    static int tetris_esc=0;
+    static int Arkanoid_esc=0;
+    static int tic_esc=0;
+   //=====================//
+    static void for_esc(){
+      
+   
+       GameBox_Core.Root.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent e)-> {
+           
+       if(e.getCode() == KeyCode.ESCAPE)     {
+           
+           
+          if(GameBox_Core.Root.getScene()==Menu.scene){
+             GameBox_Core.Root.setScene(gamesScene);
+            soko_esc++;
+          }
+          else  if(GameBox_Core.Root.getScene()==start_level.scene_StoreName){
+                 GameBox_Core.Root.setScene(Menu.scene);
+               
+           }
+          else if(GameBox_Core.Root.getScene()==Tetris_Menu.scene){
+              GameBox_Core.Root.setScene(gamesScene);
+              tetris_esc++;
+          }
+           else  if(GameBox_Core.Root.getScene()==Tic_Menu.menu_scene){
+                GameBox_Core.Root.setScene(gamesScene);
+                tic_esc++;
+           }
+           else  if(GameBox_Core.Root.getScene()==AR_Menu.sceneButtons){
+                 GameBox_Core.Root.setScene(gamesScene);
+                Arkanoid_esc++;
+           }
+           
+          else  if(GameBox_Core.Root.getScene()==Sokoban_Main.sokoban_scene){
+           
+               GameBox_Core.Root.setScene(Menu.scene);
+                Time.layout.getChildren().clear();
+               Sound.mediaPlayer_back.stop();
+               Sound.mediaPlayer_back.seek(Duration.ZERO);
+           }
+          
+           else  if(GameBox_Core.Root.getScene()==Tetris_Main.Tetris_scene){
+             GameBox_Core.Root.setScene(Tetris_Menu.scene);
+             Tetris_Main.tetris_pane.getChildren().clear();
+             Tetris_sound.mediaPlayer_back.stop();
+             Tetris_sound.mediaPlayer_back.seek(Duration.ZERO);
+           }
+//           else  if(GameBox_Core.Root.getScene()==ArkanoidMain.Arkanoid_scene){
+//                 GameBox_Core.Root.setScene(AR_Menu.sceneButtons);
+//                // ArkanoidMain.root.getChildren().clear();
+//                 Arkanoid_Map.level=1;
+//                 AR_Sound.mediaPlayer_background.stop();
+//                 AR_Sound.mediaPlayer_background.seek(Duration.ZERO);
+//           }
+           
+           else  if(GameBox_Core.Root.getScene()==XO_Main.XO_scene){
+                 GameBox_Core.Root.setScene(Tic_Menu.menu_scene);
+                 XO_Main.XO_group.getChildren().clear();
+                  sound.mediaPlayer_back.stop();
+                 sound.mediaPlayer_back.seek(Duration.ZERO);
+           }
+          else  if(GameBox_Core.Root.getScene()==player1_2.scene){
+                 GameBox_Core.Root.setScene(Tic_Menu.menu_scene);
+             //   player1_2.root.getChildren().clear();
+                  sound.mediaPlayer_back.stop();
+                 sound.mediaPlayer_back.seek(Duration.ZERO);
+                 Tic_Menu.count_esc_playe1_2_scene++;
+           }
+          
+       }
+       
+    });
+    
+    }
     public Games(Stage gamesStage) {
-
+        
         finish_level.style();
         gamesStage.setMaximized(true);
         gamesStage.setResizable(false);
@@ -66,6 +153,7 @@ public class Games {
     }
 
     private void createButtons(Stage MainStage) {
+        
         Button SokobanBtn = new Button();
         SokobanBtn.setLayoutX(300);
         SokobanBtn.setLayoutY(250);
@@ -73,15 +161,12 @@ public class Games {
         ImageView sokobanImageIV = new ImageView(sokobanImage);
         SokobanBtn.setGraphic(sokobanImageIV);
         SokobanBtn.setOnMousePressed(event -> {
-        if(!c)
-        {           Menu_particle.start();
-                    MainStage.setScene(Menu.openMenu_sokoban());
-                    c=true;
-        }
-        else{
-                    MainStage.setScene(Menu.scene);
-
-        }
+             if(Menu.count_for_back_btn>0||soko_esc>0)
+           MainStage.setScene(Menu.scene);
+             else{
+         Menu_particle.start();
+         MainStage.setScene(Menu.openMenu_sokoban());
+             }
         });
         gamesGroup.getChildren().add(SokobanBtn);
 
@@ -93,7 +178,11 @@ public class Games {
         TetrisBtn.setGraphic(tetrisImageIV);
 
         TetrisBtn.setOnMousePressed(event -> {
+            if(Tetris_Menu.count_for_back_btn>0||tetris_esc>0)
+                 MainStage.setScene(Tetris_Menu.scene);
+            else{
             MainStage.setScene(Tetris_Menu.start());
+            }
         });
         gamesGroup.getChildren().add(TetrisBtn);
 
@@ -104,7 +193,11 @@ public class Games {
         ImageView arkanoidImageIV = new ImageView(arkanoidImage);
         ArkanoidBtn.setGraphic(arkanoidImageIV);
         ArkanoidBtn.setOnMousePressed(event -> {
-            Arkanoid.Menu menu = new Arkanoid.Menu(MainStage);
+               if(AR_Menu.count_for_back_btn>0||Arkanoid_esc>0)
+           MainStage.setScene(AR_Menu.sceneButtons);
+               else{
+            Arkanoid.AR_Menu menu = new Arkanoid.AR_Menu(MainStage);
+               }
         });
         gamesGroup.getChildren().add(ArkanoidBtn);
 
@@ -119,6 +212,9 @@ public class Games {
 
            // XO_Main.getInstanceFromXO().openTicTacToeMain(GameBox_Core.Root);
             try {
+                   if(Tic_Menu.count_for_back_btn>0||tic_esc>0)
+                 MainStage.setScene(Tic_Menu.menu_scene);
+                   else
                 MainStage.setScene(tic.start());
 
             } catch (Exception ex) {

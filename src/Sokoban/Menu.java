@@ -34,10 +34,11 @@ public class Menu {
     public static BorderPane root = new BorderPane();
     public static Scene scene = new Scene(root, 1370, 750);
     private static VBox text_pane = new VBox(22);
+    public static int count_for_back_btn=0;
     private static GNButton new_game_btn = new GNButton("NEW GAME");
     private static GNButton continue_btn = new GNButton("CONTINUE");
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
-    private static GNButton BACK_btn = new GNButton("Back");
+    private static GNButton setting_btn = new GNButton("Back");
     private static GNButton exit_btn = new GNButton("EXIT");
 
     static Timeline timeline;
@@ -50,12 +51,13 @@ public class Menu {
 
     //==============================================//
     public static Scene openMenu_sokoban() {
+
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
         mode43_btn.setId("menubutton");
         exit_btn.setId("menubutton");
-        BACK_btn.setId("menubutton");
+        setting_btn.setId("menubutton");
 
         layerPane.setId("menupane");
         new_game_btn.setLayoutX(100);
@@ -64,9 +66,8 @@ public class Menu {
         text_pane.setLayoutX(540);
         text_pane.setLayoutY(200);
         text_pane.setPrefSize(280, 400);
-        //text_pane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        text_pane.getChildren().addAll(new_game_btn, continue_btn, mode43_btn, BACK_btn, exit_btn);
+        
+        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, setting_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
@@ -107,30 +108,24 @@ public class Menu {
 
         });
 
-        BACK_btn.setLayoutX(100);
-        BACK_btn.setLayoutY(200);
+        setting_btn.setLayoutX(100);
+        setting_btn.setLayoutY(200);
 
-        BACK_btn.setOnMouseClicked(e -> {
-            Sound.mediaPlayer_back.stop();
-
-            GameBox_Core.Root.setScene(Games.gamesScene);
+        setting_btn.setOnMouseClicked(e -> {
+        GameBox_Core.Root.setScene(Games.gamesScene);
+            count_for_back_btn++;
         });
 
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(250);
         exit_btn.setOnMouseClicked(e -> {
-            Sound.mediaPlayer_back.stop();
+
             GameBox_Core.Root.close();
 
         });
-// BackgroundImage myBI= new BackgroundImage(new Image("Resources/Sokoban/black.jpg",32,32,false,true),
-//        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-//          BackgroundSize.DEFAULT);
-//       
-//   //addind buttons
+
         layerPane.getChildren().add(text_pane);
 //   Menu_particle.layerPane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
-
         return scene;
     }
 

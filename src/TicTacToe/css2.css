@@ -10,7 +10,7 @@ and open the template in the editor.
 
 #menubutton {
     
-   -fx-pref-height: 6 px;
+   //-fx-pref-height: 6 px;
     -fx-pref-width: 420px;
     -fx-background-radius: 30;
     -fx-background-insets: 0,1,2,3,0;

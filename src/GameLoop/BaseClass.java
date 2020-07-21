@@ -1,9 +1,9 @@
 package GameLoop;
 
+import Arkanoid.AR_Sound;
 import Arkanoid.ArkanoidMain;
 import Arkanoid.ball;
 import Arkanoid.paddle;
-import Arkanoid.Sound;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -72,7 +72,7 @@ public class BaseClass {
                         pause.setY(scene_1.getHeight() / 2);
                     }
 
-                    Sound.mediaPlayer_background.pause();
+                    AR_Sound.mediaPlayer_background.pause();
                 } else if (e.getCode() == KeyCode.ENTER) {
                     ball_obj.setSpeed(5);
                     paddle_obj.setSpeed(10);
@@ -82,9 +82,9 @@ public class BaseClass {
                         group.getChildren().remove(pause);
                     }
 
-                    Sound.mediaPlayer_background.play();
+                    AR_Sound.mediaPlayer_background.play();
                 } else if (e.getCode() == KeyCode.S) {
-                    Sound.mediaPlayer_background.pause();
+                    AR_Sound.mediaPlayer_background.pause();
                 }
 
             }
@@ -96,7 +96,7 @@ public class BaseClass {
             @Override
             public void handle(KeyEvent e) {
                 if (e.getCode() == KeyCode.ESCAPE) {
-                    Sound.mediaPlayer_background.stop();
+                    AR_Sound.mediaPlayer_background.stop();
                     stage.setTitle("Arkanoid - Menu");
                     stage.setScene(Toscene);
                 }

@@ -8,10 +8,14 @@ import static Tetris.Tetris_Main.MOVE;
 import static Tetris.Tetris_Main.SIZE;
 import static Tetris.Tetris_Main.XMAX;
 import static Tetris.Tetris_Main.YMAX;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
+import javafx.scene.paint.Color;
 
 public abstract class Shape {
 
     Rectangle []Next = new Rectangle [4];
+    public static Lighting lighting = new Lighting(new Light.Distant(225, 55, Color.WHITE));
     
     protected abstract void setShape(Rectangle a, Rectangle b, Rectangle c, Rectangle d);
     protected abstract Rectangle[] getShape() ;

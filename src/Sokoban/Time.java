@@ -75,7 +75,7 @@ public class Time {
         time_text.setId("for3");
         move_text.setId("for3");
 
-        time_text.setText("time :" + "00:00" + " ");
+        time_text.setText("Time :" + "00:00" + " ");
         dotime();
 
         show_moves_number(0);

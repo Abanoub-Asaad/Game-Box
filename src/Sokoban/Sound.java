@@ -19,7 +19,7 @@ public class Sound {
     
             static   String sound_back = "C:\\Game-Box\\src\\Resources\\Sokoban\\soko_sound.mp3";
             static   Media back_sound = new Media(new File(sound_back).toURI().toString());
-            static   MediaPlayer mediaPlayer_back = new MediaPlayer(back_sound);
+            public   static   MediaPlayer mediaPlayer_back = new MediaPlayer(back_sound);
             static   MediaView mediaview_back = new MediaView(mediaPlayer_back);
     
             static   String sound_pipe = "C:\\Game-Box\\src\\Resources\\Sokoban\\pipe_sound.mp3";
@@ -40,11 +40,14 @@ public class Sound {
     
               public static void playsound ( MediaPlayer mediaPlayer )
           {
+              mediaPlayer_back.setOnEndOfMedia(new Runnable() {
+       public void run() {
+         mediaPlayer_back.seek(Duration.ZERO);
+       }
+   });
+  mediaPlayer_back.play();
+        }
           
-                    mediaPlayer.play();
-                 
-                    mediaPlayer.seek(Duration.ZERO);
-          }
       
               
       }

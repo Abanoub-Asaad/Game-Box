@@ -67,14 +67,14 @@ public class MenuDesign {
 
             setOnMousePressed(event -> {
                 bg.setFill(Color.DARKVIOLET);
-                Sound.mediaPlayer_menu.play();
+                AR_Sound.mediaPlayer_menu.play();
 //                 Sound.mediaPlayer_menu.stop();
 
             });
 
             setOnMouseReleased(event -> {
                 bg.setFill(gradient);
-                Sound.mediaPlayer_menu.play();
+                AR_Sound.mediaPlayer_menu.play();
             });
 
         }

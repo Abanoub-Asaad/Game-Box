@@ -33,6 +33,8 @@ public class Shape6 extends Shape {
         
         for (int i = 0; i < 4; i++) {
             rectangles[i].setFill(Color.LIME);
+             Shape. lighting.setSurfaceScale(0.8);
+            rectangles[i].setEffect(lighting);
             group.getChildren().add(rectangles[i]);
         }
     }

@@ -1,18 +1,11 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jul 18, 2020, 5:23:18 PM
-    Author     : Eng.Waleed
-*/
-@import url('https://fonts.googleapis.com/css?family=Cookie:400,500,700');
 
-@font-face {
-    font-family: Delicious;
-    src: url('Delicious-Roman.otf') format("ttf");
-}
+@import url('https://fonts.googleapis.com/css?family=Cookie:400,500,700');
+@import url('https://fonts.googleapis.com/css2?family=Frijole&family=Lobster&display=swap');
+
+/*@font-face {
+    font-family: Let's go Digital;
+    src: url('../Resources/Tetris/r.ttf');
+}*/
 
 #btn {
     
@@ -37,4 +30,13 @@ and open the template in the editor.
  -fx-background-color: transparent;
  -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
  -fx-border-width: 0 5 0 5;
+
+}
+#st{
+ 
+    -fx-font-family: 'Frijole', cursive;
+    -fx-font-family: 'Lobster', cursive;
+    -fx-font-size: 60;
+    -fx-fill: black;
+    -fx-text-fill: black;
 }

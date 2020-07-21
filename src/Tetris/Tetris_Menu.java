@@ -4,7 +4,6 @@ package Tetris;
 import GameLoop.GameBox_Core;
 import GameLoop.Games;
 import TicTacToe.sound;
-
 import java.io.File;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,26 +22,25 @@ import javafx.scene.text.Font;
  */
 public class Tetris_Menu {
     
-   
+ public static int  count_for_back_btn=0;
  private static VBox text_pane = new VBox(22);
  private static VBox hardness_pane = new VBox(22);
  static Image m=new Image("Resources/Tetris/Effect.png",470,750,false ,false) ;
  static  ImageView mv= new ImageView(m);
  static  ImageView mv2= new ImageView(m);
  static Pane menu=new Pane();
- static Scene scene = new Scene(menu,1370,750);
+ public static Scene scene = new Scene(menu,1370,750);
  static Button new_game_btn= new Button("New game ");
- static Button back_btn= new Button("Main Page");
+ static Button setting_btn= new Button("Setting");
  static Button exit_btn= new Button("Exit");
  static Button easy= new Button("Easy");
  static Button mediam = new Button("Medium");
  static Button hard = new Button("Hard");
   public  static Scene start (){
       
-         GameBox_Core.Root.setScene(scene);
-
+ 
         scene.getStylesheets().add(Tetris_Menu.class.getResource("cs.css").toExternalForm());
-        text_pane.getChildren().addAll(new_game_btn,  back_btn, exit_btn);
+        text_pane.getChildren().addAll(new_game_btn,  setting_btn, exit_btn);
         menu.getChildren().addAll(mv,mv2,text_pane);
         mv.setLayoutX(0);
         mv.setLayoutY(0);
@@ -56,8 +54,8 @@ public class Tetris_Menu {
         text_pane.setLayoutX(580);
         text_pane.setLayoutY(180);
         text_pane.setPrefSize(280, 400);
-        back_btn.setLayoutX(100);
-        back_btn.setLayoutY(150);
+        setting_btn.setLayoutX(100);
+        setting_btn.setLayoutY(150);
         
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(200);
@@ -100,20 +98,19 @@ public class Tetris_Menu {
          menu.getChildren().add(hardness_pane);
          
         });
-          back_btn.setOnAction(e->{
-               GameBox_Core.Root.setScene(Games.gamesScene);
-
-        });
          exit_btn.setOnMouseClicked(e -> {
 
             GameBox_Core.Root.close();
 
         });
+         setting_btn.setOnAction(e->{
+              GameBox_Core.Root.setScene(Games.gamesScene);
+            count_for_back_btn++;
+         });
          exit_btn.setId("btn");
          new_game_btn.setId("btn");
-         back_btn.setId("btn");
+         setting_btn.setId("btn");
          
-
      return scene;
         
     }

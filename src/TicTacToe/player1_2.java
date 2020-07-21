@@ -10,6 +10,7 @@ import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -18,7 +19,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -28,6 +28,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 /**
  *
@@ -36,20 +37,16 @@ import javafx.util.Duration;
 public class player1_2 {
  
 
-  public  Scene scene= new Scene(createContent(), 1370, 750);
-
+   public static  Scene scene ;
 
     private static boolean playable = true;
     private static boolean turnX = true;
     private static Tile[][] board = new Tile[3][3];
     private static List<Combo> combos = new ArrayList<>();
-    static  Group root = new Group();
+    public static  Group root = new Group();
     static Bloom bloom = new Bloom();
-  private static boolean flag;
-
    
-    public  Parent createContent() {
-        
+    private  Parent createContent() {
         Image background = new Image("Resources/XO/6.jpg", 1400, 800, false, false);
         ImageView IV = new ImageView(background);
         root.getChildren().add(IV);
@@ -87,23 +84,15 @@ public class player1_2 {
         return root;
     }
 
+
     public  Scene start() {
 
-          flag=false;
-             scene.setOnKeyPressed(e -> {
-                if (KeyCode.ESCAPE == e.getCode()){
-               // scene = Tic_Menu.menu_scene;
-                flag= true;
-               }
-        });
-    if (flag)
-    { flag=false;
-      return Tic_Menu.menu_scene; }
-    else  return scene;
+       scene = new Scene(createContent(), 1370, 750);
+       return scene;
+        
     }
 
     private  void checkState() {
-
         for (Combo combo : combos) {
 
             if (combo.isComplete()) {

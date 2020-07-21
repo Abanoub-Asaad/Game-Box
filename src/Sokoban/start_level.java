@@ -22,7 +22,7 @@ public class start_level {
     static Pane pane_storeName = new Pane();
     static Line sep;
 
-    static Scene scene_StoreName = new Scene(pane_storeName, 1370, 750);
+    public static Scene scene_StoreName = new Scene(pane_storeName, 1370, 750);
     static TextField Enter_Name_Text;
 
     static Button btn_play;

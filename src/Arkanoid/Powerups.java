@@ -32,7 +32,7 @@ public class Powerups {
         Timeline expand_tl = new Timeline();
         if (Icons.getExpand_IV().getBoundsInParent().intersects(paddle.getPaddle_iv().getBoundsInParent())) {
             expand_imageView.setImage(null);
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
                 @Override
@@ -55,7 +55,7 @@ public class Powerups {
         Timeline shrink_tl = new Timeline();
         if (Icons.getShrink_IV().getBoundsInParent().intersects(paddle.getPaddle_iv().getBoundsInParent())) {
             shrink_imageView.setImage(null);
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
                 @Override
@@ -78,7 +78,7 @@ public class Powerups {
         Timeline Fast_tl = new Timeline();
         if (Icons.getFast_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
             fast_imageView.setImage(null);
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
                 @Override
@@ -98,7 +98,7 @@ public class Powerups {
 
     public void checkExtra100(paddle paddle_obj, Score score_obj) {
         if (Icons.getExtra100_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
             extra100_imageView.setImage(null);
             if (!extra100once) {
                 System.out.println("check extra 100 ");
@@ -110,7 +110,7 @@ public class Powerups {
 
     public void checkExtra50(paddle paddle_obj, Score score_obj) {
         if (Icons.getExtra50_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
             extra50_imageView.setImage(null);
 
             if (!extra50once) {
@@ -127,7 +127,7 @@ public class Powerups {
         Timeline Slow_tl = new Timeline();
         if (Icons.getSlow_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
             slow_imageView.setImage(null);
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
 
             KeyFrame key = new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
                 @Override
@@ -148,7 +148,7 @@ public class Powerups {
     public void checkempty(paddle paddle_obj) {
         if (Icons.getEmpty_IV().getBoundsInParent().intersects(paddle_obj.getPaddle_iv().getBoundsInParent())) {
             empty_imageView.setImage(null);
-            Sound.playsound_capsule();
+            AR_Sound.playsound_capsule();
         }
 
     }

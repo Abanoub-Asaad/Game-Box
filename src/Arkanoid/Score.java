@@ -144,7 +144,7 @@ public class Score {
 
         ReadFromFile();
 
-        BaseClass.check_Escape(ScoreBorad_scene, Arkanoid_stage, Menu.sceneButtons);
+        BaseClass.check_Escape(ScoreBorad_scene, Arkanoid_stage, AR_Menu.sceneButtons);
         
         Arkanoid_stage.setTitle("Arkanoid");
         Arkanoid_stage.setScene(ScoreBorad_scene);

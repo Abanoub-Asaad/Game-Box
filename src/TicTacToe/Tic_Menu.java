@@ -59,52 +59,54 @@ public class Tic_Menu {
     private static Button player_vs_pc_btn = new Button("Player Vs PC");
     private static Button p_vs_p_btn = new Button("Player Vs Player");
     private static Button exit_btn = new Button(" EXIT ");
-        private static Button BACK_btn = new Button(" BACK ");
-//boolean flag = false;
+    private static Button back_btn = new Button(" BACK ");
      private static Pane menu_pane = new Pane();
     private static VBox text_pane = new VBox(22);
     
     static    Timeline timeline;
-    static   Scene menu_scene = new Scene(menu_pane, 1375, 750);
+    public static int count_for_back_btn=0;
+    public static int count_esc_playe1_2_scene=0;
+  public  static   Scene menu_scene = new Scene(menu_pane, 1375, 750);
    public static Scene design() throws Exception{
-                        GameBox_Core.Root.setScene(menu_scene);
-
+        
         menu_scene.getStylesheets().add(Tic_Menu.class.getResource("css2.css").toExternalForm());
         
         player_vs_pc_btn.setId("menubutton");
         exit_btn.setId("menubutton");
         p_vs_p_btn.setId("menubutton");
-BACK_btn.setId("menubutton");
+        back_btn.setId("menubutton");
+        
         player_vs_pc_btn.setLayoutX(100);
         player_vs_pc_btn.setLayoutY(100);
         
         p_vs_p_btn.setLayoutX(100);
         p_vs_p_btn.setLayoutY(150);
 
+        back_btn.setLayoutX(100);
+        back_btn.setLayoutY(200);
+        
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(250);
-        
-        BACK_btn.setLayoutX(100);
-        BACK_btn.setLayoutY(200);
-
         player_vs_pc_btn.setOnAction(e -> {
             sound.mediaPlayer_back.play();
                XO_Main.getInstanceFromXO().openTicTacToeMain(GameBox_Core.Root);
                
                 GameBox_Core.Root.setScene(XO_Main.XO_scene);
          });
-         BACK_btn.setOnAction(e -> {
-            sound.mediaPlayer_back.stop();
-               
-                GameBox_Core.Root.setScene(Games.gamesScene);
-         });
-         
+        
        p_vs_p_btn.setOnAction(e -> {
            sound.mediaPlayer_back.play();
-                GameBox_Core.Root.setScene(p.start());
-                 
+        if( count_esc_playe1_2_scene >0)
+            
+           GameBox_Core.Root.setScene(player1_2.scene);  
+        else{
+           GameBox_Core.Root.setScene(p.start());
+        }
          });
-        
+        back_btn.setOnAction(e->{
+            GameBox_Core.Root.setScene(Games.gamesScene);
+            count_for_back_btn++;
+        });
          exit_btn.setOnAction(e -> {
                   GameBox_Core.Root.close();
                     sound.mediaPlayer_back.stop();
@@ -125,10 +127,7 @@ BACK_btn.setId("menubutton");
             setborder(p_vs_p_btn);
         });
         
-            BACK_btn.setOnMouseEntered(event -> {
-              // 
-            setborder(BACK_btn);
-        });
+           
         player_vs_pc_btn.setOnMouseExited(event -> {
              timeline.stop();
         });
@@ -140,13 +139,20 @@ BACK_btn.setId("menubutton");
           exit_btn.setOnMouseExited(event -> {
              timeline.stop();
         });
-             BACK_btn.setOnMouseExited(event -> {
+         back_btn.setOnMouseEntered(event -> {
+              // 
+            setborder(back_btn);
+        });
+        
+           
+        back_btn.setOnMouseExited(event -> {
              timeline.stop();
         });
+          
         text_pane.setLayoutX(540);
         text_pane.setLayoutY(220);
         text_pane.setPrefSize(280, 400);
-        text_pane.getChildren().addAll(player_vs_pc_btn, p_vs_p_btn, exit_btn,BACK_btn);
+        text_pane.getChildren().addAll(player_vs_pc_btn, p_vs_p_btn, exit_btn,back_btn);
         
        
         return menu_scene;
@@ -180,6 +186,7 @@ BACK_btn.setId("menubutton");
     return randomNum;
 }
    public  Scene start() throws Exception {
+         
         Tic_Menu.design();
         Random random = new Random();
      

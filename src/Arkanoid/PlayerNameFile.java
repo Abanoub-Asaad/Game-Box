@@ -62,7 +62,7 @@ public class PlayerNameFile {
         start.setTextFill(Color.BLACK);
         start.setText("START");
         start.setStyle("-fx-border-color:#5f27cd; -fx-background-color: #663333 ");
-        start.setCursor(new ImageCursor(Menu.cursor_img_hand));
+        start.setCursor(new ImageCursor(AR_Menu.cursor_img_hand));
 
         sep = new Line(300, 300, 1000, 0);
 
@@ -79,7 +79,7 @@ public class PlayerNameFile {
                 if (PlayerName_string.length() > 0 && !PlayerName_string.contains(" ")) //Validation
                 {
                     ArkanoidMain.getInstanceFromArkanoid().openArkanoidMain(Arkanoid_main_stage);
-                    Sound.mediaPlayer_background.play();
+                    AR_Sound.mediaPlayer_background.play();
                 }
             } catch (IOException ex) {
                 System.out.println("NOT Success");
@@ -89,11 +89,11 @@ public class PlayerNameFile {
         pane_storeName.getChildren().addAll(entername_TF, start);
 
         //=============================
-        pane_storeName.setCursor(new ImageCursor(Menu.cursor_img));
+        pane_storeName.setCursor(new ImageCursor(AR_Menu.cursor_img));
         Arkanoid_main_stage.setScene(scene_StoreName);
         Arkanoid_main_stage.setMaximized(true);
         Arkanoid_main_stage.setResizable(false);
-        BaseClass.check_Escape(scene_StoreName, Arkanoid_main_stage, Menu.sceneButtons);
+        BaseClass.check_Escape(scene_StoreName, Arkanoid_main_stage, AR_Menu.sceneButtons);
         return scene_StoreName;
     }
 

@@ -60,7 +60,7 @@ public class DrawyourLevel {
         Action();
         StartMovement();
 
-      BaseClass.check_Escape(scene_drawLevel, stage,Menu.sceneButtons);
+      BaseClass.check_Escape(scene_drawLevel, stage,AR_Menu.sceneButtons);
         scene_drawLevel.setCursor(new ImageCursor(cursor_img));
         stage.setTitle("Arkanoid - Your Level");
         stage.setScene(scene_drawLevel);
@@ -169,8 +169,8 @@ public class DrawyourLevel {
     private void Action() {
 
         scene_drawLevel.setOnMousePressed(e -> {
-            Sound.mediaPlayer_clickMouse.stop();
-            Sound.mediaPlayer_clickMouse.play();
+            AR_Sound.mediaPlayer_clickMouse.stop();
+            AR_Sound.mediaPlayer_clickMouse.play();
             int a = x_mouse_pos = (int) e.getX();
             int b = y_mouse_pos = (int) e.getY();
 
@@ -269,7 +269,7 @@ public class DrawyourLevel {
             @Override
             public void handle(KeyEvent e) {
                 if (e.getCode() == KeyCode.ENTER && clickOnlyOnce == false) {
-                    Sound.mediaPlayer_background.play();
+                    AR_Sound.mediaPlayer_background.play();
                     GameMovement(true);
                     clickOnlyOnce = true;
                     pane_drawLevel.getChildren().remove(pressToStart);
@@ -381,8 +381,8 @@ public class DrawyourLevel {
                 finish(false);
                 BallDoesnotMove = true;
 
-                Sound.mediaPlayer_ball_out.play();
-                Sound.mediaPlayer_background.pause();
+                AR_Sound.mediaPlayer_ball_out.play();
+                AR_Sound.mediaPlayer_background.pause();
 
                 goRight = false;
                 goLeft = false;
@@ -400,10 +400,10 @@ public class DrawyourLevel {
         finish_txt.setFill(Color.CORAL);// setting colour of the text to blue   
         if (win) {
             finish_txt.setText("YOU WIN");
-            Sound.mediaPlayer_win.play();
+            AR_Sound.mediaPlayer_win.play();
         } else {
             finish_txt.setText("GAME OVER");
-            Sound.mediaPlayer_ball_out.play();
+            AR_Sound.mediaPlayer_ball_out.play();
         }
         pane_drawLevel.getChildren().add(finish_txt);
     }
@@ -419,7 +419,7 @@ public class DrawyourLevel {
 
             //==========================
             if (ball_down_block) {
-                Sound.playsound(); //Sounds
+                AR_Sound.playsound(); //Sounds
                 pane_drawLevel.getChildren().remove(b);
                 Bricks_array.remove(b);
                 ball.setStepY(1);
@@ -432,7 +432,7 @@ public class DrawyourLevel {
                 }
 
             } else if (ball_above_block) {
-                Sound.playsound();
+                AR_Sound.playsound();
                 pane_drawLevel.getChildren().remove(b);
                 Bricks_array.remove(b);
                 ball.setStepY(-1);
@@ -444,7 +444,7 @@ public class DrawyourLevel {
                     }
                 }
             } else if (ball_left_block) {
-                Sound.playsound();
+                AR_Sound.playsound();
 
                 pane_drawLevel.getChildren().remove(b);
                 Bricks_array.remove(b);
@@ -458,7 +458,7 @@ public class DrawyourLevel {
 
             } else if (blockRight) {
 
-                Sound.playsound();
+                AR_Sound.playsound();
 
                 pane_drawLevel.getChildren().remove(b);
                 Bricks_array.remove(b);
@@ -478,8 +478,8 @@ public class DrawyourLevel {
 
     public boolean checkWin() {
         if (Bricks_array.size() == 0) {
-            Sound.mediaPlayer_background.pause();
-            Sound.mediaPlayer_win.play();
+            AR_Sound.mediaPlayer_background.pause();
+            AR_Sound.mediaPlayer_win.play();
             return true;
         }
         return false;

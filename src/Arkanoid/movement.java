@@ -76,7 +76,7 @@ public class movement {
         ball_obj.setX(paddle_obj.getX() + (paddle_obj.getWidth() / 2) - (ball_obj.getWidth() / 2) + 50);
         ball_obj.setY(paddle_obj.getY() - ball_obj.getHeight() - 1);
         BaseClass.ShowPlayerNameOnScreen(player_obj.getPlayerName());
-        BaseClass.check_Escape(ArkanoidMain.Arkanoid_scene, arkanoid_stage, Menu.sceneButtons);
+        BaseClass.check_Escape(ArkanoidMain.Arkanoid_scene, arkanoid_stage, AR_Menu.sceneButtons);
         icon.DrawHeart();
         ArkanoidMain.root.getChildren().addAll(ball_obj.getBall_iv(), paddle_obj.getPaddle_iv());
 
@@ -159,7 +159,7 @@ public class movement {
                             }
                         }
                     }
-                    Sound.playsound(); //Sounds
+                    AR_Sound.playsound(); //Sounds
                     ball_obj.setStepY(1);
                     score.SetScore(1);
                 }
@@ -179,7 +179,7 @@ public class movement {
                             }
                         }
                     }
-                    Sound.playsound(); //Sounds
+                    AR_Sound.playsound(); //Sounds
                     ball_obj.setStepY(-1);
                     score.SetScore(1);
 
@@ -199,7 +199,7 @@ public class movement {
                             }
                         }
                     }
-                    Sound.playsound(); //Sounds
+                    AR_Sound.playsound(); //Sounds
                     ball_obj.setStepX(-1);
                     score.SetScore(1);
 
@@ -220,7 +220,7 @@ public class movement {
                             }
                         }
                     }
-                    Sound.playsound(); //Sounds
+                    AR_Sound.playsound(); //Sounds
                     ball_obj.setStepX(1);
                     score.SetScore(1);
 
@@ -260,8 +260,8 @@ public class movement {
                 return false;
             }
         }
-        Sound.mediaPlayer_background.pause();
-        Sound.mediaPlayer_win.play();
+        AR_Sound.mediaPlayer_background.pause();
+        AR_Sound.mediaPlayer_win.play();
         return true;
 
     }
@@ -293,8 +293,8 @@ public class movement {
                 BallDoesnotMove = true;
                 goRight = false;
                 goLeft = false;
-                Sound.mediaPlayer_ball_out.play();
-                Sound.mediaPlayer_background.pause();
+                AR_Sound.mediaPlayer_ball_out.play();
+                AR_Sound.mediaPlayer_background.pause();
 
             }
         }
@@ -325,7 +325,7 @@ public class movement {
             } catch (IOException ex) {
                 Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Sound.mediaPlayer_ball_out.play();
+            AR_Sound.mediaPlayer_ball_out.play();
         }
 
         nextlevel.setOnAction(new EventHandler<ActionEvent>() {
@@ -352,7 +352,7 @@ public class movement {
                     Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
                 }
                   finishStage.close();
-                arkanoid_stage.setScene(Menu.sceneButtons);
+              arkanoid_stage.setScene(AR_Menu.sceneButtons);
 
             }
         }
