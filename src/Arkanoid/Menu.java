@@ -109,6 +109,7 @@ public class Menu {
         BACK.setOnMousePressed(e -> {
             Sound.mediaPlayer_menu.stop();
             Sound.mediaPlayer_menu.play();
+            Sound.mediaPlayer_Menu_Back.stop();
            // setting_obj = new Setting(Arkanoid_main_stage);
         Arkanoid_main_stage.setScene(Games.gamesScene);
 
@@ -123,6 +124,8 @@ public class Menu {
 
         EXIT.setOnMousePressed(e -> {
             Sound.mediaPlayer_menu.play();
+                        Sound.mediaPlayer_background.stop();
+
             Arkanoid_main_stage.hide();
         });
 

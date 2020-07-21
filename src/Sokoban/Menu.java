@@ -34,7 +34,6 @@ public class Menu {
     public static BorderPane root = new BorderPane();
     public static Scene scene = new Scene(root, 1370, 750);
     private static VBox text_pane = new VBox(22);
-
     private static GNButton new_game_btn = new GNButton("NEW GAME");
     private static GNButton continue_btn = new GNButton("CONTINUE");
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
@@ -50,11 +49,7 @@ public class Menu {
     static ImageView slideshowImageView = new ImageView();
 
     //==============================================//
-
     public static Scene openMenu_sokoban() {
-        
-             GameBox_Core.Root.setScene(scene);
-
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
         continue_btn.setId("menubutton");
@@ -71,7 +66,7 @@ public class Menu {
         text_pane.setPrefSize(280, 400);
         //text_pane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        text_pane.getChildren().addAll(new_game_btn, continue_btn,mode43_btn, BACK_btn, exit_btn);
+        text_pane.getChildren().addAll(new_game_btn, continue_btn, mode43_btn, BACK_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
@@ -116,14 +111,15 @@ public class Menu {
         BACK_btn.setLayoutY(200);
 
         BACK_btn.setOnMouseClicked(e -> {
-            GameBox_Core.Root.setScene(Games.gamesScene);
+            Sound.mediaPlayer_back.stop();
 
+            GameBox_Core.Root.setScene(Games.gamesScene);
         });
 
         exit_btn.setLayoutX(100);
         exit_btn.setLayoutY(250);
         exit_btn.setOnMouseClicked(e -> {
-
+            Sound.mediaPlayer_back.stop();
             GameBox_Core.Root.close();
 
         });
@@ -134,8 +130,8 @@ public class Menu {
 //   //addind buttons
         layerPane.getChildren().add(text_pane);
 //   Menu_particle.layerPane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
-   
-return scene;
+
+        return scene;
     }
 
     /**

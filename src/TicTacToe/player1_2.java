@@ -10,8 +10,6 @@ import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -21,7 +19,6 @@ import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -31,7 +28,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 /**
  *
@@ -40,7 +36,8 @@ import javafx.util.Duration;
 public class player1_2 {
  
 
-  public static  Scene scene ;
+  public  Scene scene= new Scene(createContent(), 1370, 750);
+
 
     private static boolean playable = true;
     private static boolean turnX = true;
@@ -48,8 +45,11 @@ public class player1_2 {
     private static List<Combo> combos = new ArrayList<>();
     static  Group root = new Group();
     static Bloom bloom = new Bloom();
+  private static boolean flag;
+
    
     public  Parent createContent() {
+        
         Image background = new Image("Resources/XO/6.jpg", 1400, 800, false, false);
         ImageView IV = new ImageView(background);
         root.getChildren().add(IV);
@@ -87,24 +87,23 @@ public class player1_2 {
         return root;
     }
 
-  Scene s;
     public  Scene start() {
 
-       scene = new Scene(createContent(), 1370, 750);
-         scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-           @Override
-            public void handle(KeyEvent e) {
+          flag=false;
+             scene.setOnKeyPressed(e -> {
                 if (KeyCode.ESCAPE == e.getCode()){
-                scene = Tic_Menu.menu_scene;
+               // scene = Tic_Menu.menu_scene;
+                flag= true;
                }
-            }
         });
-         
-     
-         return scene; 
+    if (flag)
+    { flag=false;
+      return Tic_Menu.menu_scene; }
+    else  return scene;
     }
 
     private  void checkState() {
+
         for (Combo combo : combos) {
 
             if (combo.isComplete()) {

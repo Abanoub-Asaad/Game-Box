@@ -36,6 +36,7 @@ public class Games {
     public static Group gamesGroup = new Group();
     private final HBox gamesHBox = new HBox();
     public static Scene gamesScene = new Scene(gamesGroup, 1400, 780);
+        private boolean c=false;
 
     public Games(Stage gamesStage) {
 
@@ -65,7 +66,6 @@ public class Games {
     }
 
     private void createButtons(Stage MainStage) {
-        
         Button SokobanBtn = new Button();
         SokobanBtn.setLayoutX(300);
         SokobanBtn.setLayoutY(250);
@@ -73,9 +73,15 @@ public class Games {
         ImageView sokobanImageIV = new ImageView(sokobanImage);
         SokobanBtn.setGraphic(sokobanImageIV);
         SokobanBtn.setOnMousePressed(event -> {
-        Menu_particle.start();
-            MainStage.setScene(Menu.openMenu_sokoban());
+        if(!c)
+        {           Menu_particle.start();
+                    MainStage.setScene(Menu.openMenu_sokoban());
+                    c=true;
+        }
+        else{
+                    MainStage.setScene(Menu.scene);
 
+        }
         });
         gamesGroup.getChildren().add(SokobanBtn);
 

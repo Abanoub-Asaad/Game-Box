@@ -60,7 +60,7 @@ public class Tic_Menu {
     private static Button p_vs_p_btn = new Button("Player Vs Player");
     private static Button exit_btn = new Button(" EXIT ");
         private static Button BACK_btn = new Button(" BACK ");
-
+//boolean flag = false;
      private static Pane menu_pane = new Pane();
     private static VBox text_pane = new VBox(22);
     
@@ -180,7 +180,6 @@ BACK_btn.setId("menubutton");
     return randomNum;
 }
    public  Scene start() throws Exception {
-         
         Tic_Menu.design();
         Random random = new Random();
      
