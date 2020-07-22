@@ -201,14 +201,14 @@ public class player1_2 {
 
         private void drawX() {
             text.setText("X");
-            text.setFill(Color.AQUA);
+            text.setFill(Color.BLUE);
             text.setFont((Font.font("Copperplate Gothic Bold", FontWeight.BOLD, FontPosture.REGULAR, 100)));
             text.setEffect(bloom);
         }
 
         private void drawO() {
             text.setText("O");
-            text.setFill(Color.VIOLET);
+            text.setFill(Color.CHOCOLATE);
             text.setFont((Font.font("Copperplate Gothic Bold", FontWeight.BOLD, FontPosture.REGULAR, 100)));
             text.setEffect(bloom);
 
@@ -222,7 +222,7 @@ public class player1_2 {
         Player1.setText(" Player 1 : X");
         Player1.setX(800);
         Player1.setY(200);
-        Player1.setFill(Color.AQUA);
+        Player1.setFill(Color.BLUE);
         Player1.setFont((Font.font("Copperplate Gothic Bold", FontWeight.BOLD, FontPosture.REGULAR, 50)));
         Player1.setEffect(bloom);
         Player1.toFront();
@@ -230,7 +230,7 @@ public class player1_2 {
         Player2.setText(" Player 2 : O");
         Player2.setX(800);
         Player2.setY(250);
-        Player2.setFill(Color.VIOLET);
+        Player2.setFill(Color.CHOCOLATE);
         Player2.setFont((Font.font("Copperplate Gothic Bold", FontWeight.BOLD, FontPosture.REGULAR, 50)));
         Player2.setEffect(bloom);
         Player2.toFront();

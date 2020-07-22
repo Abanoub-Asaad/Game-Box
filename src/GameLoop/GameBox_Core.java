@@ -15,16 +15,13 @@ public class GameBox_Core extends Application {
     @Override
     public void start(Stage Root_Stage) {
 
-       
         Root = Root_Stage;
-        
+
         Games games_obj = new Games(Root_Stage);
         Root_Stage.getIcons().add(img_icon);
-         
-        
-          
-                    for_esc();
-                
+
+        for_esc();
+
     }
 
     public static void main(String[] args) {

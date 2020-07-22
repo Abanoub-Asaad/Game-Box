@@ -33,7 +33,7 @@ public class Help {
     ImageView d_iv = new ImageView(d_img);
     
     
-    Pane help_pane = new Pane();
+    static Pane help_pane = new Pane();
     
     
     Help(){
@@ -67,7 +67,7 @@ public class Help {
     private void setText(){
         Text text_tetris = new Text(50, 80, "TETRIS");
       //Loading a font from local file system
-      text_tetris.setFont((Font.font("verdana", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 60)));
+      text_tetris.setFont((Font.font("Copperplate Gothic Bold", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 70)));
       text_tetris.setFill(Color.BLUE);
       text_tetris.setStroke(Color.BLACK);
       help_pane.getChildren().add(text_tetris);
@@ -102,12 +102,18 @@ public class Help {
       text_u.setStroke(Color.BLACK);
       help_pane.getChildren().add(text_u);
       
+      Text text_esc = new Text(50, 580, "Prss \"ESC\"\nto open the Menu ");
+      text_esc.setFont((Font.font("verdana", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 45 )));
+      text_esc.setFill(Color.WHITE);
+      text_esc.setStroke(Color.BLACK);
+      help_pane.getChildren().add(text_esc);
+      
   
     }
     
     
     
-    Scene help_scene = new Scene(help_pane, 1370, 780);
+    static Scene help_scene = new Scene(help_pane, 1370, 780);
     
     
 }

@@ -137,7 +137,7 @@ public class Core {
                 Player1.setEffect(bloom);
 
                 Player2.setText(" Computer : " + computerChar);
-                Player2.setFill(Color.VIOLET);
+                Player2.setFill(Color.CHOCOLATE);
                 Player2.setX(800);
                 Player2.setY(250);
                 Player2.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 50)));
@@ -162,7 +162,7 @@ public class Core {
     computer_symbol_Text.setX(rectangles[bestMove / 3][bestMove % 3].getX() + 50);
     computer_symbol_Text.setY(rectangles[bestMove / 3][bestMove % 3].getY() + 100);
     computer_symbol_Text.setFont((Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 80)));
-    computer_symbol_Text.setFill(Color.VIOLET);
+    computer_symbol_Text.setFill(Color.CHOCOLATE);
     computer_symbol_Text.setEffect(bloom);
     group.getChildren().add(computer_symbol_Text);
 }

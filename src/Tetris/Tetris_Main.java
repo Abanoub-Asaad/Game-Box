@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 
 public class Tetris_Main {
 
+    
+    public static TimerTask task ;
+    
     private static Image tetris_back_img = new Image("Resources/Tetris/back.png", 1400, 800, false, false);
     protected static ImageView tetris_back_iv = new ImageView(tetris_back_img);
 
@@ -34,6 +37,8 @@ public class Tetris_Main {
     private Form nextObj = controller_obj.makeRect();
     protected static int linesNo = 0;
 
+    public static Scene help_scene_tetris = Help.help_scene;
+    
     protected static Rectangle[] Next = new Rectangle[4];
 
     //=========================================================
@@ -78,7 +83,7 @@ public class Tetris_Main {
 //        Tetris_stage.show();
 
         Timer fall = new Timer();
-        TimerTask task = new TimerTask() {
+         task = new TimerTask() {
             public void run() {
 
                 Platform.runLater(new Runnable() {
