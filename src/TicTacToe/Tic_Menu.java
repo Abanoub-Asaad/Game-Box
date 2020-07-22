@@ -152,7 +152,7 @@ public class Tic_Menu {
         text_pane.setLayoutX(540);
         text_pane.setLayoutY(220);
         text_pane.setPrefSize(280, 400);
-        text_pane.getChildren().addAll(player_vs_pc_btn, p_vs_p_btn, exit_btn,back_btn);
+        text_pane.getChildren().addAll(player_vs_pc_btn, p_vs_p_btn,back_btn, exit_btn);
         
        
         return menu_scene;
