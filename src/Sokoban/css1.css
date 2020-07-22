@@ -121,4 +121,72 @@
 }
 
 
- 
+ #label3{ -fx-background-radius: 10;
+    -fx-background-color: rgba(236,255,0,0.5);
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+    -fx-font-size: 20 px;
+        -fx-text-fill: rgba(201,0,255,0.5);
+    -fx-padding: 10 20 10 20;}
+#label2{    -fx-background-radius: 10;
+    -fx-background-color: rgba(23,222,255,0.6);
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+    -fx-font-size: 20 px;
+    -fx-text-fill: rgba(254,74,138,0.7);
+    -fx-padding: 10 20 10 20;}
+#label1 {
+       -fx-background-radius: 10;
+    -fx-background-color:  rgba(255,27,23,0.5);
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+    -fx-font-size: 20 px;
+     -fx-text-fill:rgba(232,255,0,0.7);
+    -fx-padding: 10 20 10 20;
+}
+#bg{
+   
+-fx-background-image: url("Resources/Sokoban/retro-pattern.png");
+-fx-background-repeat: repeat;
+-fx-background-size: 1370 800;
+
+}
+
+#box1{
+    -fx-background-color: #222;
+-fx-background-size: 350 800;
+
+}
+#box2{
+-fx-background-repeat: repeat;
+-fx-background-size: 1020 800;
+}
+
+#btn0 {
+    
+    -fx-pref-width: 220px;
+
+ -fx-text-fill: white;
+
+  -fx-background-color: transparent;
+-fx-border-radius:0;
+-fx-background-radius:0;
+
+  -fx-font-size: 40px;
+  -fx-font-family: 'Cookie' , cursive;
+  
+ -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
+ -fx-border-width:  0 5 0 5 ;
+}
+
+#btn0:hover {
+ -fx-background-color: white;
+  -fx-text-fill: #222;
+-fx-border-radius:0;
+
+ -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
+ -fx-border-width:  0 5 0 5 ;
+}
+#root{
+   -fx-background-color: linear-gradient( rgba(34,193,195,1) 0%, rgba(45,253,142,1) 100%);
+}

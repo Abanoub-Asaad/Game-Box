@@ -40,6 +40,7 @@ public class Menu {
     private static GNButton mode43_btn = new GNButton(" PRACTICE ");
     private static GNButton back_btn = new GNButton("BACK");
     private static GNButton exit_btn = new GNButton("EXIT");
+    private static GNButton help_btn = new GNButton("HELP");
 
     static Timeline timeline;
 
@@ -51,7 +52,7 @@ public class Menu {
 
     //==============================================//
     public static Scene openMenu_sokoban() throws IOException {
-        
+
         Continue_file.getthehieghtestlevel();
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
@@ -59,6 +60,7 @@ public class Menu {
         mode43_btn.setId("menubutton");
         exit_btn.setId("menubutton");
         back_btn.setId("menubutton");
+        help_btn.setId("menubutton");
 
         layerPane.setId("menupane");
         new_game_btn.setLayoutX(100);
@@ -68,7 +70,7 @@ public class Menu {
         text_pane.setLayoutY(200);
         text_pane.setPrefSize(280, 400);
 
-        text_pane.getChildren().addAll(new_game_btn, continue_btn, mode43_btn, back_btn, exit_btn);
+        text_pane.getChildren().addAll(new_game_btn, continue_btn, mode43_btn, help_btn, back_btn, exit_btn);
 
         new_game_btn.setButtonType(ButtonType.ALTERNATE);
         new_game_btn.setOnMouseClicked(e -> {
@@ -94,7 +96,7 @@ public class Menu {
             try {
                 page1_obj.IntializePage1(GameBox_Core.Root);
 //                Map.tmp_Level=1;
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -110,9 +112,16 @@ public class Menu {
             GameBox_Core.Root.setScene(Sokoban_Main.sokoban_scene);
 
         });
+        help_btn.setLayoutX(100);
+        help_btn.setLayoutY(200);
+        help_btn.setOnMouseClicked(e -> {
+            GameBox_Core.Root.setTitle("Help-SOKOBAN");
+
+            GameBox_Core.Root.setScene(HELP.start());
+        });
 
         back_btn.setLayoutX(100);
-        back_btn.setLayoutY(200);
+        back_btn.setLayoutY(250);
 
         back_btn.setOnMouseClicked(e -> {
             GameBox_Core.Root.setScene(Games.gamesScene);
@@ -120,7 +129,7 @@ public class Menu {
         });
 
         exit_btn.setLayoutX(100);
-        exit_btn.setLayoutY(250);
+        exit_btn.setLayoutY(300);
         exit_btn.setOnMouseClicked(e -> {
 
             GameBox_Core.Root.close();
