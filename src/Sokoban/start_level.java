@@ -86,7 +86,7 @@ public class start_level {
                 if(!Buttons.check_mode43){
                 Time.seconds = 0;
                 }
-                Sound.playsound(Sound.mediaPlayer_back);
+                Sound.playback();
                 try {
                     Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
                 } catch (IOException ex) {

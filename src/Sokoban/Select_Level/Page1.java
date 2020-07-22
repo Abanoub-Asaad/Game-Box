@@ -263,6 +263,7 @@ public class Page1 {
                         Logger.getLogger(Page1.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     GameLoop.GameBox_Core.Root.setScene(sokoban_scene);
+                    Sound.playback();
                     Map.startlevel(lvlN + 1);
                     try {
                         Piece.checkIfStorageLogationsAreFilled();

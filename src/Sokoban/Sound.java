@@ -40,6 +40,14 @@ public class Sound {
     
               public static void playsound ( MediaPlayer mediaPlayer )
           {
+             
+                    mediaPlayer.play();
+                 
+                    mediaPlayer.seek(Duration.ZERO);
+        }
+          
+           public static void playback (  )
+          {
               mediaPlayer_back.setOnEndOfMedia(new Runnable() {
        public void run() {
          mediaPlayer_back.seek(Duration.ZERO);

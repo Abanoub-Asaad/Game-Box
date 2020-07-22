@@ -51,6 +51,7 @@ public class Menu {
 
     //==============================================//
     public static Scene openMenu_sokoban() throws IOException {
+        
         Continue_file.getthehieghtestlevel();
         scene.getStylesheets().add(start_level.class.getResource("css1.css").toExternalForm());
         new_game_btn.setId("menubutton");
@@ -93,6 +94,7 @@ public class Menu {
             try {
                 page1_obj.IntializePage1(GameBox_Core.Root);
 //                Map.tmp_Level=1;
+                
             } catch (IOException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }

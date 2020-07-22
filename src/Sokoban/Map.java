@@ -127,7 +127,7 @@ public class Map {
         initialize();
         Buttons.drawrepeatbutton();
         Buttons.practicebuttons();
-Buttons.setnameandlevel();
+ Buttons.setnameandlevel();
         ArrayList<String> levelmap = read_map.get(tmp_Level);
 
         for (int i = 0; i < levelmap.size(); i++) {
