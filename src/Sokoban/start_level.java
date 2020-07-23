@@ -83,8 +83,8 @@ public class start_level {
 
             PlayerName_string = Enter_Name_Text.getText();
             if (PlayerName_string.length() > 0 && !PlayerName_string.contains(" ")) {
-                if(!Buttons.check_mode43){
-                Time.seconds = 0;
+                if (!Buttons.check_mode43) {
+                    Time.seconds = 0;
                 }
                 Sound.playback();
                 try {

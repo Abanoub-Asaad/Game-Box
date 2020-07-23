@@ -1,4 +1,3 @@
-
 package Sokoban.Select_Level;
 
 import java.io.BufferedReader;
@@ -113,20 +112,19 @@ public class Page2 {
         page1_circle.setRadius(10);
         page1_circle.setFill(Color.GREY);
         page1_circle.setEffect(new DropShadow(+25d, 0d, +1d, Color.WHITE));
-        
-                  page1_circle.setOnMouseEntered(event -> {
+
+        page1_circle.setOnMouseEntered(event -> {
             page1_circle.setFill(Color.WHITE);
         });
-        
-        
+
         page1_circle.setOnMouseExited(event -> {
             page1_circle.setFill(Color.GREY);
         });
 
         page1_circle.setOnMouseClicked(event -> {
-          
+
             stage.setScene(Page1.scene_page1);
-        
+
         });
 
         page1_circle.setCenterX(690);

@@ -1,4 +1,3 @@
-
 package Arkanoid;
 
 import java.io.IOException;
@@ -6,14 +5,12 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author egypt
- */
+
 public class ArkanoidMain {
-       public static Group root = new Group();
-      public  static Scene Arkanoid_scene;
-   
+
+    public static Group root = new Group();
+    public static Scene Arkanoid_scene;
+
     //================================================================
     /*
      ** For Singleton Pattern 

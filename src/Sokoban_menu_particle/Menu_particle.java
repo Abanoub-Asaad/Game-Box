@@ -6,214 +6,198 @@ import java.util.List;
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import Sokoban.Menu;
 
-public class Menu_particle  {
+public class Menu_particle {
 
-	private static Random random = new Random();
+    private static Random random = new Random();
 
-	static Canvas canvas;
-	static GraphicsContext graphicsContext;
+    static Canvas canvas;
+    static GraphicsContext graphicsContext;
 
-	/**
-	 * Container for canvas and other nodes like attractors and repellers
-	 */
-	  static Image m = new Image("Resources/Sokoban/back.jpg");
-                ImageView mv =new ImageView(m);
+    /**
+     * Container for canvas and other nodes like attractors and repellers
+     */
+    static Image m = new Image("Resources/Sokoban/back.jpg");
+    ImageView mv = new ImageView(m);
 
-	static List<Particle> allParticles = new ArrayList<>();
+    static List<Particle> allParticles = new ArrayList<>();
 
-	static AnimationTimer animationLoop;
+    static AnimationTimer animationLoop;
 
-	/**
-	 * Container for pre-created images which have color and size depending on
-	 * the particle's lifespan
-	 */
-	static Image[] images;
+    /**
+     * Container for pre-created images which have color and size depending on
+     * the particle's lifespan
+     */
+    static Image[] images;
 
-	public static void start() {
+    public static void start() {
 
-		
+        canvas = new Canvas(1370, 750);
+        graphicsContext = canvas.getGraphicsContext2D();
 
-		canvas = new Canvas(1370, 750);
-		graphicsContext = canvas.getGraphicsContext2D();
-
-		
-              
          //    Menu.layerPane.getChildren().add(mv);
-	//	Menu.layerPane.getChildren().addAll(canvas);
+        //	Menu.layerPane.getChildren().addAll(canvas);
+        canvas.widthProperty().bind(Menu.layerPane.widthProperty());
+        Menu.root.setCenter(Menu.layerPane);
 
-		canvas.widthProperty().bind(Menu.layerPane.widthProperty());
-		Menu.root.setCenter(Menu.layerPane);
+        // initialize content
+        preCreateImages();
 
-	
-		// initialize content
-		preCreateImages();
-		
-		// add content
-		prepareObjects();
+        // add content
+        prepareObjects();
 
-	
-		
-		// run animation loop
-		startAnimation();
-      
+        // run animation loop
+        startAnimation();
 
-	}
+    }
 
-	private static void preCreateImages() {
-		Menu_particle.images = Utils.preCreateImages();
-	}
+    private static void preCreateImages() {
+        Menu_particle.images = Utils.preCreateImages();
+    }
 
-	private static void prepareObjects() {
+    private static void prepareObjects() {
 
-	}
+    }
 
-	private static void startAnimation() {
+    private static void startAnimation() {
 
-		animationLoop = new AnimationTimer() {
-			
-			FpsCounter fpsCounter = new FpsCounter();
-			
-			@Override
-			public void handle(long now) {
+        animationLoop = new AnimationTimer() {
 
-				// update fps
-				fpsCounter.update( now);
-				
-				// add new particles
-				for (int i = 0; i < Settings.get().getEmitterFrequency(); i++) {
-					
-                                       addParticle(750);
-                                       addParticle(15);
-				}
+            FpsCounter fpsCounter = new FpsCounter();
 
-				// apply force: gravity
-				Vector2D forceGravity = Settings.get().getForceGravity();
-				allParticles.forEach(sprite -> {
-					sprite.applyForce(forceGravity);
-				});
+            @Override
+            public void handle(long now) {
 
-				allParticles.stream().parallel().forEach(Sprite::move);
+                // update fps
+                fpsCounter.update(now);
 
+                // add new particles
+                for (int i = 0; i < Settings.get().getEmitterFrequency(); i++) {
+
+                    addParticle(750);
+                    addParticle(15);
+                }
+
+                // apply force: gravity
+                Vector2D forceGravity = Settings.get().getForceGravity();
+                allParticles.forEach(sprite -> {
+                    sprite.applyForce(forceGravity);
+                });
+
+                allParticles.stream().parallel().forEach(Sprite::move);
 
 //				 draw all particles on canvas
 //				 -----------------------------------------
-			        graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-				graphicsContext.setFill(Color.BEIGE);
-                                       // .setFill(Color.BEIGE);
-				graphicsContext.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                graphicsContext.setFill(Color.BEIGE);
+                // .setFill(Color.BEIGE);
+                graphicsContext.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-				// TODO: parallel?
-				double particleSizeHalf = Settings.get().getParticleWidth() / 2;
-				allParticles.stream().forEach(particle -> {
+                // TODO: parallel?
+                double particleSizeHalf = Settings.get().getParticleWidth() / 2;
+                allParticles.stream().forEach(particle -> {
 
-					Image img = images[particle.getLifeSpan()];
-					graphicsContext.drawImage(img, particle.getLocation().x - particleSizeHalf, particle.getLocation().y - particleSizeHalf);
+                    Image img = images[particle.getLifeSpan()];
+                    graphicsContext.drawImage(img, particle.getLocation().x - particleSizeHalf, particle.getLocation().y - particleSizeHalf);
 
-				});
+                });
 
-				// life span of particle
-				allParticles.stream().parallel().forEach(Sprite::decreaseLifeSpan);
+                // life span of particle
+                allParticles.stream().parallel().forEach(Sprite::decreaseLifeSpan);
 
-				// remove all particles that aren't visible anymore
-				removeDeadParticles();
+                // remove all particles that aren't visible anymore
+                removeDeadParticles();
 
-			}
-		};
+            }
+        };
 
-		animationLoop.start();
+        animationLoop.start();
 
-	}
+    }
 
-	private static void removeDeadParticles() {
+    private static void removeDeadParticles() {
 
-		Iterator<Particle> iter = allParticles.iterator();
-		while (iter.hasNext()) {
+        Iterator<Particle> iter = allParticles.iterator();
+        while (iter.hasNext()) {
 
-			Particle particle = iter.next();
-			if (particle.isDead()) {
+            Particle particle = iter.next();
+            if (particle.isDead()) {
 
-				// remove from particle list
-				iter.remove();
-			}
+                // remove from particle list
+                iter.remove();
+            }
 
-		}
+        }
 
-	}
+    }
 
-	private static void addParticle(double y) {
+    private static void addParticle(double y) {
 
-		// random location
-		double x = Settings.get().getCanvasWidth() / 2 + random.nextDouble() * Settings.get().getEmitterWidth() - Settings.get().getEmitterWidth() / 2;
+        // random location
+        double x = Settings.get().getCanvasWidth() / 2 + random.nextDouble() * Settings.get().getEmitterWidth() - Settings.get().getEmitterWidth() / 2;
 		//double y = Settings.get().getEmitterLocationY();
 
-		// dimensions
-		double width = Settings.get().getParticleWidth();
-		double height = Settings.get().getParticleHeight();
+        // dimensions
+        double width = Settings.get().getParticleWidth();
+        double height = Settings.get().getParticleHeight();
 
-		// create motion data
-		Vector2D location = new Vector2D(x, y);
+        // create motion data
+        Vector2D location = new Vector2D(x, y);
 
-		double vx = random.nextGaussian()+1.0 ;
-		double vy = random.nextGaussian() * 0.8 + 1.0 ;
-		Vector2D velocity = new Vector2D(vx, vy);
+        double vx = random.nextGaussian() + 1.0;
+        double vy = random.nextGaussian() * 0.8 + 1.0;
+        Vector2D velocity = new Vector2D(vx, vy);
 
-		Vector2D acceleration = new Vector2D(0, 0);
+        Vector2D acceleration = new Vector2D(0, 0);
 
-		// create sprite and add to layer
-		Particle sprite = new Particle(location, velocity, acceleration, width, height);
+        // create sprite and add to layer
+        Particle sprite = new Particle(location, velocity, acceleration, width, height);
 
-		// register sprite
-		allParticles.add(sprite);
+        // register sprite
+        allParticles.add(sprite);
 
-	}
+    }
 
+    /**
+     * Helper class for frame rate calculation
+     */
+    private static class FpsCounter {
 
+        final long[] frameTimes = new long[100];
+        int frameTimeIndex = 0;
+        boolean arrayFilled = false;
+        double frameRate;
 
+        double decimalsFactor = 1000; // we want 3 decimals
 
-	/**
-	 * Helper class for frame rate calculation
-	 */
-	private static class FpsCounter {
+        public void update(long now) {
 
-		final long[] frameTimes = new long[100];
-		int frameTimeIndex = 0;
-		boolean arrayFilled = false;
-		double frameRate;
+            long oldFrameTime = frameTimes[frameTimeIndex];
+            frameTimes[frameTimeIndex] = now;
+            frameTimeIndex = (frameTimeIndex + 1) % frameTimes.length;
 
-		double decimalsFactor = 1000; // we want 3 decimals
-		
-		public void update(long now) {
+            if (frameTimeIndex == 0) {
+                arrayFilled = true;
+            }
 
-			long oldFrameTime = frameTimes[frameTimeIndex];
-			frameTimes[frameTimeIndex] = now;
-			frameTimeIndex = (frameTimeIndex + 1) % frameTimes.length;
+            if (arrayFilled) {
 
-			if (frameTimeIndex == 0) {
-				arrayFilled = true;
-			}
+                long elapsedNanos = now - oldFrameTime;
+                long elapsedNanosPerFrame = elapsedNanos / frameTimes.length;
+                frameRate = 1_000_000_000.0 / elapsedNanosPerFrame;
 
-			if (arrayFilled) {
+            }
+        }
 
-				long elapsedNanos = now - oldFrameTime;
-				long elapsedNanosPerFrame = elapsedNanos / frameTimes.length;
-				frameRate = 1_000_000_000.0 / elapsedNanosPerFrame;
-
-			}
-		}
-
-		public double getFrameRate() {
-			// return frameRate;
-			return ((int) (frameRate * decimalsFactor)) / decimalsFactor; // reduce to n decimals
-		}
-	}
+        public double getFrameRate() {
+            // return frameRate;
+            return ((int) (frameRate * decimalsFactor)) / decimalsFactor; // reduce to n decimals
+        }
+    }
 }

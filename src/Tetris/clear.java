@@ -1,4 +1,3 @@
-
 package Tetris;
 
 import java.util.ArrayList;
@@ -10,16 +9,14 @@ import static Tetris.Tetris_Main.SIZE;
 import static Tetris.Tetris_Main.score;
 import javafx.util.Duration;
 
-
 public class clear {
- 
+
     protected static void RemoveRows(Pane pane) {
         ArrayList<Node> rects = new ArrayList<Node>();
         ArrayList<Integer> lines = new ArrayList<Integer>();
         ArrayList<Node> newrects = new ArrayList<Node>();
         int full = 0;
-        
-        
+
         for (int i = 0; i < MESH[0].length; i++) {
             for (int j = 0; j < MESH.length; j++) {
                 if (MESH[j][i] == 1) {
@@ -55,7 +52,7 @@ public class clear {
                 for (Node node : newrects) {
                     Rectangle a = (Rectangle) node;
                     if (a.getY() < lines.get(0) * SIZE) {
-                    MESH[(int) a.getX() / SIZE][(int) a.getY() / SIZE] = 0;
+                        MESH[(int) a.getX() / SIZE][(int) a.getY() / SIZE] = 0;
                         a.setY(a.getY() + SIZE);
                     }
                 }
@@ -79,6 +76,4 @@ public class clear {
         }
     }
 
-
-    
 }

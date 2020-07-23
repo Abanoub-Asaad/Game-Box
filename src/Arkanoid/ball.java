@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Arkanoid;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/**
- *
- * @author egypt
- */
- public class ball {
+
+public class ball {
 
     private Image ballImage = new Image("Resources/Arkanoid/ball.png", 30, 30, false, false);
     private ImageView ball_iv = new ImageView(ballImage);

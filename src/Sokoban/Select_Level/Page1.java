@@ -22,6 +22,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import Sokoban.*;
 import static Sokoban.Sokoban_Main.sokoban_scene;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class Page1 {
 
@@ -33,7 +36,7 @@ public class Page1 {
     private ImageView ImagbackIV;
     private int x, y;
     private static Page1 Page1;
-    String fileName ="C:\\Game-Box\\src\\Resources\\Sokoban\\continue_player.txt";
+    String fileName = "C:\\Game-Box\\src\\Resources\\Sokoban\\continue_player.txt";
 
     private FileReader file_reader;
     private BufferedReader buffered_reader;
@@ -73,6 +76,17 @@ public class Page1 {
         MovePage(stage);
 
         stage.setScene(scene_page1);
+        scene_page1.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                if (e.getCode() == KeyCode.ESCAPE) {
+                    GameBox_Core.Root.setScene(Menu.scene);
+
+                    // stage.setScene(GameBox_Core.Root.setScene(Menu.scene);
+                }
+
+            }
+        });
     }
 
     /**
@@ -230,7 +244,7 @@ public class Page1 {
 
         file_reader = new FileReader(fileName);
         buffered_reader = new BufferedReader(file_reader);
-  start_level.PlayerName_string = buffered_reader.readLine();
+        start_level.PlayerName_string = buffered_reader.readLine();
         String currentLine;
         while ((currentLine = buffered_reader.readLine()) != null) {
             if (lvlN + 1 == Integer.parseInt(currentLine)) {
@@ -256,9 +270,9 @@ public class Page1 {
 
                 lvlImage_IV.setOnMousePressed(event -> {
                     //(lvlN + 1) 
-                    
+
                     try {
-                       Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
+                        Sokoban_Main.getInstanceFromSokoban().openSokobanMain(GameBox_Core.Root);
                     } catch (IOException ex) {
                         Logger.getLogger(Page1.class.getName()).log(Level.SEVERE, null, ex);
                     }

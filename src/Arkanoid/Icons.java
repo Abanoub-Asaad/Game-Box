@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Arkanoid;
 
 import java.util.ArrayList;
@@ -12,10 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-/**
- *
- * @author egypt
- */
+
 public class Icons {
 
     private final Image expand_img = new Image("Resources/Arkanoid/icons/expand.png", 100, 20, false, false);

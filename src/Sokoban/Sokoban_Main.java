@@ -9,9 +9,8 @@ import javafx.stage.Stage;
 
 public class Sokoban_Main {
 
-   
     public static Group root = new Group();
-    public static Scene sokoban_scene=new Scene(root, 1370, 750);
+    public static Scene sokoban_scene = new Scene(root, 1370, 750);
     //================================================================
     /*
      ** For Singleton Pattern 
@@ -29,16 +28,14 @@ public class Sokoban_Main {
     private Sokoban_Main() {
 
     }
-    
-    //===============================================================
 
+    //===============================================================
     public void openSokobanMain(Stage Sokoban_Stage) throws IOException {
         if (!Buttons.check_mode43) {
             Time.time_score_move();
         }
 
         //sokoban_scene = 
-
         sokoban_scene.getStylesheets().add(Sokoban_Main.class.getResource("css1.css").toExternalForm());
 
         Map.make_hashmap();

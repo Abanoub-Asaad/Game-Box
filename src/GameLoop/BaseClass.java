@@ -103,7 +103,7 @@ public class BaseClass {
 
             }
         });
-    } 
+    }
 
     public static void ShowPlayerNameOnScreen(String s_name) {
         Text player_txt = new Text();

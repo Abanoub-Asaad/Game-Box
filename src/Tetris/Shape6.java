@@ -1,11 +1,8 @@
 package Tetris;
 
-import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import static Tetris.Controller.MoveLeft;
-import static Tetris.Controller.MoveRight;
 import static Tetris.Controller.SIZE;
 import static Tetris.Controller.XMAX;
 

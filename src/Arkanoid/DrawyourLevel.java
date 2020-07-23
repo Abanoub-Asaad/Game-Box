@@ -1,4 +1,3 @@
-
 package Arkanoid;
 
 import GameLoop.BaseClass;
@@ -60,7 +59,7 @@ public class DrawyourLevel {
         Action();
         StartMovement();
 
-      BaseClass.check_Escape(scene_drawLevel, stage,AR_Menu.sceneButtons);
+        BaseClass.check_Escape(scene_drawLevel, stage, AR_Menu.sceneButtons);
         scene_drawLevel.setCursor(new ImageCursor(cursor_img));
         stage.setTitle("Arkanoid - Your Level");
         stage.setScene(scene_drawLevel);

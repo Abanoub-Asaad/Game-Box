@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -45,7 +44,7 @@ public class movement {
     private static boolean clickOnlyOnce = false;
     static Text pressToStart = new Text();
     private Stage arkanoid_stage;
-    private  AnimationTimer at;
+    private AnimationTimer at;
 
     public movement(Stage Arkanoid_stage) throws IOException {
         map = new Arkanoid_Map();
@@ -100,7 +99,7 @@ public class movement {
     }
 
     private void GameMovement(boolean play_Animation) {
-        
+
         at = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -351,8 +350,8 @@ public class movement {
                 } catch (IOException ex) {
                     Logger.getLogger(movement.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                  finishStage.close();
-              arkanoid_stage.setScene(AR_Menu.sceneButtons);
+                finishStage.close();
+                arkanoid_stage.setScene(AR_Menu.sceneButtons);
 
             }
         }

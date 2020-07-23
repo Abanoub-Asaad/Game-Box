@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-
 public class Tetris_Menu {
 
     public static int count_for_back_btn = 0;
@@ -31,7 +30,7 @@ public class Tetris_Menu {
     public static Scene start() {
 
         scene.getStylesheets().add(Tetris_Menu.class.getResource("cs.css").toExternalForm());
-        text_pane.getChildren().addAll(new_game_btn,help_btn, back_btn, exit_btn);
+        text_pane.getChildren().addAll(new_game_btn, help_btn, back_btn, exit_btn);
         menu.getChildren().addAll(mv, mv2, text_pane);
         mv.setLayoutX(0);
         mv.setLayoutY(0);
@@ -45,10 +44,10 @@ public class Tetris_Menu {
         text_pane.setLayoutX(580);
         text_pane.setLayoutY(180);
         text_pane.setPrefSize(280, 400);
-        
+
         help_btn.setLayoutX(100);
         help_btn.setLayoutY(150);
-        
+
         back_btn.setLayoutX(100);
         back_btn.setLayoutY(200);
 
@@ -105,14 +104,14 @@ public class Tetris_Menu {
         help_btn.setOnAction(e -> {
             Help help_obj = new Help();
             GameBox_Core.Root.setScene(help_obj.help_scene);
-            
+
         });
-        
+
         exit_btn.setId("btn");
         new_game_btn.setId("btn");
         back_btn.setId("btn");
         help_btn.setId("btn");
-        
+
         return scene;
 
     }

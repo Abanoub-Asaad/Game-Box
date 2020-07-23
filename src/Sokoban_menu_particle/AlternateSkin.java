@@ -1,19 +1,4 @@
-/*
- * Copyright (C) Gleidson Neves da Silveira
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 package Sokoban_menu_particle;
 
 import javafx.animation.Animation;
@@ -35,11 +20,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-/**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  14/12/2018
- */
-public class AlternateSkin extends SkinBase<Labeled>{
+
+public class AlternateSkin extends SkinBase<Labeled> {
 
     private Label title = new Label("Button");
 
@@ -85,7 +67,7 @@ public class AlternateSkin extends SkinBase<Labeled>{
         getChildren().add(rect3);
         getChildren().add(title);
 
-        velocity.bind( ((GNButton)getSkinnable()).transitionDurationProperty());
+        velocity.bind(((GNButton) getSkinnable()).transitionDurationProperty());
         title.textProperty().bind(getSkinnable().textProperty());
         title.fontProperty().bind(getSkinnable().fontProperty());
         title.textFillProperty().bind(getSkinnable().textFillProperty());
@@ -111,22 +93,22 @@ public class AlternateSkin extends SkinBase<Labeled>{
         firstColor = getSkinnable().getTextFill();
 
         rect.setBackground(new Background(new BackgroundFill(
-                ((GNButton)getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
+                ((GNButton) getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
         )));
 
         rect1.setBackground(new Background(new BackgroundFill(
-                ((GNButton)getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
+                ((GNButton) getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
         )));
 
         rect2.setBackground(new Background(new BackgroundFill(
-                ((GNButton)getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
+                ((GNButton) getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
         )));
 
         rect3.setBackground(new Background(new BackgroundFill(
-                ((GNButton)getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
+                ((GNButton) getSkinnable()).getTransitionColor(), CornerRadii.EMPTY, Insets.EMPTY
         )));
 
-        ((GNButton)getSkinnable()).transitionColorProperty().addListener(new ChangeListener<Paint>() {
+        ((GNButton) getSkinnable()).transitionColorProperty().addListener(new ChangeListener<Paint>() {
             @Override
             public void changed(ObservableValue<? extends Paint> observable, Paint oldValue, Paint newValue) {
                 rect.setBackground(new Background(new BackgroundFill(newValue, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -146,41 +128,28 @@ public class AlternateSkin extends SkinBase<Labeled>{
 //        rect1.setStyle("-fx-background-color : blue;");
 //        rect2.setStyle("-fx-background-color : yellow;");
 //        rect3.setStyle("-fx-background-color : green;");
-
         getSkinnable().setOnMouseEntered(event -> {
             timeEntered.getKeyFrames().clear();
 
             timeEntered.getKeyFrames().addAll(
-
-
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect.maxHeightProperty(), rect.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect.maxHeightProperty(), rect.getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect1.prefHeightProperty(), rect1.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect1.maxHeightProperty(), rect1.getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect2.prefHeightProperty(), rect2.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect2.maxHeightProperty(), rect2.getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect3.prefHeightProperty(), rect3.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect3.maxHeightProperty(), rect3.getHeight())),
-
                     new KeyFrame(velocity.get(), new KeyValue(rect.prefHeightProperty(), getSkinnable().getHeight())),
                     new KeyFrame(velocity.get(), new KeyValue(rect.maxHeightProperty(), getSkinnable().getHeight())),
-
                     new KeyFrame(velocity.get(), new KeyValue(rect1.prefHeightProperty(), getSkinnable().getHeight())),
                     new KeyFrame(velocity.get(), new KeyValue(rect1.maxHeightProperty(), getSkinnable().getHeight())),
-
                     new KeyFrame(velocity.get(), new KeyValue(rect2.prefHeightProperty(), getSkinnable().getHeight())),
                     new KeyFrame(velocity.get(), new KeyValue(rect2.maxHeightProperty(), getSkinnable().getHeight())),
-
                     new KeyFrame(velocity.get(), new KeyValue(rect3.prefHeightProperty(), getSkinnable().getHeight())),
                     new KeyFrame(velocity.get(), new KeyValue(rect3.maxHeightProperty(), getSkinnable().getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(getSkinnable().textFillProperty(), getSkinnable().getTextFill())),
                     new KeyFrame(velocity.get(), new KeyValue(getSkinnable().textFillProperty(), ((GNButton) getSkinnable()).getTransitionText()))
-
             );
 
             if (timeExited.getStatus() == Animation.Status.RUNNING) {
@@ -194,34 +163,24 @@ public class AlternateSkin extends SkinBase<Labeled>{
         getSkinnable().setOnMouseExited(event -> {
             timeExited.getKeyFrames().clear();
             timeExited.getKeyFrames().addAll(
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect.prefHeightProperty(), rect.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect.maxHeightProperty(), rect.getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect1.prefHeightProperty(), rect1.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect1.maxHeightProperty(), rect1.getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect2.prefHeightProperty(), rect2.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect2.maxHeightProperty(), rect2.getHeight())),
-
                     new KeyFrame(Duration.ZERO, new KeyValue(rect3.prefHeightProperty(), rect3.getHeight())),
                     new KeyFrame(Duration.ZERO, new KeyValue(rect3.maxHeightProperty(), rect3.getHeight())),
-
                     new KeyFrame(velocity.getValue(), new KeyValue(rect.prefHeightProperty(), 0D)),
                     new KeyFrame(velocity.get(), new KeyValue(rect.maxHeightProperty(), 0D)),
-
-                    new KeyFrame(velocity.get(), new KeyValue(rect1.prefHeightProperty(), 0D )),
-                    new KeyFrame(velocity.get(), new KeyValue(rect1.maxHeightProperty(), 0D )),
-
-                    new KeyFrame(velocity.get(), new KeyValue(rect2.prefHeightProperty(), 0D )),
-                    new KeyFrame(velocity.get(), new KeyValue(rect2.maxHeightProperty(), 0D )),
-
-                    new KeyFrame(velocity.get(), new KeyValue(rect3.prefHeightProperty(), 0D )),
-                    new KeyFrame(velocity.get(), new KeyValue(rect3.maxHeightProperty(), 0D )),
-
+                    new KeyFrame(velocity.get(), new KeyValue(rect1.prefHeightProperty(), 0D)),
+                    new KeyFrame(velocity.get(), new KeyValue(rect1.maxHeightProperty(), 0D)),
+                    new KeyFrame(velocity.get(), new KeyValue(rect2.prefHeightProperty(), 0D)),
+                    new KeyFrame(velocity.get(), new KeyValue(rect2.maxHeightProperty(), 0D)),
+                    new KeyFrame(velocity.get(), new KeyValue(rect3.prefHeightProperty(), 0D)),
+                    new KeyFrame(velocity.get(), new KeyValue(rect3.maxHeightProperty(), 0D)),
                     new KeyFrame(Duration.ZERO, new KeyValue(getSkinnable().textFillProperty(), getSkinnable().getTextFill())),
                     new KeyFrame(velocity.get(), new KeyValue(getSkinnable().textFillProperty(), firstColor))
-
             );
 
             if (timeEntered.getStatus() == Animation.Status.RUNNING) {
@@ -267,7 +226,6 @@ public class AlternateSkin extends SkinBase<Labeled>{
 
         layoutInArea(rect3, (contentWidth / (getChildren().size() - 1)) * 3, contentY, contentWidth / 4, contentHeight, 0,
                 HPos.LEFT, VPos.BOTTOM);
-
 
         layoutInArea(title, contentX, contentY, contentWidth, contentHeight, 0,
                 title.getAlignment().getHpos(), title.getAlignment().getVpos());

@@ -2,7 +2,6 @@ package Tetris;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,9 +14,8 @@ import javafx.stage.Stage;
 
 public class Tetris_Main {
 
-    
-    public static TimerTask task ;
-    
+    public static TimerTask task;
+
     private static Image tetris_back_img = new Image("Resources/Tetris/back.png", 1400, 800, false, false);
     protected static ImageView tetris_back_iv = new ImageView(tetris_back_img);
 
@@ -38,13 +36,13 @@ public class Tetris_Main {
     protected static int linesNo = 0;
 
     public static Scene help_scene_tetris = Help.help_scene;
-    
+
     protected static Rectangle[] Next = new Rectangle[4];
 
     //=========================================================
     /*
-    ** For Singleton Pattern 
-    */
+     ** For Singleton Pattern 
+     */
     private static Tetris_Main tetrisInstance;
 
     public static Tetris_Main getInstanceFromTetris() {
@@ -59,11 +57,9 @@ public class Tetris_Main {
 
     }
     //======================================================
-    
-    public void start_Tetris(Stage games_stage,int timelimit) {
 
-        
-        
+    public void start_Tetris(Stage games_stage, int timelimit) {
+
         tetris_pane.getChildren().add(tetris_back_iv);
         Controller.intialize_2D_array();
         Controller.design_score_and_lines(tetris_pane);
@@ -83,7 +79,7 @@ public class Tetris_Main {
 //        Tetris_stage.show();
 
         Timer fall = new Timer();
-         task = new TimerTask() {
+        task = new TimerTask() {
             public void run() {
 
                 Platform.runLater(new Runnable() {

@@ -2,9 +2,7 @@ package Sokoban;
 
 import GameLoop.GameBox_Core;
 import static Sokoban.Map.StorageLocation_Imageviews_Array;
-import static Sokoban.score.file_unlockedLvls;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.EventHandler;
@@ -96,17 +94,16 @@ public class Piece {
     public static void checkfinishlevel() throws IOException {
 
         if (countboxesatstorage == Map.Boxes_Imageviews_Array.size()) {
-            if(!Buttons.check_mode43){
-            Time.timer.stop();
-            score.calculate_score();
-            rank.Display_Rank();
-            Sound.playsound(Sound.mediaPlayer_win);
-            GameBox_Core.Root.setScene(finish_level.finish_scene());
- Continue_file.writenewlevel();
-            }
-            else{
-            Sound.playsound(Sound.mediaPlayer_win);
-             Map.startlevel(++Map.tmp_Level);
+            if (!Buttons.check_mode43) {
+                Time.timer.stop();
+                score.calculate_score();
+                rank.Display_Rank();
+                Sound.playsound(Sound.mediaPlayer_win);
+                GameBox_Core.Root.setScene(finish_level.finish_scene());
+                Continue_file.writenewlevel();
+            } else {
+                Sound.playsound(Sound.mediaPlayer_win);
+                Map.startlevel(++Map.tmp_Level);
             }
 
         }

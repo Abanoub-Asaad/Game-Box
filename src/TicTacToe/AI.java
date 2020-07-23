@@ -1,13 +1,10 @@
-
 package TicTacToe;
 
 import static TicTacToe.XO_Controller.availableMoves;
 
+public class AI extends XO_Controller {
 
-public class AI extends XO_Controller{
-    
-    
-    protected static int minMax(String[][]sym, int depth, String player ) {
+    protected static int minMax(String[][] sym, int depth, String player) {
         double bestMoveValue = Double.NEGATIVE_INFINITY;
         int bestMove = 0;
 
@@ -33,15 +30,16 @@ public class AI extends XO_Controller{
 
         String winner = getWinnerIfThere(board);
         if (!winner.equals(" ")) {
-            if (winner .equals(player)) {
+            if (winner.equals(player)) {
                 return Double.POSITIVE_INFINITY;
             } else {
                 return Double.NEGATIVE_INFINITY;
             }
         }
 
-        if (checkIfGameIsFinishedOrNot(board))
+        if (checkIfGameIsFinishedOrNot(board)) {
             return 0;
+        }
 
         if (depth == 0) {
             return evaluate(board, player);
@@ -66,9 +64,9 @@ public class AI extends XO_Controller{
 
     }
 
-    protected static double max(String[][] board, int depth,String player) {
-       String winner = getWinnerIfThere(board);
-        if (!winner .equals(" ")) {
+    protected static double max(String[][] board, int depth, String player) {
+        String winner = getWinnerIfThere(board);
+        if (!winner.equals(" ")) {
             if (winner.equals(player)) {
                 return Double.POSITIVE_INFINITY;
             } else {
@@ -76,12 +74,12 @@ public class AI extends XO_Controller{
             }
         }
 
-        if (checkIfGameIsFinishedOrNot(board))
+        if (checkIfGameIsFinishedOrNot(board)) {
             return 0;
+        }
         if (depth == 0) {
             return evaluate(board, player);
         }
-
 
         double bestMoveValue = Double.NEGATIVE_INFINITY;
 
@@ -98,5 +96,5 @@ public class AI extends XO_Controller{
 
         return bestMoveValue;
     }
-    
+
 }

@@ -20,13 +20,12 @@ public class Gate {
 
             if (player_imageView.getX() + dir_x * 50 == gate_iv.getX()
                     && player_imageView.getY() + dir_y * 50 == gate_iv.getY()) {
-                
+
                 return true;
             }
 
         }
-        
-      
+
         return false;
 
     }

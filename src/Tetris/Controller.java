@@ -2,7 +2,6 @@ package Tetris;
 
 import static Tetris.Tetris_Main.Tetris_scene;
 import java.util.Arrays;
-import javafx.scene.Group;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,11 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
-
 
 public class Controller {
 
@@ -70,8 +65,6 @@ public class Controller {
         }
     }
 
-    
-    
     public Form makeRect() {
         int block = (int) (Math.random() * 100);
         String name;
@@ -143,16 +136,16 @@ public class Controller {
         Line sperator_line = new Line(XMAX, 0, XMAX, YMAX);
         Reflection reflection = new Reflection();
         reflection.setFraction(1);
-        
-      scoretext.setId("st");
-      scoretext.setEffect(reflection);
+
+        scoretext.setId("st");
+        scoretext.setEffect(reflection);
         scoretext.setStroke(Color.IVORY);
         scoretext.setY(400);
         scoretext.setX(XMAX + 50);
 
         //numOfLines.setFont(Font.font("Verdana", FontWeight.BOLD, 60));
-         numOfLines.setId("st");
-         numOfLines.setEffect(reflection);
+        numOfLines.setId("st");
+        numOfLines.setEffect(reflection);
         numOfLines.setY(570);
         numOfLines.setX(XMAX + 50);
         numOfLines.setStroke(Color.IVORY);
@@ -196,8 +189,7 @@ public class Controller {
                 break;
         }
     }
-    
-  
+
     protected static void setGameOver() {
         Image gameOver = new Image("Resources/Tetris/Game Over.png", 500, 150, false, false);
         ImageView gameOverIv = new ImageView(gameOver);
@@ -206,25 +198,26 @@ public class Controller {
         Tetris_Main.tetris_pane.getChildren().add(gameOverIv);
 
     }
-    
-    protected void setShapeInSquare(String name){
-        if(name=="i")
+
+    protected void setShapeInSquare(String name) {
+        if (name == "i") {
             shape1_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-        else if(name == "o")
+        } else if (name == "o") {
             shape2_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-        else if(name == "j")
+        } else if (name == "j") {
             shape3_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-        else if(name == "l")
+        } else if (name == "l") {
             shape4_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-        else if(name == "s")
+        } else if (name == "s") {
             shape5_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-        else if(name == "t")
+        } else if (name == "t") {
             shape6_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-        else if(name == "z")
+        } else if (name == "z") {
             shape7_obj.Basic(Tetris_Main.Next, Tetris_Main.tetris_pane);
-            
+        }
+
     }
-    
+
     protected void RemoveNextShape(Rectangle[] rectangles, Pane group) {
         for (int i = 0; i < 4; i++) {
             group.getChildren().remove(rectangles[i]);

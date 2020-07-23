@@ -9,10 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-/**
- *
- * @author Eng.Waleed
- */
+
 public class finish_level {
 
     public static int nLevel_in_score_file = 1;

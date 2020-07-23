@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package TicTacToe;
-  
+
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -28,25 +23,24 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
+
 /**
  *
  * @author Eng.Waleed
  */
 public class player1_2 {
- 
 
-   public static  Scene scene ;
+    public static Scene scene;
 
     private static boolean playable = true;
     private static boolean turnX = true;
     private static Tile[][] board = new Tile[3][3];
     private static List<Combo> combos = new ArrayList<>();
-    public static  Group root = new Group();
+    public static Group root = new Group();
     static Bloom bloom = new Bloom();
-   
-    private  Parent createContent() {
+
+    private Parent createContent() {
         Image background = new Image("Resources/XO/6.jpg", 1400, 800, false, false);
         ImageView IV = new ImageView(background);
         root.getChildren().add(IV);
@@ -54,7 +48,7 @@ public class player1_2 {
         int xAxis = 250, yAxis = 170;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                
+
                 Tile tile = new Tile();
                 tile.setLayoutY(yAxis);
                 tile.setTranslateX(j * 150);
@@ -84,22 +78,21 @@ public class player1_2 {
         return root;
     }
 
+    public Scene start() {
 
-    public  Scene start() {
+        scene = new Scene(createContent(), 1370, 750);
+        return scene;
 
-       scene = new Scene(createContent(), 1370, 750);
-       return scene;
-        
     }
 
-    private  void checkState() {
+    private void checkState() {
         for (Combo combo : combos) {
 
             if (combo.isComplete()) {
                 playable = false;
                 playWinAnimation(combo);
                 return;
-               
+
             }
         }
         boolean full = true;
@@ -114,11 +107,11 @@ public class player1_2 {
         if (full) {
             new Alert(Alert.AlertType.INFORMATION, " Draw!").showAndWait();
             playable = false;
-           sound.mediaPlayer_back.stop();
+            sound.mediaPlayer_back.stop();
         }
     }
 
-    private  void playWinAnimation(Combo combo) {
+    private void playWinAnimation(Combo combo) {
         Line line = new Line();
         line.setStartX(combo.tiles[0].getCenterX());
         line.setStartY(combo.tiles[0].getCenterY());
@@ -149,7 +142,7 @@ public class player1_2 {
             this.tiles = tiles;
         }
 
-        public  boolean isComplete() {
+        public boolean isComplete() {
             if (tiles[0].getValue().isEmpty()) {
                 return false;
             }
@@ -161,9 +154,9 @@ public class player1_2 {
 
     private class Tile extends StackPane {
 
-        final  private Text text = new Text();
+        final private Text text = new Text();
 
-        public  Tile() {
+        public Tile() {
             Rectangle border = new Rectangle(150, 150);
             border.setFill(Color.ALICEBLUE);
             border.setStroke(Color.FUCHSIA);
@@ -238,5 +231,4 @@ public class player1_2 {
 
     }
 
-} 
-
+}

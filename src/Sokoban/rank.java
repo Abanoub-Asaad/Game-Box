@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Sokoban;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,10 +11,6 @@ import javafx.geometry.Orientation;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 
-/**
- *
- * @author Eng.Waleed
- */
 public class rank {
 
     static int max_nPlayers = 4;
@@ -28,7 +18,7 @@ public class rank {
     static Integer level_number;// refer to level number in file 
     //----------------------------------------------//
     public static FlowPane show_score_pane = new FlowPane(Orientation.HORIZONTAL, 250, 20);
-  // creating a small pane inside the finish scene to display the rank between players 
+    // creating a small pane inside the finish scene to display the rank between players 
     //---------------------------------------------//
 
     static Map<Integer, LinkedHashMap<String, Float>> For_Whole_Levels = new LinkedHashMap<Integer, LinkedHashMap<String, Float>>() {
@@ -36,7 +26,7 @@ public class rank {
 
     static Map<String, Float> mapFromFile;
     static Map<String, Float> Get_Sorted_Map;
- //---------------------------------------------------//
+    //---------------------------------------------------//
 
     static Text player_name_in_board;
     static Text player_score_in_board;
@@ -55,11 +45,10 @@ public class rank {
         Float value;
         BufferedReader br = null;
 
-        
         try {
-            
+
             br = new BufferedReader(new FileReader(score.file));
-            
+
             String line;
 
             while ((line = br.readLine()) != null) {
@@ -72,7 +61,7 @@ public class rank {
                 value = Float.valueOf(parts[2].trim());
 
                 For_Whole_Levels.get(level_number).put(name, value);
-                
+
             }
 
         } catch (IOException e) {
@@ -106,7 +95,7 @@ public class rank {
 
     public static void Display_Rank() throws IOException {
 
-       //  int x=350;
+        //  int x=350;
         // int y=250;
         show_score_pane.getChildren().clear();
 

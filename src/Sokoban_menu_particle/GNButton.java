@@ -1,19 +1,3 @@
-/*
- * Copyright (C) Gleidson Neves da Silveira
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package Sokoban_menu_particle;
 
 import com.sun.javafx.css.converters.DurationConverter;
@@ -32,11 +16,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
-/**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  14/12/2018
- */
 public class GNButton extends Labeled {
 
     StackPane rect = new StackPane();
@@ -49,7 +28,7 @@ public class GNButton extends Labeled {
 
     private List<CssMetaData<? extends Styleable, ?>> STYLEABLES;
 
-    public GNButton(){
+    public GNButton() {
         this(null);
     }
 
@@ -71,7 +50,7 @@ public class GNButton extends Labeled {
         this.transitionDuration = new SimpleStyleableObjectProperty<Duration>(StyleableProperties.TRANSITION_DURATION, this, "transitionDuration", Duration.millis(300D));
 
         setPadding(new Insets(0D));
-        setText( title != null ? title : "Button" );
+        setText(title != null ? title : "Button");
         setBorder(new Border(new BorderStroke(Color.web("#6d4c41"), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
 
         updateButtonType(getButtonType());
@@ -102,11 +81,11 @@ public class GNButton extends Labeled {
 //            case SWIPE :
 //                setSkin(new SwipeSkin(this));
 //                break;
-                
-      }
+
+        }
     }
 
-    private void updateTransitionColor(Paint color){
+    private void updateTransitionColor(Paint color) {
         rect.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
         setBorder(new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(4))));
     }
@@ -131,7 +110,8 @@ public class GNButton extends Labeled {
 
         private static final List<CssMetaData<? extends Styleable, ?>> CHILD_STYLEABLES;
 
-        private StyleableProperties(){}
+        private StyleableProperties() {
+        }
 
         static {
 

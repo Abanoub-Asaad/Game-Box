@@ -1,18 +1,18 @@
 
-  #fancytext {
+#fancytext {
     // for the score and move and time of specific player
     -fx-fill: #663333;
-     -fx-font: italic bold 30px/50px Georgia, serif;
-  
-   
+    -fx-font: italic bold 30px/50px Georgia, serif;
+
+
 }
 
 #btn{
-  // for cancel and continue button
-   -fx-background-color: 
-      
-       linear-gradient(to right, #c62828,#dd2c00,#e64a19,#ff7043);
-   // -fx-pref-height: 10px;
+    // for cancel and continue button
+    -fx-background-color: 
+
+        linear-gradient(to right, #c62828,#dd2c00,#e64a19,#ff7043);
+    // -fx-pref-height: 10px;
     -fx-pref-width: 200px;
     -fx-background-radius: 30;
     -fx-background-insets: 0,1,2,3,0;
@@ -20,44 +20,44 @@
     -fx-font-weight: bold;
     -fx-font-size: 30 px;
     -fx-padding: 10 20 10 20;
-   
+
 }
 
-  Text  {
-      // for you win! text
+Text  {
+    // for you win! text
     -fx-font:  italic bold  70px/100px Georgia, serif;
     -fx-fill: linear-gradient(to right, #3e2723,#4e342e,#5d4037,#6d4c41,#795548,#8d6e63,#a1887f);
 
-   // -fx-stroke:brown;
-  //  -fx-stroke-width: 1;
-    
+    // -fx-stroke:brown;
+    //  -fx-stroke-width: 1;
+
 }
 #text {
-// for the text in rank table
+    // for the text in rank table
     -fx-font: italic bold  40px/60px Georgia, serif ;
     -fx-fill:   #3e2723;
     -fx-font-weight: bold;
     //-fx-stroke: black;
-  
-   //-fx-stroke-width: 1;
-   
+
+    //-fx-stroke-width: 1;
+
 }
 #for3 {
     // for the vbox includes (time&move&score)texts
-   -fx-font:  40px  Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+    -fx-font:  40px  Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
     -fx-fill: darkblue;
-    
+
     -fx-stroke: lightskyblue;
-  
-   -fx-stroke-width: 1;
-   
+
+    -fx-stroke-width: 1;
+
 }
 #start {
-    
+
     // for play button
-   -fx-background-color: 
-      
-       linear-gradient(to right, #bc5a45,#bc5a45);
+    -fx-background-color: 
+
+        linear-gradient(to right, #bc5a45,#bc5a45);
     -fx-pref-height: 15px;
     -fx-pref-width: 400px;
     -fx-background-radius: 30;
@@ -69,124 +69,124 @@
 }
 
 #label {
-   
-  // label to enter player name
+
+    // label to enter player name
     -fx-pref-width: 400px;
     -fx-background-radius: 30;
     -fx-background-insets: 0,1,2,3,0;
-   
-  //  -fx-font-weight: bold;
+
+    //  -fx-font-weight: bold;
     -fx-font-size: 30 px;
     -fx-padding: 10 20 10 20;
 }
 #pane{
     // for start_level pane
--fx-background-image: url("../Resources/Sokoban/wp.jpg");
--fx-background-repeat: no-repeat;
--fx-background-size: 1500 800;
-//-fx-background-position: center center;
-//-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);All Files	
+    -fx-background-image: url("../Resources/Sokoban/wp.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1500 800;
+    //-fx-background-position: center center;
+    //-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);All Files	
 }
 #menubutton {
-    
+
     -fx-pref-height: 50 px;
     -fx-pref-width: 200px;
-/*    -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
- */
+    /*    -fx-background-radius: 30;
+        -fx-background-insets: 0,1,2,3,0;
+    */
     //-fx-font-size: 30 px;
-/*    -fx-padding: 10 20 10 20;
-   */
+    /*    -fx-padding: 10 20 10 20;
+    */
     -fx-font: italic bold  30px/40px Georgia, serif ;
-   
- 
- -fx-text-alignment: center;
- //-fx-border-width: 2px; 
- -fx-border-color:#6d4c41;
- -fx-text-fill: #6d4c41;
- //-fx-border-radius: 30;
- //-fx-padding:1em 2em 0.9em 2em;
-  
-  -fx-border-width: 3 0 3 0;
-   -fx-stroke-width: 1;
+
+
+    -fx-text-alignment: center;
+    //-fx-border-width: 2px; 
+    -fx-border-color:#6d4c41;
+    -fx-text-fill: #6d4c41;
+    //-fx-border-radius: 30;
+    //-fx-padding:1em 2em 0.9em 2em;
+
+    -fx-border-width: 3 0 3 0;
+    -fx-stroke-width: 1;
 }
 
 #menupane{
     // menu pane 
--fx-background-image: url("../Resources/Sokoban/as.jpg");
--fx-background-repeat: no-repeat;
--fx-background-size: 1500 800;
-//-fx-background-position: center center;
-//-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);	
+    -fx-background-image: url("../Resources/Sokoban/as.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1500 800;
+    //-fx-background-position: center center;
+    //-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);	
 }
 
 
- #label3{ -fx-background-radius: 10;
-    -fx-background-color: rgba(236,255,0,0.5);
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
-    -fx-font-size: 20 px;
-        -fx-text-fill: rgba(201,0,255,0.5);
-    -fx-padding: 10 20 10 20;}
+#label3{ -fx-background-radius: 10;
+         -fx-background-color: rgba(236,255,0,0.5);
+         -fx-background-insets: 0,1,2,3,0;
+         -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+         -fx-font-size: 20 px;
+         -fx-text-fill: rgba(201,0,255,0.5);
+         -fx-padding: 10 20 10 20;}
 #label2{    -fx-background-radius: 10;
-    -fx-background-color: rgba(23,222,255,0.6);
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
-    -fx-font-size: 20 px;
-    -fx-text-fill: rgba(254,74,138,0.7);
-    -fx-padding: 10 20 10 20;}
+            -fx-background-color: rgba(23,222,255,0.6);
+            -fx-background-insets: 0,1,2,3,0;
+            -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
+            -fx-font-size: 20 px;
+            -fx-text-fill: rgba(254,74,138,0.7);
+            -fx-padding: 10 20 10 20;}
 #label1 {
-       -fx-background-radius: 10;
+    -fx-background-radius: 10;
     -fx-background-color:  rgba(255,27,23,0.5);
     -fx-background-insets: 0,1,2,3,0;
     -fx-font:    Serif, "Helvetica Neue", "Lucida Grande", fantasy  ;
     -fx-font-size: 20 px;
-     -fx-text-fill:rgba(232,255,0,0.7);
+    -fx-text-fill:rgba(232,255,0,0.7);
     -fx-padding: 10 20 10 20;
 }
 #bg{
-   
--fx-background-image: url("Resources/Sokoban/retro-pattern.png");
--fx-background-repeat: repeat;
--fx-background-size: 1370 800;
+
+    -fx-background-image: url("Resources/Sokoban/retro-pattern.png");
+    -fx-background-repeat: repeat;
+    -fx-background-size: 1370 800;
 
 }
 
 #box1{
     -fx-background-color: #222;
--fx-background-size: 350 800;
+    -fx-background-size: 350 800;
 
 }
 #box2{
--fx-background-repeat: repeat;
--fx-background-size: 1020 800;
+    -fx-background-repeat: repeat;
+    -fx-background-size: 1020 800;
 }
 
 #btn0 {
-    
+
     -fx-pref-width: 220px;
 
- -fx-text-fill: white;
+    -fx-text-fill: white;
 
-  -fx-background-color: transparent;
--fx-border-radius:0;
--fx-background-radius:0;
+    -fx-background-color: transparent;
+    -fx-border-radius:0;
+    -fx-background-radius:0;
 
-  -fx-font-size: 40px;
-  -fx-font-family: 'Cookie' , cursive;
-  
- -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
- -fx-border-width:  0 5 0 5 ;
+    -fx-font-size: 40px;
+    -fx-font-family: 'Cookie' , cursive;
+
+    -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
+    -fx-border-width:  0 5 0 5 ;
 }
 
 #btn0:hover {
- -fx-background-color: white;
-  -fx-text-fill: #222;
--fx-border-radius:0;
+    -fx-background-color: white;
+    -fx-text-fill: #222;
+    -fx-border-radius:0;
 
- -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
- -fx-border-width:  0 5 0 5 ;
+    -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
+    -fx-border-width:  0 5 0 5 ;
 }
 #root{
-   -fx-background-color: linear-gradient( rgba(34,193,195,1) 0%, rgba(45,253,142,1) 100%);
+    -fx-background-color: linear-gradient( rgba(34,193,195,1) 0%, rgba(45,253,142,1) 100%);
 }

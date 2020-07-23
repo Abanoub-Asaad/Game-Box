@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Arkanoid;
 
 import java.io.BufferedReader;
@@ -14,10 +9,6 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/**
- *
- * @author egypt
- */
 public class Arkanoid_Map {
 
     private final Image double_brick1 = new Image("Resources/Arkanoid/bricks/normal brick2.png", 130, 386, true, true);
@@ -42,7 +33,7 @@ public class Arkanoid_Map {
     private BufferedReader buffered_reader;
     private final Image ArkaniodImgback = new Image("Resources/Arkanoid/8972.jpg", 2000, 800, true, false);
     private final ImageView arkanoid_ImagbackIV = new ImageView(ArkaniodImgback);
-   public static int level = 0;
+    public static int level = 0;
 
     private static HashMap<Integer, ArrayList<String>> read_map = new HashMap<>();
 
@@ -93,28 +84,28 @@ public class Arkanoid_Map {
             for (int j = 0; j < values.length; j++) {
                 switch (values[j]) {
                     case '1':
-                        setPosition(normal_brick1, posX, posY , "1");
+                        setPosition(normal_brick1, posX, posY, "1");
                         break;
                     case '2':
-                        setPosition(double_brick1, posX, posY,"21");
+                        setPosition(double_brick1, posX, posY, "21");
                         break;
                     case '3':
-                        setPosition(double_brick2, posX, posY,"22");
+                        setPosition(double_brick2, posX, posY, "22");
                         break;
                     case '4':
-                        setPosition(double_brick3, posX, posY,"23");
+                        setPosition(double_brick3, posX, posY, "23");
                         break;
                     case '5':
-                        setPosition(normal_brick2, posX, posY,"1");
+                        setPosition(normal_brick2, posX, posY, "1");
                         break;
                     case '6':
-                        setPosition(double_brick4, posX, posY,"24");
+                        setPosition(double_brick4, posX, posY, "24");
                         break;
                     case '7':
-                        setPosition(normal_brick3, posX, posY,"1");
+                        setPosition(normal_brick3, posX, posY, "1");
                         break;
                     case '8':
-                        setPosition(normal_brick4, posX, posY,"1");
+                        setPosition(normal_brick4, posX, posY, "1");
                         break;
 
                 }

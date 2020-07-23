@@ -14,101 +14,105 @@ import javafx.scene.shape.Rectangle;
 
 public class Utils {
 
-	/**
-	 * Clamp value between min and max
-	 * @param value
-	 * @param min
-	 * @param max
-	 * @return
-	 */
-	public static double clamp(double value, double min, double max) {
+    /**
+     * Clamp value between min and max
+     *
+     * @param value
+     * @param min
+     * @param max
+     * @return
+     */
+    public static double clamp(double value, double min, double max) {
 
-		if (value < min)
-			return min;
+        if (value < min) {
+            return min;
+        }
 
-		if (value > max)
-			return max;
+        if (value > max) {
+            return max;
+        }
 
-		return value;
-	}
+        return value;
+    }
 
-	/**
-	 * Map value of a given range to a target range
-	 * @param value
-	 * @param currentRangeStart
-	 * @param currentRangeStop
-	 * @param targetRangeStart
-	 * @param targetRangeStop
-	 * @return
-	 */
-	public static double map(double value, double currentRangeStart, double currentRangeStop, double targetRangeStart, double targetRangeStop) {
-		return targetRangeStart + (targetRangeStop - targetRangeStart) * ((value - currentRangeStart) / (currentRangeStop - currentRangeStart));
-	}
+    /**
+     * Map value of a given range to a target range
+     *
+     * @param value
+     * @param currentRangeStart
+     * @param currentRangeStop
+     * @param targetRangeStart
+     * @param targetRangeStop
+     * @return
+     */
+    public static double map(double value, double currentRangeStart, double currentRangeStop, double targetRangeStart, double targetRangeStop) {
+        return targetRangeStart + (targetRangeStop - targetRangeStart) * ((value - currentRangeStart) / (currentRangeStop - currentRangeStart));
+    }
 
-	/**
-	 * Snapshot an image out of a node, consider transparency.
-	 * 
-	 * @param node
-	 * @return
-	 */
-	public static Image createImage(Node node) {
+    /**
+     * Snapshot an image out of a node, consider transparency.
+     *
+     * @param node
+     * @return
+     */
+    public static Image createImage(Node node) {
 
-		WritableImage wi;
+        WritableImage wi;
 
-		SnapshotParameters parameters = new SnapshotParameters();
-		parameters.setFill(Color.TRANSPARENT);
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
 
-		int imageWidth = (int) node.getBoundsInLocal().getWidth();
-		int imageHeight = (int) node.getBoundsInLocal().getHeight();
+        int imageWidth = (int) node.getBoundsInLocal().getWidth();
+        int imageHeight = (int) node.getBoundsInLocal().getHeight();
 
-		wi = new WritableImage(imageWidth, imageHeight);
-		node.snapshot(parameters, wi);
+        wi = new WritableImage(imageWidth, imageHeight);
+        node.snapshot(parameters, wi);
 
-		return wi;
+        return wi;
 
-	}
+    }
 
-	/**
-	 * Pre-create images with various gradient colors and sizes.
-	 * 
-	 * @return
-	 */
-	public static Image[] preCreateImages() {
+    /**
+     * Pre-create images with various gradient colors and sizes.
+     *
+     * @return
+     */
+    public static Image[] preCreateImages() {
 
-		// get number of images
-		int count = (int) Settings.get().getParticleLifeSpanMax();
+        // get number of images
+        int count = (int) Settings.get().getParticleLifeSpanMax();
 
-		// create linear gradient lookup image: lifespan 0 -> lifespan max
-		double width = count;
-		Stop[] stops = new Stop[] { new Stop(0.2, Color.web("#d84315")), new Stop(0.3, Color.web("#d84315")), new Stop(0.9, Color.YELLOW), new Stop(1, Color.web("#ffee58"))};
-		LinearGradient linearGradient = new LinearGradient(0, 0, width, 0, false, CycleMethod.NO_CYCLE, stops);
+        // create linear gradient lookup image: lifespan 0 -> lifespan max
+        double width = count;
+        Stop[] stops = new Stop[]{new Stop(0.2, Color.web("#d84315")), new Stop(0.3, Color.web("#d84315")), new Stop(0.9, Color.YELLOW), new Stop(1, Color.web("#ffee58"))};
+        LinearGradient linearGradient = new LinearGradient(0, 0, width, 0, false, CycleMethod.NO_CYCLE, stops);
 
-		Rectangle rectangle = new Rectangle(width,1);
-		rectangle.setFill( linearGradient);
-		
-		Image lookupImage = createImage(rectangle);
-		
-		// pre-create images
-		Image[] list = new Image[count];
+        Rectangle rectangle = new Rectangle(width, 1);
+        rectangle.setFill(linearGradient);
 
-		double radius = Settings.get().getParticleWidth();
+        Image lookupImage = createImage(rectangle);
 
-		for (int i = 0; i < count; i++) {
+        // pre-create images
+        Image[] list = new Image[count];
 
-			// get color depending on lifespan
-			Color color = lookupImage.getPixelReader().getColor( i, 0);
+        double radius = Settings.get().getParticleWidth();
 
-			// create gradient image with given color
-			Circle ball = new Circle(radius);
+        for (int i = 0; i < count; i++) {
 
-			RadialGradient gradient1 = new RadialGradient(0, 0, 0, 0, radius, false, CycleMethod.NO_CYCLE, new Stop(0, color.deriveColor(1, 1, 1, 1)), new Stop(1, color.deriveColor(1, 1, 1, 0)));
+            // get color depending on lifespan
+            Color color = lookupImage.getPixelReader().getColor(i, 0);
 
-			ball.setFill(gradient1);
+            // create gradient image with given color
+            Circle ball = new Circle(radius);
 
-			// create image
-			list[i] = Utils.createImage(ball);
-		}
+            RadialGradient gradient1 = new RadialGradient(0, 0, 0, 0, radius, false, CycleMethod.NO_CYCLE, new Stop(0, color.deriveColor(1, 1, 1, 1)), new Stop(1, color.deriveColor(1, 1, 1, 0)));
 
-		return list;
-	}
+            ball.setFill(gradient1);
+
+            // create image
+            list[i] = Utils.createImage(ball);
+        }
+
+        return list;
+    }
 }

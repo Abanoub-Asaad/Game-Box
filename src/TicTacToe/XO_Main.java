@@ -21,7 +21,7 @@ public class XO_Main {
     private static String[][] XO;
     private static Core obj_Core;
     public static Group XO_group;
-    public  static Scene XO_scene;
+    public static Scene XO_scene;
 
     /**
      * Depth for The Algorithm. if we make it smaller, the Game 'll be easy

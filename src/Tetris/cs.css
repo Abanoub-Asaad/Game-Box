@@ -2,38 +2,35 @@
 @import url('https://fonts.googleapis.com/css?family=Cookie:400,500,700');
 @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Lobster&display=swap');
 
-/*@font-face {
-    font-family: Let's go Digital;
-    src: url('../Resources/Tetris/r.ttf');
-}*/
+
 
 #btn {
-    
+
     //-fx-pref-height: 2 px;
     -fx-pref-width: 220px;
-/* 
- -fx-text-alignment: center;
- */
- 
- -fx-text-fill: #eee;
+    /* 
+     -fx-text-alignment: center;
+    */
 
-  -fx-background-color: #222 ;
-/*  -fx-height: 50px;
-  -fx-min-width: 200px;*/
-  
- // color: #eee;
-  -fx-font-size: 30px;
-  -fx-font-family: 'Cookie' , cursive;
+    -fx-text-fill: #eee;
+
+    -fx-background-color: #222 ;
+    /*  -fx-height: 50px;
+      -fx-min-width: 200px;*/
+
+    // color: #eee;
+    -fx-font-size: 30px;
+    -fx-font-family: 'Cookie' , cursive;
 }
 
 #btn:hover {
- -fx-background-color: transparent;
- -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
- -fx-border-width: 0 5 0 5;
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(#fff176, #ffeb3b,#e91e63,#9c27b0);
+    -fx-border-width: 0 5 0 5;
 
 }
 #st{
- 
+
     -fx-font-family: 'Frijole', cursive;
     -fx-font-family: 'Lobster', cursive;
     -fx-font-size: 60;

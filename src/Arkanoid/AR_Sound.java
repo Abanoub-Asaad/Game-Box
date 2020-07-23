@@ -8,7 +8,7 @@ import javafx.util.Duration;
 
 public class AR_Sound {
 
-         //sound 
+    //sound 
     //sound of block
     private static String ssound = "C:\\Game-Box\\src\\Resources\\Arkanoid\\Sounds\\hit.mp3";
     public static Media sound = new Media(new File(ssound).toURI().toString());

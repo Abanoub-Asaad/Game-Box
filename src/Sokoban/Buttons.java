@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Sokoban;
 
 import static Sokoban.Map.tmp_Level;
@@ -10,10 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-/**
- *
- * @author egypt
- */
+
 public class Buttons {
 
     static boolean check_mode43 = false, checknewgame = false;

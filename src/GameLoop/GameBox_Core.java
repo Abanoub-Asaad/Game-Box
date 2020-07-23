@@ -4,7 +4,6 @@ import static GameLoop.Games.for_esc;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.application.Platform;
 
 public class GameBox_Core extends Application {
 

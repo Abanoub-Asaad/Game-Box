@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Sokoban;
 
 import java.io.BufferedReader;
@@ -11,10 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- *
- * @author egypt
- */
+
 public class Continue_file {
 
     private static FileWriter writer;
@@ -38,7 +31,7 @@ public class Continue_file {
                 for (int i = 1; i <= Map.tmp_Level; i++) {
                     bufferedWriter.write(i + "\n");
                 }
-                  bufferedWriter.close();
+                bufferedWriter.close();
 
             }
         } else {
@@ -58,7 +51,7 @@ public class Continue_file {
         while ((CLine = bufferedReader.readLine()) != null) {
             thehieghtestlevel = CLine;
         }
-                    System.err.println("new getthehieghtestlevel mode ");
+        System.err.println("new getthehieghtestlevel mode ");
 
     }
 }

@@ -1,6 +1,5 @@
 package Tetris;
 
-import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import static Tetris.Tetris_Main.MESH;
@@ -14,12 +13,15 @@ import javafx.scene.paint.Color;
 
 public abstract class Shape {
 
-    Rectangle []Next = new Rectangle [4];
+    Rectangle[] Next = new Rectangle[4];
     public static Lighting lighting = new Lighting(new Light.Distant(225, 55, Color.WHITE));
-    
+
     protected abstract void setShape(Rectangle a, Rectangle b, Rectangle c, Rectangle d);
-    protected abstract Rectangle[] getShape() ;
-    protected abstract  void MoveTurn(Form form, int num_turn, Rectangle a, Rectangle b, Rectangle c, Rectangle d);
+
+    protected abstract Rectangle[] getShape();
+
+    protected abstract void MoveTurn(Form form, int num_turn, Rectangle a, Rectangle b, Rectangle c, Rectangle d);
+
     protected abstract void Basic(Rectangle[] rectangles, Pane group);
 
     protected void MoveDown(Rectangle rect) {
@@ -46,7 +48,7 @@ public abstract class Shape {
             rect.setY(rect.getY() - MOVE);
         }
     }
-    
+
     protected boolean checkRectangle(Rectangle rect, int x, int y) {
         boolean xb = false;
         boolean yb = false;

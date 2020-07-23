@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Arkanoid;
 
 import Arkanoid.MenuDesign.MenuBox;
@@ -29,12 +24,13 @@ public class AR_Menu {
     PlayerNameFile playerFile_obj = new PlayerNameFile();
     private static final int width = 1350;
     private static final int height = 700;
-    public static int count_for_back_btn=0;
-  private static AnchorPane pane1_buttons= new AnchorPane();
-  public static Scene sceneButtons=new Scene(pane1_buttons, 1370, 750);;
+    public static int count_for_back_btn = 0;
+    private static AnchorPane pane1_buttons = new AnchorPane();
+    public static Scene sceneButtons = new Scene(pane1_buttons, 1370, 750);
+    ;
    
 
-    private MenuItem START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY, EXIT,BACK;
+    private MenuItem START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY, EXIT, BACK;
 
     Setting setting_obj;
 
@@ -43,14 +39,14 @@ public class AR_Menu {
 
     public AR_Menu(Stage Arkanoid_main) {
 
-      //  pane1_buttons ;
+        //  pane1_buttons ;
         createBackground();
         Title title = new Title("A R K A N O I D");
         title.setTranslateX(100);
         title.setTranslateY(200);
 
         Intialize();
-        MenuBox VBox = new MenuBox(START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY,BACK , EXIT);
+        MenuBox VBox = new MenuBox(START, HIGH_SCORES, SETTINGS, DRAW_YOUR_LEVEL, ENEMY, BACK, EXIT);
         pane1_buttons.getChildren().addAll(title, VBox);
         VBox.setTranslateX(100);
         VBox.setTranslateY(300);
@@ -96,29 +92,26 @@ public class AR_Menu {
             }
 
         });
-        
-       BACK.setOnMousePressed(event -> {
+
+        BACK.setOnMousePressed(event -> {
             AR_Sound.mediaPlayer_menu.stop();
             AR_Sound.mediaPlayer_menu.play();
-             AR_Sound.mediaPlayer_background.stop();
+            AR_Sound.mediaPlayer_background.stop();
             AR_Sound.mediaPlayer_background.seek(Duration.ZERO);
-           GameBox_Core.Root.setScene(Games.gamesScene);
+            GameBox_Core.Root.setScene(Games.gamesScene);
             count_for_back_btn++;
- 
+
         });
 
         HIGH_SCORES.setOnMousePressed(e -> {
             AR_Sound.mediaPlayer_menu.stop();
             AR_Sound.mediaPlayer_menu.play();
-             try 
-             {
-                 Score score = new Score();
-                 score.score(Arkanoid_main_stage);
-             }
-             catch (IOException ex) 
-             {
-                 Logger.getLogger(AR_Menu.class.getName()).log(Level.SEVERE, null, ex);
-             }
+            try {
+                Score score = new Score();
+                score.score(Arkanoid_main_stage);
+            } catch (IOException ex) {
+                Logger.getLogger(AR_Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         SETTINGS.setOnMousePressed(e -> {
             AR_Sound.mediaPlayer_menu.stop();
@@ -130,7 +123,7 @@ public class AR_Menu {
         DRAW_YOUR_LEVEL.setOnMousePressed(e -> {
             AR_Sound.mediaPlayer_menu.stop();
             AR_Sound.mediaPlayer_menu.play();
-            DrawyourLevel drawLevel = new DrawyourLevel (Arkanoid_main_stage) ;  
+            DrawyourLevel drawLevel = new DrawyourLevel(Arkanoid_main_stage);
         });
 
         EXIT.setOnMousePressed(e -> {
