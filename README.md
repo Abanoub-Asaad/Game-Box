@@ -5,7 +5,7 @@
   A desktop application includes four games (Sokoban, Tetris, Arkanoid and AI-XO) that made with Java, JavaFX, Design Patterns (Singleton and Factory) and AI (MinMax Algorithm).
   <br />
   <br />
-  <a href="youtu.be/mmqh7oryvqs">
+  <a href="https://youtu.be/MmQH7oryvQs">
     <img src="https://github.com/Abanoub-Asaad/Car-Pooling-System/blob/master/javadoc/javadoc/GameboxVideo.gif" alt="demo" />
   </a>
  </div>
