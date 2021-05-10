@@ -8,6 +8,7 @@
 <br>
 
 - To watch a demo video, Click [here](https://youtu.be/MmQH7oryvQs)
+- To view the documentation of the project, Click [here](https://github.com/Abanoub-Asaad/Game-Box/blob/master/Docs/OOP%20Project%20Documentation.pdf)
 - To view screenshots, Go below!
 
 ![](Screenshots/GameBoxBackground.png) 
