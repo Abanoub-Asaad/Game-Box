@@ -17,7 +17,7 @@
   <summary>Sokoban</summary>
 <p>
 
-![](Screenshots/SokobanFirstLevel.png) 
+![](Screenshots/SokobanFirstLevel.png.png) 
 ![](Screenshots/SokobanPracticeMode.png) 
 ![](Screenshots/SokobanSelectLevel.png) 
 
