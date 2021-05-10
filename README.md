@@ -7,6 +7,9 @@
 
 <br>
 
+- To watch a demo video, Click [here](https://youtu.be/MmQH7oryvQs)
+- To view screenshots, Go below!
+
 ![](Screenshots/GameBoxBackground.png) 
 
 <details>
